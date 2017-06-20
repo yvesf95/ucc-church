@@ -1,0 +1,490 @@
+@font-face{
+    font-family: Open-Sans;
+    src: url(../fonts/open-sans/OpenSans-Regular.ttf);
+}
+
+*{
+    font-family: Open-Sans;
+}
+
+body{
+    background: #f7f7f7;
+}
+
+body, ul, li{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.wrapper{
+    width: 96%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2%;
+}
+
+.btn{
+    clear: both;
+    display: block;
+    width: 140px;
+    margin: 20px auto;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+    color: #000;
+    padding: 7px 13px;
+    border: 1px solid #000;
+    border-radius: 20px;
+}
+
+.btn-blue{
+    color: #fff;
+    background: #0EA9D6;
+    border: 1px solid #0EA9D6;
+}
+
+.btn-yellow{
+    color: #fff;
+    background: #f0ad4e;
+    border: 1px solid #f0ad4e;
+}
+
+.btn-red{
+    color: #fff;
+    background: #d9534f;
+    border: 1px solid #d9534f;
+}
+
+header{
+    background: rgba(0,0,0,.9);
+    padding: 10px 0;
+    /*position: fixed;*/
+    width: 100%;
+    z-index: 1;
+}
+
+header h1{
+    margin: 0;
+    text-indent: -10000px;
+    background: url(../images/uccc-logo-3.png) no-repeat;
+    background-size: contain;
+    width: 280px;
+    height: 70px;
+    float: left;
+}
+
+header nav ul li{
+    float: left;
+}
+
+header nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 7px 20px;
+    font-size: 14px;
+}
+
+header nav.top-nav{
+    float: right;
+    margin-top: 20px;
+}
+
+header nav.top-nav ul li{
+    margin-left: 7px;
+}
+
+.divider{
+    clear: both;
+    border: 0;
+    height: 1px;
+    background: #777;
+}
+
+header nav.sub-nav{
+    float: left;
+}
+
+header nav.sub-nav h2{
+    margin: 0;
+    height: 0;
+    text-indent: -10000px;
+}
+
+header nav.sub-nav ul li{
+    border-right: 1px solid #777;
+}
+
+.search{
+    float: right;
+}
+
+.input-group{
+    display: table;
+}
+
+.input-addon{
+    display: inline-block;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1;
+    color: #ccc;
+}
+
+.form-control{
+    border: 0;
+    margin: 0;
+    padding: 6px 12px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    font-size: 14px;
+    line-height: 1.428571434px;
+}
+
+header::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#main-banner{
+    position: relative;
+}
+
+#main-banner img{
+    width: 100%;
+}
+
+.banner-overlay{
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    text-align: center;
+}
+
+.banner-overlay h2{
+    color: #fff;
+    font-size: 66px;
+    /*background: rgba(218, 68, 83, 0.7);*/
+    width: 80%;
+    margin: 0 auto;
+}
+
+.banner-overlay p{
+    color: #fff;
+    font-size: 16px;
+    background: rgba(59, 59, 59, 0.4);
+    border-radius: 50px;
+    width: 80%;
+    /*max-width: 650px;*/
+    padding: 10px;
+    margin: auto;
+    line-height: 1.6em;
+}
+
+.banner-overlay a.btn-overlay{
+    display: block;
+    width: 140px;
+    color: #fff;
+    /*color: #333;*/
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 18px;
+    margin: 1% auto;
+    padding: 10px 15px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    background: rgba(150,150,150,.3);
+}
+
+.banner-overlay a.btn-overlay:hover{
+    /*color: #fff;*/
+    color: #efefef;
+    background: rgba(150,150,150,.5);
+    opacity: 0.8;
+    transition: all 0.6s ease;
+}
+
+#tiles{
+    position: relative;
+    top: -30px;
+}
+
+#tiles h2{
+    margin: 0;
+    height: 0;
+    text-indent: -10000px;
+}
+
+#tiles ul{
+    display: table;
+    border-collapse: separate;
+    border-spacing: 15px;
+    width: 100%;
+}
+
+#tiles ul li{
+    display: table-cell;
+    background: #fff;
+    padding: 1%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+}
+
+#tiles ul li img{
+    float: left;
+    width: 30%;
+    margin-right: 4%;
+}
+
+#tiles ul li blockquote{
+    margin: 0;
+    float: right;
+    width: 66%;
+}
+
+#tiles ul li h3{
+    margin: 0;
+}
+
+#tiles ul li p{
+    color: #4e4e4e;
+    font-size: 14px;
+    line-height: 1.6em;
+}
+
+#tiles::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.row{
+    margin-top: 20px;
+    display: table;
+    width: 100%;
+}
+
+.row article{
+    /*float: left;*/
+    width: 29%;
+    display: table-cell;
+    padding: 0 2%;
+}
+
+article:nth-child(2){
+    margin: 0 1%;
+}
+
+#latest-sermons{
+    background: #fff;
+}
+
+#latest-sermons ul li{
+    padding: 40px 0;
+    border-bottom: 1px solid #777;
+}
+
+#latest-sermons ul li img{
+    float: left;
+    width: 32%;
+    margin: 2% 6% 2% 0;
+    vertical-align: middle;
+}
+
+#latest-sermons ul li div.sermon-content{
+    float: right;
+    width: 60%;
+}
+
+#latest-sermons ul li a{
+    font-size: 14px;
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1px dotted #000;
+}
+
+#latest-sermons ul li i, #latest-sermons ul li p{
+    font-size: 14px;
+}
+
+#latest-sermons ul li h3 a{
+    font-size: 16px;
+}
+
+#latest-sermons ul li::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#weekly-activities{
+    background: #efefef;
+}
+
+#weekly-activities ul li{
+    padding: 20px 0;
+    border-bottom: 1px solid #777;
+}
+
+#weekly-activities ul li h3{
+    margin-top: 0;
+}
+
+#weekly-activities ul li h3 i{
+    font-size: 12px;
+    background: #f0ad4e;
+    color: #f7f7f7;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.title{
+    float: left;
+    color: #555;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+    background: #efefef;
+    padding-right: 15px;
+}
+
+.time{
+    float: right;
+    color: #555;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+    background: #efefef;
+    padding-left: 15px;
+}
+
+.description{
+    clear: both;
+    display: block;
+    color: #777;
+    font-style: italic;
+    font-size: 14px;
+    padding-top: 10px;
+    border-top: 1px solid #bbb;
+    position: relative;
+    top: -8px;
+}
+
+#events{
+    background: #fff;
+}
+
+#events ul li{
+    padding: 20px 0;
+    border-bottom: 1px solid #777;
+}
+#events ul li h3{
+    margin-top: 0;
+}
+
+#events ul li h3 a{
+    text-decoration: none;
+    color: #000;
+}
+
+#events ul li p{
+    font-size: 14px;
+}
+
+main::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+
+#prayer{
+    background: #555;
+    padding: 20px 20%;
+    text-align: center;
+    color: #999;
+}
+#prayer h2{
+    color: #fff;
+    font-size: 36px;
+}
+
+#prayer p{
+    font-size: 14px;
+    line-height: 1.6em;
+}
+
+.prayer-icon{
+    display: inline-block;
+    background: url(../images/prayer-icon.png) no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+footer{
+    background: rgba(0,0,0,.8);
+    color: #fff;
+    padding: 30px 0;
+}
+
+footer ul{
+    float: left;
+    width: 32%;
+}
+
+footer ul li{
+    width: 80%;
+    padding: 0 10%;
+    margin: 30px 0;
+}
+
+footer ul li h4{
+    margin-top: 0;
+}
+
+footer ul li span{
+    display: block;
+    margin-top: 10px;
+    color: #999;
+}
+
+#copyright{
+    clear: both;
+    display: block;
+    padding-top: 30px;
+    border-top: 1px solid #777;
+}
+
+#follow{
+    clear: both;
+    float: right;
+    width: auto;
+    position: relative;
+    top: -32px;
+}
+
+#follow li{
+    float: left;
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+}
+
+#follow li a {
+    font-size: 24px;
+    color: #fff;
+}
+
+footer::after{
+    content: "";
+    display: block;
+    clear: both;
+}
