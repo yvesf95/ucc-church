@@ -1,0 +1,707 @@
+@font-face{
+    font-family: Open-Sans;
+    src: url(../fonts/open-sans/OpenSans-Regular.ttf);
+}
+
+*{
+    font-family: Open-Sans;
+}
+
+body{
+    background: #f7f7f7;
+}
+
+body, ul, li{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.wrapper{
+    /*width: 100%;*/
+    width: 96%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2%;
+}
+
+.btn{
+    clear: both;
+    display: block;
+    width: 140px;
+    margin: 20px auto;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+    color: #000;
+    padding: 7px 13px;
+    border: 1px solid #000;
+    border-radius: 20px;
+}
+
+.btn-blue{
+    color: #fff;
+    background: #0EA9D6;
+    border: 1px solid #0EA9D6;
+}
+
+.btn-yellow{
+    color: #fff;
+    background: #f0ad4e;
+    border: 1px solid #f0ad4e;
+}
+
+.btn-red{
+    color: #fff;
+    background: #d9534f;
+    border: 1px solid #d9534f;
+}
+
+header{
+    background: rgba(0,0,0,.9);
+    padding: 5px 0;
+    /*position: fixed;*/
+    /*width: 100%;*/
+    /*z-index: 1;*/
+}
+
+header > .wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1{
+    display: inline-block;
+    margin: 0;
+    text-indent: -10000px;
+    background: url(../images/uccc-logo-3.png) no-repeat center;
+    background-size: contain;
+    width: 250px;
+    height: 50px;
+}
+
+header nav h2{
+    display: none;
+}
+
+header nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+header nav a{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 7px 14px;
+    font-size: 14px;
+    color: #fff;
+}
+
+header nav a:hover{
+    background: #555;
+}
+
+header nav label{
+    cursor: pointer;
+}
+
+.divider{
+    flex: 1 0 100%;
+    margin: 5px;
+    border: 0;
+    height: 1px;
+    background: #777;
+}
+
+.sub-nav{
+    flex: 1 0 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sub-nav ul{
+    flex: 0 1 60%;
+}
+
+.sub-nav ul li{
+    flex: 0 1 24%;
+    border-right: 1px solid #777;
+}
+
+.input-group{
+    flex: 0 1 25%;
+    display: flex;
+    width: 100%;
+}
+
+.input-addon{
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1;
+    color: #ccc;
+}
+
+.form-control{
+    flex: 1 1 0;
+    border: 0;
+    margin: 0;
+    padding: 6px 12px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    font-size: 14px;
+    line-height: 1.4px;
+}
+
+#main-banner{
+    position: relative;
+}
+
+#main-banner img{
+    width: 100%;
+    min-height: 200px;
+}
+
+.banner-overlay{
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    text-align: center;
+}
+
+.banner-overlay h2{
+    color: #fff;
+    font-size: 66px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.banner-overlay p{
+    color: #fff;
+    font-size: 16px;
+    background: rgba(59, 59, 59, 0.4);
+    border-radius: 50px;
+    width: 80%;
+    padding: 10px;
+    margin: auto;
+    line-height: 1.6em;
+}
+
+a.btn-overlay{
+    display: block;
+    width: 140px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 1% auto;
+    padding: 10px 0;
+    line-height: 1.6em;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    border: 1px solid #0275d8;
+    border-radius: 20px;
+    background: #0275d8;
+}
+
+a.btn-overlay:hover{
+    color: #0275d8;
+    background: #fff;
+    opacity: 0.8;
+    transition: all 0.6s ease;
+}
+
+
+#tiles{
+    position: relative;
+    top: -20px;
+}
+
+#tiles h2{
+    display: none;
+}
+
+#tiles ul{
+    display: flex;
+    justify-content: space-between;
+}
+
+#tiles ul li{
+    flex: 0 1 32%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+}
+
+.tile-icon{
+    flex: 0 1 33%;
+}
+
+#tiles ul li img{
+    max-width: 100%;
+}
+
+#tiles ul li blockquote{
+    flex: 0 1 66%;
+}
+
+#tiles ul li h3, #tiles ul li blockquote{
+    margin: 0;
+}
+
+#tiles ul li p{
+    color: #4e4e4e;
+    font-size: 14px;
+    line-height: 1.6em;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+article{
+    flex: 1 1 29%;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: 0 2%;
+}
+
+article:nth-child(even){
+    background: #eee;
+}
+
+#latest-sermons ul li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+    border-bottom: 1px solid #777;
+}
+
+.speaker{
+    flex: 0 1 30%;
+}
+
+.speaker img{
+    width: 100%;
+}
+
+.sermon-content{
+    flex: 0 1 66%;
+}
+
+.sermon-content a{
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1px dotted #000;
+}
+
+.sermon-content i, 
+.sermon-content p, 
+.sermon-content h3{
+    font-size: 14px;
+    margin: 4% 0;
+}
+
+.sermon-content h3 a{
+    font-size: 16px;
+}
+
+#weekly-activities ul{
+    display: flex;
+    flex-direction: column;
+}
+
+#weekly-activities ul li{
+    border-top: 2px dotted #777;
+    margin: 4% 0;
+    /*border-bottom: 1px solid #777;*/
+}
+
+#weekly-activities ul li h3{
+    background: #eee;
+    width: 140px;
+    text-align: center;
+    padding: 4px;
+    font-size: 18px;
+    text-transform: uppercase;
+    position: relative;
+    top: -18px;
+    margin: 0 auto;
+    border-left: 16px solid #eee;
+    border-right: 16px solid #eee;
+}
+
+#weekly-activities ul li h3 i{
+    font-size: 11px;
+    background: #f0ad4e;
+    color: #fff;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.title{
+    float: left;
+    color: #333;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+    background: #efefef;
+    padding-right: 15px;
+}
+
+.time{
+    float: right;
+    color: #333;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+    background: #efefef;
+    padding-left: 15px;
+}
+
+.description{
+    clear: both;
+    display: block;
+    color: #555;
+    font-style: italic;
+    font-size: 14px;
+    padding-top: 10px;
+    border-top: 1px solid #bbb;
+    position: relative;
+    top: -8px;
+}
+
+#events{
+    background: #fff;
+}
+
+#events ul li{
+    padding: 10px 0;
+    border-bottom: 1px solid #777;
+}
+#events ul li h3{
+    margin-top: 0;
+}
+
+#events ul li h3 a{
+    text-decoration: none;
+    color: #000;
+}
+
+#events ul li p{
+    font-size: 14px;
+}
+
+#prayer{
+    background: #555;
+    padding: 20px 20%;
+    text-align: center;
+    color: #999;
+}
+
+#prayer h2{
+    color: #fff;
+    font-size: 36px;
+    margin: 10px;
+}
+
+#prayer p{
+    font-size: 14px;
+    line-height: 1.6em;
+}
+
+.prayer-icon{
+    display: inline-block;
+    background: url(../images/prayer-icon.png) no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+footer{
+    background: rgba(0,0,0,.8);
+    color: #fff;
+    padding: 30px 0;
+}
+
+footer ul{
+    float: left;
+    width: 32%;
+}
+
+footer ul li{
+    width: 80%;
+    padding: 0 10%;
+    margin: 20px 0;
+}
+
+footer ul li h4{
+    margin-top: 0;
+}
+
+footer ul li span{
+    display: block;
+    margin-top: 10px;
+    color: #999;
+}
+
+#copyright{
+    clear: both;
+    display: block;
+    padding-top: 30px;
+    border-top: 1px solid #777;
+}
+
+#follow{
+    clear: both;
+    float: right;
+    width: auto;
+    position: relative;
+    top: -32px;
+}
+
+#follow li{
+    float: left;
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+}
+
+#follow li a {
+    font-size: 24px;
+    color: #fff;
+}
+
+footer::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+@media screen and (max-width: 1200px){
+
+    .banner-overlay{
+        top: 10%;
+    }
+
+    .banner-overlay h2{
+        font-size: 52px;
+    }
+    
+    #latest-sermons{ order: 1; }
+    #events{ order: 2; }
+    #weekly-activities{ 
+        order: 3;
+    }
+
+    #weekly-activities ul{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #weekly-activities ul li{
+        flex: 0 1 46%;
+        margin: 2%;
+    }
+
+    article{
+        flex: 1 1 46%;
+    }
+
+    #prayer{
+        padding: 20px 10%;
+    }
+}
+
+@media screen and (max-width: 992px){
+
+    header nav label{
+        display: none;
+    }
+
+    .banner-overlay{
+        top: 5%;
+    }
+
+    .input-group{
+        flex: 1 0 40%;
+    }
+
+    .banner-overlay h2{
+        width: 96%;
+        font-size: 36px;
+    }
+
+    .banner-overlay p{
+        width: 96%;
+        font-size: 15px;
+    }
+
+    a.btn-overlay{
+        font-size: 14px;
+        padding: 6px 0;
+    }
+
+    #tiles ul{
+        flex-wrap: wrap;
+    }
+
+    #tiles ul li{
+        flex: 0 1 100%;
+    }
+
+    .tile-icon{
+        flex: 0 1 10%;
+    }
+
+    #tiles ul li blockquote{
+        flex: 0 1 85%;
+    }
+
+    #weekly-activities ul li{
+        flex: 0 1 90%;
+        margin: 5%;
+    }
+
+    #prayer{
+        padding: 20px 5%;
+    }
+
+    footer ul{
+        width: 50%;
+    }
+
+    #copyright{
+        margin: 5%;
+    }
+
+    #follow{
+        float: none;
+        top: 0px;
+        margin: 5%;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .sub-nav ul{
+        display: none;
+        flex: 0 1 100% !important;
+    }
+
+    .sub-nav ul.open{
+        display: block;
+    }
+
+    #burger-nav{
+        background: url(../images/burger.png) no-repeat center;
+        display: block;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        order: 3;
+    }
+
+    .divider{ order: 4; }
+
+    .sub-nav{ order: 5; }
+
+    .input-group{
+        order: 6;
+    }
+
+    /*.banner-overlay{
+        top: 4%;
+    }*/
+
+    .banner-overlay h2{
+        /*width: 100%;*/
+        font-size: 28px;
+    }
+
+    .banner-overlay p{
+        /*width: 100%;*/
+        font-size: 14px;
+        line-height: 1.4em;
+    }
+
+    a.btn-overlay{
+        font-size: 14px;
+        line-height: 1.4em;
+        padding: 4px 0;
+    }
+
+    article{
+        flex: 1 1 90%;
+    }
+
+    #latest-sermons{ order: 1; padding: 5%;}
+    #weekly-activities{ order: 2; }
+    #events{ order: 3; padding: 5%;}
+    
+    footer ul{
+        width: 100%;
+    }
+
+    footer ul li{
+        padding: 0 5%;
+    }
+}
+
+@media screen and (max-width: 576px){
+    header h1{
+        flex: 1 0 100%;
+    }
+
+    .tile-icon{
+        flex: 0 1 24%;
+    }
+
+    #tiles ul li img{
+        max-width: 100%;
+    }
+
+    #tiles ul li blockquote{
+        flex: 0 1 75%;
+    }
+}
+
+@media screen and (max-width: 320px){
+    
+    .banner-overlay h2{
+        /*width: 100%;*/
+        font-size: 24px;
+    }
+
+    .banner-overlay p{
+        /*width: 100%;*/
+        font-size: 13px;
+        line-height: 1.4em;
+    }
+
+    a.btn-overlay{
+        font-size: 13px;
+        line-height: 1.4em;
+        padding: 4px 0;
+    }
+}
