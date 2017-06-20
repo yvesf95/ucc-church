@@ -4,11 +4,371 @@
 <head>
     <title>UCC Church</title>
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <header class="navbar navbar-toggleable-sm navbar-inverse sticky-top bg-inverse">
+        <div class="d-md-flex w-100 justify-content-between flex-wrap">
+            <button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#main-nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="" class="navbar-brand">
+                <img src="images/uccc-logo-3.png" alt="Union With Christ Community Church" width="250px" height="50px">
+            </a>
 
+            <nav class="align-self-center">
+                <ul class="navbar-nav flex-row justify-content-around">
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="fa fa-heart-o" aria-hidden="true"></i> 
+                            <label> Donate</label>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="fa fa-phone" aria-hidden="true"></i> 
+                            <label>555-555-555</label>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="fa fa-envelope" aria-hidden="true"></i> 
+                            <label>writetouccc@gmail.com</label>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="fa fa-sign-in" aria-hidden="true"></i> 
+                            <label>Log In</label>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <hr class="divider" />
+
+            <nav class="collapse navbar-collapse justify-content-between" id="main-nav">
+                <h2 class="sr-only">Main Navigation</h2>
+                <ul class="navbar-nav text-center">
+                    <li class="nav-item active">
+                        <a href="index-bootstrap.html" class="nav-link">
+                            <i class="fa fa-home"></i> Home
+                            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="fa fa-group"></i> About
+                            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="fa fa-calendar"></i> Events
+                            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="sermon.html" class="nav-link">
+                            <i class="fa fa-microphone"></i> Sermons
+                            </a>
+                    </li>
+                </ul>
+                <!--<form class="form-inline justify-content-center">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
+                        <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon1">
+                    </div>
+                </form>-->
+                <form class="form-inline justify-content-center">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button"><i class="fa fa-search"></i></button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <div id="main-banner" class="card card-inverse border-0">
+        <img class="card-img rounded-0" src="images/bible-banner-3.jpg" alt="Main Banner">
+        <div class="card-img-overlay">
+            <div class="container">
+                <div class="card-block text-center">
+                    <h2 class="card-title display-3">A New Home for Us</h2>
+                    <p class="card-text h4">Bring your family and friends. Come and share a moment with us as we worship and glorify the God of all
+                        creation! Service starts at 9:30am till 11:30am in Hemady Square (Roof deck Events place). See you!</p>
+                    <a href="" class="btn btn-primary"><i class="fa fa-headphones"></i> Listen Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="container-fluid">
+        <section id="tiles">
+            <h2 class="sr-only">Welcome to Union With Christ</h2>
+            <div class="card-deck flex-md-column flex-lg-row">
+                <div class="card flex-row">
+                    <div class="card-img-left align-self-center">
+                        <img class="card-img img-fluid" src="images/uccc-icon.jpg" alt="uccc">
+                    </div>
+                    <div class="card-block card-block-right">
+                        <h4 class="card-title">Union With Christ</h4>
+                        <p class="card-text">A term referring to us, who have experience the risen Christ indwelling us by the Spirit.</p>
+                    </div>
+                </div>
+                <div class="card flex-row">
+                    <div class="card-img-left align-self-center">
+                        <img class="card-img img-fluid" src="images/uccc-icon.jpg" alt="uccc">
+                    </div>
+                    <div class="card-block card-block-right">
+                        <h4 class="card-title">Community</h4>
+                        <p class="card-text">As members of one body, we seek to preserve the unity of the Spirit in the bond of peace.</p>
+                    </div>
+                </div>
+                <div class="card flex-row">
+                    <div class="card-img-left align-self-center">
+                        <img class="card-img img-fluid" src="images/uccc-icon.jpg" alt="uccc">
+                    </div>
+                    <div class="card-block card-block-right">
+                        <h4 class="card-title">Church</h4>
+                        <p class="card-text">Our goal, directions, methods, standards, purpose are all defined and charted by God.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--<a href="" class="btn">Learn More...</a>-->
+        <section class="row">
+            <article id="latest-sermons" class="col-12 col-md-6 col-lg-4 p-2">
+                <h2 class="display-4 mb-4">Latest Sermons</h2>
+                <ul class="list-group">
+                    <li class="list-group-item align-items-start border-left-0 border-right-0">
+                        <div class="card-img-left align-self-center">
+                            <img class="card-img img-fluid" src="images/nicky.jpg" alt="nicky" style="width: 100%;">
+                        </div>
+                        <div class="card-block card-block-right">
+                            <i class="card-text">April 23, 2017</i>
+                            <h4 class="card-title"><a href="">God Seeks True Worshipers</a></h4>
+                            <p class="card-text"><i class="fa fa-book"></i> John 4:23-24</p>
+                            <p class="card-text"><a href="">Rev. Nicky Joya</a></p>
+                        </div>
+                    </li>
+                    <li class="list-group-item align-items-start border-left-0 border-right-0">
+                        <div class="card-img-left align-self-center">
+                            <img class="card-img img-fluid" src="images/billy.jpg" alt="billy" style="width: 100%;">
+                        </div>
+                        <div class="card-block card-block-right">
+                            <i class="card-text">April 16, 2017</i>
+                            <h4 class="card-title"><a href="">Man Who Missed Easter</a></h4>
+                            <p class="card-text"><i class="fa fa-book"></i> Luke 22:48</p>
+                            <p class="card-text"><a href="">Rev. Billy Arcayan</a></p>
+                        </div>
+                    </li>
+                    <li class="list-group-item align-items-start border-left-0 border-right-0">
+                        <div class="card-img-left align-self-center">
+                            <img class="card-img" src="images/chad.jpg" alt="chad" style="width: 100%;">
+                        </div>
+                        <div class="card-block card-block-right">
+                            <i class="card-text">October 2, 2016</i>
+                            <h4 class="card-title"><a href="">Three Marks of a Faithful Minister</a></h4>
+                            <p class="card-text"><i class="fa fa-book"></i> Colossians 1:24-29</p>
+                            <p class="card-text"><a href="">Ptr. Chad Dexter</a></p>
+                        </div>
+                    </li>
+                </ul>
+                </div>
+                <a href="" class="btn btn-outline-primary btn-block">More...</a>
+            </article>
+            <article id="weekly-activities" class="col-12 col-lg-4 flex-md-last flex-lg-unordered p-2">
+                <h2 class="display-4 mb-4">Weekly Activities</h2>
+                <ul class="list-group">
+                    <li class="list-group-item flex-column align-items-center border-left-0 border-right-0">
+                        <h4>Sunday</h4>
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5>Worship Service</h5>
+                            <hr class="line" />
+                            <p>09:30am - 11:30am</p>
+                        </div>
+                        <p class="lead">Worship Service for adults</p>
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5>Sunday School</h5>
+                            <hr class="line" />
+                            <p>09:30am - 11:30am</p>
+                        </div>
+                        <p class="lead text-center">Worship Service for kids</p>
+                    </li>
+                    <li class="list-group-item flex-column align-items-center border-left-0 border-right-0">
+                        <h4>Tuesday</h4>
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5>Sports Ministry</h5>
+                            <hr class="line" />
+                            <p>8:30pm - 10:30pm</p>
+                        </div>
+                        <p class="lead text-center">Badminton, Swimming, Bowling, etc.</p>
+                    </li>
+                    <li class="list-group-item flex-column align-items-center border-left-0 border-right-0">
+                        <h4>Wednesday <span class="badge badge-pill badge-warning">(Every 3<sup>rd</sup> week)</span></i>
+                        </h4>
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5>Enrichment Classes</h5>
+                            <hr class="line" />
+                            <p>8:30pm - 10:30pm</p>
+                        </div>
+                        <p class="lead text-center">Systematic nourishment from the bible and from history</p>
+                    </li>
+                    <li class="list-group-item flex-column align-items-center border-left-0 border-right-0">
+                        <h4>Wednesday <span class="badge badge-pill badge-warning">(1<sup>st</sup>, 2<sup>nd</sup>, and 4<sup>th</sup> week)</span></h4>
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5>Bible Study</h5>
+                            <hr class="line" />
+                            <p>8:30pm - 10:30pm</p>
+                        </div>
+                        <p class="lead text-center">Study together on the book of 1<sup>st</sup> Corinthians</p>
+                    </li>
+                    <li class="list-group-item flex-column align-items-center border-left-0 border-right-0">
+                        <h4>Friday</h4>
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5>3:16 Fellowship</h5>
+                            <hr class="line" />
+                            <p>8:30pm - 10:30pm</p>
+                        </div>
+                        <p class="lead text-center">Pray together. Encourage one another. Have fellowship with one another.</p>
+                    </li>
+                </ul>
+            </article>
+            <article id="events" class="col-12 col-md-6 col-lg-4 p-2">
+                <h2 class="display-4 mb-4">Events</h2>
+                <ul class="list-group">
+                    <li class="list-group-item flex-column align-items-start border-left-0 border-right-0">
+                        <h4 class="card-title"><a href="">Christmas Candlelight Dinner Service</a></h4>
+                        <h6 class="card-subtitle mb-2 text-muted"><i class="fa fa-calendar"></i> January 28, 2015</h6>
+                        <p class="card-text">Thank you to everyone who faithfully and humbly accepted their roles, sacrificially prepared and
+                            faithfully did their best SO OTHERS COULD WORSHIP GOD EXTRAVAGANTLY...</p>
+                        <a href="" class="btn btn-danger">Read More...</a>
+                    </li>
+                    <li class="list-group-item flex-column align-items-start border-left-0 border-right-0">
+                        <h4 class="card-title"><a href="">1st UCCC Family Sportsfest</a></h4>
+                        <h6 class="card-subtitle mb-2 text-muted"><i class="fa fa-calendar"></i> September 28, 2013</h6>
+                        <p class="card-text">UCC Church will hold our 1st Family Sportsfest for Badminton, Bowling, Swimming and Chess on October.
+                            Interested members, please register with Sister Nancy or Sister Jennifer. <br /> When: Oct. 13,
+                            20 &amp; 27 Venue: Quezon City Sports Club</p>
+                        <a href="" class="btn btn-danger">Read More...</a>
+                    </li>
+                    <li class="list-group-item flex-column align-items-start border-left-0 border-right-0">
+                        <h4 class="card-title"><a href="">A Year to Remember</a></h4>
+                        <h6 class="card-subtitle mb-2 text-muted"><i class="fa fa-calendar"></i> September 28, 2013</h6>
+                        <p class="card-text">Our first Anniversary Thanksgiving Service was held last September 15, 2013 at Hemady Square. Thank
+                            you for rejoicing and praying for us.</p>
+                        <a href="" class="btn btn-danger">Read More...</a>
+                    </li>
+                </ul>
+                <a href="" class="btn btn-outline-primary btn-block">More...</a>
+            </article>
+        </section>
+    </main>
+
+    <section id="prayer" class="card card-inverse border-0 rounded-0">
+        <div class="card-block text-center">
+            <h2 class="card-title display-4">Need Prayer?</h2>
+            <p class="card-text lead">There are times when life is overwhelming, when all we have is questions. In those moments, hope can feel far
+                away. The great thing about prayer is that it shifts our perspective toward the One who stands ready to listen.
+                No matter what you're facing, we'd love to pray with you!</p>
+            <a href="" class="btn btn-warning"><i class="prayer-icon"></i> Ask For Prayer</a>
+        </div>
+    </section>
+
+    <footer class="container-fluid card-inverse pt-3 pb-3" style="background: rgba(0,0,0,.8);">
+        <div class="row mb-3">
+            <ul class="nav flex-column col-12 col-sm-6 col-md-4">
+                <li class="nav-link">
+                    <h4>Contact Information:</h4>
+                </li>
+                <li class="nav-link">Phone:<br/>
+                    <span><i class="fa fa-mobile"></i> 555-555-555</span>
+                </li>
+                <li class="nav-link">Fax:<br/>
+                    <span><i class="fa fa-fax"></i> 555-555-555</span>
+                </li>
+                <li class="nav-link">Email:<br/>
+                    <span><i class="fa fa-envelope"></i> writetouccc@gmail.com</span>
+                </li>
+                <li class="nav-link">Mailing Address:<br/>
+                    <span>
+                        Street No: 14/05<br> 
+                        Light City, Jupiter
+                    </span>
+                </li>
+            </ul>
+            <div class="col">
+                <div class="row">
+                    <ul class="col-12 col-md-6 nav flex-column">
+                        <li class="nav-link">
+                            <h4>Articles</h4>
+                        </li>
+                        <li class="nav-link">Join with us in the work of spreading a passion for the supremacy of God in all things.</li>
+                    </ul>
+                    <ul class="col nav flex-column">
+                        <li class="nav-link">
+                            <h4>Sermons</h4>
+                        </li>
+                        <li class="nav-link">Listen to sermons, conference messages, biographies, and seminars from John Piper.</li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <ul class="col-12 col-md-6 nav flex-column">
+                        <li class="nav-link">
+                            <h4>Ask Our Pastors</h4>
+                        </li>
+                        <li class="nav-link">Listen to our pastors answer tough theological, pastoral, and practical questions.</li>
+                    </ul>
+                    <ul class="col nav flex-column">
+                        <li class="nav-link">
+                            <h4>Donate</h4>
+                        </li>
+                        <li class="nav-link">Join with us in the work of spreading a passion for the supremacy of God in all things.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr class="divider" />
+        <div class="row">
+            <div id="copyright" class="col-12 col-md-6 align-self-center">
+                &copy; 2017 Union With Christ Community Church. All Rights reserved.
+            </div>
+            <ul id="follow" class="col nav justify-content-md-end">
+                <li class="nav-item">
+                    <a href="" class="nav-link" style="color: #fff;">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link" style="color: #fff;">
+                        <i class="fa fa-twitter"></i>
+                     </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link" style="color: #fff;">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link" style="color: #fff;">
+                        <i class="fa fa-youtube"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link" style="color: #fff;">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

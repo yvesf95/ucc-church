@@ -1,0 +1,89 @@
+body {
+    background: #f7f7f7;
+}
+
+.card-img-left {
+    flex: 1 0 33%;
+}
+
+.card-block-right {
+    flex: 1 0 66%;
+}
+
+.divider {
+    flex: 1 0 100%;
+    margin: 5px;
+    border: 0;
+    height: 1px;
+    background: #777;
+}
+
+.line {
+    flex: 1 1 0%;
+    margin: 14px 5px;
+    border: 0;
+    border-top: 1px dotted #555;
+}
+
+#tiles {
+    position: relative;
+    top: -20px;
+}
+
+article {
+    background: #fff;
+}
+
+article:nth-child(even) {
+    background: #eee;
+}
+
+article:nth-child(even) .list-group-item {
+    background: #eee;
+}
+
+#prayer {
+    background: #555;
+}
+
+.prayer-icon {
+    display: inline-block;
+    background: url(../images/prayer-icon.png) no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 992px) {
+    nav label {
+        display: none;
+    }
+    .display-3 {
+        font-size: 3.8rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .display-3 {
+        font-size: 3rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .display-3 {
+        font-size: 2.4rem;
+    }
+    .h4{
+        font-size: 1.2rem; 
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .display-3 {
+        font-size: 2.2rem;
+    }
+    .h4{
+        font-size: 1rem; 
+    }
+}
