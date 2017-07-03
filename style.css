@@ -1,6 +1,6 @@
 @font-face{
     font-family: Open-Sans;
-    src: url(../fonts/open-sans/OpenSans-Regular.ttf);
+    src: url(fonts/open-sans/OpenSans-Regular.ttf);
 }
 
 *{
@@ -76,7 +76,7 @@ header h1{
     display: inline-block;
     margin: 0;
     text-indent: -10000px;
-    background: url(../images/uccc-logo-3.png) no-repeat center;
+    background: url(images/uccc-logo-3.png) no-repeat center;
     background-size: contain;
     width: 250px;
     height: 50px;
@@ -430,7 +430,7 @@ article:nth-child(even){
 
 .prayer-icon{
     display: inline-block;
-    background: url(../images/prayer-icon.png) no-repeat;
+    background: url(images/prayer-icon.png) no-repeat;
     background-size: contain;
     width: 20px;
     height: 20px;
@@ -614,7 +614,7 @@ footer::after{
     }
 
     #burger-nav{
-        background: url(../images/burger.png) no-repeat center;
+        background: url(images/burger.png) no-repeat center;
         display: block;
         width: 40px;
         height: 40px;
