@@ -1,6 +1,6 @@
 @font-face{
     font-family: Open-Sans;
-    src: url(../fonts/open-sans/OpenSans-Regular.ttf);
+    src: url(fonts/open-sans/OpenSans-Regular.ttf);
 }
 
 *{
@@ -67,7 +67,7 @@ header{
 header h1{
     margin: 0;
     text-indent: -10000px;
-    background: url(../images/uccc-logo-3.png) no-repeat;
+    background: url(images/uccc-logo-3.png) no-repeat;
     background-size: contain;
     width: 280px;
     height: 70px;
@@ -421,7 +421,7 @@ main::after{
 
 .prayer-icon{
     display: inline-block;
-    background: url(../images/prayer-icon.png) no-repeat;
+    background: url(images/prayer-icon.png) no-repeat;
     background-size: contain;
     width: 20px;
     height: 20px;
