@@ -1,0 +1,637 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Abel');
+html {
+    font-size: 1em;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+
+/**********************************
+Responsive navbar-brand image CSS
+- Remove navbar-brand padding for firefox bug workaround
+- add 100% height and width auto ... similar to how bootstrap img-responsive class works
+***********************************/
+
+.navbar-brand {
+    padding: 0px;
+}
+
+.navbar-brand img {
+    height: 100%;
+    /*  padding: 5px 0px 5px 20px;*/
+    width: auto;
+    padding-left: 10px;
+}
+
+.navbar-default {
+    background: rgba(150, 159, 165, 0.4);
+    border: rgba(150, 159, 165, 0.4);
+}
+
+.navbar-default .navbar-nav li a {
+    color: white;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: transparent;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+
+.navbar-collapse {
+    border-top: 0;
+}
+
+.dropdown-menu .divider {
+    background: rgba(150, 159, 165, 0.4);
+}
+
+.card-panel {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: rgba(0, 0, 0, .05);
+}
+
+.content {
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.content p {
+    text-align: center;
+}
+
+.content p a {
+    color: #1f205a;
+}
+
+.content p a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.media {
+    float: left;
+    width: 29%;
+    margin: 1%;
+    padding: 1% 1% 1% 6%;
+}
+
+.media .btn {
+    border-radius: 0;
+    background: transparent;
+    border: solid 1px rgba(0, 0, 0, .2);
+    box-shadow: none;
+}
+
+.description {
+    float: left;
+    width: 58%;
+    margin: 1%;
+    padding: 1%;
+}
+
+.description dl dt {
+    padding-bottom: 15px;
+}
+
+.description dl dt a {
+    color: #333;
+}
+
+.description dl dt a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.description dl .date span {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.description dl dt .title-sermon {
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.card .title {
+    padding: 0 7%;
+}
+
+.card .title h1 {
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+.card:after {
+    clear: both;
+    content: "";
+    display: block;
+}
+
+.bg-gray-5 {
+    background: rgba(31, 32, 90, .1) !important;
+}
+
+.card-content {
+    padding: 5% 7% 0 7%;
+}
+
+.card-content p {
+    text-align: justify;
+}
+
+@media (min-width: 320px) {
+    .navbar-default .navbar-nav>li>a:hover,
+    .navbar-default .navbar-nav>li>a:focus {
+        color: #333;
+        background-color: #E7E7E7;
+        transition: all 0.4s ease-out;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+        color: white;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+        color: #333;
+        background-color: #E7E7E7;
+        transition: all 0.4s ease-in;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+        color: white;
+    }
+    .dropdown-header {
+        color: white;
+        font-size: 0.9rem;
+    }
+    .content p {
+        font-size: 1rem;
+    }
+    .card {
+        padding-top: 3%;
+    }
+    .card .title h1 {
+        text-align: center;
+    }
+    .card-content p {
+        line-height: 1.6rem;
+    }
+}
+
+@media (min-width: 480px) {
+    .content p {
+        font-size: 1.1rem;
+    }
+    .card .title h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-default {
+        padding: 10px;
+    }
+    .navbar-default ul {
+        margin-right: 15px;
+    }
+    .navbar-default li {
+        font-size: 1rem;
+        margin: 0px 15px;
+    }
+    .navbar-default .navbar-nav li a:hover,
+    .navbar-default .navbar-nav li a:focus {
+        color: #333;
+    }
+    /*    .navbar-default .navbar-nav>.active>a,
+    .navbar-default .navbar-nav>.active>a:hover,
+    .navbar-default .navbar-nav>.active>a:focus {
+        color: #555;
+        background-color: #E7E7E7;
+        border-radius: 25px;
+    }*/
+    .navbar-nav>li>.dropdown-menu {
+        margin-top: 10px;
+        margin-left: 10px;
+        border-radius: 0;
+        background: rgba(150, 159, 165, 0.4);
+        border: rgba(150, 159, 165, 0.4);
+        right: -18px;
+    }
+    .content {
+        padding: 20px;
+    }
+    .content p {
+        font-size: 1.3rem;
+    }
+    .media {
+        width: 20%;
+    }
+    .card {
+        padding-top: 4%;
+    }
+    .card .title h1 {
+        text-align: left;
+        font-size: 2.1rem;
+    }
+    .card-content p {
+        font-size: 1.1rem;
+        line-height: 1.8rem;
+    }
+    /*  .card .title {
+        margin-bottom: 2.5rem;
+    }*/
+}
+
+@media (min-width: 992px) {
+    .content p {
+        font-size: 1.4rem;
+    }
+    /*  .card .title {
+        margin-bottom: 3rem;
+    }*/
+    .description dl span {
+        font-size: 1.1rem;
+    }
+    .media {
+        width: 29%;
+    }
+}
+
+
+/**********************************Carousel***********************************/
+
+.bs-slider {
+    overflow: hidden;
+    max-height: 600px;
+    position: relative;
+    background: #000000;
+}
+
+.bs-slider:hover {
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+.bs-slider:active {
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+.bs-slider .bs-slider-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.40);
+}
+
+.bs-slider>.carousel-inner>.item>img,
+.bs-slider>.carousel-inner>.item>a>img {
+    margin: auto;
+    width: 100% !important;
+}
+
+
+/********************
+*****Slide effect
+**********************/
+
+.fade {
+    opacity: 1;
+}
+
+.fade .item {
+    top: 0;
+    z-index: 1;
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    left: 0 !important;
+    display: block !important;
+    -webkit-transition: opacity ease-in-out 1s;
+    -moz-transition: opacity ease-in-out 1s;
+    -ms-transition: opacity ease-in-out 1s;
+    -o-transition: opacity ease-in-out 1s;
+    transition: opacity ease-in-out 1s;
+}
+
+.fade .item:first-child {
+    top: auto;
+    position: relative;
+}
+
+.fade .item.active {
+    opacity: 1;
+    z-index: 2;
+    -webkit-transition: opacity ease-in-out 1s;
+    -moz-transition: opacity ease-in-out 1s;
+    -ms-transition: opacity ease-in-out 1s;
+    -o-transition: opacity ease-in-out 1s;
+    transition: opacity ease-in-out 1s;
+}
+
+
+/*---------- LEFT/RIGHT ROUND CONTROL ----------*/
+
+.control-round .carousel-control {
+    top: 47%;
+    opacity: 0;
+    width: 45px;
+    height: 45px;
+    z-index: 100;
+    color: #ffffff;
+    display: block;
+    font-size: 24px;
+    cursor: pointer;
+    overflow: hidden;
+    line-height: 43px;
+    text-shadow: none;
+    position: absolute;
+    font-weight: normal;
+    background: transparent;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+}
+
+.control-round:hover .carousel-control {
+    opacity: 1;
+}
+
+.control-round .carousel-control.left {
+    left: 1%;
+}
+
+.control-round .carousel-control.right {
+    right: 1%;
+}
+
+.control-round .carousel-control.left:hover,
+.control-round .carousel-control.right:hover {
+    color: #fdfdfd;
+    background: rgba(0, 0, 0, 0.5);
+    border: 0px transparent;
+}
+
+.control-round .carousel-control.left>span:nth-child(1) {
+    left: 45%;
+}
+
+.control-round .carousel-control.right>span:nth-child(1) {
+    right: 45%;
+}
+
+
+/*---------- INDICATORS CONTROL ----------*/
+
+.indicators-line>.carousel-indicators {
+    right: 45%;
+    bottom: 3%;
+    left: auto;
+    width: 90%;
+    height: 20px;
+    font-size: 0;
+    overflow-x: auto;
+    text-align: right;
+    overflow-y: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 1px;
+    white-space: nowrap;
+}
+
+.indicators-line>.carousel-indicators li {
+    padding: 0;
+    width: 15px;
+    height: 15px;
+    border: 1px solid rgb(158, 158, 158);
+    text-indent: 0;
+    overflow: hidden;
+    text-align: left;
+    position: relative;
+    letter-spacing: 1px;
+    background: rgb(158, 158, 158);
+    -webkit-font-smoothing: antialiased;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    margin-right: 5px;
+    -webkit-transition: all 0.5s cubic-bezier(0.22, 0.81, 0.01, 0.99);
+    transition: all 0.5s cubic-bezier(0.22, 0.81, 0.01, 0.99);
+    z-index: 10;
+    cursor: pointer;
+}
+
+.indicators-line>.carousel-indicators li:last-child {
+    margin-right: 0;
+}
+
+.indicators-line>.carousel-indicators .active {
+    margin: 1px 5px 1px 1px;
+    box-shadow: 0 0 0 2px #fff;
+    background-color: transparent;
+    position: relative;
+    -webkit-transition: box-shadow 0.3s ease;
+    -moz-transition: box-shadow 0.3s ease;
+    -o-transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease;
+    -webkit-transition: background-color 0.3s ease;
+    -moz-transition: background-color 0.3s ease;
+    -o-transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+.indicators-line>.carousel-indicators .active:before {
+    transform: scale(0.5);
+    background-color: #fff;
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    -webkit-transition: background-color 0.3s ease;
+    -moz-transition: background-color 0.3s ease;
+    -o-transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+
+/*---------- SLIDE CAPTION ----------*/
+
+.slide_style_left {
+    text-align: left !important;
+}
+
+.slide_style_right {
+    text-align: right !important;
+}
+
+.slide_style_center {
+    text-align: center !important;
+}
+
+.slide-text {
+    left: 0;
+    top: 25%;
+    right: 0;
+    margin: auto;
+    padding: 10px;
+    position: absolute;
+    text-align: left;
+    padding: 10px 85px;
+}
+
+.slide-text>h1 {
+    padding: 0;
+    color: #ffffff;
+    font-size: 70px;
+    font-style: normal;
+    line-height: 84px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    display: inline-block;
+    -webkit-animation-delay: 0.7s;
+    animation-delay: 0.7s;
+}
+
+.slide-text>p {
+    padding: 0;
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 300;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+    -webkit-animation-delay: 1.1s;
+    animation-delay: 1.1s;
+}
+
+.slide-text>a.btn-default {
+    color: #000;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    margin-right: 10px;
+    text-align: center;
+    padding: 17px 30px;
+    white-space: nowrap;
+    letter-spacing: 1px;
+    display: inline-block;
+    border: none;
+    text-transform: uppercase;
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+    -webkit-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.slide-text>a.btn-primary {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    margin-left: 10px;
+    text-align: center;
+    padding: 17px 30px;
+    white-space: nowrap;
+    letter-spacing: 1px;
+    background: #00bfff;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: none;
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+    -webkit-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.slide-text>a:hover,
+.slide-text>a:active {
+    color: #ffffff;
+    background: #222222;
+    -webkit-transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+    transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+
+/*------------------------------------------------------*/
+
+
+/* RESPONSIVE
+/*------------------------------------------------------*/
+
+@media (max-width: 991px) {
+    .slide-text h1 {
+        font-size: 40px;
+        line-height: 50px;
+        margin-bottom: 20px;
+    }
+    .slide-text>p {
+        font-size: 18px;
+    }
+}
+
+
+/*---------- MEDIA 480px ----------*/
+
+@media (max-width: 768px) {
+    .slide-text {
+        padding: 10px 50px;
+    }
+    .slide-text h1 {
+        font-size: 30px;
+        line-height: 40px;
+        margin-bottom: 10px;
+    }
+    .slide-text>p {
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 20px;
+    }
+    .control-round .carousel-control {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-text {
+        padding: 10px 30px;
+    }
+    .slide-text h1 {
+        font-size: 20px;
+        line-height: 25px;
+        margin-bottom: 5px;
+    }
+    .slide-text>p {
+        font-size: 12px;
+        line-height: 18px;
+        margin-bottom: 10px;
+    }
+    .slide-text>a.btn-default,
+    .slide-text>a.btn-primary {
+        font-size: 10px;
+        line-height: 10px;
+        margin-right: 10px;
+        text-align: center;
+        padding: 10px 15px;
+    }
+    .indicators-line>.carousel-indicators {
+        display: none;
+    }
+}
