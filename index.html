@@ -1,14 +1,246 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>UCC Church</title>
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="style.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--Carousel CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
+
+
 </head>
 
-<body>
 
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="">
+                    <img src="images/uccc-logo-with-text.png" alt="icon">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <!--  <li class="active"><a href="#">Home</a></li>-->
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Header</li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!--  
+        If you want to change #bootstrap-touch-slider id then you have to change Carousel-indicators and Carousel-Control  #bootstrap-touch-slider slide as well
+        Slide effect: slide, fade
+        Text Align: slide_style_center, slide_style_left, slide_style_right
+        Add Text Animation: https://daneden.github.io/animate.css/
+        -->
+
+    <!-- End  bootstrap-touch-slider Slider -->
+    <header>
+        <div id="bootstrap-touch-slider" class="carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="5000">
+
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
+                <li data-target="#bootstrap-touch-slider" data-slide-to="1"></li>
+                <li data-target="#bootstrap-touch-slider" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper For Slides -->
+            <div class="carousel-inner" role="listbox">
+
+                <!-- Third Slide -->
+                <div class="item active">
+
+                    <!-- Slide Background -->
+                    <img src="images/bible-banner1.jpg" alt="Bootstrap Touch Slider" class="slide-image" />
+                    <div class="bs-slider-overlay"></div>
+
+                    <div class="container">
+                        <div class="row">
+                            <!-- Slide Text Layer -->
+                            <div class="slide-text slide_style_left">
+                                <h1 data-animation="animated zoomInRight">Union with Christ</h1>
+                                <p data-animation="animated fadeInLeft">a term referring to us, who have experience the risen Christ indwelling us by the Spirit. </p>
+                                <!--  <a href="" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">select one</a>
+                            <a href="" target="_blank" class="btn btn-primary" data-animation="animated fadeInRight">select two</a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Slide -->
+
+                <!-- Second Slide -->
+                <div class="item">
+
+                    <!-- Slide Background -->
+                    <img src="images/bible-banner2.jpg" alt="Bootstrap Touch Slider" class="slide-image" />
+                    <div class="bs-slider-overlay"></div>
+                    <!-- Slide Text Layer -->
+                    <div class="slide-text slide_style_center">
+                        <h1 data-animation="animated flipInX">Community</h1>
+                        <p data-animation="animated lightSpeedIn">clearly identifies the sphere of our influence.</p>
+                        <!--<a href="" target="_blank" class="btn btn-default" data-animation="animated fadeInUp">select one</a>
+                    <a href="" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">select two</a>-->
+                    </div>
+                </div>
+                <!-- End of Slide -->
+
+                <!-- Third Slide -->
+                <div class="item">
+
+                    <!-- Slide Background -->
+                    <img src="images/bible-banner3.jpg" alt="Bootstrap Touch Slider" class="slide-image" />
+                    <div class="bs-slider-overlay"></div>
+                    <!-- Slide Text Layer -->
+                    <div class="slide-text slide_style_right">
+                        <h1 data-animation="animated zoomInLeft">Church</h1>
+                        <p data-animation="animated fadeInRight">reminds us that we are not a club with earthly or temporal purposes.</p>
+                        <!-- <a href="" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">select one</a>
+                    <a href="" target="_blank" class="btn btn-primary" data-animation="animated fadeInRight">select two</a>-->
+                    </div>
+                </div>
+                <!-- End of Slide -->
+
+
+            </div>
+            <!-- End of Wrapper For Slides -->
+
+            <!-- Left Control -->
+            <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
+                <span class="fa fa-angle-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <!-- Right Control -->
+            <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
+                <span class="fa fa-angle-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div>
+    </header>
+
+    <section>
+        <div class="card-panel">
+            <div class="content">
+                <p>Not sure what to listen to? Tune in to our <a><b>Sermons</b></a></p>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="title">
+                            <h1>Latest Sermons</h1>
+                        </div>
+                        <div class="media">
+                            <button class="btn waves-effect">
+                                   <img class="img-responsive" src="images/headphones.png"/>
+                            </button>
+                        </div>
+
+                        <div class="description">
+                            <dl>
+                                <dt class="date"><span> Sunday, June 11, 2017</span> </dt>
+                                <dt><a class="waves-effect title-sermon"><span>Keeping the Gospel Pure</span></a></dt>
+                                <dd class="date"><i class="fa fa-book"></i> <span>Galatians 2:13–21</span></dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="card">
+                        <div class="media">
+                            <button class="btn waves-effect">
+                                   <img class="img-responsive" src="images/headphones.png"/>
+                            </button>
+                        </div>
+
+                        <div class="description">
+                            <dl>
+                                <dt class="date"><span> Sunday, June 4, 2017</span> </dt>
+                                <dt><a class="waves-effect title-sermon"><span>The Danger of Adding to the Gospel</span></a></dt>
+                                <dd class="date"><i class="fa fa-book"></i> <span>Galatians 2:11–12</span></dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <hr>
+
+
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 bg-gray-5">
+                    <div class="card">
+                        <div class="title">
+                            <h1>How Can You Avoid God’s Judgment?</h1>
+                        </div>
+
+                        <div class="card-content">
+                            <p>We are all, by nature, God’s enemies, and we deserve His wrath. But, there is hope! Find out how you can be at peace with God for eternity as John MacArthur shows you fifteen words that sum up the most powerful truth in all
+                                of Scripture.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="media">
+                            <button class="btn waves-effect">
+                                   <img class="img-responsive" src="images/headphones.png"/>
+                            </button>
+                        </div>
+
+                        <div class="description">
+                            <dl>
+                                <dt><a class="waves-effect title-sermon"><span>Fifteen Words of Hope</span></a></dt>
+                                <dd class="date"><i class="fa fa-book"></i> <span>2 Corinthians 5:21</span></dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <hr>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>
