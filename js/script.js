@@ -56,6 +56,27 @@ document.addEventListener('DOMContentLoaded', function () {
     // menus.forEach(function (menu) {
     //     menu.appendChild(indicator);
     // });
+    
+    // ripple effect for buttons
+    var buttons = document.getElementsByTagName('button');
+    Array.from(buttons).forEach(function (button) {
+        button.addEventListener('click', function (e) {
+            var circle = document.createElement('div');
+            this.appendChild(circle);
+
+            var size = Math.max(this.clientWidth, this.clientHeight);
+            var rect = this.getBoundingClientRect();
+            circle.style.width = circle.style.height = size + 'px';
+            circle.style.left = e.clientX - rect.left - size / 2 + 'px';
+            circle.style.top = e.clientY - rect.top - size / 2 + 'px';
+
+            circle.classList.add('ripple');
+
+            setTimeout(() => {
+                this.removeChild(circle);
+            }, 600);
+        });
+    });
 
     // get current date and time for search form
     var timestamps = document.querySelectorAll('.timestamp');
