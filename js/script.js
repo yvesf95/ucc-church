@@ -56,7 +56,32 @@ document.addEventListener('DOMContentLoaded', function () {
     // menus.forEach(function (menu) {
     //     menu.appendChild(indicator);
     // });
-    
+
+
+    // input-group check if has value
+    var inputs = document.querySelectorAll('.input-group input');
+    inputs.forEach(function (input) {
+        // initial check of all input-groups if has value
+        hasValue(input);
+        // addEventListener to check validity when focusing out of input field
+        input.addEventListener('focusout', function () {
+            if (input.checkValidity() === false) {
+                input.classList.add('invalid');
+            } else {
+                input.classList.remove('invalid');
+            }
+            hasValue(input);
+        });
+    });
+
+    function hasValue(input) {
+        if (input.value === "") {
+            input.classList.remove('has-value');
+        } else {
+            input.classList.add('has-value');
+        }
+    }
+
     // ripple effect for buttons
     var buttons = document.getElementsByTagName('button');
     Array.from(buttons).forEach(function (button) {
