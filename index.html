@@ -1,14 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>UCC Church</title>
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <!-- navbar top -->
+    <nav class="menubar">
+        <div class="container">
+            <!-- toggler -->
+            <div class="menu-toggler toggler" data-target="#navbar">
+                <i class="material-icons">menu</i>
+            </div>
+            <!-- logo -->
+            <a href="#" class="menu-brand">
+                <!-- for phones -->
+                <img class="menu-logo hide-on-sm-above" src="img/ucc-logo-xs.png" alt="ucc-logo">
+                <!-- for tablets and up -->
+                <img class="menu-logo hide-on-xs-below" src="img/ucc-logo.png" alt="ucc-logo">
+            </a>
+            <!-- small description for ucc church -->
+            <small class="menu-subtitle">Reaching out towards others, one family at a time.</small>
+            <!-- spacer -->
+            <div class="spacer"></div>
+            <!-- right nav items -->
+            <ul class="menu">
+                <li class="spacer"></li>
+                <li class="menu-item">
+                    <a href="" class="menu-link"><i class="material-icons">favorite_border</i> <span class="hide-on-xs-below">Support</span></a>
+                </li>
+                <li class="menu-item">
+                    <a href="" class="menu-link toggler" data-target="#search-form"><i class="material-icons">search</i> <span class="hide-on-xs-below">Search</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- navbar bottom (collapsible to sidenav on width below 768px) -->
+    <div class="collapsible" id="navbar">
+        <nav class="menubar" style="height: 50px; line-height: 50px;">
+            <!-- title for sidenav -->
+            <h2>Menu <i class="material-icons close" data-target="#navbar">close</i></h2>
+            <div class="container">
+                <!-- make vertical on width below 768px -->
+                <ul class="menu v-on-sm-below">
+                    <!-- dropdown menu-item -->
+                    <li class="menu-item dropdown">
+                        <div class="menu-link dropdown-btn">Who We Are <i class="material-icons">expand_more</i></div>
+                        <!-- dropdown content -->
+                        <div class="dropdown-content">
+                            <ul class="menu">
+                                <li class="menu-item">
+                                    <a href="" class="menu-link">Our Mission</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="" class="menu-link">Our Beliefs</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="" class="menu-link">Our Team</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="" class="menu-link">Prayers</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="menu-item">
+                        <a href="" class="menu-link active">Sermons</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="" class="menu-link">Events</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="" class="menu-link">Community</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="" class="menu-link">News</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="" class="menu-link">Give</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="" class="menu-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 
+    <div class="overlay"></div>
+
+    <script src="js/script.js"></script>
 </body>
 
 </html>
