@@ -93,6 +93,73 @@
             </div>
         </nav>
     </div>
+    
+    <!-- search form -->
+    <div id="search-form">
+        <div class="menubar">
+            <div class="container">
+                <!-- logo -->
+                <div class="menu-brand">
+                    <!-- for phones -->
+                    <img class="menu-logo hide-on-sm-above" src="img/ucc-logo-xs.png" alt="ucc-logo">
+                    <!-- for tablets and up -->
+                    <img class="menu-logo hide-on-xs-below" src="img/ucc-logo.png" alt="ucc-logo">
+                </div>
+                <div class="spacer"></div>
+                <span><i class="material-icons close" data-target="#search-form">close</i></span>
+            </div>
+        </div>
+        <div class="container">
+            <form>
+                <div class="row">
+                    <!-- search field -->
+                    <div class="input-group col">
+                        <input type="search" name="search" id="search">
+                        <label for="search">Search</label>
+                    </div>
+                    <!-- search button -->
+                    <button type="button" class="btn green"><i class="material-icons">search</i></button>
+                </div>
+                <!-- filter -->
+                <div class="radio-group">
+                    <span>Filter:</span>
+                    <input type="radio" name="filter" id="all" checked>
+                    <label for="all">All</label>
+                    <input type="radio" name="filter" id="sermons">
+                    <label for="sermons">Sermons</label>
+                    <input type="radio" name="filter" id="events">
+                    <label for="events">Events</label>
+                    <input type="radio" name="filter" id="news">
+                    <label for="news">News</label>
+                </div>
+            </form>
+            <!-- display search results -->
+            <div class="search-results">
+                <h2>Search Results:</h2>
+                <ul class="list-group">
+                    <!-- single result -->
+                    <li class="list-item with-avatar">
+                        <!-- avatar / icon -->
+                        <div class="avatar"><i class="material-icons">folder</i></div>
+                        <!-- title -->
+                        <h3><a href="">Lorem ipsum dolor sit amet.</a></h3>
+                        <!-- description -->
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quae velit exercitationem id eum
+                            esse magnam temporibus laudantium numquam officia architecto qui excepturi deserunt, vero beatae.
+                            Ipsam numquam odio culpa?</p>
+                        <!-- timestamp -->
+                        <small class="timestamp"></small>
+                        <!-- tags -->
+                        <ul class="chips">
+                            <li class="chip blue"><i class="material-icons">label</i> Sermon</li>
+                            <li class="chip red"><i class="material-icons">label</i> Event</li>
+                            <li class="chip green"><i class="material-icons">label</i> News</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <div class="overlay"></div>
 
