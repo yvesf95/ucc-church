@@ -103,6 +103,111 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // carousel
+    carousel();
+
+    function carousel() {
+        var currentIndex = 0;
+        var touchstartX = 0;
+        var touchendX = 0;
+        var carousel = document.querySelector('.carousel');
+        var slides = carousel.getElementsByClassName('carousel-item');
+        var carouselPrev = carousel.querySelector('.carousel-prev');
+        var carouselNext = carousel.querySelector('.carousel-next');
+        var indicators = carousel.querySelector('.carousel-indicators');
+        var isShowing = false;
+
+        for (var i = 0; i < slides.length; i++) {
+            var li = document.createElement('LI');
+            if (currentIndex == i) {
+                li.classList.add('active');
+            }
+            indicators.appendChild(li);
+        }
+        var lis = indicators.getElementsByTagName('LI');
+
+        // slideshow
+        setInterval(function () {
+            next();
+        }, 5000);
+
+        carousel.addEventListener('touchstart', function (e) {
+            if (!isShowing) {
+                touchstartX = e.changedTouches[0].screenX;
+            }
+        }, false);
+
+        carousel.addEventListener('touchend', function (e) {
+            if (!isShowing) {
+                touchendX = e.changedTouches[0].screenX;
+                handleGesure();
+            }
+        }, false);
+
+        function handleGesure() {
+            // swipe left
+            if (touchendX < touchstartX) {
+                next();
+            }
+            // swipe right
+            if (touchendX > touchstartX) {
+                prev();
+            }
+        }
+
+        carouselPrev.addEventListener('click', function (e) {
+            if (!isShowing) {
+                e.preventDefault();
+                prev();
+            }
+        });
+
+        carouselNext.addEventListener('click', function (e) {
+            if (!isShowing) {
+                e.preventDefault();
+                next();
+            }
+        });
+
+        indicators.addEventListener('click', function (e) {
+            if (!isShowing) {
+                if (e.target.tagName == 'LI') {
+                    var index = Array.prototype.indexOf.call(lis, e.target);
+                    showSlide(index);
+                }
+            }
+        });
+
+        function next() {
+            if (!isShowing) {
+                showSlide((((currentIndex + 1) % slides.length) + slides.length) % slides.length);
+            }
+        }
+
+        function prev() {
+            if (!isShowing) {
+                showSlide((((currentIndex - 1) % slides.length) + slides.length) % slides.length);
+            }
+        }
+
+        function showSlide(index) {
+            isShowing = true;
+            lis[index].classList.add('active');
+            slides[index].classList.add('active');
+            slides[index].classList.add('fade-in');
+            slides[currentIndex].classList.add('fade-out');
+            setTimeout(function () {
+                lis[currentIndex].classList.remove('active');
+                slides[currentIndex].classList.remove('active');
+                slides[index].classList.remove('fade-in');
+                slides[currentIndex].classList.remove('fade-out');
+                currentIndex = index;
+                isShowing = false;
+            }, 600);
+        }
+    }
+
+
     // get current date and time for search form
     var timestamps = document.querySelectorAll('.timestamp');
     timestamps.forEach(function (timestamp) {
