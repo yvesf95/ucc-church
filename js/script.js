@@ -110,11 +110,15 @@ document.addEventListener('DOMContentLoaded', function () {
         var currentIndex = 0;
         var touchstartX = 0;
         var touchendX = 0;
-        var carousel = document.querySelector('.carousel');
-        var slides = carousel.getElementsByClassName('carousel-item');
-        var carouselPrev = carousel.querySelector('.carousel-prev');
-        var carouselNext = carousel.querySelector('.carousel-next');
-        var indicators = carousel.querySelector('.carousel-indicators');
+        try {
+            var carousel = document.querySelector('.carousel');
+            var slides = carousel.querySelectorAll('.carousel-item');
+            var carouselPrev = carousel.querySelector('.carousel-prev');
+            var carouselNext = carousel.querySelector('.carousel-next');
+            var indicators = carousel.querySelector('.carousel-indicators');
+        } catch (error) {
+            return;
+        }
         var isShowing = false;
 
         for (var i = 0; i < slides.length; i++) {
@@ -205,6 +209,29 @@ document.addEventListener('DOMContentLoaded', function () {
                 isShowing = false;
             }, 600);
         }
+    }
+
+    // accordion
+    accordion();
+
+    function accordion() {
+        try {
+            var accordion = document.querySelector('.accordion');
+        } catch (error) {
+            return;
+        }
+        accordion.addEventListener('click', function (e) {
+            if (e.target.className == 'accordion-header') {
+                if (e.target.parentElement.classList.contains('active')) {
+                    e.target.parentElement.classList.remove('active');
+                } else {
+                    Array.from(accordion.children).forEach(function (child) {
+                        child.classList.remove('active');
+                    });
+                    e.target.parentElement.classList.add('active');
+                }
+            }
+        });
     }
 
 

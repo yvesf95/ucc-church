@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>UCC Church</title>
+    <title>UCC Church Sermons</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -48,7 +48,7 @@
             </ul>
         </div>
     </nav>
-    <!-- navbar bottom (collapse-sidenav to sidenav on width below 768px) -->
+    <!-- navbar bottom (collapse to sidenav on width below 768px) -->
     <div class="collapse-sidenav" id="navbar">
         <nav class="menubar" style="height: 48px; line-height: 48px;">
             <!-- title for sidenav -->
@@ -104,94 +104,22 @@
         </nav>
     </div>
 
-    <!-- carousel -->
-    <div class="carousel">
-        <button class="carousel-prev hide-on-xs-below">
-            <i class="medium material-icons">chevron_left</i>
-        </button>
-        <button class="carousel-next hide-on-xs-below">
-            <i class="medium material-icons">chevron_right</i>
-        </button>
-        <div class="carousel-item active">
-            <img src="img/Slide1.JPG" alt="slide-1">
+    <!-- banner -->
+    <div class="banner" id="banner">
+        <img src="img/Slide1.JPG" alt="sermons">
+        <div class="banner-overlay">
+            <div class="container">
+                <h1>Sermons</h1>
+            </div>
         </div>
-        <div class="carousel-item">
-            <img src="img/Slide2.JPG" alt="slide-2">
-        </div>
-        <div class="carousel-item">
-            <img src="img/Slide3.JPG" alt="slide-3">
-        </div>
-        <div class="carousel-item">
-            <img src="img/Slide4.JPG" alt="slide-4">
-        </div>
-        <div class="carousel-item">
-            <img src="img/Slide5.JPG" alt="slide-5">
-        </div>
-        <div class="carousel-item">
-            <img src="img/Slide6.JPG" alt="slide-6">
-        </div>
-        <div class="carousel-item">
-            <img src="img/Slide7.JPG" alt="slide-7">
-        </div>
-        <div class="carousel-item">
-            <img src="img/Slide8.JPG" alt="slide-8">
-        </div>
-        <div class="carousel-item">
-            <img src="img/Slide9.JPG" alt="slide-9">
-        </div>
-        <ol class="carousel-indicators hide-on-xs-below"></ol>
     </div>
 
     <main>
-        <!-- who we are section -->
-        <section id="who-we-are" class="highlighted-section">
+        <!-- latest sermon -->
+        <section id="latest-sermon">
             <div class="container">
                 <div class="row wrap">
-                    <div class="promo v-on-md-above col md-4">
-                        <div class="promo-img">
-                            <img src="img/icon-2.png" alt="icon-1">
-                        </div>
-                        <div class="promo-content">
-                            <h3 class="promo-title">A Friendly Welcome</h3>
-                            <p class="promo-text">Here you'll find warm people who look forward to your visit. Regardless of your background, we
-                                want you to feel at home in our family.</p>
-                        </div>
-                    </div>
-                    <div class="promo v-on-md-above col md-4">
-                        <div class="promo-img">
-                            <img src="img/icon-3.png" alt="icon-1">
-                        </div>
-                        <div class="promo-content">
-                            <h3 class="promo-title">A Fresh Worship Experience</h3>
-                            <p class="promo-text">We believe that worship is an important aspect in a living relationship with God. You will find
-                                our worship experiences relevant and exciting.</p>
-                        </div>
-                    </div>
-                    <div class="promo v-on-md-above col md-4">
-                        <div class="promo-img">
-                            <img src="img/icon-1.png" alt="icon-1">
-                        </div>
-                        <div class="promo-content">
-                            <h3 class="promo-title">A Relevant Message</h3>
-                            <p class="promo-text">Our messages will inspire and motivate you to live the life Christ has designed for you.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- sermons section -->
-        <section id="sermons">
-            <div class="container">
-                <div class="row align-center">
-                    <h2>Latest Sermons</h2>
-                    <div class="spacer"></div>
-                    <a href="">
-                        <small>View all
-                            <i class="material-icons">trending_flat</i>
-                        </small>
-                    </a>
-                </div>
-                <div class="row wrap">
+                    <!-- the sermon -->
                     <div class="col xs-12 sm-6 md-8">
                         <div class="card horizontal">
                             <div class="card-header">
@@ -235,6 +163,184 @@
                                                 </li>
                                             </ul>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- archive -->
+                    <div class="col xs-12 sm-6 md-4">
+                        <h2>Archive</h2>
+                        <ul class="accordion">
+                            <li class="active">
+                                <div class="accordion-header">
+                                    <i class="material-icons">date_range</i> Date
+                                </div>
+                                <div class="accordion-body">
+                                    <div class="dropdown">
+                                        <button class="dropdown-btn btn" style="width: 100%;">
+                                            Select Year
+                                            <i class="material-icons">expand_more</i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <ul class="menu">
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">2017</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">2016</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">2015</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="accordion-header">
+                                    <i class="material-icons">library_books</i> Series
+                                </div>
+                                <div class="accordion-body">
+                                    <div class="dropdown">
+                                        <button class="dropdown-btn btn" style="width: 100%;">
+                                            Select Series
+                                            <i class="material-icons">expand_more</i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <ul class="menu">
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">John</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">1 Corinthians</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">Revelation</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="accordion-header">
+                                    <i class="material-icons">category</i> Categories
+                                </div>
+                                <div class="accordion-body">
+                                    <div class="dropdown">
+                                        <button class="dropdown-btn btn" style="width: 100%;">
+                                            Select Category
+                                            <i class="material-icons">expand_more</i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <ul class="menu">
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">Faith</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">Regeneration</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">Salvation</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">Love</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">Joy</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">Peace</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">Patience</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="accordion-header">
+                                    <i class="material-icons">title</i> Title
+                                </div>
+                                <div class="accordion-body">
+                                    <div class="dropdown">
+                                        <button class="dropdown-btn btn" style="width: 100%;">
+                                            Select A-Z
+                                            <i class="material-icons">expand_more</i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <ul class="menu">
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">A</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">B</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">C</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- recent sermons -->
+        <section id="recent-sermons" class="highlighted-section">
+            <div class="container">
+                <div class="row center">
+                    <h2>Recent</h2>
+                </div>
+                <div class="row wrap">
+                    <div class="col xs-12 sm-6 md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <img src="img/sermon.jpeg" alt="icon-1">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">How to Kill Sin, Part 1</h3>
+                                <small class="date">Sunday, September 17, 2017</small>
+                                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
+                                <p class="card-text">Scripture: Romans 8:10-17
+                                    <br> Topics:
+                                    <a href="" class="breadcrumb">Faith</a>
+                                    <a href="" class="breadcrumb">Justification</a>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="chip">
+                                    <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
+                                <span class="spacer"></span>
+                                <div class="dropup">
+                                    <button class="dropdown-btn btn">
+                                        <i class="material-icons">share</i>
+                                    </button>
+                                    <div class="dropdown-content">
+                                        <ul class="menu">
+                                            <li class="menu-item">
+                                                <a href="" class="menu-link">
+                                                    <i class="material-icons">face</i>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="" class="menu-link">
+                                                    <i class="material-icons">book</i>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="" class="menu-link">
+                                                    <i class="material-icons">mail</i>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -286,70 +392,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-        <!-- events section -->
-        <section id="events" class="highlighted-section">
-            <div class="container">
-                <div class="row align-center">
-                    <h2>Upcoming Event</h2>
-                    <div class="spacer"></div>
-                    <a href="">
-                        <small>View all
-                            <i class="material-icons">trending_flat</i>
-                        </small>
-                    </a>
-                </div>
-                <div class="row wrap">
-                    <div class="col xs-12 sm-6 md-8">
-                        <div class="card horizontal">
-                            <div class="card-header">
-                                <img src="img/5th_anniversary_1280x720.jpg" alt="icon-1">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h3 class="card-title">UCC Church 5th Anniversary</h3>
-                                    <h4 class="card-subtitle">Friday, September 29, 2017</h4>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ad enim exercitationem
-                                        modi est. Porro deserunt non aliquid tenetur possimus.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li class="menu-item">
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col xs-12 sm-6 md-4">
                         <div class="card">
                             <div class="card-header">
-                                <img src="img/5th_anniversary_1280x720.jpg" alt="icon-1">
+                                <img src="img/sermon.jpeg" alt="icon-1">
                             </div>
                             <div class="card-content">
                                 <h3 class="card-title">How to Kill Sin, Part 1</h3>
@@ -392,30 +438,94 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-        <!-- prayer section -->
-        <section id="prayer" class="dark">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="card light horizontal">
+                    <div class="col xs-12 sm-6 md-4">
+                        <div class="card">
                             <div class="card-header">
-                                <img src="img/pexels-prayer.jpeg" alt="icon-1">
+                                <img src="img/sermon.jpeg" alt="icon-1">
                             </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1>Need a Prayer?</h1>
-                                    <p style="margin-bottom: 24px;">There are times when life is overwhelming, when all we have is questions. In those moments,
-                                        hope can feel far away. The great thing about prayer is that it shifts our perspective
-                                        toward the One who stands ready to listen. No matter what you’re facing, we’d love
-                                        to pray with you!
-                                    </p>
-                                    <!-- <a href="" class="btn raised blue">Send us a Prayer Request <i class="material-icons">send</i></a> -->
-                                    <button class="btn raised yellow">Send us a Prayer Request
-                                        <i class="material-icons">send</i>
+                            <div class="card-content">
+                                <h3 class="card-title">How to Kill Sin, Part 1</h3>
+                                <small class="date">Sunday, September 17, 2017</small>
+                                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
+                                <p class="card-text">Scripture: Romans 8:10-17
+                                    <br> Topics:
+                                    <a href="" class="breadcrumb">Faith</a>
+                                    <a href="" class="breadcrumb">Justification</a>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="chip">
+                                    <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
+                                <span class="spacer"></span>
+                                <div class="dropup">
+                                    <button class="dropdown-btn btn">
+                                        <i class="material-icons">share</i>
                                     </button>
+                                    <div class="dropdown-content">
+                                        <ul class="menu">
+                                            <li class="menu-item">
+                                                <a href="" class="menu-link">
+                                                    <i class="material-icons">face</i>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="" class="menu-link">
+                                                    <i class="material-icons">book</i>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="" class="menu-link">
+                                                    <i class="material-icons">mail</i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col xs-12 sm-6 md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <img src="img/sermon.jpeg" alt="icon-1">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">How to Kill Sin, Part 1</h3>
+                                <small class="date">Sunday, September 17, 2017</small>
+                                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
+                                <p class="card-text">Scripture: Romans 8:10-17
+                                    <br> Topics:
+                                    <a href="" class="breadcrumb">Faith</a>
+                                    <a href="" class="breadcrumb">Justification</a>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="chip">
+                                    <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
+                                <span class="spacer"></span>
+                                <div class="dropup">
+                                    <button class="dropdown-btn btn">
+                                        <i class="material-icons">share</i>
+                                    </button>
+                                    <div class="dropdown-content">
+                                        <ul class="menu">
+                                            <li class="menu-item">
+                                                <a href="" class="menu-link">
+                                                    <i class="material-icons">face</i>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="" class="menu-link">
+                                                    <i class="material-icons">book</i>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="" class="menu-link">
+                                                    <i class="material-icons">mail</i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
