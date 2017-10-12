@@ -22,9 +22,9 @@
             <!-- logo -->
             <a href="#" class="menu-brand">
                 <!-- for phones -->
-                <img class="menu-logo hide-on-xs-above" src="img/ucc-logo-xs.png" alt="ucc-logo">
+                <img class="menu-logo hide-on-sm-above" src="img/ucc-logo-xs.png" alt="ucc-logo">
                 <!-- for tablets and up -->
-                <img class="menu-logo hide-on-xs-below" src="img/ucc-logo.png" alt="ucc-logo">
+                <img class="menu-logo hide-on-sm-below" src="img/ucc-logo.png" alt="ucc-logo">
             </a>
             <!-- small description for ucc church -->
             <small class="menu-subtitle">Reaching out towards others, one family at a time.</small>
@@ -34,10 +34,16 @@
             <ul class="menu">
                 <li class="spacer"></li>
                 <li class="menu-item">
-                    <a href="" class="menu-link"><i class="material-icons">favorite_border</i> <span class="hide-on-xs-below">Support</span></a>
+                    <a href="" class="menu-link">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="hide-on-xs-below">Support</span>
+                    </a>
                 </li>
                 <li class="menu-item">
-                    <a href="" class="menu-link toggler" data-target="#search-form"><i class="material-icons">search</i> <span class="hide-on-xs-below">Search</span></a>
+                    <a href="" class="menu-link toggler" data-target="#search-form">
+                        <i class="material-icons">search</i>
+                        <span class="hide-on-xs-below">Search</span>
+                    </a>
                 </li>
             </ul>
         </div>
@@ -46,13 +52,17 @@
     <div class="collapsible" id="navbar">
         <nav class="menubar" style="height: 48px; line-height: 48px;">
             <!-- title for sidenav -->
-            <h2>Menu <i class="material-icons close" data-target="#navbar">close</i></h2>
+            <h2>Menu
+                <i class="material-icons close" data-target="#navbar">close</i>
+            </h2>
             <div class="container">
                 <!-- make vertical on width below 768px -->
                 <ul class="menu v-on-sm-below">
                     <!-- dropdown menu-item -->
                     <li class="menu-item dropdown">
-                        <div class="menu-link dropdown-btn">Who We Are <i class="material-icons">expand_more</i></div>
+                        <div class="menu-link dropdown-btn">Who We Are
+                            <i class="material-icons">expand_more</i>
+                        </div>
                         <!-- dropdown content -->
                         <div class="dropdown-content static-on-sm-below">
                             <ul class="menu">
@@ -96,8 +106,12 @@
 
     <!-- carousel -->
     <div class="carousel">
-        <button class="carousel-prev hide-on-xs-below"><i class="medium material-icons">chevron_left</i></button>
-        <button class="carousel-next hide-on-xs-below"><i class="medium material-icons">chevron_right</i></button>
+        <button class="carousel-prev hide-on-xs-below">
+            <i class="medium material-icons">chevron_left</i>
+        </button>
+        <button class="carousel-next hide-on-xs-below">
+            <i class="medium material-icons">chevron_right</i>
+        </button>
         <div class="carousel-item active">
             <img src="img/Slide1.JPG" alt="slide-1">
         </div>
@@ -130,88 +144,103 @@
 
     <main>
         <!-- who we are section -->
-        <section id="who-we-are">
+        <section id="who-we-are" class="highlighted-section">
             <div class="container">
                 <div class="row wrap">
-                    <div class="promo v-on-sm-above col sm-4">
+                    <div class="promo v-on-md-above col md-4">
                         <div class="promo-img">
                             <img src="img/icon-2.png" alt="icon-1">
                         </div>
                         <div class="promo-content">
-                            <h3>A Friendly Welcome</h3>
-                            <p>Here you'll find warm people who look forward to your visit. Regardless of your background, we
+                            <h3 class="promo-title">A Friendly Welcome</h3>
+                            <p class="promo-text">Here you'll find warm people who look forward to your visit. Regardless of your background, we
                                 want you to feel at home in our family.</p>
                         </div>
                     </div>
-                    <div class="promo v-on-sm-above col sm-4">
+                    <div class="promo v-on-md-above col md-4">
                         <div class="promo-img">
                             <img src="img/icon-3.png" alt="icon-1">
                         </div>
                         <div class="promo-content">
-                            <h3>A Fresh Worship Experience</h3>
-                            <p>We believe that worship is an important aspect in a living relationship with God. You will find
+                            <h3 class="promo-title">A Fresh Worship Experience</h3>
+                            <p class="promo-text">We believe that worship is an important aspect in a living relationship with God. You will find
                                 our worship experiences relevant and exciting.</p>
                         </div>
                     </div>
-                    <div class="promo v-on-sm-above col sm-4">
+                    <div class="promo v-on-md-above col md-4">
                         <div class="promo-img">
                             <img src="img/icon-1.png" alt="icon-1">
                         </div>
                         <div class="promo-content">
-                            <h3>A Relevant Message</h3>
-                            <p>Our messages will inspire and motivate you to live the life Christ has designed for you.</p>
+                            <h3 class="promo-title">A Relevant Message</h3>
+                            <p class="promo-text">Our messages will inspire and motivate you to live the life Christ has designed for you.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- sermons section -->
-        <section id="sermons" class="highlighted-section">
+        <section id="sermons">
             <div class="container">
-                <h2>Latest Sermons</h2>
-                <div class="row wrap justify-between">
-                    <div class="col xs-6 md-4">
-                        <div class="card">
+                <div class="row center">
+                    <h2>Latest Sermons</h2>
+                    <div class="spacer"></div>
+                    <a href="">
+                        <small>View all
+                            <i class="material-icons">trending_flat</i>
+                        </small>
+                    </a>
+                </div>
+                <div class="row wrap">
+                    <div class="col xs-12 sm-6 md-8">
+                        <div class="card horizontal">
                             <div class="card-header">
-                                <img src="img/sermon.jpeg" alt="icon-1">
+                                <img src="img/pexels-bible.jpeg" alt="icon-1">
                             </div>
-                            <div class="card-content">
-                                <h3 class="card-title">How to Kill Sin, Part 1</h3>
-                                <small class="date">Sunday, September 17, 2017</small>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ad enim exercitationem modi
-                                    est. Porro deserunt non aliquid tenetur possimus.</p>
-                                <div>Scripture: Romans 8:10-17</div>
-                                <div>
-                                    Topics:
-                                    <a href="" class="breadcrumb">Faith</a>
-                                    <a href="" class="breadcrumb">Justification</a>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <h3 class="card-title">How to Kill Sin, Part 1</h3>
+                                    <small class="date">Sunday, September 17, 2017</small>
+                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
+                                    <p class="card-text">Scripture: Romans 8:10-17
+                                        <br> Topics:
+                                        <a href="" class="breadcrumb">Faith</a>
+                                        <a href="" class="breadcrumb">Justification</a>
+                                    </p>
                                 </div>
-                            </div>
-                            <div class="card-footer">
-                                <span class="chip"><img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                <span class="spacer"></span>
-                                <div class="dropup">
-                                    <button class="dropdown-btn btn">
+                                <div class="card-footer">
+                                    <span class="chip">
+                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
+                                    <span class="spacer"></span>
+                                    <div class="dropup">
+                                        <button class="dropdown-btn btn">
                                             <i class="material-icons">share</i>
                                         </button>
-                                    <div class="dropdown-content">
-                                        <ul class="menu">
-                                            <li class="menu-item">
-                                                <a href="" class="menu-link"><i class="material-icons">face</i></a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="" class="menu-link"><i class="material-icons">book</i></a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="" class="menu-link"><i class="material-icons">mail</i></a>
-                                            </li>
-                                        </ul>
+                                        <div class="dropdown-content">
+                                            <ul class="menu">
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">face</i>
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">book</i>
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">mail</i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col xs-6 md-4">
+                    <div class="col xs-12 sm-6 md-4">
                         <div class="card">
                             <div class="card-header">
                                 <img src="img/sermon.jpeg" alt="icon-1">
@@ -219,73 +248,37 @@
                             <div class="card-content">
                                 <h3 class="card-title">How to Kill Sin, Part 1</h3>
                                 <small class="date">Sunday, September 17, 2017</small>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ad enim exercitationem modi
-                                    est. Porro deserunt non aliquid tenetur possimus.</p>
-                                <div>Scripture: Romans 8:10-17</div>
-                                <div>
-                                    Topics:
+                                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
+                                <p class="card-text">Scripture: Romans 8:10-17
+                                    <br> Topics:
                                     <a href="" class="breadcrumb">Faith</a>
                                     <a href="" class="breadcrumb">Justification</a>
-                                </div>
+                                </p>
                             </div>
                             <div class="card-footer">
-                                <span class="chip"><img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
+                                <span class="chip">
+                                    <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
                                 <span class="spacer"></span>
                                 <div class="dropup">
                                     <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
+                                        <i class="material-icons">share</i>
+                                    </button>
                                     <div class="dropdown-content">
                                         <ul class="menu">
                                             <li class="menu-item">
-                                                <a href="" class="menu-link"><i class="material-icons">face</i></a>
+                                                <a href="" class="menu-link">
+                                                    <i class="material-icons">face</i>
+                                                </a>
                                             </li>
                                             <li class="menu-item">
-                                                <a href="" class="menu-link"><i class="material-icons">book</i></a>
+                                                <a href="" class="menu-link">
+                                                    <i class="material-icons">book</i>
+                                                </a>
                                             </li>
                                             <li class="menu-item">
-                                                <a href="" class="menu-link"><i class="material-icons">mail</i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col xs-6 md-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <img src="img/sermon.jpeg" alt="icon-1">
-                            </div>
-                            <div class="card-content">
-                                <h3 class="card-title">How to Kill Sin, Part 1</h3>
-                                <small class="date">Sunday, September 17, 2017</small>
-                                <!-- <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ad enim exercitationem modi
-                                    est. Porro deserunt non aliquid tenetur possimus.</p> -->
-                                <div>Scripture: Romans 8:10-17</div>
-                                <div>
-                                    Topics:
-                                    <a href="" class="breadcrumb">Faith</a>
-                                    <a href="" class="breadcrumb">Justification</a>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <span class="chip"><img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                <span class="spacer"></span>
-                                <div class="dropup">
-                                    <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                    <div class="dropdown-content">
-                                        <ul class="menu">
-                                            <li class="menu-item">
-                                                <a href="" class="menu-link"><i class="material-icons">face</i></a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="" class="menu-link"><i class="material-icons">book</i></a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="" class="menu-link"><i class="material-icons">mail</i></a>
+                                                <a href="" class="menu-link">
+                                                    <i class="material-icons">mail</i>
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
@@ -297,39 +290,104 @@
             </div>
         </section>
         <!-- events section -->
-        <section id="events">
+        <section id="events" class="highlighted-section">
             <div class="container">
-                <h2>Upcoming Event</h2>
-                <div class="card horizontal v-on-sm-below">
-                    <div class="card-header">
-                        <img src="img/5th_anniversary_960x720.JPG" alt="icon-1">
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <h3 class="card-title">UCC Church 5th Anniversary</h3>
-                            <h4 class="card-subtitle">Friday, September 29, 2017</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ad enim exercitationem modi est.
-                                Porro deserunt non aliquid tenetur possimus.</p>
+                <div class="row center">
+                    <h2>Upcoming Event</h2>
+                    <div class="spacer"></div>
+                    <a href="">
+                        <small>View all
+                            <i class="material-icons">trending_flat</i>
+                        </small>
+                    </a>
+                </div>
+                <div class="row wrap">
+                    <div class="col xs-12 sm-6 md-8">
+                        <div class="card horizontal">
+                            <div class="card-header">
+                                <img src="img/5th_anniversary_1280x720.jpg" alt="icon-1">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <h3 class="card-title">UCC Church 5th Anniversary</h3>
+                                    <h4 class="card-subtitle">Friday, September 29, 2017</h4>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ad enim exercitationem
+                                        modi est. Porro deserunt non aliquid tenetur possimus.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="chip">
+                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
+                                    <span class="spacer"></span>
+                                    <div class="dropup">
+                                        <button class="dropdown-btn btn">
+                                            <i class="material-icons">share</i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <ul class="menu">
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">face</i>
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">book</i>
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">mail</i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-footer">
-                            <span class="chip"><img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                            <span class="spacer"></span>
-                            <div class="dropup">
-                                <button class="dropdown-btn btn">
-                                    <i class="material-icons">share</i>
-                                </button>
-                                <div class="dropdown-content">
-                                    <ul class="menu">
-                                        <li class="menu-item">
-                                            <a href="" class="menu-link"><i class="material-icons">face</i></a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="" class="menu-link"><i class="material-icons">book</i></a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="" class="menu-link"><i class="material-icons">mail</i></a>
-                                        </li>
-                                    </ul>
+                    </div>
+                    <div class="col xs-12 sm-6 md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <img src="img/5th_anniversary_1280x720.jpg" alt="icon-1">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">How to Kill Sin, Part 1</h3>
+                                <small class="date">Sunday, September 17, 2017</small>
+                                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
+                                <p class="card-text">Scripture: Romans 8:10-17
+                                    <br> Topics:
+                                    <a href="" class="breadcrumb">Faith</a>
+                                    <a href="" class="breadcrumb">Justification</a>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="chip">
+                                    <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
+                                <span class="spacer"></span>
+                                <div class="dropup">
+                                    <button class="dropdown-btn btn">
+                                        <i class="material-icons">share</i>
+                                    </button>
+                                    <div class="dropdown-content">
+                                        <ul class="menu">
+                                            <li class="menu-item">
+                                                <a href="" class="menu-link">
+                                                    <i class="material-icons">face</i>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="" class="menu-link">
+                                                    <i class="material-icons">book</i>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="" class="menu-link">
+                                                    <i class="material-icons">mail</i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -337,13 +395,30 @@
                 </div>
             </div>
         </section>
-        <section id="prayer">
+        <!-- prayer section -->
+        <section id="prayer" class="dark">
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <blockquote>
-
-                        </blockquote>
+                        <div class="card light horizontal">
+                            <div class="card-header">
+                                <img src="img/pexels-prayer.jpeg" alt="icon-1">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <h1>Need a Prayer?</h1>
+                                    <p style="margin-bottom: 24px;">There are times when life is overwhelming, when all we have is questions. In those moments,
+                                        hope can feel far away. The great thing about prayer is that it shifts our perspective
+                                        toward the One who stands ready to listen. No matter what you’re facing, we’d love
+                                        to pray with you!
+                                    </p>
+                                    <!-- <a href="" class="btn raised blue">Send us a Prayer Request <i class="material-icons">send</i></a> -->
+                                    <button class="btn raised yellow">Send us a Prayer Request
+                                        <i class="material-icons">send</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -357,12 +432,14 @@
                 <!-- logo -->
                 <div class="menu-brand">
                     <!-- for phones -->
-                    <img class="menu-logo hide-on-xs-above" src="img/ucc-logo-xs.png" alt="ucc-logo">
+                    <img class="menu-logo hide-on-sm-above" src="img/ucc-logo-xs.png" alt="ucc-logo">
                     <!-- for tablets and up -->
-                    <img class="menu-logo hide-on-xs-below" src="img/ucc-logo.png" alt="ucc-logo">
+                    <img class="menu-logo hide-on-sm-below" src="img/ucc-logo.png" alt="ucc-logo">
                 </div>
                 <div class="spacer"></div>
-                <span><i class="material-icons close" data-target="#search-form">close</i></span>
+                <span>
+                    <i class="material-icons close" data-target="#search-form">close</i>
+                </span>
             </div>
         </div>
         <div class="container">
@@ -376,7 +453,9 @@
                         </div>
                     </div>
                     <!-- search button -->
-                    <button type="submit" class="btn raised green"><i class="material-icons">search</i></button>
+                    <button type="submit" class="btn raised green">
+                        <i class="material-icons">search</i>
+                    </button>
                 </div>
                 <!-- filter -->
                 <div class="radio-group">
@@ -398,9 +477,13 @@
                     <!-- single result -->
                     <li class="list-item with-avatar">
                         <!-- avatar / icon -->
-                        <div class="avatar"><i class="material-icons">folder</i></div>
+                        <div class="avatar">
+                            <i class="material-icons">folder</i>
+                        </div>
                         <!-- title -->
-                        <h3><a href="">Lorem ipsum dolor sit amet.</a></h3>
+                        <h3>
+                            <a href="">Lorem ipsum dolor sit amet.</a>
+                        </h3>
                         <!-- description -->
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quae velit exercitationem id eum
                             esse magnam temporibus laudantium numquam officia architecto qui excepturi deserunt, vero beatae.
@@ -409,9 +492,12 @@
                         <small class="timestamp"></small>
                         <!-- tags -->
                         <ul class="chips">
-                            <li class="chip blue"><i class="material-icons">label</i> Sermon</li>
-                            <li class="chip red"><i class="material-icons">label</i> Event</li>
-                            <li class="chip green"><i class="material-icons">label</i> News</li>
+                            <li class="chip blue">
+                                <i class="material-icons">label</i> Sermon</li>
+                            <li class="chip red">
+                                <i class="material-icons">label</i> Event</li>
+                            <li class="chip green">
+                                <i class="material-icons">label</i> News</li>
                         </ul>
                     </li>
                 </ul>
