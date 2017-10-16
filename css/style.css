@@ -32,7 +32,7 @@ section h2::before {
     height: 100%;
     position: absolute;
     /* top: 0; */
-    left: -19px;
+    left: -10px;
     border-left: 3px solid #f44336;
 }
 
@@ -115,7 +115,13 @@ img {
 
 .dark {
     background-color: #212121 !important;
+    border-color: #212121 !important;
     color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.transparent {
+    background-color: transparent !important;
+    border-color: transparent !important;
 }
 
 
@@ -143,8 +149,12 @@ img {
 .container {
     width: 96%;
     padding: 0 2%;
-    max-width: 1199px;
+    max-width: 1280px;
     margin: 0 auto;
+}
+
+.max-container {
+    margin: auto;
 }
 
 .overlay {
@@ -473,6 +483,10 @@ img {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
+.btn.flat {
+    background-color: transparent !important;
+}
+
 .radio-group {
     display: flex;
     flex-wrap: wrap;
@@ -586,7 +600,7 @@ img {
     float: left;
     width: 30px;
     height: 30px;
-    margin: 0 8px 0 -11px;
+    margin: 1px 8px 0 -11px;
     border-radius: 50%;
 }
 
@@ -774,6 +788,13 @@ img {
     display: block;
     width: 100%;
     height: auto;
+}
+
+.card .card-header .btn-floating {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .card>.overlay {
@@ -965,12 +986,122 @@ img {
 }
 
 
+/* bottom sheet */
+
+.bottom-sheet {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+}
+
+
+/* progress bar */
+
+.progress-bar {
+    line-height: 1;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+}
+
+.current-time {
+    margin-right: 5px;
+}
+
+.total-time {
+    margin-left: 5px;
+}
+
+.progress-bar .progress {
+    width: 100%;
+    height: 4px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.progress-bar .progress .time-buffered,
+.progress-bar .progress .time-loaded {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    height: inherit;
+}
+
+.progress-bar .progress .time-buffered {
+    background-color: #ccc;
+    z-index: 1;
+}
+
+.progress-bar .progress .time-loaded {
+    background-color: #f44336;
+    z-index: 2;
+}
+
+.progress-bar .progress .time-float {
+    position: absolute;
+    display: none;
+    bottom: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    transform: translate(-50%, -10px);
+    background-color: #eee;
+    font-size: 13px;
+    padding: 1px 4px;
+}
+
+.progress-bar .progress .time-float::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: -1px;
+    transform: translate(-50%, 100%);
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.2) transparent transparent transparent;
+    border-width: 5px 5px 0 5px;
+}
+
+.progress-bar .progress .time-float::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 100%);
+    border-style: solid;
+    border-color: #eee transparent transparent transparent;
+    border-width: 5px 5px 0 5px;
+}
+
+.progress-bar .progress:hover .time-float {
+    display: block;
+}
+
+.progress-bar .progress .handle {
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 10px;
+    height: 10px;
+    /* border: 1px solid #212121; */
+    /* box-shadow: 0 -1px 0 #212121, 1px 0 0 #212121, 0 1px 0 #212121, -1px 0 0 #212121; */
+    background-color: #f44336;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 3;
+}
+
+
 /* media queries on max-width */
 
 
 /* xs */
 
 @media (max-width: 575px) {
+    .max-container {
+        max-width: 400px;
+    }
     .hide-on-xs-below {
         display: none !important;
     }
@@ -1012,6 +1143,9 @@ img {
 /* sm 576 - 767px */
 
 @media (min-width: 576px) {
+    .max-container {
+        max-width: 630px;
+    }
     .hide-on-xs-above {
         display: none !important;
     }
@@ -1085,20 +1219,8 @@ img {
 /* md 768 - 991 */
 
 @media (min-width: 768px) {
-    .card.horizontal {
-        flex-direction: row;
-    }
-    .card.horizontal .card-header {
-        flex-basis: 50%;
-        max-width: 50%;
-    }
-    .card.horizontal .card-header img {
-        width: auto;
-        height: 100%;
-    }
-    .card.horizontal .card-stacked {
-        flex-basis: 50%;
-        max-width: 50%;
+    .max-container {
+        max-width: 860px;
     }
     .hide-on-sm-above {
         display: none !important;
@@ -1153,11 +1275,30 @@ img {
 }
 
 
-/* lg 992px and above */
+/* lg 992 - 1199 */
 
 @media (min-width: 992px) {
+    .max-container {
+        max-width: 1090px;
+    }
     .v-on-lg-above {
         flex-direction: column;
+    }
+    .card.horizontal {
+        flex-direction: row;
+    }
+    .card.horizontal .card-header {
+        flex-basis: 50%;
+        max-width: 50%;
+        padding-top: 50%;
+    }
+    .card.horizontal .card-header img {
+        width: auto;
+        height: 100%;
+    }
+    .card.horizontal .card-stacked {
+        flex-basis: 50%;
+        max-width: 50%;
     }
     .lg-3 {
         flex-basis: 25%;
@@ -1188,6 +1329,50 @@ img {
         max-width: 75%;
     }
     .lg-12 {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}
+
+
+/* xl 1200px and above */
+
+@media (min-width: 1200px) {
+    .max-container {
+        max-width: none;
+    }
+    .v-on-xl-above {
+        flex-direction: column;
+    }
+    .xl-3 {
+        flex-basis: 25%;
+        max-width: 25%;
+    }
+    .xl-4 {
+        flex-basis: 33.33%;
+        max-width: 33.33%;
+    }
+    .xl-5 {
+        flex-basis: 41.66%;
+        max-width: 41.66%;
+    }
+    .xl-6 {
+        flex-basis: 50%;
+        max-width: 50%;
+    }
+    .xl-7 {
+        flex-basis: 58.33%;
+        max-width: 58.33%;
+    }
+    .xl-8 {
+        flex-basis: 66.66%;
+        max-width: 66.66%;
+    }
+    .xl-9 {
+        flex-basis: 75%;
+        max-width: 75%;
+    }
+    .xl-12 {
         flex-basis: 100%;
         max-width: 100%;
     }

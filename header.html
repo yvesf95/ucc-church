@@ -9,7 +9,7 @@
     <nav class="menubar">
         <div class="container">
             <!-- toggler -->
-            <div class="menu-toggler toggler" data-target="#navbar">
+            <div class="menu-toggler toggler" data-target="#collapse-sidenav">
                 <i class="material-icons">menu</i>
             </div>
             <!-- logo -->
@@ -42,11 +42,11 @@
         </div>
     </nav>
     <!-- navbar bottom (collapse-sidenav to sidenav on width below 768px) -->
-    <div class="collapse-sidenav">
-        <nav class="menubar" style="line-height: 48px;">
+    <div class="collapse-sidenav" id="collapse-sidenav">
+        <nav class="menubar" style="height: 48px; line-height: 48px;">
             <!-- title for sidenav -->
             <h2>Menu
-                <i class="material-icons close" data-target="#navbar">close</i>
+                <i class="material-icons close" data-target="#collapse-sidenav">close</i>
             </h2>
             <div class="container">
                 <!-- make vertical on width below 768px -->
@@ -110,7 +110,7 @@
         </div>
         <div class="container">
             <form>
-                <div class="row center">
+                <div class="row align-center">
                     <div class="col">
                         <!-- search field -->
                         <div class="input-group">
