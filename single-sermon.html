@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -16,14 +16,14 @@
         <!-- current sermon -->
         <section id="current-sermon" class="dark">
             <div class="container">
-                <div class="row">
+                <div class="row max-container">
                     <!-- the sermon -->
-                    <div class="col xs-12 sm-6 md-8" style="margin:auto;">
+                    <div class="col xs-12 sm-8 md-6 lg-8" style="margin:auto;">
                         <div class="card light horizontal">
                             <div class="card-header">
                                 <img src="img/pexels-bible.jpeg" alt="icon-1" style="width:320px; height:320px;">
-                                <button class="btn btn-floating green">
-                                    <i class="material-icons">play_circle_outline</i> Play
+                                <button class="btn circle flat btn-floating green" id="show-player">
+                                    <i class="material-icons large">play_circle_outline</i>
                                 </button>
                             </div>
                             <div class="card-stacked">
@@ -349,25 +349,24 @@
         </section>
     </main>
 
-    <div class="bottom-sheet" style="max-width: 850px;">
-        <div class="menubar" style="line-height: 48px;">
-            <div class="progress-bar">
-                <div class="progress">
-                    <span class="time-buffered" style="width: 180px;"></span>
-                    <span class="time-loaded" style="width: 120px;"></span>
-                    <span class="time-float" style="left: 120px;">8:33</span>
-                    <span class="handle" style="left: 120px;"></span>
-                </div>
+    <div id="sermon-player" class="bottom-sheet" style="max-width: 850px;">
+        <nav class="menubar" style="line-height: 48px;">
+            <audio src="audio/10. disco.mp3" type="audio/mpeg" id="sermon-track"></audio>
+            <div class="progress" id="track-progress">
+                <span class="progress-bar" id="time-buffered"></span>
+                <span class="progress-bar" id="time-current"></span>
+                <span class="progress-float" id="time-float"></span>
+                <span class="progress-handle" id="track-handle"></span>
             </div>
             <ul class="menu">
                 <li class="dropup">
                     <button class="menu-link dropdown-btn btn">
-                        <i class="material-icons small">more_horiz</i>
+                        <i class="material-icons">more_horiz</i>
                     </button>
                     <div class="dropdown-content">
                         <ul class="menu">
                             <li>
-                                <a href="" class="menu-link">
+                                <a href="" class="menu-link" id="hide-player">
                                     <i class="material-icons tiny">visibility_off</i> Hide player
                                 </a>
                             </li>
@@ -385,23 +384,29 @@
                     </div>
                 </li>
                 <li>
-                    <button class="menu-link btn">
-                        <i class="material-icons small">play_circle_outline</i>
+                    <button class="menu-link btn" id="play-button">
+                        <i class="material-icons">play_circle_outline</i>
                     </button>
                 </li>
                 <li>
-                    <button class="menu-link btn">
-                        <i class="material-icons small">volume_down</i>
+                    <button class="menu-link btn" id="volume-button">
+                        <i class="material-icons">volume_up</i>
                     </button>
+                </li>
+                <li class="menu-item hide-on-xs-below" style="margin-top:22px;">
+                    <div class="progress" id="volume-control" style="width:100px;">
+                        <span class="progress-bar" id="volume-current"></span>
+                        <span class="progress-handle" id="volume-handle"></span>
+                    </div>
                 </li>
                 <li class="spacer"></li>
                 <li class="menu-item">
-                    <span class="current-time">08:33</span>
+                    <span id="current-time"></span>
                     <span>/</span>
-                    <span class="total-time">45:30</span>
+                    <span id="full-duration"></span>
                 </li>
             </ul>
-        </div>
+        </nav>
     </div>
 </body>
 

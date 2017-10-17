@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // closes dialogs / modals via data-target
     var closers = document.querySelectorAll('.close');
     closers.forEach(function (closer) {
-        closer.addEventListener('click', function () {
+        closer.addEventListener('click', function (e) {
+            e.preventDefault();
             var target = document.querySelector(closer.dataset.target);
             target.classList.remove('open');
             setTimeout(function () {
@@ -35,32 +36,44 @@ document.addEventListener('DOMContentLoaded', function () {
     // dropdown trigger
 
     var dropdownBtns = document.querySelectorAll('.dropdown-btn');
-    var shown;
     dropdownBtns.forEach(function (btn) {
         btn.addEventListener('click', function (e) {
             e.preventDefault();
-            if (btn.classList.contains('show')) {
-                btn.classList.remove('show');
+            if (btn.parentElement.classList.contains('show')) {
+                btn.parentElement.classList.remove('show');
             } else {
-                btn.classList.add('show');
-                shown = btn.parentElement;
+                btn.parentElement.classList.add('show');
             }
         });
     });
 
-    document.addEventListener('click', function (e) {
-        if (shown != null && e.target !== shown && !shown.contains(e.target)) {
-            shown.firstElementChild.classList.remove('show');
-            shown = null;
+    document.onclick = function (event) {
+        if (!parentIsSubmenu(event.target)) {
+            var dropdowns = document.getElementsByClassName("dropdown");
+            for (var i = 0; i < dropdowns.length; i++) {
+                if (dropdowns[i].classList.contains('show')) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+            var dropups = document.getElementsByClassName('dropup');
+            for (var j = 0; j < dropups.length; j++) {
+                if (dropups[j].classList.contains('show')) {
+                    dropups[j].classList.remove('show');
+                }
+            }
         }
-    });
+    };
 
-    // var menus = document.querySelectorAll('.menu');
-    // var indicator = document.createElement('li');
-    // indicator.className = 'indicator';
-    // menus.forEach(function (menu) {
-    //     menu.appendChild(indicator);
-    // });
+    function parentIsSubmenu(child) {
+        var node = child;
+        while (node != null) {
+            if ((node.className || '').indexOf('dropdown-btn') > -1) {
+                return true;
+            }
+            node = node.parentNode;
+        }
+        return false;
+    }
 
 
     // input-group check if has value
@@ -238,7 +251,192 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
     }
-    
+
+    // the sermon player (bottom sheet)
+    var sermonPlayer = document.getElementById('sermon-player');
+    // the sermon track (mp3 file)
+    var sermonTrack = document.getElementById('sermon-track');
+    // waits for meta data to be loaded
+    sermonTrack.addEventListener('loadedmetadata', function () {
+        // shows player
+        var showPlayer = document.getElementById('show-player');
+        showPlayer.addEventListener('click', function (e) {
+            e.preventDefault();
+            sermonPlayer.classList.add('open');
+            playOrPause();
+        });
+
+        // hides player
+        var hidePlayer = document.getElementById('hide-player');
+        hidePlayer.addEventListener('click', function (e) {
+            e.preventDefault();
+            sermonPlayer.classList.remove('open');
+        });
+
+        // plays or pauses the track
+        var playButton = document.getElementById('play-button');
+        playButton.addEventListener('click', playOrPause);
+
+        function playOrPause() {
+            if (!sermonTrack.paused && !sermonTrack.ended) {
+                sermonTrack.pause();
+                playButton.firstElementChild.textContent = "play_circle_outline";
+                showPlayer.firstElementChild.textContent = "play_circle_outline";
+            } else {
+                sermonTrack.play();
+                playButton.firstElementChild.textContent = "pause_circle_outline";
+                showPlayer.firstElementChild.textContent = "pause_circle_outline";
+            }
+        }
+
+        // mutes or unmutes the volume of the track
+        var volumeButton = document.getElementById('volume-button');
+        volumeButton.addEventListener('click', muteOrUnmute);
+
+        function muteOrUnmute() {
+            if (sermonTrack.muted) {
+                sermonTrack.muted = false;
+                volumeButton.firstElementChild.textContent = "volume_up";
+            } else {
+                sermonTrack.muted = true;
+                volumeButton.firstElementChild.textContent = "volume_off";
+            }
+        }
+
+        // sets the current time
+        var currentTime = document.getElementById('current-time');
+        currentTime.textContent = ("0" + parseInt(sermonTrack.currentTime / 60)).slice(-2) + ":" + ("0" + parseInt(sermonTrack.currentTime % 60)).slice(-2);
+
+        // sets the full duration
+        var fullDuration = document.getElementById('full-duration');
+        fullDuration.textContent = ("0" + parseInt(sermonTrack.duration / 60)).slice(-2) + ":" + ("0" + parseInt(sermonTrack.duration % 60)).slice(-2);
+
+        var trackProgress = document.getElementById('track-progress');
+        var timeBuffered = document.getElementById('time-buffered');
+        var timeCurrent = document.getElementById('time-current');
+        var timeFloat = document.getElementById('time-float');
+        var trackHandle = document.getElementById('track-handle');
+
+
+        // shows time float on mouse move (hover)
+        trackProgress.addEventListener('mousemove', function (e) {
+            timeFloat.style.left = e.pageX - trackProgress.getBoundingClientRect().left + "px";
+            var targetTime = (e.pageX - trackProgress.getBoundingClientRect().left) * sermonTrack.duration / trackProgress.clientWidth;
+            timeFloat.textContent = ("0" + parseInt(targetTime / 60)).slice(-2) + ":" + ("0" + parseInt(targetTime % 60)).slice(-2);
+        });
+
+        // adds event on mouse down
+        trackProgress.addEventListener('mousedown', function (e) {
+            // makes the progress bar draggable after mouse down
+            trackProgress.onmousemove = function (e) {
+                var size = e.pageX - trackProgress.getBoundingClientRect().left + "px";
+                timeCurrent.style.width = size;
+                trackHandle.style.left = size;
+            };
+
+            // sets the new current time on mouse leave(when mouse goes out of progress bar) and removes mousemove(draggable) and mouseleave
+            trackProgress.onmouseleave = function (e) {
+                var newTime = (e.pageX - trackProgress.getBoundingClientRect().left) * sermonTrack.duration / trackProgress.clientWidth;
+                if (newTime < 0) {
+                    newTime = 0;
+                } else if (newTime > sermonTrack.duration) {
+                    newTime = sermonTrack.duration;
+                }
+                sermonTrack.currentTime = newTime;
+                trackProgress.onmousemove = null;
+                trackProgress.onmouseleave = null;
+            };
+        });
+
+        // sets new current time on mouse up (click) and removes mousemove(draggable) and mouseleave
+        trackProgress.addEventListener('mouseup', function (e) {
+            var newTime = (e.pageX - trackProgress.getBoundingClientRect().left) * sermonTrack.duration / trackProgress.clientWidth;
+            if (newTime < 0) {
+                newTime = 0;
+            } else if (newTime > sermonTrack.duration) {
+                newTime = sermonTrack.duration;
+            }
+            sermonTrack.currentTime = newTime;
+            trackProgress.onmousemove = null;
+            trackProgress.onmouseleave = null;
+        });
+
+        // updates current time and progress bar 
+        sermonTrack.ontimeupdate = function () {
+            if (sermonTrack.ended) {
+                playButton.firstElementChild.textContent = "play_circle_outline";
+                showPlayer.firstElementChild.textContent = "play_circle_outline";
+            }
+            currentTime.textContent = ("0" + parseInt(sermonTrack.currentTime / 60)).slice(-2) + ":" + ("0" + parseInt(sermonTrack.currentTime % 60)).slice(-2);
+            var size = sermonTrack.currentTime / sermonTrack.duration * trackProgress.clientWidth + "px";
+            timeCurrent.style.width = size;
+            trackHandle.style.left = size;
+        };
+
+        var volumeControl = document.getElementById('volume-control');
+        var volumeCurrent = document.getElementById('volume-current');
+        var volumeHandle = document.getElementById('volume-handle');
+
+        sermonTrack.volume = 0.2;
+        volumeCurrent.style.width = sermonTrack.volume * 100 + "%";
+        volumeHandle.style.left = sermonTrack.volume * 100 + "%";
+
+        volumeControl.addEventListener('mousedown', function (e) {
+            volumeControl.onmousemove = function (e) {
+                var size = e.pageX - volumeControl.getBoundingClientRect().left;
+                if (size < 0) {
+                    size = 0;
+                }
+                size = size + "px";
+                volumeCurrent.style.width = size;
+                volumeHandle.style.left = size;
+                var newVolume = (e.pageX - volumeControl.getBoundingClientRect().left) / volumeControl.clientWidth;
+                if (newVolume < 0) {
+                    newVolume = 0;
+                } else if (newVolume > 1) {
+                    newVolume = 1;
+                }
+                sermonTrack.volume = newVolume;
+            };
+
+            volumeControl.onmouseleave = function (e) {
+                var newVolume = (e.pageX - volumeControl.getBoundingClientRect().left) / volumeControl.clientWidth;
+                if (newVolume < 0) {
+                    newVolume = 0;
+                } else if (newVolume > 1) {
+                    newVolume = 1;
+                }
+                sermonTrack.volume = newVolume;
+                volumeControl.onmousemove = null;
+                volumeControl.onmouseleave = null;
+            };
+        });
+
+        // sets new current time on mouse up (click) and removes mousemove(draggable) and mouseleave
+        volumeControl.addEventListener('mouseup', function (e) {
+            var newVolume = (e.pageX - volumeControl.getBoundingClientRect().left) / volumeControl.clientWidth;
+            if (newVolume < 0) {
+                newVolume = 0;
+            } else if (newVolume > 1) {
+                newVolume = 1;
+            }
+            sermonTrack.volume = newVolume;
+            volumeControl.onmousemove = null;
+            volumeControl.onmouseleave = null;
+        });
+
+        sermonTrack.onvolumechange = function () {
+            if (sermonTrack.volume !== 0 && !sermonTrack.muted) {
+                volumeButton.firstElementChild.textContent = "volume_up";
+            } else {
+                volumeButton.firstElementChild.textContent = "volume_off";
+            }
+            volumeCurrent.style.width = sermonTrack.volume * 100 + "%";
+            volumeHandle.style.left = sermonTrack.volume * 100 + "%";
+        };
+    });
+
+
     // check if HTML imports are supported
     if ('import' in document.createElement('link')) {
         // HTML imports are supported!
