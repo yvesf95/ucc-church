@@ -525,9 +525,7 @@ img {
     position: relative;
 }
 
-.reveal .reveal-hover {
-
-}
+.reveal .reveal-hover {}
 
 .reveal .reveal-content {
     position: absolute;
@@ -1050,7 +1048,7 @@ img {
     z-index: 1;
 }
 
-#volume-current, 
+#volume-current,
 #time-current {
     background-color: #f44336;
     z-index: 2;
@@ -1396,3 +1394,261 @@ img {
         max-width: 100%;
     }
 }
+
+
+/*--------------------------------------------------------------
+####### Start Ryan's Styles
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Sidebar
+--------------------------------------------------------------*/
+
+.sidebar {
+    padding: 3%;
+}
+
+@media screen and (min-width:767px) {
+    .content {
+        float: left;
+        padding: 0 2%;
+        width: calc(96% - 26% - 30px);
+    }
+    .sidebar {
+        width: 24%;
+        padding: 0 1%;
+        float: left;
+    }
+}
+
+
+/*--------------------------------------------------------------
+# Who We Are
+--------------------------------------------------------------*/
+
+.who-we-are-bg-side {
+    background-color: #f2f2f2;
+    border-top: 2px solid #a0ce4e;
+}
+
+.flexbox .col {
+    min-height: 180px;
+    padding: 20px;
+    height: auto;
+}
+
+.flexbox .col:nth-child(1) {
+    background-image: url(https://avada.theme-fusion.com/church/wp-content/uploads/sites/35/2015/09/mission_image2.jpg);
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.flexbox .col:nth-child(2) {
+    background-color: rgb(234, 234, 234);
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    color: #747474;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.flexbox .col:nth-child(2) p {
+    text-align: justify;
+}
+
+.who-we-are p {
+    color: #424242;
+}
+
+.who-we-are-menu {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.who-we-are-menu li {
+    line-height: 1.5;
+    /* padding: 5px 5px 7px 5px;*/
+    padding: 0;
+    margin: 1em 0;
+}
+
+.h-divider {
+    background-color: #a0c66f;
+    height: 4px;
+    width: 120px;
+}
+
+ul.who-we-are-menu li:nth-child(1) h1 {
+    margin: 0;
+    font-size: 3em;
+}
+
+ul.who-we-are-menu li:nth-child(4) h5 {
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+ul.who-we-are-menu li:nth-child(5) {
+    color: #969696;
+    font-size: 0.9rem;
+    line-height: 2;
+    padding-bottom: 15px;
+}
+
+ul.who-we-are-menu li:nth-child(6) {
+    background-color: #a0c66f;
+    color: #fff;
+    padding: 8px 10px;
+    text-align: center;
+    width: 60%;
+}
+
+ul.who-we-are-menu li:nth-child(6) span {
+    font-size: 0.85rem;
+}
+
+ul.who-we-are-menu li:nth-child(6) i {
+    vertical-align: middle;
+    font-size: 1.5rem;
+}
+
+ul.who-we-are-menu li:nth-child(6):hover {
+    border: 1px solid #a0c66f;
+    color: #a0c66f;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+
+/*body.page-id-7 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+*/
+
+div.page-id-7.container {
+    display: none;
+}
+
+div.page-id-7.container.active {
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+@media screen and (min-width:767px) {
+    .flexbox {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        overflow: hidden;
+    }
+    .flexbox .col {
+        flex: 1;
+    }
+    ul.who-we-are-menu li:nth-child(1) h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    ul.who-we-are-menu li:nth-child(6) {
+        width: 90%;
+    }
+}
+
+
+/*Accordion*/
+
+.tab-wrapper {
+    float: left;
+    width: 100%;
+}
+
+.tab {
+    position: relative;
+    margin-bottom: 5px;
+    width: 100%;
+    color: #fff;
+    overflow: hidden;
+}
+
+.tab input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+.tab label {
+    position: relative;
+    display: block;
+    padding: 0 0 0 1em;
+    background: #16a085;
+    line-height: 3;
+    cursor: pointer;
+}
+
+.bg label {
+    background: #a0c66f;
+}
+
+.tab-content {
+    max-height: 0;
+    overflow: hidden;
+    background: #1abc9c;
+    -webkit-transition: max-height .35s;
+    -o-transition: max-height .35s;
+    transition: max-height .35s;
+}
+
+.bg .tab-content {
+    background: #f2f2f2;
+}
+
+.tab-content p {
+    margin: 1em;
+    color: #969696;
+}
+
+
+/* :checked */
+
+.tab input:checked~.tab-content {
+    max-height: 10em;
+}
+
+
+/* Icon */
+
+.tab label::after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 3em;
+    height: 3em;
+    line-height: 3;
+    text-align: center;
+    -webkit-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+}
+
+.tab input[type=radio]+label::after {
+    content: "\25BC";
+}
+
+.tab input[type=radio]:checked+label::after {
+    transform: rotateX(180deg);
+}
+
+
+/*--------------------------------------------------------------
+####### End Ryan's Styles
+--------------------------------------------------------------*/
