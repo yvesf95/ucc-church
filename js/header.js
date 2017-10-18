@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+// document.addEventListener('DOMContentLoaded', function () {
     // Get the link element that references the header.html file.
     var headerImport = document.getElementById('header-link');
     console.log(headerImport);
@@ -17,4 +17,4 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // Add the blog post to the page.
     document.getElementById('navbar').appendChild(clone);
-});
+// });
