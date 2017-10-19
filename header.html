@@ -172,37 +172,5 @@
     <div class="overlay"></div>
 </template>
 
-<script>
-    (function () {
-        if ('registerElement' in document &&
-            'import' in document.createElement('link') &&
-            'content' in document.createElement('template')) {
-            // platform is good!    
-        } else {
-            // polyfill the platform!
-            var e = document.createElement('script');
-            e.src = '/bower_components/webcomponentsjs/webcomponents-lite.min.js';
-            document.body.appendChild(e);
-        }
-        // Get the link element that references the header.html file.
-        var headerImport = document.getElementById('header-link');
-        console.log(headerImport);
-
-        // Get the contents of the import document
-        var header = headerImport.import;
-        console.log(header);
-
-        // Get the template.
-        var template = header.getElementById('navbar');
-        console.log(template);
-
-        // Clone the template content.
-        var clone = document.importNode(template.content, true);
-        console.log(clone);
-
-        // Add the blog post to the page.
-        document.getElementById('navbar').appendChild(clone);
-    })();
-</script>
-<!-- <script src="js/header.js"></script> -->
+<script src="js/header.js"></script>
 <script src="js/script.js"></script>

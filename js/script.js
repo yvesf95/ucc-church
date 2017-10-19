@@ -1,4 +1,4 @@
-window.addEventListener('load', function () {
+// document.addEventListener('DOMContentLoaded', function () {
     var overlay = document.querySelector('.overlay');
 
     // opens dialogs / modals via data-target
@@ -462,4 +462,4 @@ window.addEventListener('load', function () {
     timestamps.forEach(function (timestamp) {
         timestamp.textContent = new Date();
     });
-});
+// });
