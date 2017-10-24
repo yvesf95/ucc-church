@@ -262,13 +262,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // fires if track is playing
     sermonTrack.addEventListener('playing', function () {
         playButton.firstElementChild.textContent = "pause_circle_outline";
-        showPlayer.firstElementChild.textContent = "pause_circle_outline";
+        showPlayerIcon.firstElementChild.textContent = "pause_circle_outline";
+        showPlayerText.firstChild.textContent = "Pause";
     });
 
     // fires if track is paused
     sermonTrack.addEventListener('pause', function () {
         playButton.firstElementChild.textContent = "play_circle_outline";
-        showPlayer.firstElementChild.textContent = "play_circle_outline";
+        showPlayerIcon.firstElementChild.textContent = "play_circle_outline";
+        showPlayerText.firstChild.textContent = "Play";
     });
 
     // fires when duration is changed
@@ -316,12 +318,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // shows player
-    var showPlayer = document.getElementById('show-player');
-    showPlayer.addEventListener('click', function (e) {
-        e.preventDefault();
+    var showPlayerIcon = document.getElementById('show-player-icon');
+    var showPlayerText = document.getElementById('show-player-text');
+    showPlayerIcon.addEventListener('click', showPlayer);
+    showPlayerText.addEventListener('click', showPlayer);
+
+    function showPlayer() {
         sermonPlayer.classList.add('open');
         playOrPause();
-    });
+    }
 
     // hides player
     var hidePlayer = document.getElementById('hide-player');
@@ -410,7 +415,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var isVolumeControlOnMouseDown = false;
 
     // set initial volume
-    sermonTrack.volume = 0.2;
+    sermonTrack.volume = 0;
+    sermonTrack.volume = 1;
 
     // listens to mouse down on volume progress bar
     volumeProgress.addEventListener('mousedown', function (e) {
@@ -462,4 +468,5 @@ document.addEventListener('DOMContentLoaded', function () {
     timestamps.forEach(function (timestamp) {
         timestamp.textContent = new Date();
     });
+    
 });
