@@ -185,22 +185,22 @@
         <!-- current sermon -->
         <section id="current-sermon" class="dark">
             <div class="container">
-                <div class="row max-container">
+                <div class="row">
                     <!-- the sermon -->
-                    <div class="col xs-12 sm-8 md-6 lg-8 xl-7" style="margin:auto;">
+                    <div class="col sm-7 md-6 lg-8 max-container">
                         <div class="card light">
                             <div class="card light horizontal">
-                                <div class="card-header">
-                                    <img src="img/pexels-bible.jpeg" alt="card-img">
+                                <div class="card-img xl-5">
+                                    <img src="img/pexels-bible-3.jpeg" alt="card-img">
                                     <div class="card-img-overlay on-hover">
                                         <button class="btn circle flat btn-floating green bounce" id="show-player-icon">
                                             <i class="material-icons large">play_circle_outline</i>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="card-stacked">
+                                <div class="card-stacked xl-7">
                                     <div class="card-content">
-                                        <h3 class="card-title">How to Kill Sin, Part 1</h3>
+                                        <h3 class="card-title dark t-4">How to Kill Sin, Part 1</h3>
                                         <small class="date">Sunday, September 17, 2017</small>
                                         <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
                                         <p class="card-text">Scripture: Romans 8:10-17
@@ -209,7 +209,7 @@
                                             <a href="" class="breadcrumb">Justification</a>
                                         </p>
                                     </div>
-                                    <div class="card-footer">
+                                    <div class="card-action">
                                         <span class="chip blue">
                                             <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
                                         <span class="spacer"></span>
@@ -240,7 +240,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer">
+                            <div class="card-action">
                                 <div class="spacer"></div>
                                 <button class="btn rounded green bounce" style="min-width:140px;" id="show-player-text">Play</button>
                                 <div class="spacer"></div>
@@ -253,8 +253,8 @@
         <!-- sermon notes -->
         <section id="sermon-notes">
             <div class="container">
-                <div class="row center">
-                    <h2>Sermon Notes</h2>
+                <div class="row align-center">
+                    <h1 class="section-title">Sermon Notes</h1>
                 </div>
                 <div class="row wrap max-container">
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad id aliquam nostrum dolores, enim rem libero
@@ -278,245 +278,265 @@
         <!-- related sermons -->
         <section id="related-sermons" class="highlighted-section">
             <div class="container">
-                <div class="row center">
-                    <h2>Related Sermons</h2>
+                <div class="row align-center">
+                    <h1 class="section-title">Related Sermons</h1>
                 </div>
                 <div class="row wrap max-container">
-                    <div class="col xs-12 sm-6 lg-4 xl-3">
-                        <div class="card">
-                            <div class="card-header">
-                                <img src="img/pexels-bible.jpeg" alt="card-img">
+                    <div class="col sm-6 md-6 lg-4 xl-3">
+                        <div class="card medium">
+                            <div class="card-img">
+                                <img src="img/pexels-bible-3.jpeg" alt="card-img">
                             </div>
-                            <div class="card-content">
-                                <h3 class="card-title">
-                                    <a href="single-sermon.html">How to Kill Sin, Part 1</a>
-                                </h3>
-                                <small class="date">Sunday, September 17, 2017</small>
-                                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                <p class="card-text">Scripture: Romans 8:10-17
-                                    <br> Topics:
-                                    <a href="" class="breadcrumb">Faith</a>
-                                    <a href="" class="breadcrumb">Justification</a>
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <span class="chip">
-                                    <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                <span class="spacer"></span>
-                                <div class="dropup">
-                                    <button class="dropdown-btn btn">
-                                        <i class="material-icons">share</i>
-                                    </button>
-                                    <div class="dropdown-content">
-                                        <ul class="menu">
-                                            <li>
-                                                <a href="" class="menu-link">
-                                                    <i class="material-icons">face</i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="" class="menu-link">
-                                                    <i class="material-icons">book</i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="" class="menu-link">
-                                                    <i class="material-icons">mail</i>
-                                                </a>
-                                            </li>
-                                        </ul>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <h1 class="card-title">
+                                        <a href="single-sermon.html">How to Kill Sin, Part 1</a>
+                                    </h1>
+                                    <h2 class="card-subtitle">Lorem ipsum dolor sit amet.</h2>
+                                    <p class="card-text">Sunday, September 17, 2017</p>
+                                    <p class="card-text">Scripture: Romans 8:10-17
+                                        <br>Topics:
+                                        <a href="">Faith</a>
+                                        <a href="">Justification</a>
+                                    </p>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
+                                </div>
+                                <div class="card-action">
+                                    <span class="chip">
+                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
+                                    <span class="spacer"></span>
+                                    <div class="dropup">
+                                        <button class="dropdown-btn btn">
+                                            <i class="material-icons">share</i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <ul class="menu">
+                                                <li>
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">face</i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">book</i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">mail</i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col xs-12 sm-6 lg-4 xl-3">
-                        <div class="card">
-                            <div class="card-header">
-                                <img src="img/pexels-bible.jpeg" alt="card-img">
+                    <div class="col sm-6 md-6 lg-4 xl-3">
+                        <div class="card medium">
+                            <div class="card-img">
+                                <img src="img/pexels-bible-3.jpeg" alt="card-img">
                             </div>
-                            <div class="card-content">
-                                <h3 class="card-title">
-                                    <a href="single-sermon.html">How to Kill Sin, Part 1</a>
-                                </h3>
-                                <small class="date">Sunday, September 17, 2017</small>
-                                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                <p class="card-text">Scripture: Romans 8:10-17
-                                    <br> Topics:
-                                    <a href="" class="breadcrumb">Faith</a>
-                                    <a href="" class="breadcrumb">Justification</a>
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <span class="chip">
-                                    <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                <span class="spacer"></span>
-                                <div class="dropup">
-                                    <button class="dropdown-btn btn">
-                                        <i class="material-icons">share</i>
-                                    </button>
-                                    <div class="dropdown-content">
-                                        <ul class="menu">
-                                            <li>
-                                                <a href="" class="menu-link">
-                                                    <i class="material-icons">face</i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="" class="menu-link">
-                                                    <i class="material-icons">book</i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="" class="menu-link">
-                                                    <i class="material-icons">mail</i>
-                                                </a>
-                                            </li>
-                                        </ul>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <h1 class="card-title">
+                                        <a href="single-sermon.html">How to Kill Sin, Part 1</a>
+                                    </h1>
+                                    <h2 class="card-subtitle">Lorem ipsum dolor sit amet.</h2>
+                                    <p class="card-text">Sunday, September 17, 2017</p>
+                                    <p class="card-text">Scripture: Romans 8:10-17
+                                        <br>Topics:
+                                        <a href="">Faith</a>
+                                        <a href="">Justification</a>
+                                    </p>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
+                                </div>
+                                <div class="card-action">
+                                    <span class="chip">
+                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
+                                    <span class="spacer"></span>
+                                    <div class="dropup">
+                                        <button class="dropdown-btn btn">
+                                            <i class="material-icons">share</i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <ul class="menu">
+                                                <li>
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">face</i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">book</i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">mail</i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col xs-12 sm-6 lg-4 xl-3">
-                        <div class="card">
-                            <div class="card-header">
-                                <img src="img/pexels-bible.jpeg" alt="card-img">
+                    <div class="col sm-6 md-6 lg-4 xl-3">
+                        <div class="card medium">
+                            <div class="card-img">
+                                <img src="img/pexels-bible-3.jpeg" alt="card-img">
                             </div>
-                            <div class="card-content">
-                                <h3 class="card-title">
-                                    <a href="single-sermon.html">How to Kill Sin, Part 1</a>
-                                </h3>
-                                <small class="date">Sunday, September 17, 2017</small>
-                                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                <p class="card-text">Scripture: Romans 8:10-17
-                                    <br> Topics:
-                                    <a href="" class="breadcrumb">Faith</a>
-                                    <a href="" class="breadcrumb">Justification</a>
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <span class="chip">
-                                    <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                <span class="spacer"></span>
-                                <div class="dropup">
-                                    <button class="dropdown-btn btn">
-                                        <i class="material-icons">share</i>
-                                    </button>
-                                    <div class="dropdown-content">
-                                        <ul class="menu">
-                                            <li>
-                                                <a href="" class="menu-link">
-                                                    <i class="material-icons">face</i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="" class="menu-link">
-                                                    <i class="material-icons">book</i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="" class="menu-link">
-                                                    <i class="material-icons">mail</i>
-                                                </a>
-                                            </li>
-                                        </ul>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <h1 class="card-title">
+                                        <a href="single-sermon.html">How to Kill Sin, Part 1</a>
+                                    </h1>
+                                    <h2 class="card-subtitle">Lorem ipsum dolor sit amet.</h2>
+                                    <p class="card-text">Sunday, September 17, 2017</p>
+                                    <p class="card-text">Scripture: Romans 8:10-17
+                                        <br>Topics:
+                                        <a href="">Faith</a>
+                                        <a href="">Justification</a>
+                                    </p>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
+                                </div>
+                                <div class="card-action">
+                                    <span class="chip">
+                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
+                                    <span class="spacer"></span>
+                                    <div class="dropup">
+                                        <button class="dropdown-btn btn">
+                                            <i class="material-icons">share</i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <ul class="menu">
+                                                <li>
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">face</i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">book</i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">mail</i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col xs-12 sm-6 lg-4 xl-3">
-                        <div class="card">
-                            <div class="card-header">
-                                <img src="img/pexels-bible.jpeg" alt="card-img">
+                    <div class="col sm-6 md-6 lg-4 xl-3">
+                        <div class="card medium">
+                            <div class="card-img">
+                                <img src="img/pexels-bible-3.jpeg" alt="card-img">
                             </div>
-                            <div class="card-content">
-                                <h3 class="card-title">
-                                    <a href="single-sermon.html">How to Kill Sin, Part 1</a>
-                                </h3>
-                                <small class="date">Sunday, September 17, 2017</small>
-                                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                <p class="card-text">Scripture: Romans 8:10-17
-                                    <br> Topics:
-                                    <a href="" class="breadcrumb">Faith</a>
-                                    <a href="" class="breadcrumb">Justification</a>
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <span class="chip">
-                                    <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                <span class="spacer"></span>
-                                <div class="dropup">
-                                    <button class="dropdown-btn btn">
-                                        <i class="material-icons">share</i>
-                                    </button>
-                                    <div class="dropdown-content">
-                                        <ul class="menu">
-                                            <li>
-                                                <a href="" class="menu-link">
-                                                    <i class="material-icons">face</i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="" class="menu-link">
-                                                    <i class="material-icons">book</i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="" class="menu-link">
-                                                    <i class="material-icons">mail</i>
-                                                </a>
-                                            </li>
-                                        </ul>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <h1 class="card-title">
+                                        <a href="single-sermon.html">How to Kill Sin, Part 1</a>
+                                    </h1>
+                                    <h2 class="card-subtitle">Lorem ipsum dolor sit amet.</h2>
+                                    <p class="card-text">Sunday, September 17, 2017</p>
+                                    <p class="card-text">Scripture: Romans 8:10-17
+                                        <br>Topics:
+                                        <a href="">Faith</a>
+                                        <a href="">Justification</a>
+                                    </p>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
+                                </div>
+                                <div class="card-action">
+                                    <span class="chip">
+                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
+                                    <span class="spacer"></span>
+                                    <div class="dropup">
+                                        <button class="dropdown-btn btn">
+                                            <i class="material-icons">share</i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <ul class="menu">
+                                                <li>
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">face</i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">book</i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">mail</i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col xs-12 sm-6 lg-4 xl-3">
-                        <div class="card">
-                            <div class="card-header">
-                                <img src="img/pexels-bible.jpeg" alt="card-img">
+                    <div class="col sm-6 md-6 lg-4 xl-3">
+                        <div class="card medium">
+                            <div class="card-img">
+                                <img src="img/pexels-bible-3.jpeg" alt="card-img">
                             </div>
-                            <div class="card-content">
-                                <h3 class="card-title">
-                                    <a href="single-sermon.html">How to Kill Sin, Part 1</a>
-                                </h3>
-                                <small class="date">Sunday, September 17, 2017</small>
-                                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                <p class="card-text">Scripture: Romans 8:10-17
-                                    <br> Topics:
-                                    <a href="" class="breadcrumb">Faith</a>
-                                    <a href="" class="breadcrumb">Justification</a>
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <span class="chip">
-                                    <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                <span class="spacer"></span>
-                                <div class="dropup">
-                                    <button class="dropdown-btn btn">
-                                        <i class="material-icons">share</i>
-                                    </button>
-                                    <div class="dropdown-content">
-                                        <ul class="menu">
-                                            <li>
-                                                <a href="" class="menu-link">
-                                                    <i class="material-icons">face</i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="" class="menu-link">
-                                                    <i class="material-icons">book</i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="" class="menu-link">
-                                                    <i class="material-icons">mail</i>
-                                                </a>
-                                            </li>
-                                        </ul>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <h1 class="card-title">
+                                        <a href="single-sermon.html">How to Kill Sin, Part 1</a>
+                                    </h1>
+                                    <h2 class="card-subtitle">Lorem ipsum dolor sit amet.</h2>
+                                    <p class="card-text">Sunday, September 17, 2017</p>
+                                    <p class="card-text">Scripture: Romans 8:10-17
+                                        <br>Topics:
+                                        <a href="">Faith</a>
+                                        <a href="">Justification</a>
+                                    </p>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
+                                </div>
+                                <div class="card-action">
+                                    <span class="chip">
+                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
+                                    <span class="spacer"></span>
+                                    <div class="dropup">
+                                        <button class="dropdown-btn btn">
+                                            <i class="material-icons">share</i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <ul class="menu">
+                                                <li>
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">face</i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">book</i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" class="menu-link">
+                                                        <i class="material-icons">mail</i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
