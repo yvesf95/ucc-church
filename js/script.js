@@ -252,6 +252,103 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // gallery
+    var gallery = document.querySelector('.gallery');
+    gallery.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (e.target.tagName == 'IMG') {
+            if (!e.target.classList.contains('zoomed-in')) {
+                // get the actual width, height, aspect ratio of the img, and the boundaries of its container
+                var imgWidth = e.target.naturalWidth,
+                    imgHeight = e.target.naturalHeight,
+                    imgRatio = imgHeight / imgWidth,
+                    rect = e.target.parentElement.getBoundingClientRect(),
+                    top = 0,
+                    left = 0;
+
+                // img is larger than either width or height of the window
+                if (imgWidth > window.innerWidth * 0.9 || imgHeight > window.innerHeight * 0.9) {
+                    // is the img landscape or portrait or square?
+                    if (imgWidth > imgHeight) {
+                        // img is landscape, make the width of the img 90% of the window
+                        imgWidth = window.innerWidth * 0.9;
+                        // new height is computed by aspect ratio from its width
+                        imgHeight = imgWidth * imgRatio;
+                        // does the new height fit the screen? if not make it smaller again with respect to its height
+                        if (imgHeight > window.innerHeight * 0.9) {
+                            imgHeight = window.innerHeight * 0.9;
+                            imgWidth = imgHeight / imgRatio;
+                        }
+                    } else if (imgWidth < imgHeight) {
+                        // img is portrait, make the height of the img 90% of the window
+                        imgHeight = window.innerHeight * 0.9;
+                        // new width is computed by aspect ratio from its height
+                        imgWidth = imgHeight / imgRatio;
+                        // does the new width fit the screen? if not make it smaller again with respect to its width
+                        if (imgWidth > window.innerWidth * 0.9) {
+                            imgWidth = window.innerWidth * 0.9;
+                            imgHeight = imgWidth * imgRatio;
+                        }
+                    } else {
+                        // img is square
+                        imgWidth = window.innerWidth * 0.9;
+                        imgHeight = window.innerHeight * 0.9;
+                    }
+                }
+                // position the img at the center of the screen 
+
+                // (subtract the top offset of its container since it is still positioned relative to it)
+                top = (window.innerHeight - imgHeight) / 2 - rect.top;
+                // (subtract the left offset of its container since it is still positioned relative to it)
+                left = (window.innerWidth - imgWidth) / 2 - rect.left;
+
+                // retain the container's width before positioning the img absolute
+                e.target.parentElement.style.width = rect.width + "px";
+                e.target.parentElement.style.maxWidth = rect.width + "px";
+                // make the img bigger
+                e.target.classList.add('zoomed-in');
+                e.target.style.top = top + "px";
+                e.target.style.left = left + "px";
+                e.target.style.width = imgWidth + "px";
+                e.target.style.minWidth = imgWidth + "px";
+                e.target.style.maxWidth = imgWidth + "px";
+                e.target.style.height = imgHeight + "px";
+
+                var imgOverlay = document.createElement('div');
+                imgOverlay.id = 'img-overlay';
+                e.target.parentElement.appendChild(imgOverlay);
+            } else {
+                imgZoomOut();
+            }
+        }
+    });
+
+    function imgZoomOut() {
+        var zoomedIn = document.querySelector('.zoomed-in');
+        // remove style
+        zoomedIn.style = "";
+        setTimeout(function () {
+            zoomedIn.parentElement.style.width = "";
+            zoomedIn.parentElement.style.maxWidth = "";
+            zoomedIn.classList.remove('zoomed-in');
+            document.getElementById('img-overlay').remove();
+        }, 375);
+    }
+
+    document.addEventListener('click', function (e) {
+        if (e.target.id === 'img-overlay') {
+            imgZoomOut();
+        }
+    });
+
+    window.onscroll = function () {
+        imgZoomOut();
+    };
+
+    window.onresize = function () {
+        imgZoomOut();
+    }
+
     // the sermon player (bottom sheet)
     var sermonPlayer = document.getElementById('sermon-player');
     // the sermon track (mp3 file)
@@ -468,5 +565,5 @@ document.addEventListener('DOMContentLoaded', function () {
     timestamps.forEach(function (timestamp) {
         timestamp.textContent = new Date();
     });
-    
+
 });
