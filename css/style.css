@@ -147,7 +147,10 @@ img {
 
 .transparent {
     background-color: transparent !important;
-    border-color: transparent !important;
+}
+
+.dark-transparent {
+    background-color: rgba(0, 0, 0, 0.8) !important;
 }
 
 .white-text {
@@ -219,7 +222,6 @@ img {
     padding: 0 2%;
     max-width: 1280px;
     margin: 0 auto;
-    box-sizing: border-box;
 }
 
 .max-container {
@@ -291,6 +293,43 @@ img {
 }
 
 
+/* navbar */
+
+#navbar {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    transition: all 250ms linear;
+}
+
+.collapse-sidenav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 240px;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: all 0.5s ease;
+}
+
+.collapse-sidenav.open {
+    transform: translateX(0);
+}
+
+.collapse-sidenav h2 {
+    margin: 0;
+    padding: 0 1rem;
+}
+
+.collapse-sidenav .menu {
+    flex-direction: column !important;
+}
+
+
 /* menubar */
 
 .menubar {
@@ -298,11 +337,16 @@ img {
     line-height: 64px;
     box-sizing: border-box;
     background-color: #fff;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     align-items: stretch;
+}
+
+.menubar.light {
+    background: transparent;
+    box-shadow: none;
 }
 
 .menubar>.container {
@@ -311,6 +355,9 @@ img {
 }
 
 .menubar .menu-toggler {
+    color: #fff;
+    font-size: 15px;
+    white-space: nowrap;
     cursor: pointer;
     margin: 0 5px;
     order: 1;
@@ -346,6 +393,11 @@ img {
     /* overflow-x: auto; */
 }
 
+.menu.white-text .menu-item,
+.menu.white-text .menu-link {
+    color: #fff;
+}
+
 .menu .menu-item,
 .menu .menu-link {
     display: block;
@@ -355,7 +407,8 @@ img {
     /* line-height: 1.6; */
     font-size: 15px;
     color: rgba(0, 0, 0, 0.87);
-    text-align: center;
+    /* text-align: center; */
+    /* text-transform: uppercase; */
     white-space: nowrap;
 }
 
@@ -586,6 +639,11 @@ img {
     transition: all 0.3s ease;
 }
 
+.dropup .dropdown-content.right,
+.dropdown .dropdown-content.right {
+    right: 0;
+}
+
 .dropup .dropdown-content {
     bottom: 100%;
 }
@@ -709,7 +767,9 @@ img {
 /* carousel */
 
 .carousel {
-    height: 42.8571vw;
+    /* height: 42.8571vw; */
+    /* height: 56.25vw; */
+    height: 50vw;
     position: relative;
     overflow: hidden;
 }
@@ -842,10 +902,12 @@ img {
 
 .promo .promo-content .promo-title {
     font-size: 18px;
+    margin: 10px 0;
 }
 
 .promo .promo-content .promo-text {
     font-size: 14px;
+    margin: 10px 0;
 }
 
 
@@ -1080,7 +1142,7 @@ img {
 
 .timeline {
     position: relative;
-    max-width: 960px;
+    /* max-width: 960px; */
     margin: 0 auto;
     overflow: hidden;
     padding: 60px 0 20px 0;
@@ -1556,27 +1618,12 @@ img {
     .hide-on-sm-below {
         display: none !important;
     }
-    .collapse-sidenav {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 300px;
-        height: 100%;
-        overflow: auto;
-        background-color: #fff;
-        z-index: 1001;
-        transform: translateX(100%);
-        transition: all 0.5s ease;
-    }
-    .collapse-sidenav.open {
-        transform: translateX(0);
-    }
-    .collapse-sidenav h2 {
-        margin: 0;
-        padding: 0 1rem;
-    }
     .v-on-sm-below {
         flex-direction: column !important;
+    }
+    .promo .promo-img>img {
+        width: 84px;
+        height: 84px;
     }
     .dropdown .dropdown-content.static-on-sm-below {
         position: static;
@@ -1592,9 +1639,6 @@ img {
         display: none !important;
     }
     .menu-toggler {
-        display: none;
-    }
-    .collapse-sidenav h2 {
         display: none;
     }
     .banner .banner-overlay h1 {
@@ -1715,6 +1759,9 @@ img {
 /* xl 1200px and above */
 
 @media (min-width: 1280px) {
+    .container {
+        box-sizing: border-box;
+    }
     .max-container {
         max-width: 1184px;
     }

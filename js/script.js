@@ -1,5 +1,38 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    var navbar = function () {
+        var navbar = document.getElementById('navbar');
+
+        if (!navbar) {
+            return;
+        }
+        
+        changeBackground();
+        addPaddingTopToNextElement();
+
+        window.addEventListener('scroll', changeBackground);
+        window.addEventListener('resize', function () {
+            changeBackground();
+            addPaddingTopToNextElement();
+        });
+
+        function changeBackground() {
+            if (window.scrollY >= 100 || window.innerWidth < 576) {
+                navbar.classList.add('dark-transparent');
+            } else {
+                navbar.classList.remove('dark-transparent');
+            }
+        }
+
+        function addPaddingTopToNextElement() {
+            if (window.innerWidth < 576) {
+                navbar.nextElementSibling.style.marginTop = '64px';
+            } else {
+                navbar.nextElementSibling.style = "";
+            }
+        }
+    }();
+
     var modal = function () {
         var overlay = document.querySelector('.overlay');
 
