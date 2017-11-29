@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!navbar) {
             return;
         }
-        
+
         changeBackground();
         addPaddingTopToNextElement();
 
@@ -19,14 +19,16 @@ document.addEventListener('DOMContentLoaded', function () {
         function changeBackground() {
             if (window.scrollY >= 100 || window.innerWidth < 576) {
                 navbar.classList.add('dark-transparent');
+                navbar.classList.remove('flat');
             } else {
+                navbar.classList.add('flat');
                 navbar.classList.remove('dark-transparent');
             }
         }
 
         function addPaddingTopToNextElement() {
             if (window.innerWidth < 576) {
-                navbar.nextElementSibling.style.marginTop = '64px';
+                navbar.nextElementSibling.style.marginTop = '56px';
             } else {
                 navbar.nextElementSibling.style = "";
             }
@@ -173,6 +175,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 circle.style.top = e.clientY - rect.top - size / 2 + 'px';
 
                 circle.classList.add('ripple');
+
+                if (button.classList.contains('flat')) {
+                    circle.classList.add('light-green');
+                }
 
                 setTimeout(() => {
                     this.removeChild(circle);
@@ -498,6 +504,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // get current time element
         var currentTime = document.getElementById('current-time');
 
+        var trackProgress = document.getElementById('track-progress');
+        var timeCurrent = document.getElementById('time-current');
+        var timeFloat = document.getElementById('time-float');
+        var trackHandle = document.getElementById('track-handle');
+        var isTrackProgressOnMouseDown = false;
+
         if (!sermonPlayer) {
             return;
         }
@@ -546,18 +558,60 @@ document.addEventListener('DOMContentLoaded', function () {
             volumeCurrent.style.width = sermonTrack.volume * 100 + "%";
             volumeHandle.style.left = sermonTrack.volume * 100 + "%";
         });
+        // display TimeRanges
 
-        sermonTrack.addEventListener('progress', function () {
-            var duration = sermonTrack.duration;
-            if (duration > 0) {
-                for (var i = 0; i < sermonTrack.buffered.length; i++) {
-                    if (sermonTrack.buffered.start(sermonTrack.buffered.length - 1 - i) < sermonTrack.currentTime) {
-                        timeBuffered.style.width = (sermonTrack.buffered.end(sermonTrack.buffered.length - 1 - i) / duration) * 100 + "%";
-                        break;
-                    }
-                }
-            }
+        // sermonTrack.addEventListener('seeked', function () {
+        //     for (i = 0; i < sermonTrack.buffered.length; i++) {
+
+        //         var startX = sermonTrack.buffered.start(i) * inc;
+        //         var endX = sermonTrack.buffered.end(i) * inc;
+        //         var width = endX - startX;
+
+        //         context.fillRect(startX, 0, width, myCanvas.height);
+        //         context.rect(startX, 0, width, myCanvas.height);
+        //         context.stroke();
+        //     }
+        // });
+
+        // sermonTrack.addEventListener('progress', function () {
+        //     var duration = sermonTrack.duration;
+        //     if (duration > 0) {
+        //         for (var i = 0; i < sermonTrack.buffered.length; i++) {
+        //             if (sermonTrack.buffered.start(sermonTrack.buffered.length - 1 - i) < sermonTrack.currentTime) {
+        //                 document.getElementById('time-buffered').style.width = (sermonTrack.buffered.end(sermonTrack.buffered.length - 1 - i) / duration) * 100 + "%";
+        //             }
+        //         }
+        //     }
+        // });
+
+        sermonTrack.addEventListener('canplay', function () {
+            console.log("canplay");
+            addProgressListener();
         });
+
+        sermonTrack.addEventListener('canplaythrough', function () {
+            console.log("canplaythrough");
+            updateTimeBuffered();
+        })
+
+        function addProgressListener() {
+            sermonTrack.addEventListener('progress', function () {
+                console.log("progress");
+                updateTimeBuffered();
+            });
+        }
+
+        function updateTimeBuffered() {
+            if (sermonTrack.buffered.length > 0) {
+                var bufferedEnd = sermonTrack.buffered.end(0);
+                var duration = sermonTrack.duration;
+                if (duration > 0) {
+                    document.getElementById('time-buffered').style.width = ((bufferedEnd / duration) * 100) + "%";
+                }
+                console.log("update time buffered");
+            }
+        }
+
 
         // shows player
         var showPlayerIcon = document.getElementById('show-player-icon');
@@ -602,13 +656,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 volumeButton.firstElementChild.textContent = "volume_off";
             }
         }
-
-        var trackProgress = document.getElementById('track-progress');
-        var timeBuffered = document.getElementById('time-buffered');
-        var timeCurrent = document.getElementById('time-current');
-        var timeFloat = document.getElementById('time-float');
-        var trackHandle = document.getElementById('track-handle');
-        var isTrackProgressOnMouseDown = false;
 
         // shows time float on mouse move (hover)
         trackProgress.addEventListener('mousemove', function (e) {
@@ -658,7 +705,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // set initial volume
         sermonTrack.volume = 0;
-        sermonTrack.volume = 1;
+        sermonTrack.volume = 0.1;
 
         // listens to mouse down on volume progress bar
         volumeProgress.addEventListener('mousedown', function (e) {
