@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     var navbar = function () {
+        const BREAKPOINT = 576;
         var navbar = document.getElementById('navbar');
 
         if (!navbar) {
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         function changeBackground() {
-            if (window.scrollY >= 100 || window.innerWidth < 576) {
+            if (window.scrollY >= 100 || window.innerWidth < BREAKPOINT) {
                 navbar.classList.add('dark-transparent');
                 navbar.classList.remove('flat');
             } else {
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         function addPaddingTopToNextElement() {
-            if (window.innerWidth < 576) {
+            if (window.innerWidth < BREAKPOINT) {
                 navbar.nextElementSibling.style.marginTop = '56px';
             } else {
                 navbar.nextElementSibling.style = "";
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
         togglers.forEach(function (toggler) {
             toggler.addEventListener('click', function (e) {
                 e.preventDefault();
+                document.body.style.overflow = "hidden";
                 var target = document.querySelector(toggler.dataset.target);
                 target.classList.add('open');
                 overlay.style.display = 'block';
@@ -58,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
         closers.forEach(function (closer) {
             closer.addEventListener('click', function (e) {
                 e.preventDefault();
+                document.body.style.overflow = "";
                 var target = document.querySelector(closer.dataset.target);
                 target.classList.remove('open');
                 setTimeout(function () {
@@ -68,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // closes dialogs / modals when overlay is clicked
         overlay.addEventListener('click', function () {
+            document.body.style.overflow = "";
             overlay.style.display = 'none';
             document.querySelectorAll('.open').forEach(function (open) {
                 open.classList.remove('open');
@@ -123,38 +127,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }();
 
-
-    // input-group check if has value
-    var input = function () {
-        var inputs = document.querySelectorAll('.input-group input');
-
-        if (inputs) {
-            return;
-        }
-
-        inputs.forEach(function (input) {
-            // initial check of all input-groups if has value
-            hasValue(input);
-            // addEventListener to check validity when focusing out of input field
-            input.addEventListener('focusout', function () {
-                if (input.checkValidity() === false) {
-                    input.classList.add('invalid');
-                } else {
-                    input.classList.remove('invalid');
-                }
-                hasValue(input);
-            });
-        });
-
-        function hasValue(input) {
-            if (input.value === "") {
-                input.classList.remove('has-value');
-            } else {
-                input.classList.add('has-value');
-            }
-        }
-    }();
-
     var buttonWave = function () {
         // ripple effect for buttons
         var buttons = document.getElementsByTagName('button');
@@ -182,9 +154,63 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 setTimeout(() => {
                     this.removeChild(circle);
-                }, 600);
+                }, 400);
             });
         });
+    }();
+
+    var cards = function () {
+        var cardExpands = document.querySelectorAll('.card-expand');
+        cardExpands.forEach(function (cardExpand) {
+            var trigger = cardExpand.querySelector('.card-expand-trigger');
+            trigger.addEventListener('click', function () {
+                var content = cardExpand.querySelector('.card-expand-content');
+                var child = content.firstElementChild;
+                if (content.classList.contains('expand')) {
+                    child.classList.add('fade-out-up');
+                    setTimeout(function () {
+                        content.classList.remove('expand');
+                        child.classList.remove('fade-out-up');
+                    }, 300);
+                } else {
+                    content.classList.add('expand');
+                    child.classList.add('fade-in-down');
+                    setTimeout(function () {
+                        child.classList.remove('fade-in-down');
+                    }, 300);
+                }
+            });
+        });
+    }();
+
+    // input-group check if has value
+    var input = function () {
+        var inputs = document.querySelectorAll('.input-group input');
+        if (!inputs.length) {
+            return;
+        }
+
+        inputs.forEach(function (input) {
+            // initial check of all input-groups if has value
+            hasValue(input);
+            // addEventListener to check validity when focusing out of input field
+            input.addEventListener('focusout', function () {
+                if (input.checkValidity() === false) {
+                    input.classList.add('invalid');
+                } else {
+                    input.classList.remove('invalid');
+                }
+                hasValue(input);
+            });
+        });
+
+        function hasValue(input) {
+            if (input.value === "") {
+                input.classList.remove('has-value');
+            } else {
+                input.classList.add('has-value');
+            }
+        }
     }();
 
     // carousel
@@ -234,11 +260,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function handleGesure() {
             // swipe left
-            if (touchendX < touchstartX) {
+            if (touchendX + 25 < touchstartX) {
                 next();
             }
             // swipe right
-            if (touchendX > touchstartX) {
+            if (touchendX > touchstartX + 25) {
                 prev();
             }
         }
@@ -291,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 slides[currentIndex].classList.remove('fade-out');
                 currentIndex = index;
                 isShowing = false;
-            }, 600);
+            }, 400);
         }
     }();
 
@@ -417,6 +443,119 @@ document.addEventListener('DOMContentLoaded', function () {
 
         window.onresize = function () {
             imgZoomOut();
+        }
+    }();
+
+    // events
+    var events = function () {
+        var horizontalList = document.querySelector('.horizontal-list');
+
+        if (!horizontalList) {
+            return;
+        }
+
+        var inner = horizontalList.querySelector('.horizontal-list-inner');
+        var item = inner.querySelector('.horizontal-list-item');
+        var arrowLeft = horizontalList.querySelector('.arrow-left');
+        var arrowRight = horizontalList.querySelector('.arrow-right');
+
+        var noOfItems = inner.childElementCount;
+        var itemWidth = item.getBoundingClientRect().width;
+        var translateValue = +inner.style.transform.replace(/[^0-9.\-]/g, '') || 0;
+        var max = -(itemWidth * noOfItems - inner.parentElement.getBoundingClientRect().width);
+
+        var touchstartX = 0;
+        var touchendX = 0;
+
+        horizontalList.addEventListener('click', function (e) {
+            if (isChildOfClassName(e.target, "arrow-left")) {
+                prev();
+            } else if (isChildOfClassName(e.target, "arrow-right")) {
+                next();
+            }
+        });
+
+        horizontalList.addEventListener('touchstart', function (e) {
+            touchstartX = e.changedTouches[0].screenX;
+        }, false);
+
+        horizontalList.addEventListener('touchend', function (e) {
+            touchendX = e.changedTouches[0].screenX;
+            handleGesure();
+        }, false);
+
+        window.addEventListener('resize', recalibrate);
+
+        function handleGesure() {
+            // swipe left
+            if (touchendX + 500 < touchstartX) {
+                next();
+                next();
+                next();
+            } else if (touchendX + 250 < touchstartX) {
+                next();
+                next();
+            } else if (touchendX + 25 < touchstartX) {
+                next();
+            }
+            // swipe right
+            if (touchendX > touchstartX + 500) {
+                prev();
+                prev();
+                prev();
+            } else if (touchendX > touchstartX + 250) {
+                prev();
+                prev();
+            } else if (touchendX > touchstartX + 25) {
+                prev();
+            }
+        }
+
+        function prev() {
+            if (translateValue + itemWidth >= 0) {
+                translateValue = 0;
+                arrowLeft.style.display = "none";
+            } else {
+                translateValue = translateValue + itemWidth;
+                arrowLeft.style.display = "block";
+                arrowRight.style.display = "block";
+            }
+            move();
+        }
+
+        function next() {
+            if (translateValue - itemWidth <= max) {
+                translateValue = max;
+                arrowRight.style.display = "none";
+            } else {
+                translateValue = translateValue - itemWidth;
+                arrowLeft.style.display = "block";
+                arrowRight.style.display = "block";
+            }
+            move();
+        }
+
+        function move() {
+            inner.style.transform = "translateX(" + translateValue + "px)";
+        }
+
+        function recalibrate() {
+            var current = translateValue / itemWidth;
+            itemWidth = item.getBoundingClientRect().width;
+            translateValue = itemWidth * current;
+            max = -(itemWidth * inner.childElementCount - inner.parentElement.getBoundingClientRect().width);
+            move();
+        }
+
+        function isChildOfClassName(child, className) {
+            var element = child;
+            while (element !== null) {
+                if ((element.className || '').indexOf(className) > -1) {
+                    return true;
+                }
+                element = element.parentElement;
+            }
+            return false;
         }
     }();
 
@@ -742,11 +881,5 @@ document.addEventListener('DOMContentLoaded', function () {
             sermonTrack.volume = newVolume;
         }
     }();
-
-    // get current date and time for search form
-    var timestamps = document.querySelectorAll('.timestamp');
-    timestamps.forEach(function (timestamp) {
-        timestamp.textContent = new Date();
-    });
 
 });

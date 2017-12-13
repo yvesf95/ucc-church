@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>UCC Church</title>
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500|Material+Icons">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
 </head>
@@ -25,7 +24,7 @@
                     <img class="menu-logo" src="img/ucc-logo-white.png" alt="ucc-logo">
                 </a>
                 <!-- small description for ucc church -->
-                <small class="helper-text white-text-primary hide-on-xs-below">Reaching out towards others, one community at a time.</small>
+                <span class="caption white-text-primary hide-on-xs-below">Reaching out towards others, one community at a time.</span>
                 <!-- spacer -->
                 <div class="spacer"></div>
                 <!-- right nav items -->
@@ -58,9 +57,6 @@
                         <div class="dropdown-content right dark">
                             <ul class="menu vertical">
                                 <li>
-                                    <a href="index.html" class="menu-link">Home</a>
-                                </li>
-                                <li>
                                     <a href="about.html" class="menu-link">About</a>
                                 </li>
                                 <li>
@@ -68,6 +64,12 @@
                                 </li>
                                 <li>
                                     <a href="events.html" class="menu-link">Events</a>
+                                </li>
+                                <li>
+                                    <a href="be-involved.html" class="menu-link">Be Involved</a>
+                                </li>
+                                <li>
+                                    <a href="index.html" class="menu-link">Prayer Request</a>
                                 </li>
                             </ul>
                         </div>
@@ -86,14 +88,14 @@
             <div class="divider"></div>
             <!-- menu -->
             <ul class="menu vertical">
-                <li class="menu-item">
-                    <h2 class="subheader white-text-secondary">Navigation</h2>
+                <li class="subheader white-text-secondary">
+                    Navigation
                 </li>
                 <li>
                     <a href="index.html" class="menu-link">
                         <span class="xs-4 sm-4">Home</span>
                         <span class="xs-8 sm-8">
-                            <small class="helper-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ducimus.</small>
+                            <small class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ducimus.</small>
                         </span>
                     </a>
                 </li>
@@ -101,7 +103,7 @@
                     <a href="about.html" class="menu-link">
                         <span class="xs-4 sm-4">About Us</span>
                         <span class="xs-8 sm-8">
-                            <small class="helper-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ducimus.</small>
+                            <small class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ducimus.</small>
                         </span>
                     </a>
                 </li>
@@ -109,7 +111,7 @@
                     <a href="sermons.html" class="menu-link">
                         <span class="xs-4 sm-4">Sermons</span>
                         <span class="xs-8 sm-8">
-                            <small class="helper-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ducimus.</small>
+                            <small class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ducimus.</small>
                         </span>
                     </a>
                 </li>
@@ -117,7 +119,7 @@
                     <a href="events.html" class="menu-link">
                         <span class="xs-4 sm-4">Events</span>
                         <span class="xs-8 sm-8">
-                            <small class="helper-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ducimus.</small>
+                            <small class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ducimus.</small>
                         </span>
                     </a>
                 </li>
@@ -125,7 +127,7 @@
                     <a href="contact.html" class="menu-link">
                         <span class="xs-4 sm-4">Contact Us</span>
                         <span class="xs-8 sm-8">
-                            <small class="helper-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ducimus.</small>
+                            <small class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ducimus.</small>
                         </span>
                     </a>
                 </li>
@@ -184,32 +186,56 @@
                 <!-- display search results -->
                 <div class="search-results">
                     <h2>Search Results:</h2>
-                    <ul class="list-group">
-                        <!-- single result -->
-                        <li class="list-item with-avatar">
-                            <!-- avatar / icon -->
-                            <div class="avatar">
-                                <i class="material-icons">folder</i>
+                    <ul class="list three-line">
+                        <li class="list-item">
+                            <div class="list-item-avatar">
+                                <img src="img/billy_300x300.jpg" alt="avatar">
                             </div>
-                            <!-- title -->
-                            <h3>
-                                <a href="">Lorem ipsum dolor sit amet.</a>
-                            </h3>
-                            <!-- description -->
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quae velit exercitationem
-                                id eum esse magnam temporibus laudantium numquam officia architecto qui excepturi deserunt,
-                                vero beatae. Ipsam numquam odio culpa?</p>
-                            <!-- timestamp -->
-                            <small class="timestamp"></small>
-                            <!-- tags -->
-                            <ul class="chips">
-                                <li class="chip blue">
-                                    <i class="material-icons">label</i> Sermon</li>
-                                <li class="chip red">
-                                    <i class="material-icons">label</i> Event</li>
-                                <li class="chip green">
-                                    <i class="material-icons">label</i> News</li>
-                            </ul>
+                            <div class="list-item-text">
+                                <span>Three-line item</span>
+                                <span>Secondary text</span>
+                                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia illum a minus aliquam praesentium.
+                                    Omnis quibusdam dolorum iure ea similique.</span>
+                            </div>
+                            <div class="list-item-actions">
+                                <button type="button icon-button" class="button icon-button">
+                                    <i class="material-icons">more_vert</i>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="divider inset"></li>
+                        <li class="list-item">
+                            <div class="list-item-avatar">
+                                <img src="img/chad_300x300.jpg" alt="avatar">
+                            </div>
+                            <div class="list-item-text">
+                                <span>Three-line item</span>
+                                <span>Secondary text</span>
+                                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia illum a minus aliquam praesentium.
+                                    Omnis quibusdam dolorum iure ea similique.</span>
+                            </div>
+                            <div class="list-item-actions">
+                                <button type="button icon-button" class="button icon-button">
+                                    <i class="material-icons">more_vert</i>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="divider inset"></li>
+                        <li class="list-item">
+                            <div class="list-item-avatar">
+                                <img src="img/nicky_300x300.jpg" alt="avatar">
+                            </div>
+                            <div class="list-item-text">
+                                <span>Three-line item</span>
+                                <span>Secondary text</span>
+                                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia illum a minus aliquam praesentium.
+                                    Omnis quibusdam dolorum iure ea similique.</span>
+                            </div>
+                            <div class="list-item-actions">
+                                <button type="button icon-button" class="button icon-button">
+                                    <i class="material-icons">more_vert</i>
+                                </button>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -219,11 +245,11 @@
 
     <!-- carousel -->
     <div class="carousel">
-        <button class="carousel-prev hide-on-xs-below">
-            <i class="medium material-icons">chevron_left</i>
+        <button class="carousel-prev">
+            <i class="material-icons">chevron_left</i>
         </button>
-        <button class="carousel-next hide-on-xs-below">
-            <i class="medium material-icons">chevron_right</i>
+        <button class="carousel-next">
+            <i class="material-icons">chevron_right</i>
         </button>
         <div class="carousel-item active">
             <img src="img/carousel-images/Slide1.JPG" alt="slide-1">
@@ -237,23 +263,63 @@
         <div class="carousel-item">
             <img src="img/carousel-images/Slide4.JPG" alt="slide-5">
         </div>
-        <ol class="carousel-indicators hide-on-xs-below"></ol>
+        <ol class="carousel-indicators"></ol>
     </div>
 
     <!-- main (who-we-are, sermon, events, prayer) -->
     <main>
         <!-- who we are section -->
-        <section id="who-we-are">
+        <section id="who-we-are" class="highlighted-section">
+            <div class="container">
+                <div class="row justify-center">
+                    <div class="col lg-9">
+                        <h1 class="display-1 text-center" style="text-transform:uppercase;">Who We Are</h1>
+                        <p class="subheading-1 text-center">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla ex asperiores repudiandae fugit voluptatum
+                            placeat dolores laudantium consectetur inventore modi.</p>
+                    </div>
+                </div>
+                <!-- mission and vision -->
+                <div class="row wrap">
+                    <div class="col md-6">
+                        <h1 class="headline text-center">Mission</h1>
+                        <p class="body-1 text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui architecto quas magni. Alias at tempore
+                            hic numquam odit! Facere excepturi facilis nisi, eum quo eius accusamus recusandae debitis hic
+                            quibusdam.
+                        </p>
+                    </div>
+                    <div class="col md-6">
+                        <h1 class="headline text-center">Vision</h1>
+                        <p class="body-1 text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui architecto quas magni. Alias at tempore
+                            hic numquam odit! Facere excepturi facilis nisi, eum quo eius accusamus recusandae debitis hic
+                            quibusdam.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- why the name of the church section -->
+        <section id="why-the-name-of-the-church" class="highlighted-section-2">
             <div class="container">
                 <div class="row wrap">
+                    <div class="promo v-on-md-above col md-4">
+                        <div class="promo-img">
+                            <img src="img/icon-1.png" alt="icon-1">
+                        </div>
+                        <div class="promo-content">
+                            <h3 class="promo-title">Union with Christ</h3>
+                            <p class="promo-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. A repellat officia nobis fugiat, ab
+                                facere aperiam placeat numquam consequuntur consectetur.</p>
+                        </div>
+                    </div>
                     <div class="promo v-on-md-above col md-4">
                         <div class="promo-img">
                             <img src="img/icon-2.png" alt="icon-2">
                         </div>
                         <div class="promo-content">
-                            <h3 class="promo-title">A Friendly Welcome</h3>
-                            <p class="promo-text">Here you'll find warm people who look forward to your visit. Regardless of your background, we
-                                want you to feel at home in our family.</p>
+                            <h3 class="promo-title">Community</h3>
+                            <p class="promo-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores hic eius illum ab obcaecati
+                                optio perferendis omnis itaque, nihil veniam.</p>
                         </div>
                     </div>
                     <div class="promo v-on-md-above col md-4">
@@ -261,28 +327,20 @@
                             <img src="img/icon-3.png" alt="icon-3">
                         </div>
                         <div class="promo-content">
-                            <h3 class="promo-title">A Fresh Worship Experience</h3>
-                            <p class="promo-text">We believe that worship is an important aspect in a living relationship with God. You will find
-                                our worship experiences relevant and exciting.</p>
-                        </div>
-                    </div>
-                    <div class="promo v-on-md-above col md-4">
-                        <div class="promo-img">
-                            <img src="img/icon-1.png" alt="icon-1">
-                        </div>
-                        <div class="promo-content">
-                            <h3 class="promo-title">A Relevant Message</h3>
-                            <p class="promo-text">Our messages will inspire and motivate you to live the life Christ has designed for you.</p>
+                            <h3 class="promo-title">Church</h3>
+                            <p class="promo-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias minima rerum a voluptatem recusandae
+                                molestiae corrupti? Aspernatur consectetur omnis minima!</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- sermons section -->
-        <section id="sermons-section" class="highlighted-section">
+
+        <!-- one another teachings section -->
+        <section id="one-another-teachings" class="highlighted-section">
             <div class="container">
                 <div class="row align-center">
-                    <h1 class="section-title">Latest Sermons</h1>
+                    <h1 class="section-title">Bible Based Teachings Practice "One Another"</h1>
                     <div class="spacer"></div>
                     <a href="sermons.html">
                         <small>View all
@@ -290,251 +348,88 @@
                         </small>
                     </a>
                 </div>
-                <div class="row wrap max-container">
-                    <div class="col sm-6 md-6 lg-8 xl-9">
-                        <div class="card horizontal medium">
-                            <div class="card-img">
-                                <img src="img/sermon-images/Slide3.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-sermon.html">How to Kill Sin, Part 1</a>
-                                    </h1>
-                                    <h2 class="card-subtitle">Lorem ipsum dolor sit amet.</h2>
-                                    <p class="card-text">Sunday, September 17, 2017</p>
-                                    <p class="card-text">Scripture: Romans 8:10-17
-                                        <br>Topics:
-                                        <a href="">Faith</a>
-                                        <a href="">Justification</a>
-                                    </p>
+                <div class="row wrap max-width-xs max-width-md max-width-lg">
+                    <div class="col xs-12 sm-12 md-6">
+                        <div class="card">
+                            <div class="card-media-cover">
+                                <div class="card-media-ratio-4-3">
+                                    <img src="img/sermon-images/Slide1.JPG" alt="card-img-cover">
                                 </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu vertical">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                <div class="card-media-overlay">
+                                    <div class="card-header">
+                                        <h1 class="card-title">Gradient Background</h1>
+                                        <h2 class="card-subtitle">Ratio 4:3</h2>
+                                    </div>
+                                    <div class="card-actions">
+                                        <div class="spacer"></div>
+                                        <button class="button">Action</button>
+                                        <button class="button">Action</button>
                                     </div>
                                 </div>
+                                <div class="card-backdrop gradient-bg"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col sm-6 md-6 lg-4 xl-3">
-                        <div class="card medium">
-                            <div class="card-img">
-                                <img src="img/sermon-images/Slide3.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-sermon.html">How to Kill Sin, Part 1</a>
-                                    </h1>
-                                    <h2 class="card-subtitle">Lorem ipsum dolor sit amet.</h2>
-                                    <p class="card-text">Sunday, September 17, 2017</p>
-                                    <p class="card-text">Scripture: Romans 8:10-17
-                                        <br>Topics:
-                                        <a href="">Faith</a>
-                                        <a href="">Justification</a>
-                                    </p>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
+                    <div class="col xs-12 sm-12 md-6">
+                        <div class="card">
+                            <div class="card-media-cover">
+                                <div class="card-media-ratio-4-3">
+                                    <img src="img/sermon-images/Slide3.JPG" alt="card-img-cover">
                                 </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu vertical">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                <div class="card-media-overlay">
+                                    <div class="card-header">
+                                        <h1 class="card-title">Gradient Background</h1>
+                                        <h2 class="card-subtitle">Ratio 4:3</h2>
+                                    </div>
+                                    <div class="card-actions">
+                                        <div class="spacer"></div>
+                                        <button class="button">Action</button>
+                                        <button class="button">Action</button>
                                     </div>
                                 </div>
+                                <div class="card-backdrop gradient-bg"></div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-        <!-- events section -->
-        <section id="events-section" class="background-img-section" style="
-        background-image: url('img/event-images/Slide1.JPG');">
-            <div class="container">
-                <div class="row align-center">
-                    <h1 class="section-title white-text-primary">Events Timeline</h1>
-                    <div class="spacer"></div>
-                    <a href="events.html" class="btn">
-                        <small>View all
-                            <i class="material-icons">trending_flat</i>
-                        </small>
-                    </a>
-                </div>
-                <div class="row wrap max-container">
-                    <!-- Timeline -->
-                    <div class="timeline">
-                        <!-- arrow left -->
-                        <a href="" class="timeline-prev">
-                            <i class="material-icons small">chevron_left</i>
-                        </a>
-                        <!-- timeline scroll -->
-                        <ul class="timeline-inner">
-                            <li class="timeline-item">
-                                <!-- timeline point -->
-                                <a href="" class="timeline-link active" data-target="#event-1">
-                                    <span class="date">September 17, 2017</span>
-                                </a>
-                            </li>
-                            <li class="timeline-item">
-                                <!-- timeline point -->
-                                <a href="" class="timeline-link" data-target="#event-2">
-                                    <!-- popup -->
-                                    <span class="date">November 5, 2017</span>
-                                </a>
-                            </li>
-                            <li class="timeline-item">
-                                <!-- timeline point -->
-                                <a href="" class="timeline-link" data-target="#event-3">
-                                    <!-- popup -->
-                                    <span class="date">November 9, 2017</span>
-                                </a>
-                            </li>
-                            <li class="timeline-item">
-                                <!-- timeline point -->
-                                <a href="" class="timeline-link" data-target="#event-4">
-                                    <!-- popup -->
-                                    <span class="date">November 5, 2017</span>
-                                </a>
-                            </li>
-                            <li class="timeline-item">
-                                <!-- timeline point -->
-                                <a href="" class="timeline-link" data-target="#event-5">
-                                    <!-- popup -->
-                                    <span class="date">December 22, 2017</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- arrow right -->
-                        <a href="" class="timeline-next">
-                            <i class="material-icons small">chevron_right</i>
-                        </a>
+                    <div class="col xs-12 sm-12 md-6">
+                        <div class="card">
+                            <div class="card-media-cover">
+                                <div class="card-media-ratio-4-3">
+                                    <img src="img/sermon-images/Slide7.JPG" alt="card-img-cover">
+                                </div>
+                                <div class="card-media-overlay">
+                                    <div class="card-header">
+                                        <h1 class="card-title">Gradient Background</h1>
+                                        <h2 class="card-subtitle">Ratio 4:3</h2>
+                                    </div>
+                                    <div class="card-actions">
+                                        <div class="spacer"></div>
+                                        <button class="button">Action</button>
+                                        <button class="button">Action</button>
+                                    </div>
+                                </div>
+                                <div class="card-backdrop gradient-bg"></div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- Selected Event -->
-                    <div class="card raised panel active" id="event-1" style="max-width:860px; margin:auto;">
-                        <div class="card-content">
-                            <!-- event header -->
-                            <div class="card light horizontal">
-                                <!-- event title (left) -->
-                                <div class="card-stacked">
-                                    <!-- content -->
-                                    <div class="card-content">
-                                        <h1 class="card-title t-4">
-                                            <a href="single-event.html">UCC Church 5th Anniversary</a>
-                                        </h1>
-                                        <h2 class="card-subtitle t-5">September 17, 2017</h2>
-                                        <p class="card-text">From
-                                            <b>8:30am</b> to
-                                            <b>12:00am</b>
-                                        </p>
-                                        <p class="card-text">Held at
-                                            <b>Hemady Square</b>
-                                        </p>
+                    <div class="col xs-12 sm-12 md-6">
+                        <div class="card">
+                            <div class="card-media-cover">
+                                <div class="card-media-ratio-4-3">
+                                    <img src="img/sermon-images/Slide10.JPG" alt="card-img-cover">
+                                </div>
+                                <div class="card-media-overlay">
+                                    <div class="card-header">
+                                        <h1 class="card-title">Gradient Background</h1>
+                                        <h2 class="card-subtitle">Ratio 4:3</h2>
                                     </div>
-                                    <!-- action (chip and button) -->
-                                    <div class="card-action">
-                                        <span class="chip">
-                                            <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan
-                                        </span>
-                                        <span class="spacer"></span>
-                                        <div class="dropup">
-                                            <button class="dropdown-btn btn green">
-                                                <i class="material-icons">share</i>
-                                            </button>
-                                            <div class="dropdown-content">
-                                                <ul class="menu vertical">
-                                                    <li>
-                                                        <a href="" class="menu-link">
-                                                            <i class="material-icons">face</i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="" class="menu-link">
-                                                            <i class="material-icons">book</i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="" class="menu-link">
-                                                            <i class="material-icons">mail</i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                    <div class="card-actions">
+                                        <div class="spacer"></div>
+                                        <button class="button">Action</button>
+                                        <button class="button">Action</button>
                                     </div>
                                 </div>
-                                <!-- event image (right) -->
-                                <div class="card-stacked">
-                                    <img src="img/event-images/Slide1.JPG" alt="card-img" id="event-1-img">
-                                </div>
-                            </div>
-                            <!-- action (buttons) -->
-                            <div class="card-action">
-                                <button type="button" class="btn red">Register!</button>
-                                <div class="spacer"></div>
-                                <button type="button" class="btn blue">Learn More</button>
-                            </div>
-                            <!-- event details -->
-                            <div class="card-content">
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, dolore dignissimos, assumenda
-                                    a iusto velit excepturi odit minima ex molestiae inventore, quia facere voluptates? Magnam
-                                    quia temporibus iure quaerat exercitationem minus dolor, laboriosam magni quis expedita
-                                    fugit nobis possimus laborum unde nesciunt aliquam. Necessitatibus odit iste reprehenderit
-                                    rem porro laboriosam.</p>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta autem vero quaerat porro quisquam
-                                    unde qui laudantium quo eius eos facere, eaque repudiandae nam veniam mollitia nihil
-                                    sint iusto magni!
-                                </p>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deserunt error repellat,
-                                    harum debitis labore. </p>
+                                <div class="card-backdrop gradient-bg"></div>
                             </div>
                         </div>
                     </div>
@@ -542,64 +437,412 @@
             </div>
         </section>
 
-        <!-- trial events section -->
-        <section id="events-section-2">
+        <!-- events section -->
+        <section id="events" class="dark">
             <div class="container">
                 <div class="row align-center">
                     <h1 class="section-title">Upcoming Events</h1>
                     <div class="spacer"></div>
-                    <a href="events.html">
+                    <a href="sermons.html">
                         <small>View all
                             <i class="material-icons">trending_flat</i>
                         </small>
                     </a>
                 </div>
-                <div class="row wrap max-container">
-                    <!-- arrow left -->
-                    <a href="" class="arrow-left">
-                        <i class="material-icons small">chevron_left</i>
-                    </a>
-                    <div class="scroll-container">
-                        
-                    </div>
-                    <!-- arrow right -->
-                    <a href="" class="arrow-right">
-                        <i class="material-icons small">chevron_right</i>
-                    </a>
-                </div>
             </div>
-        </section>
-
-        <!-- prayer section -->
-        <section id="prayer" class="dark">
-            <div class="container">
-                <div class="row wrap max-container">
-                    <div class="col">
-                        <div class="card light horizontal">
-                            <div class="card-img lg-6 ratio-4-3">
-                                <img src="img/pexels-prayer-4-3.jpg" alt="card-img">
+            <div class="horizontal-list">
+                <button class="arrow-left">
+                    <i class="material-icons">chevron_left</i>
+                </button>
+                <div class="scroll-container">
+                    <div class="horizontal-list-inner">
+                        <div class="horizontal-list-item">
+                            <div class="card">
+                                <div class="card-media-cover">
+                                    <div class="card-media-ratio-4-3">
+                                        <img src="img/event-images-4-3/Slide1.JPG" alt="card-img-cover">
+                                    </div>
+                                    <div class="card-media-overlay">
+                                        <div class="card-header">
+                                            <h1 class="card-title">Gradient Background</h1>
+                                            <h2 class="card-subtitle">Ratio 16:9</h2>
+                                        </div>
+                                        <div class="card-expand">
+                                            <div class="card-actions">
+                                                <button class="button">Action</button>
+                                                <div class="spacer"></div>
+                                                <button class="button card-expand-trigger">Learn More</button>
+                                            </div>
+                                            <div class="card-expand-content">
+                                                <div class="card-content" id="hello">
+                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus et voluptatem totam eum repellendus dolorem voluptatibus
+                                                    neque, a itaque aperiam!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-backdrop gradient-bg"></div>
+                                </div>
                             </div>
-                            <div class="card-stacked lg-6">
-                                <div class="card-content">
-                                    <h1 class="card-title dark t-3">Need a Prayer?</h1>
-                                    <p style="margin-bottom: 24px;">There are times when life is overwhelming, when all we have is questions. In those moments,
-                                        hope can feel far away. The great thing about prayer is that it shifts our perspective
-                                        toward the One who stands ready to listen. No matter what you’re facing, we’d love
-                                        to pray with you!
-                                    </p>
-                                    <button class="btn raised yellow">Send us a Prayer Request
-                                        <i class="material-icons">send</i>
-                                    </button>
+                        </div>
+                        <div class="horizontal-list-item">
+                            <div class="card">
+                                <div class="card-media-cover">
+                                    <div class="card-media-ratio-4-3">
+                                        <img src="img/event-images-4-3/Slide2.JPG" alt="card-img-cover">
+                                    </div>
+                                    <div class="card-media-overlay">
+                                        <div class="card-header">
+                                            <h1 class="card-title">Gradient Background</h1>
+                                            <h2 class="card-subtitle">Ratio 16:9</h2>
+                                        </div>
+                                        <div class="card-expand">
+                                            <div class="card-actions">
+                                                <button class="button">Action</button>
+                                                <div class="spacer"></div>
+                                                <button class="button card-expand-trigger">Learn More</button>
+                                            </div>
+                                            <div class="card-expand-content">
+                                                <div class="card-content" id="hello">
+                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus et voluptatem totam eum repellendus dolorem voluptatibus
+                                                    neque, a itaque aperiam!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-backdrop gradient-bg"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="horizontal-list-item">
+                            <div class="card">
+                                <div class="card-media-cover">
+                                    <div class="card-media-ratio-4-3">
+                                        <img src="img/event-images-4-3/Slide3.JPG" alt="card-img-cover">
+                                    </div>
+                                    <div class="card-media-overlay">
+                                        <div class="card-header">
+                                            <h1 class="card-title">Gradient Background</h1>
+                                            <h2 class="card-subtitle">Ratio 16:9</h2>
+                                        </div>
+                                        <div class="card-expand">
+                                            <div class="card-actions">
+                                                <button class="button">Action</button>
+                                                <div class="spacer"></div>
+                                                <button class="button card-expand-trigger">Learn More</button>
+                                            </div>
+                                            <div class="card-expand-content">
+                                                <div class="card-content" id="hello">
+                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus et voluptatem totam eum repellendus dolorem voluptatibus
+                                                    neque, a itaque aperiam!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-backdrop gradient-bg"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="horizontal-list-item">
+                            <div class="card">
+                                <div class="card-media-cover">
+                                    <div class="card-media-ratio-4-3">
+                                        <img src="img/event-images-4-3/Slide4.JPG" alt="card-img-cover">
+                                    </div>
+                                    <div class="card-media-overlay">
+                                        <div class="card-header">
+                                            <h1 class="card-title">Gradient Background</h1>
+                                            <h2 class="card-subtitle">Ratio 16:9</h2>
+                                        </div>
+                                        <div class="card-expand">
+                                            <div class="card-actions">
+                                                <button class="button">Action</button>
+                                                <div class="spacer"></div>
+                                                <button class="button card-expand-trigger">Learn More</button>
+                                            </div>
+                                            <div class="card-expand-content">
+                                                <div class="card-content">
+                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus et voluptatem totam eum repellendus dolorem voluptatibus
+                                                    neque, a itaque aperiam!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-backdrop gradient-bg"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="horizontal-list-item">
+                            <div class="card">
+                                <div class="card-media-cover">
+                                    <div class="card-media-ratio-4-3">
+                                        <img src="img/event-images-4-3/Slide5.JPG" alt="card-img-cover">
+                                    </div>
+                                    <div class="card-media-overlay">
+                                        <div class="card-header">
+                                            <h1 class="card-title">Gradient Background</h1>
+                                            <h2 class="card-subtitle">Ratio 16:9</h2>
+                                        </div>
+                                        <div class="card-expand">
+                                            <div class="card-actions">
+                                                <button class="button">Action</button>
+                                                <div class="spacer"></div>
+                                                <button class="button card-expand-trigger">Learn More</button>
+                                            </div>
+                                            <div class="card-expand-content">
+                                                <div class="card-content">
+                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus et voluptatem totam eum repellendus dolorem voluptatibus
+                                                    neque, a itaque aperiam!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-backdrop gradient-bg"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <button class="arrow-right">
+                    <i class="material-icons">chevron_right</i>
+                </button>
             </div>
         </section>
     </main>
 
-    <footer></footer>
+    <footer>
+        <div class="container">
+            <div class="row wrap">
+                <div class="col md-4">
+                    <ul class="list dense border-0 transparent">
+                        <li class="subheader inset">Sunday Worship Service</li>
+                        <li class="list-item">
+                            <div class="list-item-icon">
+                                <i class="material-icons">access_time</i>
+                            </div>
+                            <div class="list-item-text">
+                                <span>Every Sunday starts at 9:30am</span>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-icon">
+                                <i class="material-icons">place</i>
+                            </div>
+                            <div class="list-item-text">
+                                <span>6/F Roofdeck Function Hall Hemady Square E Rodriguez Ave corner Hemady St, QC</span>
+                            </div>
+                        </li>
+                        <li class="subheader inset">Adult Bible Class</li>
+                        <li class="list-item">
+                            <div class="list-item-icon">
+                                <i class="material-icons">access_time</i>
+                            </div>
+                            <div class="list-item-text">
+                                <span>Every Sunday starts at 8:30am</span>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-icon">
+                                <i class="material-icons">place</i>
+                            </div>
+                            <div class="list-item-text">
+                                <span>6/F Roofdeck Function Hall Hemady Square E Rodriguez Ave corner Hemady St, QC</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col md-4">
+                    <!-- <img src="img/map-to-hemady-1-1.png" alt="" style="max-width:100%;"> -->
+                    <ul class="list dense border-0 transparent">
+                        <li class="subheader inset">Midweek In-depth Bible Study</li>
+                        <li class="list-item">
+                            <div class="list-item-icon">
+                                <i class="material-icons">access_time</i>
+                            </div>
+                            <div class="list-item-text">
+                                <span>Every Wednesday, dinner starts at 7:00pm</span>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-icon">
+                                <i class="material-icons">place</i>
+                            </div>
+                            <div class="list-item-text">
+                                <span>Valencia Hills, N Domingo St, Quezon City, Metro Manila</span>
+                            </div>
+                        </li>
+                        <li class="subheader inset">3:16 Fellowship &amp; Prayer Meeting</li>
+                        <li class="list-item">
+                            <div class="list-item-icon">
+                                <i class="material-icons">access_time</i>
+                            </div>
+                            <div class="list-item-text">
+                                <span>Every Friday, dinner starts at 7:00pm</span>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-icon">
+                                <i class="material-icons">place</i>
+                            </div>
+                            <div class="list-item-text">
+                                <span>16 Tinaduan Street, Barangay Masambong, Q.C. 1115</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col md-4">
+                    <ul class="list dense border-0 transparent">
+                        <!-- with icon and inset -->
+                        <li class="subheader">Contact Info</li>
+                        <li class="list-item">
+                            <div class="list-item-icon">
+                                <i class="material-icons">phone</i>
+                            </div>
+                            <div class="list-item-text">
+                                <span>555 555 555</span>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-icon">
+                                <i class="material-icons">email</i>
+                            </div>
+                            <div class="list-item-text">
+                                <span>WriteToUCC@gmail.com</span>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-icon">
+                                <i class="material-icons">face</i>
+                            </div>
+                            <div class="list-item-text">
+                                <span>https://www.facebook.com/UCC-Church-237812533028498/</span>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-icon">
+                                <i class="material-icons">phone_in_talk</i>
+                            </div>
+                            <div class="list-item-text">
+                                <span>555 555 555</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div id="map" style="height:400px; width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row dark">
+            <div class="container">
+                <p class="caption">&copy; 2017 Union with Christ Community Church. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="overlay"></div>
+
+    <script>
+        function initMap() {
+            // Map options
+            var quezonCity = {
+                zoom: 13,
+                center: {
+                    lat: 14.6760,
+                    lng: 121.0437
+                }
+            }
+
+            var hemadySquare = {
+                zoom: 13,
+                center: {
+                    lat: 14.6241,
+                    lng: 121.0316
+                }
+            }
+
+            var valenciaHills = {
+                zoom: 13,
+                center: {
+                    lat: 14.6112,
+                    lng: 121.0363
+                }
+            }
+
+            var tinaduan = {
+                zoom: 13, 
+                center: {
+                    lat: 14.6447,
+                    lng: 121.0077
+                }
+            }
+
+            // New map
+            var map = new google.maps.Map(document.getElementById('map'), hemadySquare);
+
+            // Array of markers
+            var markers = [{
+                coords: {
+                    lat: 14.6241,
+                    lng: 121.0316
+                },
+                label: 'H',
+                content: 'Hemady Square'
+            }, {
+                coords: {
+                    lat: 14.6112,
+                    lng: 121.0363
+                },
+                label: 'V',
+                content: 'Valencia Hills'
+            }, {
+                coords: {
+                    lat: 14.6447,
+                    lng: 121.0077
+                },
+                label: 'T',
+                content: 'Tinaduan'
+            }];
+
+            // Loop thru markers
+            for (let i = 0; i < markers.length; i++) {
+                addMarker(markers[i]);
+            }
+
+            // Add Marker Function
+            function addMarker(props) {
+                var marker = new google.maps.Marker({
+                    position: props.coords,
+                    map: map,
+                });
+
+                // Check for custom icon
+                if (props.iconImage) {
+                    // Set icon image
+                    marker.setIcon(props.iconImage);
+                }
+
+                if (props.label) {
+                    marker.setLabel(props.label);
+                }
+
+                // Check for content
+                if (props.content) {
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: props.content
+                    });
+
+                    marker.addListener('click', function () {
+                        infoWindow.open(map, marker);
+                    });
+                }
+            }
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkPcyTpUCAT5oyOzsDTfe6IidaWzU1P7w&callback=initMap" async
+        defer></script>
 </body>
 
 </html>
