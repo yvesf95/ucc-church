@@ -1127,7 +1127,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        fetchJSONfile("../morning-and-evening-master/m_e.json", function (data) {
+        fetchJSONfile("morning-and-evening-master/m_e.json", function (data) {
             var dateToday = new Date();
             var day = dateToday.getDate();
             var month = dateToday.getMonth() + 1;
