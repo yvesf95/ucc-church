@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     var navbar = function () {
-        const BREAKPOINT = 576;
+        const BREAKPOINT = 768;
         var navbar = document.getElementById('navbar');
 
         if (!navbar) {
@@ -488,25 +488,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function handleGesure() {
             // swipe left
-            if (touchendX + 500 < touchstartX) {
-                next();
-                next();
-                next();
-            } else if (touchendX + 250 < touchstartX) {
-                next();
-                next();
-            } else if (touchendX + 25 < touchstartX) {
+            if (touchendX + 25 < touchstartX) {
                 next();
             }
             // swipe right
-            if (touchendX > touchstartX + 500) {
-                prev();
-                prev();
-                prev();
-            } else if (touchendX > touchstartX + 250) {
-                prev();
-                prev();
-            } else if (touchendX > touchstartX + 25) {
+            if (touchendX > touchstartX + 25) {
                 prev();
             }
         }
@@ -556,6 +542,258 @@ document.addEventListener('DOMContentLoaded', function () {
                 element = element.parentElement;
             }
             return false;
+        }
+    }();
+
+    var tabs = function () {
+        var tabs = document.querySelectorAll('.tabs');
+
+        if (!tabs.length) {
+            return;
+        }
+
+        for (let i = 0; i < tabs.length; i++) {
+            tab(tabs[i]);
+        }
+
+        function tab(tab) {
+            var bar = tab.querySelector('.tabs-bar');
+            var nav = tab.querySelector('.tabs-nav');
+            var items = tab.querySelector('.tab-items');
+            var active = nav.querySelector('.active');
+            var activeItem = items.querySelector(active.dataset.target);
+            var arrowLeft, arrowRight, indicator;
+
+            var barRect, navRect, activeRect;
+            var translateValue = 0;
+            var startx = 0;
+            var dist = 0;
+            var isTransitioning = false;
+            const TRANSITION_DURATION = 300;
+
+            // Init function
+            (function () {
+                barRect = bar.getBoundingClientRect();
+                nav.style.transform = "translateX(" + -translateValue + "px)";
+                // Hide all items
+                hideAllItems();
+                // Show active item
+                activeItem.style.display = "block";
+
+                // Create indicator
+                indicator = document.createElement('LI');
+                indicator.classList.add('tab-indicator');
+                nav.appendChild(indicator);
+                // Move indicator to active link
+                moveIndicator();
+
+                // Create arrows
+                arrowLeft = createArrow("left");
+                arrowRight = createArrow("right");
+                // Toggle arrow visibility
+                toggleArrowVisibility();
+
+                // Check for touch device
+                if ("ontouchstart" in document.documentElement) {
+                    arrowLeft.style.display = "none";
+                    arrowRight.style.display = "none";
+                }
+            })();
+
+            // Event Listeners
+            nav.addEventListener('click', function (e) {
+                var clicked = closest(e.target, "tab-link");
+                if (clicked && !isTransitioning) {
+                    active.classList.remove('active');
+
+                    clicked.classList.add('active');
+                    active = clicked;
+
+                    var targetItem = items.querySelector(active.dataset.target);
+                    targetItem.style.display = "block";
+
+                    var prevIndex = Array.prototype.indexOf.call(items.children, activeItem);
+                    var nextIndex = Array.prototype.indexOf.call(items.children, targetItem);
+                    var transitionTo;
+                    if (prevIndex < nextIndex) {
+                        transitionTo = "left";
+                    } else if (prevIndex > nextIndex) {
+                        transitionTo = "right";
+                    } else {
+                        return;
+                    }
+
+                    // Animation
+                    activeItem.classList.add('tab-transition-to-' + transitionTo);
+                    targetItem.classList.add('tab-transition-to-' + transitionTo);
+                    isTransitioning = true;
+
+                    setTimeout(function () {
+                        activeItem.classList.remove('tab-transition-to-' + transitionTo);
+                        targetItem.classList.remove('tab-transition-to-' + transitionTo);
+                        activeItem.style.display = "none";
+                        activeItem = targetItem;
+                        isTransitioning = false;
+                    }, 300);
+
+                    moveIndicator();
+                }
+            });
+
+            nav.addEventListener('touchstart', function (e) {
+                // reference first touch point (ie: first finger)
+                var touchobj = e.changedTouches[0];
+                // get x position of touch point relative to left edge of browser
+                startx = parseInt(touchobj.clientX);
+            });
+
+            nav.addEventListener('touchmove', function (e) {
+                // reference first touch point for this event
+                var touchobj = e.changedTouches[0];
+                // Distance from touchstart to current
+                dist = -(parseInt(touchobj.clientX) - startx);
+                // Move nav while dragging
+                nav.style.transform = "translateX(" + -(translateValue + dist) + "px)";
+            });
+
+            nav.addEventListener('touchend', function (e) {
+                // Get the translateValue after dragging
+                translateValue = translateValue + dist;
+                // Check if nav is dragged too far to the left
+                if (translateValue <= 0) {
+                    // Set translateValue to initial pos
+                    translateValue = 0;
+                }
+                // Check if nav is dragged too far to the right
+                if (translateValue >= navRect.width - barRect.width) {
+                    // Compare widths
+                    if (barRect.width <= navRect.width) {
+                        // Set translateValue to farthest
+                        translateValue = navRect.width - barRect.width;
+                    } else {
+                        // Go back to initial pos
+                        translateValue = 0;
+                    }
+                }
+                nav.style.transform = "translateX(" + -translateValue + "px)";
+                dist = 0;
+            });
+
+            arrowLeft.addEventListener('click', function () {
+                // Check if nav is moved too far to the left
+                if (translateValue - barRect.width <= 0) {
+                    // Set translateValue to initial pos
+                    translateValue = 0;
+                    arrowLeft.style.display = "none";
+                } else {
+                    translateValue -= barRect.width;
+                    arrowRight.style.display = "block";
+                }
+                nav.style.transform = "translateX(" + -translateValue + "px)";
+                setTimeout(toggleArrowVisibility, TRANSITION_DURATION);
+            });
+
+            arrowRight.addEventListener('click', function () {
+                console.log(translateValue);
+                // Check if nav is moved too far to the right
+                if (translateValue + barRect.width >= navRect.width - barRect.width) {
+                    // Set translateValue to farthest
+                    translateValue = navRect.width - barRect.width;
+                    arrowRight.style.display = "none";
+                } else {
+                    translateValue += barRect.width;
+                    arrowLeft.style.display = "block";
+                }
+                console.log(translateValue);
+                nav.style.transform = "translateX(" + -translateValue + "px)";
+                setTimeout(toggleArrowVisibility, TRANSITION_DURATION);
+            });
+
+            // Recompute values on resize
+            window.addEventListener('resize', recalibrate);
+
+
+            // Functions
+            function recalibrate() {
+                barRect = bar.getBoundingClientRect();
+                moveIndicator();
+                toggleArrowVisibility();
+            }
+
+            function createArrow(arrowType) {
+                var arrow = bar.querySelector('.arrow-' + arrowType);
+
+                // Check if arrow exists
+                if (arrow) {
+                    return;
+                }
+
+                arrow = document.createElement('button');
+                arrow.classList.add('arrow-' + arrowType);
+
+                var icon = document.createElement('i');
+                icon.classList.add('material-icons');
+                icon.textContent = "chevron_" + arrowType;
+
+                arrow.appendChild(icon);
+                bar.appendChild(arrow);
+                return arrow;
+            }
+
+            function toggleArrowVisibility() {
+                if (!arrowLeft || !arrowRight || "ontouchstart" in document.documentElement) {
+                    return;
+                }
+
+                navRect = nav.getBoundingClientRect();
+                if (barRect.width < navRect.width) {
+                    // Check if nav still has links to the left
+                    if (barRect.left <= navRect.left) {
+                        arrowLeft.style.display = "none";
+                    } else {
+                        arrowLeft.style.display = "block";
+                    }
+                    // Check if nav still has links to the right
+                    if (barRect.right >= navRect.right) {
+                        arrowRight.style.display = "none";
+                    } else {
+                        arrowRight.style.display = "block";
+                    }
+                } else {
+                    translateValue = 0;
+                    nav.style.transform = "translateX(" + -translateValue + "px)";
+                    arrowLeft.style.display = "none";
+                    arrowRight.style.display = "none";
+                }
+            }
+
+            function moveIndicator() {
+                console.log('move indicator');
+                navRect = nav.getBoundingClientRect();
+                activeRect = active.getBoundingClientRect();
+                console.log(activeRect.left);
+                console.log(navRect.left);
+                indicator.style.left = activeRect.left - navRect.left + "px";
+                indicator.style.width = activeRect.width + "px";
+            }
+
+            function hideAllItems() {
+                var children = items.children;
+                for (let i = 0; i < children.length; i++) {
+                    children[i].style.display = "none";
+                }
+            }
+
+            function closest(child, className) {
+                var node = child;
+                while (node !== null) {
+                    if ((node.className || '').indexOf(className) > -1) {
+                        return node;
+                    }
+                    node = node.parentElement;
+                }
+                return null;
+            }
         }
     }();
 
@@ -879,6 +1117,53 @@ document.addEventListener('DOMContentLoaded', function () {
                 newVolume = 1;
             }
             sermonTrack.volume = newVolume;
+        }
+    }();
+
+    var dev = function () {
+        var devotional = document.getElementById('morning-evening-devotional');
+
+        if (!devotional) {
+            return;
+        }
+
+        fetchJSONfile("../morning-and-evening-master/m_e.json", function (data) {
+            var dateToday = new Date();
+            var day = dateToday.getDate();
+            var month = dateToday.getMonth() + 1;
+            var monthDateString = month + "-" + day;
+            var time;
+            if (dateToday.getHours < 12) {
+                time = "pm";
+            } else {
+                time = "am";
+            }
+            for (var i = 0; i < data.length; i++) {
+                var element = data[i];
+                if (element !== null &&
+                    element.month === month &&
+                    element.day === day &&
+                    element.time === time) {
+                    console.log(element);
+                    var bodyText = element.body.replace(/\n/g, "<br>");
+                    document.getElementById('dev-body').innerHTML = bodyText;
+                    document.getElementById('dev-keyverse').innerHTML = element.keyverse;
+                }
+            }
+        });
+
+        function fetchJSONfile(path, callback) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == "200") {
+                    var data = JSON.parse(this.responseText);
+                    if (callback) {
+                        callback(data);
+                    }
+                }
+            };
+            xhttp.open("GET", path, true);
+            xhttp.send();
         }
     }();
 
