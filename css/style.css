@@ -98,7 +98,7 @@ img {
 }
 
 .dark-gray .material-icons {
-    color: hsla(0,0%,100%,.54);
+    color: hsla(0, 0%, 100%, .54);
 }
 
 
@@ -352,6 +352,39 @@ img {
 .fixed {
     position: fixed;
     z-index: 10;
+}
+
+.back-to-top-container {
+    position: relative;
+    padding-bottom: 136px;
+}
+
+.back-to-top-container .back-to-top-button {
+    display: block;
+    width: 56px;
+    height: 56px;
+    padding: 10px;
+    margin-top: 40px;
+    background-color: #2196f3;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+    z-index: 10;
+    text-align: center;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 4px rgba(0, 0, 0, .28);
+    transition: background .2s, color .2s, opacity .5s;
+}
+
+.back-to-top-container .back-to-top-button:hover {
+    background-color: #fff;
+    color: #2196f3;
+}
+
+.back-to-top-container .back-to-top-button .material-icons {
+    font-size: 36px;
 }
 
 
@@ -2277,6 +2310,9 @@ img {
         max-width: 360px;
         margin: 0 auto;
     }
+    .back-to-top-container .back-to-top-button {
+        right: 16px;
+    }
     .xs-3 {
         flex-basis: 25% !important;
         max-width: 25% !important;
@@ -2613,6 +2649,9 @@ img {
     .max-width,
     .max-width-xl {
         max-width: 1280px;
+    }
+    .back-to-top-container .back-to-top-button {
+        right: calc(50% - 600px);
     }
     .hide-on-xl-above {
         display: none !important;

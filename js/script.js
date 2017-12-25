@@ -477,22 +477,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
         horizontalList.addEventListener('touchstart', function (e) {
             touchstartX = e.changedTouches[0].screenX;
+            // e.preventDefault();
         }, false);
 
         horizontalList.addEventListener('touchend', function (e) {
             touchendX = e.changedTouches[0].screenX;
             handleGesure();
+            // e.preventDefault();
         }, false);
 
         window.addEventListener('resize', recalibrate);
 
         function handleGesure() {
             // swipe left
-            if (touchendX + 25 < touchstartX) {
+            if (touchendX + 75 < touchstartX) {
                 next();
             }
             // swipe right
-            if (touchendX > touchstartX + 25) {
+            if (touchendX > touchstartX + 75) {
                 prev();
             }
         }
