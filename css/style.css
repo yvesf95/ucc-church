@@ -38,7 +38,7 @@ section .section-title::before {
     height: 100%;
     position: absolute;
     left: -6px;
-    border-left: 3px solid #a0c66f;
+    border-left: 3px solid #8BC34A;
 }
 
 a {
@@ -97,6 +97,10 @@ img {
     font-size: 4rem !important;
 }
 
+.dark-gray .material-icons {
+    color: hsla(0,0%,100%,.54);
+}
+
 
 /*--------------------------------------------------------------
 # Colors
@@ -121,7 +125,7 @@ img {
 }
 
 .light-green {
-    background-color: #a0c66f !important;
+    background-color: #8BC34A !important;
     border-color: #a0c66f !important;
     color: #000 !important;
 }
@@ -132,10 +136,16 @@ img {
     color: #000 !important;
 }
 
-.gray {
+.light-gray {
     background-color: #f5f5f5 !important;
     border-color: #f5f5f5 !important;
     color: #000 !important;
+}
+
+.dark-gray {
+    background-color: #424242 !important;
+    border-color: #424242 !important;
+    color: #fff !important;
 }
 
 .transparent {
@@ -337,6 +347,11 @@ img {
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 1000;
+}
+
+.fixed {
+    position: fixed;
+    z-index: 10;
 }
 
 
@@ -1119,7 +1134,7 @@ img {
 
 .dropup.show .dropdown-btn,
 .dropdown.show .dropdown-btn {
-    background-color: #a0c66f;
+    background-color: #8BC34A;
 }
 
 .dropup .dropdown-content,
@@ -1227,12 +1242,12 @@ img {
     padding: 2rem 0;
     outline: none;
     border: none;
-    background: transparent;
+    background: #e0e0e0;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 3;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(0, 0, 0, 0.54);
     transition: all 0.3s ease;
 }
 
@@ -1243,7 +1258,7 @@ img {
 
 .horizontal-list .arrow-left:hover,
 .horizontal-list .arrow-right:hover {
-    background: rgba(0, 0, 0, 0.5);
+    background: #bdbdbd;
 }
 
 .horizontal-list .arrow-left {
@@ -1610,7 +1625,7 @@ img {
 }
 
 .menu .menu-link:hover {
-    background-color: #a0c66f;
+    background-color: #8BC34A;
 }
 
 
@@ -2321,6 +2336,12 @@ img {
         font-size: 45px;
         line-height: 48px;
     }
+    .scroll-container {
+        max-width: 450px;
+    }
+    .scroll-container .horizontal-list-item {
+        max-width: 450px;
+    }
     .sm-3 {
         flex-basis: 25% !important;
         max-width: 25% !important;
@@ -2574,10 +2595,6 @@ img {
     .carousel .carousel-next {
         background: rgba(0, 0, 0, 0.5);
     }
-    .horizontal-list .arrow-left,
-    .horizontal-list .arrow-right {
-        background: #000;
-    }
 }
 
 
@@ -2614,10 +2631,10 @@ img {
         max-width: 66.66%;
     }
     .scroll-container {
-        max-width: 1200px;
+        max-width: 1260px;
     }
     .scroll-container .horizontal-list-item {
-        max-width: 400px;
+        max-width: 420px;
     }
     .xl-2 {
         flex-basis: 16.66% !important;
@@ -2938,7 +2955,7 @@ div.page-id-7.container.active {
 --------------------------------------------------------------*/
 
 .dark {
-    background-color: #2b2b2b !important;
+    background-color: #303030 !important;
     border-color: rgba(255, 255, 255, 0.12) !important;
     color: rgba(255, 255, 255, 0.7) !important;
 }
