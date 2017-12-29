@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', function () {
         function changeBackground() {
             if (window.scrollY >= 100 || window.innerWidth < BREAKPOINT) {
                 navbar.classList.add('dark-transparent');
-                navbar.classList.remove('flat');
+                navbar.firstElementChild.classList.remove('flat');
             } else {
-                navbar.classList.add('flat');
+                navbar.firstElementChild.classList.add('flat');
                 navbar.classList.remove('dark-transparent');
             }
         }

@@ -6,929 +6,666 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>UCC Church Events</title>
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500|Material+Icons">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
 </head>
 
 <body>
-    <!-- navbar top -->
-    <nav class="menubar">
-        <div class="container">
-            <!-- toggler -->
-            <div class="menu-toggler toggler" data-target="#sidenav">
-                <i class="material-icons">menu</i>
-            </div>
-            <!-- logo -->
-            <a href="index.html" class="menu-brand">
-                <!-- for phones -->
-                <img class="menu-logo hide-on-sm-above" src="img/ucc-logo-xs.png" alt="ucc-logo">
-                <!-- for tablets and up -->
-                <img class="menu-logo hide-on-sm-below" src="img/ucc-logo.png" alt="ucc-logo">
-            </a>
-            <!-- small description for ucc church -->
-            <small class="menu-subtitle">Reaching out towards others, one family at a time.</small>
-            <!-- spacer -->
-            <div class="spacer"></div>
-            <!-- right nav items -->
-            <ul class="menu">
-                <li class="spacer"></li>
-                <li>
-                    <a href="" class="menu-link">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="hide-on-xs-below">Support</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="menu-link toggler" data-target="#search-form">
-                        <i class="material-icons">search</i>
-                        <span class="hide-on-xs-below">Search</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <!-- navbar bottom (sidenav to sidenav on width below 768px) -->
-    <div class="sidenav" id="sidenav">
-        <nav class="menubar" style="height: 48px; line-height: 48px;">
-            <!-- title for sidenav -->
-            <h2>Menu
-                <i class="material-icons close" data-target="#sidenav">close</i>
-            </h2>
+    <header id="navbar">
+        <!-- navbar top -->
+        <nav class="menubar flat transparent">
             <div class="container">
-                <!-- make vertical on width below 768px -->
-                <ul class="menu v-on-sm-below">
+                <!-- logo -->
+                <a href="index.html" class="menu-logo">
+                    <!-- for phones -->
+                    <!-- <img class="menu-logo hide-on-xs-above" src="img/ucc-logo-xs.png" alt="ucc-logo"> -->
+                    <!-- for tablets and up -->
+                    <img class="menu-logo" src="img/ucc-logo-white.png" alt="ucc-logo">
+                </a>
+                <!-- small description for ucc church -->
+                <span class="caption white-text-primary hide-on-xs-below">Reaching out towards others, one community at a time.</span>
+                <!-- spacer -->
+                <div class="spacer"></div>
+                <!-- right nav items -->
+                <ul class="menu justify-align-end">
+                    <li class="hide-on-sm-below">
+                        <a href="" class="menu-link white-text-primary">
+                            <i class="material-icons">favorite_border</i>
+                            <span class="hide-on-xs-below">Support</span>
+                        </a>
+                    </li>
                     <li>
-                        <a href="index.html" class="menu-link active">Home</a>
+                        <a href="" class="menu-link white-text-primary toggler" data-target="#search-form">
+                            <i class="material-icons">search</i>
+                            <span class="hide-on-xs-below">Search</span>
+                        </a>
+                    </li>
+                    <li class="hide-on-sm-above">
+                        <a href="" class="menu-link white-text-primary toggler" data-target="#sidenav">
+                            <i class="material-icons">menu</i>
+                            <span class="hide-on-xs-below">Menu</span>
+                        </a>
                     </li>
                     <!-- dropdown -->
-                    <li class="dropdown">
-                        <div class="menu-link dropdown-btn">About
-                            <i class="material-icons tiny rotate">expand_more</i>
+                    <li class="dropdown hide-on-sm-below">
+                        <div class="menu-link white-text-primary dropdown-btn">
+                            <i class="material-icons">menu</i>
+                            <span class="hide-on-xs-below">Menu</span>
                         </div>
                         <!-- dropdown content -->
-                        <div class="dropdown-content static-on-sm-below">
-                            <ul class="menu">
+                        <div class="dropdown-content right dark">
+                            <ul class="menu vertical">
                                 <li>
-                                    <a href="who-we-are.html" class="menu-link">Who We Are</a>
+                                    <a href="about.html" class="menu-link">About</a>
                                 </li>
                                 <li>
-                                    <a href="our-mission.html" class="menu-link">Our Mission</a>
+                                    <a href="sermons.html" class="menu-link">Sermons</a>
                                 </li>
                                 <li>
-                                    <a href="our-beliefs.html" class="menu-link">Our Beliefs</a>
+                                    <a href="events.html" class="menu-link">Events</a>
+                                </li>
+                                <li>
+                                    <a href="be-involved.html" class="menu-link">Be Involved</a>
+                                </li>
+                                <li>
+                                    <a href="prayer-request.html" class="menu-link">Prayer Request</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
-                    <li>
-                        <a href="sermons.html" class="menu-link">Sermons</a>
-                    </li>
-                    <li>
-                        <a href="events.html" class="menu-link">Events</a>
-                    </li>
-                    <li>
-                        <a href="news.html" class="menu-link">News</a>
-                    </li>
-                    <li>
-                        <a href="contact.html" class="menu-link">Contact</a>
-                    </li>
                 </ul>
             </div>
         </nav>
-    </div>
 
-    <!-- search form -->
-    <div id="search-form" class="bottom-sheet fullscreen">
-        <nav class="menubar">
-            <div class="container">
-                <!-- logo -->
-                <div class="menu-brand">
-                    <!-- for phones -->
-                    <img class="menu-logo hide-on-sm-above" src="img/ucc-logo-xs.png" alt="ucc-logo">
-                    <!-- for tablets and up -->
-                    <img class="menu-logo hide-on-sm-below" src="img/ucc-logo.png" alt="ucc-logo">
-                </div>
+        <div class="sidenav dark" id="sidenav">
+            <!-- title for sidenav -->
+            <div class="sidenav-header">
+                <h1 class="sidenav-title">Menu</h1>
                 <div class="spacer"></div>
-                <span>
-                    <i class="material-icons close" data-target="#search-form">close</i>
-                </span>
+                <i class="material-icons close" data-target="#sidenav">close</i>
             </div>
-        </nav>
-        <div class="container">
-            <form>
-                <div class="row align-center">
-                    <div class="col">
-                        <!-- search field -->
-                        <div class="input-group">
-                            <input type="text" name="search" id="search" autocomplete="off" required>
-                            <label for="search">Search</label>
+            <div class="divider"></div>
+            <!-- menu -->
+            <ul class="list two-line dense border-0 transparent">
+                <!-- with icon and inset -->
+                <li class="subheader white-text-secondary">Navigation</li>
+                <li class="list-item">
+                    <a href="about.html" class="list-item-container white-text-primary">
+                        <div class="list-item-icon">
+                            <i class="material-icons">info</i>
                         </div>
+                        <div class="list-item-text">
+                            <span>About</span>
+                            <span class="caption">Lorem ipsum dolor sit amet.</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="sermons.html" class="list-item-container white-text-primary">
+                        <div class="list-item-icon">
+                            <i class="material-icons">library_music</i>
+                        </div>
+                        <div class="list-item-text">
+                            <span>Sermons</span>
+                            <span class="caption">Lorem ipsum dolor sit amet.</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="events.html" class="list-item-container white-text-primary">
+                        <div class="list-item-icon">
+                            <i class="material-icons">event</i>
+                        </div>
+                        <div class="list-item-text">
+                            <span>Events</span>
+                            <span class="caption">Lorem ipsum dolor sit amet.</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="be-involved.html" class="list-item-container white-text-primary">
+                        <div class="list-item-icon">
+                            <i class="material-icons">group_add</i>
+                        </div>
+                        <div class="list-item-text">
+                            <span>Be Involved</span>
+                            <span class="caption">Lorem ipsum dolor sit amet.</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="prayer-request.html" class="list-item-container white-text-primary">
+                        <div class="list-item-icon">
+                            <i class="material-icons">email</i>
+                        </div>
+                        <div class="list-item-text">
+                            <span>Prayer Request</span>
+                            <span class="caption">Lorem ipsum dolor sit amet.</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <div class="divider"></div>
+            <ul class="menu vertical">
+                <li class="menu-item">
+                    <a href="" class="btn block outline">
+                        <i class="material-icons">favorite_border</i>
+                        <span>Support</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- search form -->
+        <div id="search-form" class="bottom-sheet fullscreen">
+            <nav class="menubar">
+                <div class="container">
+                    <!-- logo -->
+                    <div class="menu-logo">
+                        <img src="img/ucc-logo.png" alt="ucc-logo">
                     </div>
-                    <!-- search button -->
-                    <button type="submit" class="btn raised green">
-                        <i class="material-icons">search</i>
-                    </button>
+                    <div class="spacer"></div>
+                    <i class="material-icons close" data-target="#search-form">close</i>
                 </div>
-                <!-- filter -->
-                <div class="radio-group">
-                    <span>Filter:</span>
-                    <input type="radio" name="filter" value="all" id="all" checked>
-                    <label for="all">All</label>
-                    <input type="radio" name="filter" value="sermons" id="sermons">
-                    <label for="sermons">Sermons</label>
-                    <input type="radio" name="filter" value="events" id="events">
-                    <label for="events">Events</label>
-                    <input type="radio" name="filter" value="news" id="news">
-                    <label for="news">News</label>
-                </div>
-            </form>
-            <!-- display search results -->
-            <div class="search-results">
-                <h2>Search Results:</h2>
-                <ul class="list-group">
-                    <!-- single result -->
-                    <li class="list-item with-avatar">
-                        <!-- avatar / icon -->
-                        <div class="avatar">
-                            <i class="material-icons">folder</i>
+            </nav>
+            <div class="container">
+                <form>
+                    <div class="row align-center">
+                        <div class="col">
+                            <!-- search field -->
+                            <div class="input-group">
+                                <input type="text" name="search" id="search" autocomplete="off" required>
+                                <label for="search">Search</label>
+                            </div>
                         </div>
-                        <!-- title -->
-                        <h3>
-                            <a href="">Lorem ipsum dolor sit amet.</a>
-                        </h3>
-                        <!-- description -->
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quae velit exercitationem id eum
-                            esse magnam temporibus laudantium numquam officia architecto qui excepturi deserunt, vero beatae.
-                            Ipsam numquam odio culpa?</p>
-                        <!-- timestamp -->
-                        <small class="timestamp"></small>
-                        <!-- tags -->
-                        <ul class="chips">
-                            <li class="chip blue">
-                                <i class="material-icons">label</i> Sermon</li>
-                            <li class="chip red">
-                                <i class="material-icons">label</i> Event</li>
-                            <li class="chip green">
-                                <i class="material-icons">label</i> News</li>
-                        </ul>
-                    </li>
-                </ul>
+                        <!-- search button -->
+                        <button type="submit" class="btn raised green">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </div>
+                    <!-- filter -->
+                    <div class="radio-group">
+                        <span>Filter:</span>
+                        <input type="radio" name="filter" value="all" id="all" checked>
+                        <label for="all">All</label>
+                        <input type="radio" name="filter" value="sermons" id="sermons">
+                        <label for="sermons">Sermons</label>
+                        <input type="radio" name="filter" value="events" id="events">
+                        <label for="events">Events</label>
+                        <input type="radio" name="filter" value="news" id="news">
+                        <label for="news">News</label>
+                    </div>
+                </form>
+                <!-- display search results -->
+                <div class="search-results">
+                    <h2>Search Results:</h2>
+                    <ul class="list three-line">
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-avatar">
+                                    <img src="img/pastors/billy_300x300.jpg" alt="avatar">
+                                </div>
+                                <div class="list-item-text">
+                                    <span>Three-line item</span>
+                                    <span>Secondary text</span>
+                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia illum a minus aliquam praesentium.
+                                        Omnis quibusdam dolorum iure ea similique.</span>
+                                </div>
+                                <div class="list-item-actions">
+                                    <button type="button icon-button" class="button icon-button">
+                                        <i class="material-icons">more_vert</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider inset"></li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-avatar">
+                                    <img src="img/pastors/chad_300x300.jpg" alt="avatar">
+                                </div>
+                                <div class="list-item-text">
+                                    <span>Three-line item</span>
+                                    <span>Secondary text</span>
+                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia illum a minus aliquam praesentium.
+                                        Omnis quibusdam dolorum iure ea similique.</span>
+                                </div>
+                                <div class="list-item-actions">
+                                    <button type="button icon-button" class="button icon-button">
+                                        <i class="material-icons">more_vert</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider inset"></li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-avatar">
+                                    <img src="img/pastors/nicky_300x300.jpg" alt="avatar">
+                                </div>
+                                <div class="list-item-text">
+                                    <span>Three-line item</span>
+                                    <span>Secondary text</span>
+                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia illum a minus aliquam praesentium.
+                                        Omnis quibusdam dolorum iure ea similique.</span>
+                                </div>
+                                <div class="list-item-actions">
+                                    <button type="button icon-button" class="button icon-button">
+                                        <i class="material-icons">more_vert</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="overlay"></div>
+    </header>
 
     <!-- banner -->
     <div class="banner" id="banner">
-        <img src="img/carousel-images/Slide2.JPG" alt="sermons">
+        <img src="img/carousel-images/Slide2.JPG" alt="sermons" class="cover">
         <div class="banner-overlay">
             <div class="container">
-                <h1>Events</h1>
+                <h1 class="banner-title">Events</h1>
             </div>
         </div>
     </div>
 
-    <main>
-        <!-- upcoming event -->
-        <section id="upcoming-event">
-            <div class="container">
-                <div class="row wrap max-container">
-                    <!-- the event -->
-                    <div class="col sm-6 lg-8 xl-9">
-                        <div class="card horizontal medium">
-                            <div class="card-img">
-                                <img src="img/event-images/Slide1.JPG" alt="event-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-event.html">UCC Church 5th Anniversary</a>
-                                    </h1>
-                                    <h4 class="card-subtitle">Friday, September 29, 2017</h4>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ad enim exercitationem
-                                        modi est. Porro deserunt non aliquid tenetur possimus.</p>
-                                </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+    <main id="latest-event">
+        <div class="max-width">
+            <div class="row wrap">
+                <div class="row col md-8 hide-on-sm-below">
+                    <div class="card xl-10 m-auto">
+                        <div class="card-media-cover">
+                            <div class="card-media-ratio-16-9">
+                                <img src="img/event-images/Slide6.JPG" alt="event-img">
                             </div>
                         </div>
-                    </div>
-                    <!-- archive -->
-                    <div class="col sm-6 lg-4 xl-3">
-                        <h2>Archive</h2>
-                        <ul class="accordion">
-                            <li class="active">
-                                <div class="accordion-header">
-                                    <i class="material-icons">date_range</i> Date
-                                </div>
-                                <div class="accordion-body">
-                                    <div class="dropdown">
-                                        <button class="dropdown-btn btn" style="width: 100%;">
-                                            Select Year
-                                            <i class="material-icons">expand_more</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="" class="menu-link">2017</a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">2016</a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">2015</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="accordion-header">
-                                    <i class="material-icons">library_books</i> Series
-                                </div>
-                                <div class="accordion-body">
-                                    <div class="dropdown">
-                                        <button class="dropdown-btn btn" style="width: 100%;">
-                                            Select Series
-                                            <i class="material-icons">expand_more</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="" class="menu-link">John</a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">1 Corinthians</a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">Revelation</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="accordion-header">
-                                    <i class="material-icons">category</i> Categories
-                                </div>
-                                <div class="accordion-body">
-                                    <div class="dropdown">
-                                        <button class="dropdown-btn btn" style="width: 100%;">
-                                            Select Category
-                                            <i class="material-icons">expand_more</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="" class="menu-link">Faith</a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">Regeneration</a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">Salvation</a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">Love</a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">Joy</a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">Peace</a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">Patience</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="accordion-header">
-                                    <i class="material-icons">title</i> Title
-                                </div>
-                                <div class="accordion-body">
-                                    <div class="dropdown">
-                                        <button class="dropdown-btn btn" style="width: 100%;">
-                                            Select A-Z
-                                            <i class="material-icons">expand_more</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="" class="menu-link">A</a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">B</a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">C</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- upcoming events -->
-        <section id="upcoming-events" class="highlighted-section">
-            <div class="container">
-                <div class="row align-center">
-                    <h2>Upcoming Events</h2>
-                </div>
-                <div class="row wrap max-container">
-                    <div class="col sm-6 md-6 lg-4 xl-3">
-                        <div class="card medium">
-                            <div class="card-img">
-                                <img src="img/event-images/Slide1.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-event.html">UCC Church 5th Anniversary</a>
-                                    </h1>
-                                    <h4 class="card-subtitle">Friday, September 29, 2017</h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="row col md-4">
+                    <div class="card dialog-box m-auto">
+                        <div class="card-media">
+                            <img src="img/event-images/Slide6.JPG" alt="event-img" class="hide-on-sm-above">
+                        </div>
+                        <div class="ribbon-container">
+                            <div class="ribbon" id="latest">
+                                <i class="material-icons ribbon-icon">new_releases</i> Upcoming
                             </div>
                         </div>
-                    </div>
-                    <div class="col sm-6 md-6 lg-4 xl-3">
-                        <div class="card medium">
-                            <div class="card-img">
-                                <img src="img/event-images/Slide1.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-event.html">UCC Church 5th Anniversary</a>
-                                    </h1>
-                                    <h4 class="card-subtitle">Friday, September 29, 2017</h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="card-header">
+                            <h1 class="card-title title">Candlelight Service</h1>
+                            <h2 class="card-subtitle">December 22, 2017</h2>
                         </div>
-                    </div>
-                    <div class="col sm-6 md-6 lg-4 xl-3">
-                        <div class="card medium">
-                            <div class="card-img">
-                                <img src="img/event-images/Slide1.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-event.html">UCC Church 5th Anniversary</a>
-                                    </h1>
-                                    <h4 class="card-subtitle">Friday, September 29, 2017</h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col sm-6 md-6 lg-4 xl-3">
-                        <div class="card medium">
-                            <div class="card-img">
-                                <img src="img/event-images/Slide1.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-event.html">UCC Church 5th Anniversary</a>
-                                    </h1>
-                                    <h4 class="card-subtitle">Friday, September 29, 2017</h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col sm-6 md-6 lg-4 xl-3">
-                        <div class="card medium">
-                            <div class="card-img">
-                                <img src="img/event-images/Slide1.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-event.html">UCC Church 5th Anniversary</a>
-                                    </h1>
-                                    <h4 class="card-subtitle">Friday, September 29, 2017</h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col sm-6 md-6 lg-4 xl-3">
-                        <div class="card medium">
-                            <div class="card-img">
-                                <img src="img/event-images/Slide1.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-event.html">UCC Church 5th Anniversary</a>
-                                    </h1>
-                                    <h4 class="card-subtitle">Friday, September 29, 2017</h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="card-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque esse assumenda ut iusto sed facere
+                            repudiandae fugiat ab eum repellat!</div>
+                        <div class="spacer"></div>
+                        <div class="card-actions">
+                            <button class="button">Action</button>
+                            <div class="spacer"></div>
+                            <button class="button icon-button">
+                                <i class="material-icons">share</i>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- recent events -->
-        <section id="recent-events">
-            <div class="container">
-                <div class="row align-center">
-                    <h2>Recent Events</h2>
-                </div>
-                <div class="row wrap max-container">
-                    <div class="col sm-6 md-6 lg-4 xl-3">
-                        <div class="card medium">
-                            <div class="card-img">
-                                <img src="img/event-images/Slide1.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-event.html">UCC Church 5th Anniversary</a>
-                                    </h1>
-                                    <h4 class="card-subtitle">Friday, September 29, 2017</h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col sm-6 md-6 lg-4 xl-3">
-                        <div class="card medium">
-                            <div class="card-img">
-                                <img src="img/event-images/Slide1.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-event.html">UCC Church 5th Anniversary</a>
-                                    </h1>
-                                    <h4 class="card-subtitle">Friday, September 29, 2017</h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col sm-6 md-6 lg-4 xl-3">
-                        <div class="card medium">
-                            <div class="card-img">
-                                <img src="img/event-images/Slide1.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-event.html">UCC Church 5th Anniversary</a>
-                                    </h1>
-                                    <h4 class="card-subtitle">Friday, September 29, 2017</h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col sm-6 md-6 lg-4 xl-3">
-                        <div class="card medium">
-                            <div class="card-img">
-                                <img src="img/event-images/Slide1.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-event.html">UCC Church 5th Anniversary</a>
-                                    </h1>
-                                    <h4 class="card-subtitle">Friday, September 29, 2017</h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col sm-6 md-6 lg-4 xl-3">
-                        <div class="card medium">
-                            <div class="card-img">
-                                <img src="img/event-images/Slide1.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-event.html">UCC Church 5th Anniversary</a>
-                                    </h1>
-                                    <h4 class="card-subtitle">Friday, September 29, 2017</h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col sm-6 md-6 lg-4 xl-3">
-                        <div class="card medium">
-                            <div class="card-img">
-                                <img src="img/event-images/Slide1.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-event.html">UCC Church 5th Anniversary</a>
-                                    </h1>
-                                    <h4 class="card-subtitle">Friday, September 29, 2017</h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
+
+    <!-- Coming Soon -->
+    <section id="coming-soon" class="highlighted-section">
+        <div class="max-width">
+            <h1 class="headline text-center">Coming Soon</h1>
+            <div class="divider darker"></div>
+            <div class="row wrap justify-center">
+                <div class="col xs-12 sm-12 md-6 lg-4">
+                    <div class="card">
+                        <div class="card-media-cover">
+                            <div class="card-media-ratio-16-9">
+                                <img src="img/event-images/Slide5.JPG" alt="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card-header">
+                                <h1 class="card-title subheading-1">Lorem ipsum dolor sit amet.</h1>
+                                <h2 class="card-subtitle">Lorem, ipsum dolor.</h2>
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="card-actions vertical">
+                                <div class="spacer"></div>
+                                <button class="button icon-button">
+                                    <i class="material-icons">share</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col xs-12 sm-12 md-6 lg-4">
+                    <div class="card">
+                        <div class="card-media-cover">
+                            <div class="card-media-ratio-16-9">
+                                <img src="img/event-images/Slide4.JPG" alt="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card-header">
+                                <h1 class="card-title subheading-1">Lorem ipsum dolor sit amet.</h1>
+                                <h2 class="card-subtitle">Lorem, ipsum dolor.</h2>
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="card-actions vertical">
+                                <div class="spacer"></div>
+                                <button class="button icon-button">
+                                    <i class="material-icons">share</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col xs-12 sm-12 md-6 lg-4">
+                    <div class="card">
+                        <div class="card-media-cover">
+                            <div class="card-media-ratio-16-9">
+                                <img src="img/event-images/Slide3.JPG" alt="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card-header">
+                                <h1 class="card-title subheading-1">Lorem ipsum dolor sit amet.</h1>
+                                <h2 class="card-subtitle">Lorem, ipsum dolor.</h2>
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="card-actions vertical">
+                                <div class="spacer"></div>
+                                <button class="button icon-button">
+                                    <i class="material-icons">share</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Previous Events -->
+    <section id="previous-events">
+        <div class="max-width">
+            <h1 class="headline text-center">Previous Events</h1>
+            <div class="divider darker"></div>
+            <div class="row wrap justify-center">
+                <div class="col xs-12 sm-12 md-6 lg-4">
+                    <div class="card">
+                        <div class="card-media-cover">
+                            <div class="card-media-ratio-16-9">
+                                <img src="img/event-images/Slide5.JPG" alt="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card-header">
+                                <h1 class="card-title subheading-1">Lorem ipsum dolor sit amet.</h1>
+                                <h2 class="card-subtitle">Lorem, ipsum dolor.</h2>
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="card-actions vertical">
+                                <div class="spacer"></div>
+                                <button class="button icon-button">
+                                    <i class="material-icons">share</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col xs-12 sm-12 md-6 lg-4">
+                    <div class="card">
+                        <div class="card-media-cover">
+                            <div class="card-media-ratio-16-9">
+                                <img src="img/event-images/Slide4.JPG" alt="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card-header">
+                                <h1 class="card-title subheading-1">Lorem ipsum dolor sit amet.</h1>
+                                <h2 class="card-subtitle">Lorem, ipsum dolor.</h2>
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="card-actions vertical">
+                                <div class="spacer"></div>
+                                <button class="button icon-button">
+                                    <i class="material-icons">share</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col xs-12 sm-12 md-6 lg-4">
+                    <div class="card">
+                        <div class="card-media-cover">
+                            <div class="card-media-ratio-16-9">
+                                <img src="img/event-images/Slide3.JPG" alt="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card-header">
+                                <h1 class="card-title subheading-1">Lorem ipsum dolor sit amet.</h1>
+                                <h2 class="card-subtitle">Lorem, ipsum dolor.</h2>
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="card-actions vertical">
+                                <div class="spacer"></div>
+                                <button class="button icon-button">
+                                    <i class="material-icons">share</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col xs-12 sm-12 md-6 lg-4">
+                    <div class="card">
+                        <div class="card-media-cover">
+                            <div class="card-media-ratio-16-9">
+                                <img src="img/event-images/Slide2.JPG" alt="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card-header">
+                                <h1 class="card-title subheading-1">Lorem ipsum dolor sit amet.</h1>
+                                <h2 class="card-subtitle">Lorem, ipsum dolor.</h2>
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="card-actions vertical">
+                                <div class="spacer"></div>
+                                <button class="button icon-button">
+                                    <i class="material-icons">share</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col xs-12 sm-12 md-6 lg-4">
+                    <div class="card">
+                        <div class="card-media-cover">
+                            <div class="card-media-ratio-16-9">
+                                <img src="img/event-images/Slide1.JPG" alt="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card-header">
+                                <h1 class="card-title subheading-1">Lorem ipsum dolor sit amet.</h1>
+                                <h2 class="card-subtitle">Lorem, ipsum dolor.</h2>
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="card-actions vertical">
+                                <div class="spacer"></div>
+                                <button class="button icon-button">
+                                    <i class="material-icons">share</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section class="text-center">
+                <a href="" class="subheading-1">Load More...</a>
+            </section>
+        </div>
+    </section>
+
+    <footer class="highlighted-section">
+        <div class="container">
+            <div class="row wrap">
+                <div class="col md-4">
+                    <ul class="list dense border-0 transparent">
+                        <li class="subheader inset">Sunday Worship Service</li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">access_time</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>Every Sunday starts at 9:30am</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">place</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>6/F Roofdeck Function Hall Hemady Square E Rodriguez Ave corner Hemady St, QC</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="subheader inset">Adult Bible Class</li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">access_time</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>Every Sunday starts at 8:30am</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">place</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>6/F Roofdeck Function Hall Hemady Square E Rodriguez Ave corner Hemady St, QC</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col md-4">
+                    <!-- <img src="img/map-to-hemady-1-1.png" alt="" style="max-width:100%;"> -->
+                    <ul class="list dense border-0 transparent">
+                        <li class="subheader inset">Midweek In-depth Bible Study</li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">access_time</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>Every Wednesday, dinner starts at 7:00pm</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">place</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>Valencia Hills, N Domingo St, Quezon City, Metro Manila</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="subheader inset">3:16 Fellowship &amp; Prayer Meeting</li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">access_time</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>Every Friday, dinner starts at 7:00pm</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">place</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>16 Tinaduan Street, Barangay Masambong, Q.C. 1115</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col md-4">
+                    <ul class="list dense border-0 transparent">
+                        <!-- with icon and inset -->
+                        <li class="subheader">Contact Info</li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">phone</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>555 555 555</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">email</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>WriteToUCC@gmail.com</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">face</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>https://www.facebook.com/UCC-Church-237812533028498/</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">phone_in_talk</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>555 555 555</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row dark">
+            <div class="container">
+                <p class="caption">&copy; 2017 Union with Christ Community Church. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="overlay"></div>
 </body>
 
 </html>

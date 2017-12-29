@@ -153,7 +153,7 @@ img {
 }
 
 .flat {
-    background-color: transparent !important;
+    /* background-color: transparent !important; */
     box-shadow: none !important;
 }
 
@@ -326,30 +326,39 @@ img {
 # Ribbon
 --------------------------------------------------------------*/
 
+.ribbon-container {
+    position: relative;
+    height: 32px;
+}
+
 .ribbon {
     display: flex;
     align-items: center;
-    height: 36px;
+    height: 32px;
     position: absolute;
-    top: 14px;
-    left: -10px;
+    left: -6px;
+    bottom: -16px;
     z-index: 10;
     padding: 0 16px;
     color: #fff;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 14px;
+    font-weight: 300;
     background-color: #4C8AFF;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
+}
+
+.ribbon.top {
+    top: -16px;
 }
 
 .ribbon::before {
     content: "";
     display: block;
     position: absolute;
-    top: -6px;
+    top: -4px;
     left: 0;
-    border-width: 0 0 6px 10px;
+    border-width: 0 0 4px 6px;
     border-style: none none solid solid;
     border-color: transparent transparent #1F486A transparent;
 }
@@ -798,7 +807,7 @@ img {
     border-top-right-radius: 2px;
 }
 
-.card .card-media-cover:last-of-type * {
+.card .card-media-cover:last-of-type>* {
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
 }
@@ -1211,6 +1220,43 @@ img {
 
 .chip .material-icons {
     opacity: 0.54;
+}
+
+
+/*--------------------------------------------------------------
+# Dialog Box
+--------------------------------------------------------------*/
+
+.dialog-box {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.dialog-box::before,
+.dialog-box::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.dialog-box::before {
+    left: -21px;
+    z-index: 2;
+    border-width: 18px 22px 18px 0;
+    border-style: solid solid solid none;
+    border-color: transparent #fff transparent transparent;
+}
+
+.dialog-box::after {
+    left: -23px;
+    z-index: 1;
+    border-width: 18px 22px 18px 0;
+    border-style: solid solid solid none;
+    border-color: transparent #ccc transparent transparent;
 }
 
 
@@ -2489,6 +2535,10 @@ img {
     .carousel .carousel-next i {
         font-size: 2rem;
     }
+    .dialog-box::before,
+    .dialog-box::after {
+        display: none;
+    }
     .horizontal-list .arrow-left,
     .horizontal-list .arrow-right {
         padding: 1rem 0;
@@ -2521,7 +2571,7 @@ img {
     }
     .max-width,
     .max-width-md {
-        max-width: 700px;
+        max-width: 740px;
         margin: 0 auto;
     }
     .horizontal-on-md {
@@ -2715,12 +2765,6 @@ img {
     .v-on-xl-above {
         flex-direction: column;
     }
-    .banner {
-        max-height: 375px;
-    }
-    .banner img.cover {
-        max-height: 375px;
-    }
     .card.horizontal {
         flex-direction: row;
     }
@@ -2773,6 +2817,14 @@ img {
     .xl-12 {
         flex-basis: 100% !important;
         max-width: 100% !important;
+    }
+    .xl-6-5 {
+        flex-basis: 44.44% !important;
+        max-width: 44.44% !important;
+    }
+    .xl-3-5 {
+        flex-basis: 27.77% !important;
+        max-width: 27.77% !important;
     }
 }
 
