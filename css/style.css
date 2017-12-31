@@ -250,7 +250,15 @@ img {
 }
 
 .text-center {
-    text-align: center;
+    text-align: center !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right !important;
 }
 
 .subheader {
@@ -310,8 +318,14 @@ img {
     z-index: 1;
     border-radius: 50%;
     transform: scale(0);
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.5);
     animation: ripple 400ms linear;
+}
+
+.carousel-next .ripple,
+.carousel-prev .ripple,
+.card-media-overlay .ripple {
+    background: rgba(255, 255, 255, 0.5);
 }
 
 @keyframes ripple {
@@ -375,7 +389,7 @@ img {
 .container {
     width: 96%;
     padding: 0 2%;
-    max-width: 1280px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -393,11 +407,6 @@ img {
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 1000;
-}
-
-.fixed {
-    position: fixed;
-    z-index: 10;
 }
 
 .back-to-top-container {
@@ -585,8 +594,12 @@ img {
 
 .banner {
     position: relative;
-    max-height: 200px;
+    height: 160px;
     overflow: hidden;
+}
+
+.banner.large {
+    height: 400px;
 }
 
 .banner img {
@@ -595,8 +608,24 @@ img {
 }
 
 .banner img.cover {
-    max-height: 200px;
+    height: 160px;
     object-fit: cover;
+}
+
+.banner.large img.cover {
+    height: 400px;
+}
+
+.banner img.cover.top {
+    object-position: top;
+}
+
+.banner img.cover.left {
+    object-position: left;
+}
+
+.banner img.cover.right {
+    object-position: right;
 }
 
 .banner img.cover.bottom {
@@ -614,9 +643,18 @@ img {
 .banner .banner-overlay .banner-title {
     margin: 0;
     color: #fff;
-    font-size: 34px;
+    font-size: 28px;
+    line-height: 32px;
     font-weight: 400;
-    /* text-transform: uppercase; */
+    text-align: center;
+}
+
+.banner .banner-overlay .banner-text {
+    margin: 0;
+    margin-top: 1.25rem;
+    color: #fff;
+    font-size: 16px;
+    line-height: 24px;
     text-align: center;
 }
 
@@ -940,7 +978,7 @@ img {
 
 .card .card-header .card-subtitle {
     margin: 0;
-    opacity: 0.54;
+    opacity: 0.7;
     font-size: 14px;
     line-height: 20px;
     font-weight: 400;
@@ -2471,14 +2509,24 @@ img {
         display: none !important;
     }
     .banner {
-        max-height: 250px;
+        height: 200px;
     }
     .banner img.cover {
-        max-height: 250px;
+        height: 200px;
+    }
+    .banner.large {
+        height: 450px;
+    }
+    .banner.large img.cover {
+        height: 450px;
     }
     .banner .banner-overlay .banner-title {
-        font-size: 45px;
-        line-height: 48px;
+        font-size: 34px;
+        line-height: 40px;
+    }
+    .banner .banner-overlay .banner-text {
+        font-size: 20px;
+        line-height: 28px;
     }
     .scroll-container {
         max-width: 450px;
@@ -2578,10 +2626,20 @@ img {
         flex-direction: row;
     }
     .banner {
-        max-height: 300px;
+        height: 250px;
     }
     .banner img.cover {
-        max-height: 300px;
+        height: 250px;
+    }
+    .banner.large {
+        height: 500px;
+    }
+    .banner.large img.cover {
+        height: 500px;
+    }
+    .banner .banner-overlay .banner-title {
+        font-size: 38px;
+        line-height: 42px;
     }
     .scroll-container {
         max-width: 600px;
@@ -2658,8 +2716,8 @@ img {
         flex-direction: column;
     }
     .banner .banner-overlay .banner-title {
-        font-size: 56px;
-        line-height: 84px;
+        font-size: 45px;
+        line-height: 48px;
     }
     .scroll-container {
         max-width: 960px;
@@ -2727,6 +2785,12 @@ img {
         flex-basis: 100% !important;
         max-width: 100% !important;
     }
+    .lg-order-1 {
+        order: 1;
+    }
+    .lg-order-2 {
+        order: 2;
+    }
 }
 
 @media (max-width: 1279px) {
@@ -2742,19 +2806,19 @@ img {
 
 /* xl 1200px and above */
 
-@media (max-width: 1279px) {
+@media (max-width: 1199px) {
     .hide-on-xl-below {
         display: none !important;
     }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1200px) {
     .max-container {
         max-width: 1184px;
     }
     .max-width,
     .max-width-xl {
-        max-width: 1280px;
+        max-width: 1200px;
     }
     .back-to-top-container .back-to-top-button {
         right: calc(50% - 600px);
@@ -2818,13 +2882,14 @@ img {
         flex-basis: 100% !important;
         max-width: 100% !important;
     }
-    .xl-6-5 {
-        flex-basis: 44.44% !important;
-        max-width: 44.44% !important;
+    /* exclusive to sermons page */
+    .xl-latest {
+        flex-basis: 45.5% !important;
+        max-width: 45.5% !important;
     }
-    .xl-3-5 {
-        flex-basis: 27.77% !important;
-        max-width: 27.77% !important;
+    .xl-recent {
+        flex-basis: 27.25% !important;
+        max-width: 27.25% !important;
     }
 }
 
