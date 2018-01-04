@@ -21,8 +21,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (window.scrollY >= 100 || window.innerWidth < BREAKPOINT) {
                 navbar.classList.add('dark-transparent');
                 navbar.firstElementChild.classList.remove('flat');
+                navbar.firstElementChild.classList.add('menubar--scrolled');
             } else {
                 navbar.firstElementChild.classList.add('flat');
+                navbar.firstElementChild.classList.remove('menubar--scrolled');
                 navbar.classList.remove('dark-transparent');
             }
         }
@@ -147,10 +149,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 circle.style.top = e.clientY - rect.top - size / 2 + 'px';
 
                 circle.classList.add('ripple');
-
-                if (button.classList.contains('flat')) {
-                    circle.classList.add('light-green');
-                }
 
                 setTimeout(() => {
                     this.removeChild(circle);
@@ -878,142 +876,144 @@ document.addEventListener('DOMContentLoaded', function () {
     var sermonPlayer = function () {
         // the sermon player (bottom sheet)
         var sermonPlayer = document.getElementById('sermon-player');
+
+        if (!sermonPlayer) {
+            return;
+        }
+
         // the sermon track (mp3 file)
         var sermonTrack = document.getElementById('sermon-track');
         // get current time element
         var currentTime = document.getElementById('current-time');
 
+        // Play Button
+        var playButton = document.getElementById('play-button');
+        var showPlayerButton = document.getElementById('show-player-button');
+        var hidePlayerButton = document.getElementById('hide-player-button');
+
+        // Progress Bar
         var trackProgress = document.getElementById('track-progress');
-        var timeCurrent = document.getElementById('time-current');
-        var timeFloat = document.getElementById('time-float');
+        var timeBufferedBar = document.getElementById('time-buffered-bar');
+        var timeElapsedBar = document.getElementById('time-elapsed-bar');
+        var timeElapsedFloat = document.getElementById('time-elapsed-float');
         var trackHandle = document.getElementById('track-handle');
         var isTrackProgressOnMouseDown = false;
 
-        if (!sermonPlayer) {
-            return;
+        // Volume
+        var volumeButton = document.getElementById('volume-button');
+        var volumeProgress = document.getElementById('volume-progress');
+        var volumeCurrent = document.getElementById('volume-current');
+        var volumeHandle = document.getElementById('volume-handle');
+        var isVolumeControlOnMouseDown = false;
+
+        // Hide volume progress bar on touch screen devices
+        if ("ontouchstart" in document.documentElement) {
+            volumeProgress.parentElement.style.display = "none";
+        } else {
+            volumeProgress.parentElement.style.display = "block";
         }
-        // fires if track is playing
+
+        // Sermon Track Events
+
+        // Fires when the audio is playing after having been paused or stopped for buffering
         sermonTrack.addEventListener('playing', function () {
             playButton.firstElementChild.textContent = "pause_circle_outline";
-            showPlayerIcon.firstElementChild.textContent = "pause_circle_outline";
-            showPlayerText.firstChild.textContent = "Pause";
+            showPlayerButton.firstElementChild.textContent = "pause_circle_outline";
+            showPlayerButton.querySelector('span').textContent = "Pause";
         });
 
-        // fires if track is paused
+        // Fires when the audio has been paused
         sermonTrack.addEventListener('pause', function () {
             playButton.firstElementChild.textContent = "play_circle_outline";
-            showPlayerIcon.firstElementChild.textContent = "play_circle_outline";
-            showPlayerText.firstChild.textContent = "Play";
+            showPlayerButton.firstElementChild.textContent = "play_circle_outline";
+            showPlayerButton.querySelector('span').textContent = "Play";
         });
 
-        // fires when duration is changed
+        // Fires when the duration of the audio is changed
         sermonTrack.addEventListener('durationchange', function () {
-            // sets the full duration
+            // Sets the full duration
             var fullDuration = document.getElementById('full-duration');
-            fullDuration.textContent = ("0" + parseInt(sermonTrack.duration / 60)).slice(-2) + ":" + ("0" + parseInt(sermonTrack.duration % 60)).slice(-2);
+            fullDuration.textContent = parseTime(sermonTrack.duration);
         });
 
-        // fires when current time is changed
+        // Fires when the current playback position has changed
         sermonTrack.addEventListener('timeupdate', function () {
-            // convert to minutes and seconds ex. 00:01
-            currentTime.textContent = ("0" + parseInt(sermonTrack.currentTime / 60)).slice(-2) + ":" + ("0" + parseInt(sermonTrack.currentTime % 60)).slice(-2);
-            // computes size of progress bar 
+            // Convert to minutes and seconds ex. 00:01
+            currentTime.textContent = parseTime(sermonTrack.currentTime);
+            // Computes size of time elapsed progress bar 
             var size = sermonTrack.currentTime / sermonTrack.duration * trackProgress.clientWidth + "px";
-            // updates current time and progress bar 
-            timeCurrent.style.width = size;
+            // Updates time elapsed progress bar 
+            timeElapsedBar.style.width = size;
             trackHandle.style.left = size;
         });
 
-        // fires when volume is changed
+        // Fires when volume is changed
         sermonTrack.addEventListener('volumechange', function () {
             if (sermonTrack.volume !== 0 && !sermonTrack.muted) {
-                // volume is not muted and not zero
+                // Volume is not muted and not zero
                 volumeButton.firstElementChild.textContent = "volume_up";
             } else {
-                // volume is muted and 0
+                // Volume is muted and 0
                 volumeButton.firstElementChild.textContent = "volume_off";
             }
-            // updates volume bar
+            // Updates volume bar
             volumeCurrent.style.width = sermonTrack.volume * 100 + "%";
             volumeHandle.style.left = sermonTrack.volume * 100 + "%";
         });
-        // display TimeRanges
+        // Set initial volume
+        sermonTrack.volume = 0;
+        sermonTrack.volume = 1;
 
-        // sermonTrack.addEventListener('seeked', function () {
-        //     for (i = 0; i < sermonTrack.buffered.length; i++) {
-
-        //         var startX = sermonTrack.buffered.start(i) * inc;
-        //         var endX = sermonTrack.buffered.end(i) * inc;
-        //         var width = endX - startX;
-
-        //         context.fillRect(startX, 0, width, myCanvas.height);
-        //         context.rect(startX, 0, width, myCanvas.height);
-        //         context.stroke();
-        //     }
-        // });
-
-        // sermonTrack.addEventListener('progress', function () {
-        //     var duration = sermonTrack.duration;
-        //     if (duration > 0) {
-        //         for (var i = 0; i < sermonTrack.buffered.length; i++) {
-        //             if (sermonTrack.buffered.start(sermonTrack.buffered.length - 1 - i) < sermonTrack.currentTime) {
-        //                 document.getElementById('time-buffered').style.width = (sermonTrack.buffered.end(sermonTrack.buffered.length - 1 - i) / duration) * 100 + "%";
-        //             }
-        //         }
-        //     }
-        // });
-
+        // Fires when the browser can start playing the audio
         sermonTrack.addEventListener('canplay', function () {
-            console.log("canplay");
+            // Add listener for when downloading track
             addProgressListener();
         });
 
+        // Fires when the browser can play through the audio without stopping for buffering
         sermonTrack.addEventListener('canplaythrough', function () {
-            console.log("canplaythrough");
+            // Update the time buffered bar when track can play everything
             updateTimeBuffered();
-        })
+        });
 
         function addProgressListener() {
+            // Fires when the browser is downloading the audio
             sermonTrack.addEventListener('progress', function () {
-                console.log("progress");
+                // Updates time buffered bar on download
                 updateTimeBuffered();
             });
         }
 
         function updateTimeBuffered() {
+            // Checks if has buffered parts of the audio
             if (sermonTrack.buffered.length > 0) {
+                // Get the end position of the buffered range
                 var bufferedEnd = sermonTrack.buffered.end(0);
                 var duration = sermonTrack.duration;
                 if (duration > 0) {
-                    document.getElementById('time-buffered').style.width = ((bufferedEnd / duration) * 100) + "%";
+                    // Computes and sets the size of time buffered bar
+                    timeBufferedBar.style.width = ((bufferedEnd / duration) * 100) + "%";
                 }
-                console.log("update time buffered");
             }
         }
 
 
-        // shows player
-        var showPlayerIcon = document.getElementById('show-player-icon');
-        var showPlayerText = document.getElementById('show-player-text');
-        showPlayerIcon.addEventListener('click', showPlayer);
-        showPlayerText.addEventListener('click', showPlayer);
+        // Click Events
 
-        function showPlayer() {
+        // Shows player
+        showPlayerButton.addEventListener('click', function () {
             sermonPlayer.classList.add('open');
             playOrPause();
-        }
+        });
 
-        // hides player
-        var hidePlayer = document.getElementById('hide-player');
-        hidePlayer.addEventListener('click', function (e) {
+        // Hides player
+        hidePlayerButton.addEventListener('click', function (e) {
             e.preventDefault();
             sermonPlayer.classList.remove('open');
         });
 
-        // plays or pauses the track
-        var playButton = document.getElementById('play-button');
+        // Plays or pauses the track
         playButton.addEventListener('click', playOrPause);
-
         function playOrPause() {
             if (!sermonTrack.paused && !sermonTrack.ended) {
                 sermonTrack.pause();
@@ -1022,11 +1022,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // mutes or unmutes the volume of the track
-        var volumeButton = document.getElementById('volume-button');
-        volumeButton.addEventListener('click', muteOrUnmute);
-
-        function muteOrUnmute() {
+        // Mutes or unmutes the volume of the track
+        volumeButton.addEventListener('click', function () {
             if (sermonTrack.muted) {
                 sermonTrack.muted = false;
                 volumeButton.firstElementChild.textContent = "volume_up";
@@ -1034,59 +1031,106 @@ document.addEventListener('DOMContentLoaded', function () {
                 sermonTrack.muted = true;
                 volumeButton.firstElementChild.textContent = "volume_off";
             }
-        }
-
-        // shows time float on mouse move (hover)
-        trackProgress.addEventListener('mousemove', function (e) {
-            // sets time float position on mouse position
-            timeFloat.style.left = e.pageX - trackProgress.getBoundingClientRect().left + "px";
-            var targetTime = (e.pageX - trackProgress.getBoundingClientRect().left) * sermonTrack.duration / trackProgress.clientWidth;
-            // shows the time of where the mouse position
-            timeFloat.textContent = ("0" + parseInt(targetTime / 60)).slice(-2) + ":" + ("0" + parseInt(targetTime % 60)).slice(-2);
         });
 
-        // listens to mouse down on track progress bar
+
+        // Hover and Drag Events
+
+        // Order of events
+        // touchstart
+        // touchmove
+        // touchend
+        // mouseover
+        // mousemove
+        // mousedown
+        // mouseup
+        // click
+
+        // Touch Events
+
+        // Touchstart - show time-float
+        trackProgress.addEventListener('touchstart', function (e) {
+            // Prevents firing other events (mouse events)
+            e.preventDefault();
+            trackProgress.classList.add('hover');
+            setNewTime(e.changedTouches[0].pageX);
+            // sets time float position on mouse position
+            setTimeFloatPosition(e.changedTouches[0].pageX);
+        });
+
+        // Touchmove - drag time-elapsed bar and time-float
+        trackProgress.addEventListener('touchmove', function (e) {
+            // Prevents firing other events (mouse events)
+            e.preventDefault();
+            setNewTime(e.changedTouches[0].pageX);
+            // sets time float position on mouse position
+            setTimeFloatPosition(e.changedTouches[0].pageX);
+        });
+
+        // Touchend - hide time-float
+        trackProgress.addEventListener('touchend', function () {
+            trackProgress.classList.remove('hover');
+        });
+
+        // Mouse Events
+        // Mouseover - show time-float
+        trackProgress.addEventListener('mouseover', function () {
+            trackProgress.classList.add('hover');
+        });
+
+        // Mousemove - sets time-float position and label on move
+        trackProgress.addEventListener('mousemove', function (e) {
+            setTimeFloatPosition(e.pageX);
+        });
+
+        // Mousedown - ready for mouse drag on track-progress
         trackProgress.addEventListener('mousedown', function (e) {
             // prevents selecting
             e.preventDefault();
             // enables mousemove while on mouse down (dragging)
             isTrackProgressOnMouseDown = true;
-            setNewTime(e);
+            setNewTime(e.pageX);
 
+            // Listener placed on document to allow going out of the progress bar while dragging
+            document.onmousemove = function (e) {
+                // changes track progress bar while dragging
+                if (isTrackProgressOnMouseDown) {
+                    // prevents selecting while dragging
+                    e.preventDefault();
+                    setNewTime(e.pageX);
+                }
+            };
+
+            // Listener placed on document to listen to mouseup 
+            // outside of progress bar for indication of mouse drag
             document.onmouseup = function () {
                 // removes mousemove after mouseup
                 isTrackProgressOnMouseDown = false;
                 document.onmouseup = null;
                 document.onmousemove = null;
             };
-
-            document.onmousemove = function (e) {
-                // changes track progress bar while dragging
-                if (isTrackProgressOnMouseDown) {
-                    e.preventDefault();
-                    setNewTime(e);
-                }
-            };
         });
 
-        function setNewTime(e) {
-            var newTime = (e.pageX - trackProgress.getBoundingClientRect().left) * sermonTrack.duration / trackProgress.clientWidth;
+        // Mouseleave - hide time-float
+        trackProgress.addEventListener('mouseleave', function () {
+            trackProgress.classList.remove('hover');
+        });
+
+        // Track Progress functions
+        function setTimeFloatPosition(pageX) {
+            timeElapsedFloat.style.left = pageX - trackProgress.getBoundingClientRect().left + "px";
+            var targetTime = (pageX - trackProgress.getBoundingClientRect().left) * sermonTrack.duration / trackProgress.clientWidth;
+            // shows the time of where the mouse position
+            timeElapsedFloat.textContent = parseTime(targetTime);
+        }
+        function setNewTime(pageX) {
+            var newTime = (pageX - trackProgress.getBoundingClientRect().left) * sermonTrack.duration / trackProgress.clientWidth;
             if (newTime >= 0 && newTime <= sermonTrack.duration) {
                 sermonTrack.currentTime = newTime;
             }
         }
 
-        // volume
-        var volumeProgress = document.getElementById('volume-progress');
-        var volumeCurrent = document.getElementById('volume-current');
-        var volumeHandle = document.getElementById('volume-handle');
-        var isVolumeControlOnMouseDown = false;
-
-        // set initial volume
-        sermonTrack.volume = 0;
-        sermonTrack.volume = 0.1;
-
-        // listens to mouse down on volume progress bar
+        // Listens to mouse down on volume progress bar
         volumeProgress.addEventListener('mousedown', function (e) {
             // prevents selecting
             e.preventDefault();
@@ -1094,13 +1138,7 @@ document.addEventListener('DOMContentLoaded', function () {
             isVolumeControlOnMouseDown = true;
             setNewVolume(e);
 
-            document.onmouseup = function () {
-                // removes mousemove after mouseup
-                isVolumeControlOnMouseDown = false;
-                document.onmouseup = null;
-                document.onmousemove = null;
-            };
-
+            // Listens to mousemove while on mousedown (dragging)
             document.onmousemove = function (e) {
                 // changes volume progress bar while dragging
                 if (isVolumeControlOnMouseDown) {
@@ -1108,8 +1146,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     setNewVolume(e);
                 }
             };
+
+            // Listens to mouseup (done dragging)
+            document.onmouseup = function () {
+                // removes mousemove after mouseup
+                isVolumeControlOnMouseDown = false;
+                document.onmouseup = null;
+                document.onmousemove = null;
+            };
         });
 
+        // Volume functions
         function setNewVolume(e) {
             var newVolume = (e.pageX - volumeProgress.getBoundingClientRect().left) / volumeProgress.clientWidth;
             if (newVolume < 0) {
@@ -1119,6 +1166,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 newVolume = 1;
             }
             sermonTrack.volume = newVolume;
+        }
+
+        // Scope functions
+        function computeNewBarWidth(newPos, rect) {
+            return (newPos - rect.left) / rect.width;
+        }
+
+        function parseTime(time) {
+            return ("0" + parseInt(time / 60)).slice(-2) + ":" + ("0" + parseInt(time % 60)).slice(-2);
         }
     }();
 

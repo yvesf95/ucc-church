@@ -6,514 +6,477 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>UCC Church Sermons</title>
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500|Material+Icons">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
 </head>
 
 <body>
-    <!-- navbar top -->
-    <nav class="menubar">
-        <div class="container">
-            <!-- toggler -->
-            <div class="menu-toggler toggler" data-target="#sidenav">
-                <i class="material-icons">menu</i>
-            </div>
-            <!-- logo -->
-            <a href="index.html" class="menu-brand">
-                <!-- for phones -->
-                <img class="menu-logo hide-on-sm-above" src="img/ucc-logo-xs.png" alt="ucc-logo">
-                <!-- for tablets and up -->
-                <img class="menu-logo hide-on-sm-below" src="img/ucc-logo.png" alt="ucc-logo">
-            </a>
-            <!-- small description for ucc church -->
-            <small class="menu-subtitle">Reaching out towards others, one family at a time.</small>
-            <!-- spacer -->
-            <div class="spacer"></div>
-            <!-- right nav items -->
-            <ul class="menu">
-                <li class="spacer"></li>
-                <li>
-                    <a href="" class="menu-link">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="hide-on-xs-below">Support</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="menu-link toggler" data-target="#search-form">
-                        <i class="material-icons">search</i>
-                        <span class="hide-on-xs-below">Search</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <!-- navbar bottom (sidenav to sidenav on width below 768px) -->
-    <div class="sidenav" id="sidenav">
-        <nav class="menubar" style="height: 48px; line-height: 48px;">
-            <!-- title for sidenav -->
-            <h2>Menu
-                <i class="material-icons close" data-target="#sidenav">close</i>
-            </h2>
+    <header id="navbar">
+        <!-- navbar top -->
+        <nav class="menubar flat transparent">
             <div class="container">
-                <!-- make vertical on width below 768px -->
-                <ul class="menu v-on-sm-below">
+                <!-- logo -->
+                <a href="index.html" class="menu-logo">
+                    <!-- for phones -->
+                    <!-- <img class="menu-logo hide-on-xs-above" src="img/ucc-logo-xs.png" alt="ucc-logo"> -->
+                    <!-- for tablets and up -->
+                    <img class="menu-logo" src="img/ucc-logo-white.png" alt="ucc-logo">
+                </a>
+                <!-- small description for ucc church -->
+                <span class="caption white-text-primary hide-on-xs-below">Reaching out towards others, one community at a time.</span>
+                <!-- spacer -->
+                <div class="spacer"></div>
+                <!-- right nav items -->
+                <ul class="menu justify-align-end">
+                    <li class="hide-on-sm-below">
+                        <a href="" class="menu-link white-text-primary">
+                            <i class="material-icons">favorite_border</i>
+                            <span class="hide-on-xs-below">Support</span>
+                        </a>
+                    </li>
                     <li>
-                        <a href="index.html" class="menu-link active">Home</a>
+                        <a href="" class="menu-link white-text-primary toggler" data-target="#search-form">
+                            <i class="material-icons">search</i>
+                            <span class="hide-on-xs-below">Search</span>
+                        </a>
+                    </li>
+                    <li class="hide-on-sm-above">
+                        <a href="" class="menu-link white-text-primary toggler" data-target="#sidenav">
+                            <i class="material-icons">menu</i>
+                            <span class="hide-on-xs-below">Menu</span>
+                        </a>
                     </li>
                     <!-- dropdown -->
-                    <li class="dropdown">
-                        <div class="menu-link dropdown-btn">About
-                            <i class="material-icons tiny rotate">expand_more</i>
+                    <li class="dropdown hide-on-sm-below">
+                        <div class="menu-link white-text-primary dropdown-btn">
+                            <i class="material-icons">menu</i>
+                            <span class="hide-on-xs-below">Menu</span>
                         </div>
                         <!-- dropdown content -->
-                        <div class="dropdown-content static-on-sm-below">
+                        <div class="dropdown-content right dark">
                             <ul class="menu vertical">
                                 <li>
-                                    <a href="who-we-are.html" class="menu-link">Who We Are</a>
+                                    <a href="about.html" class="menu-link">About</a>
                                 </li>
                                 <li>
-                                    <a href="our-mission.html" class="menu-link">Our Mission</a>
+                                    <a href="sermons.html" class="menu-link">Sermons</a>
                                 </li>
                                 <li>
-                                    <a href="our-beliefs.html" class="menu-link">Our Beliefs</a>
+                                    <a href="events.html" class="menu-link">Events</a>
+                                </li>
+                                <li>
+                                    <a href="be-involved.html" class="menu-link">Be Involved</a>
+                                </li>
+                                <li>
+                                    <a href="prayer-request.html" class="menu-link">Prayer Request</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
-                    <li>
-                        <a href="sermons.html" class="menu-link">Sermons</a>
-                    </li>
-                    <li>
-                        <a href="events.html" class="menu-link">Events</a>
-                    </li>
-                    <li>
-                        <a href="news.html" class="menu-link">News</a>
-                    </li>
-                    <li>
-                        <a href="contact.html" class="menu-link">Contact</a>
-                    </li>
                 </ul>
             </div>
         </nav>
-    </div>
 
-    <!-- search form -->
-    <div id="search-form" class="bottom-sheet fullscreen">
-        <nav class="menubar">
-            <div class="container">
-                <!-- logo -->
-                <div class="menu-brand">
-                    <!-- for phones -->
-                    <img class="menu-logo hide-on-sm-above" src="img/ucc-logo-xs.png" alt="ucc-logo">
-                    <!-- for tablets and up -->
-                    <img class="menu-logo hide-on-sm-below" src="img/ucc-logo.png" alt="ucc-logo">
-                </div>
+        <div class="sidenav dark" id="sidenav">
+            <!-- title for sidenav -->
+            <div class="sidenav-header">
+                <h1 class="sidenav-title">Menu</h1>
                 <div class="spacer"></div>
-                <span>
-                    <i class="material-icons close" data-target="#search-form">close</i>
-                </span>
+                <i class="material-icons close" data-target="#sidenav">close</i>
             </div>
-        </nav>
-        <div class="container">
-            <form>
-                <div class="row align-center">
-                    <div class="col">
-                        <!-- search field -->
-                        <div class="input-group">
-                            <input type="text" name="search" id="search" autocomplete="off" required>
-                            <label for="search">Search</label>
+            <div class="divider"></div>
+            <!-- menu -->
+            <ul class="list two-line dense border-0 transparent">
+                <!-- with icon and inset -->
+                <li class="subheader white-text-secondary">Navigation</li>
+                <li class="list-item">
+                    <a href="about.html" class="list-item-container white-text-primary">
+                        <div class="list-item-icon">
+                            <i class="material-icons">info</i>
                         </div>
+                        <div class="list-item-text">
+                            <span>About</span>
+                            <span class="caption">Lorem ipsum dolor sit amet.</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="sermons.html" class="list-item-container white-text-primary">
+                        <div class="list-item-icon">
+                            <i class="material-icons">library_music</i>
+                        </div>
+                        <div class="list-item-text">
+                            <span>Sermons</span>
+                            <span class="caption">Lorem ipsum dolor sit amet.</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="events.html" class="list-item-container white-text-primary">
+                        <div class="list-item-icon">
+                            <i class="material-icons">event</i>
+                        </div>
+                        <div class="list-item-text">
+                            <span>Events</span>
+                            <span class="caption">Lorem ipsum dolor sit amet.</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="be-involved.html" class="list-item-container white-text-primary">
+                        <div class="list-item-icon">
+                            <i class="material-icons">group_add</i>
+                        </div>
+                        <div class="list-item-text">
+                            <span>Be Involved</span>
+                            <span class="caption">Lorem ipsum dolor sit amet.</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="prayer-request.html" class="list-item-container white-text-primary">
+                        <div class="list-item-icon">
+                            <i class="material-icons">email</i>
+                        </div>
+                        <div class="list-item-text">
+                            <span>Prayer Request</span>
+                            <span class="caption">Lorem ipsum dolor sit amet.</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <div class="divider"></div>
+            <ul class="menu vertical">
+                <li class="menu-item">
+                    <a href="" class="btn block outline">
+                        <i class="material-icons">favorite_border</i>
+                        <span>Support</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- search form -->
+        <div id="search-form" class="bottom-sheet fullscreen">
+            <nav class="menubar">
+                <div class="container">
+                    <!-- logo -->
+                    <div class="menu-logo">
+                        <img src="img/ucc-logo.png" alt="ucc-logo">
                     </div>
-                    <!-- search button -->
-                    <button type="submit" class="btn raised green">
-                        <i class="material-icons">search</i>
-                    </button>
+                    <div class="spacer"></div>
+                    <i class="material-icons close" data-target="#search-form">close</i>
                 </div>
-                <!-- filter -->
-                <div class="radio-group">
-                    <span>Filter:</span>
-                    <input type="radio" name="filter" value="all" id="all" checked>
-                    <label for="all">All</label>
-                    <input type="radio" name="filter" value="sermons" id="sermons">
-                    <label for="sermons">Sermons</label>
-                    <input type="radio" name="filter" value="events" id="events">
-                    <label for="events">Events</label>
-                    <input type="radio" name="filter" value="news" id="news">
-                    <label for="news">News</label>
-                </div>
-            </form>
-            <!-- display search results -->
-            <div class="search-results">
-                <h2>Search Results:</h2>
-                <ul class="list-group">
-                    <!-- single result -->
-                    <li class="list-item with-avatar">
-                        <!-- avatar / icon -->
-                        <div class="avatar">
-                            <i class="material-icons">folder</i>
+            </nav>
+            <div class="container">
+                <form>
+                    <div class="row align-center">
+                        <div class="col">
+                            <!-- search field -->
+                            <div class="input-group">
+                                <input type="text" name="search" id="search" autocomplete="off" required>
+                                <label for="search">Search</label>
+                            </div>
                         </div>
-                        <!-- title -->
-                        <h3>
-                            <a href="">Lorem ipsum dolor sit amet.</a>
-                        </h3>
-                        <!-- description -->
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quae velit exercitationem id eum
-                            esse magnam temporibus laudantium numquam officia architecto qui excepturi deserunt, vero beatae.
-                            Ipsam numquam odio culpa?</p>
-                        <!-- timestamp -->
-                        <small class="timestamp"></small>
-                        <!-- tags -->
-                        <ul class="chips">
-                            <li class="chip blue">
-                                <i class="material-icons">label</i> Sermon</li>
-                            <li class="chip red">
-                                <i class="material-icons">label</i> Event</li>
-                            <li class="chip green">
-                                <i class="material-icons">label</i> News</li>
-                        </ul>
-                    </li>
-                </ul>
+                        <!-- search button -->
+                        <button type="submit" class="btn raised green">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </div>
+                    <!-- filter -->
+                    <div class="radio-group">
+                        <span>Filter:</span>
+                        <input type="radio" name="filter" value="all" id="all" checked>
+                        <label for="all">All</label>
+                        <input type="radio" name="filter" value="sermons" id="sermons">
+                        <label for="sermons">Sermons</label>
+                        <input type="radio" name="filter" value="events" id="events">
+                        <label for="events">Events</label>
+                        <input type="radio" name="filter" value="news" id="news">
+                        <label for="news">News</label>
+                    </div>
+                </form>
+                <!-- display search results -->
+                <div class="search-results">
+                    <h2>Search Results:</h2>
+                    <ul class="list three-line">
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-avatar">
+                                    <img src="img/pastors/billy_300x300.jpg" alt="avatar">
+                                </div>
+                                <div class="list-item-text">
+                                    <span>Three-line item</span>
+                                    <span>Secondary text</span>
+                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia illum a minus aliquam praesentium.
+                                        Omnis quibusdam dolorum iure ea similique.</span>
+                                </div>
+                                <div class="list-item-actions">
+                                    <button type="button icon-button" class="button icon-button">
+                                        <i class="material-icons">more_vert</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider inset"></li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-avatar">
+                                    <img src="img/pastors/chad_300x300.jpg" alt="avatar">
+                                </div>
+                                <div class="list-item-text">
+                                    <span>Three-line item</span>
+                                    <span>Secondary text</span>
+                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia illum a minus aliquam praesentium.
+                                        Omnis quibusdam dolorum iure ea similique.</span>
+                                </div>
+                                <div class="list-item-actions">
+                                    <button type="button icon-button" class="button icon-button">
+                                        <i class="material-icons">more_vert</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider inset"></li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-avatar">
+                                    <img src="img/pastors/nicky_300x300.jpg" alt="avatar">
+                                </div>
+                                <div class="list-item-text">
+                                    <span>Three-line item</span>
+                                    <span>Secondary text</span>
+                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia illum a minus aliquam praesentium.
+                                        Omnis quibusdam dolorum iure ea similique.</span>
+                                </div>
+                                <div class="list-item-actions">
+                                    <button type="button icon-button" class="button icon-button">
+                                        <i class="material-icons">more_vert</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
+    </header>
 
-    <div class="overlay"></div>
-
-    <main>
-        <!-- current sermon -->
-        <section id="current-sermon" class="dark">
-            <div class="container">
-                <div class="row">
-                    <!-- the sermon -->
-                    <div class="col sm-7 md-6 lg-12 xl-8 max-container">
-                        <div class="card light medium">
-                            <div class="card light horizontal">
-                                <div class="card-img">
-                                    <img src="img/sermon-images/Slide3.JPG" alt="card-img">
-                                    <div class="card-img-overlay on-hover">
-                                        <button class="btn circle flat btn-floating green bounce" id="show-player-icon">
-                                            <i class="material-icons large">play_circle_outline</i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card-stacked">
-                                    <div class="card-content">
-                                        <h3 class="card-title dark display-1">How to Kill Sin, Part 1</h3>
-                                        <small class="date">Sunday, September 17, 2017</small>
-                                        <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, nihil!</p>
-                                        <p class="card-text">Scripture: Romans 8:10-17
-                                            <br> Topics:
-                                            <a href="" class="breadcrumb">Faith</a>
-                                            <a href="" class="breadcrumb">Justification</a>
-                                        </p>
-                                    </div>
-                                    <div class="card-action">
-                                        <span class="chip blue">
-                                            <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                        <span class="spacer"></span>
-                                        <div class="dropup">
-                                            <button class="dropdown-btn btn green">
-                                                <i class="material-icons">share</i>
-                                            </button>
-                                            <div class="dropdown-content">
-                                                <ul class="menu vertical">
-                                                    <li>
-                                                        <a href="" class="menu-link">
-                                                            <i class="material-icons">face</i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="" class="menu-link">
-                                                            <i class="material-icons">book</i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="" class="menu-link">
-                                                            <i class="material-icons">mail</i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+    <!-- current sermon -->
+    <section id="current-sermon" class="dark">
+        <div class="menubar flat transparent hide-on-sm-below"></div>
+        <div class="container">
+            <div class="row wrap max-width-xs max-width-md max-width-lg">
+                <!-- the sermon -->
+                <div class="col xs-12 sm-6 md-6">
+                    <div class="card">
+                        <div class="card-media-cover">
+                            <div class="card-media-ratio-4-3">
+                                <img src="img/sermon-images/Slide18.JPG" alt="">
                             </div>
-                            <div class="card-action">
-                                <div class="spacer"></div>
-                                <button class="btn rounded green bounce" style="min-width:140px;" id="show-player-text">Play</button>
-                                <div class="spacer"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-center col xs-12 sm-6 md-6">
+                    <div class="card flat transparent">
+                        <div class="card-header">
+                            <span class="caption">December 10, 2017</span>
+                            <h1 class="card-title title">Praying for Those who Sin</h1>
+                            <h2 class="card-subtitle">1 John 5:13-17</h2>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="card-actions">
+                            <div class="chip transparent">
+                                <img src="img/pastors/nicky_300x300.jpg" alt="chip-img"> Pastor Nicky Joya
                             </div>
+                            <div class="spacer"></div>
+                            <button class="button icon-button">
+                                <i class="material-icons">share</i>
+                            </button>
+                        </div>
+                        <div class="card-actions justify-center">
+                            <button class="button rounded green bounce" id="show-player-button">
+                                <i class="material-icons">play_circle_outline</i>
+                                <span>Play</span>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- sermon notes -->
-        <section id="sermon-notes">
-            <div class="container">
-                <div class="row align-center">
-                    <h1 class="section-title">Sermon Notes</h1>
-                </div>
-                <div class="row wrap max-container">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad id aliquam nostrum dolores, enim rem libero
-                        alias tempora ratione dolore quas quia esse natus sapiente necessitatibus debitis omnis atque laborum
-                        delectus perspiciatis repudiandae explicabo unde! Architecto, vitae quibusdam. Atque modi aliquam
-                        unde corporis sequi commodi provident nihil inventore officiis eos!</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui, labore! Quasi in maiores nostrum corporis
-                        error perspiciatis! Eveniet, earum quibusdam.</p>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore, est.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda voluptatum facilis repudiandae quos
-                        eligendi quidem deserunt nihil eius! Repellat doloremque molestias commodi aliquam quasi deleniti
-                        similique, voluptatem quae distinctio ratione sint vitae odit tempore tenetur.</p>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo iure dolorum animi eos exercitationem
-                        fugiat nihil? Id ipsum consequuntur sapiente illum nesciunt a molestiae odio consequatur magnam.
-                        Debitis voluptatum iusto deleniti recusandae, hic amet unde eum fuga blanditiis repellendus neque
-                        inventore tenetur beatae natus dolorum, sint eos. Illo, ipsa nisi. Quasi deleniti dolores tenetur
-                        delectus nesciunt dignissimos, fugit nobis ducimus.</p>
-                </div>
-            </div>
-        </section>
-        <!-- related sermons -->
-        <section id="related-sermons" class="highlighted-section">
-            <div class="container">
-                <div class="row align-center">
-                    <h1 class="section-title">Related Sermons</h1>
-                </div>
-                <div class="row wrap max-container">
-                    <div class="col sm-6 md-6 lg-4 xl-3">
-                        <div class="card medium">
-                            <div class="card-img">
-                                <img src="img/sermon-images/Slide1.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-sermon.html">How to Kill Sin, Part 1</a>
-                                    </h1>
-                                    <h2 class="card-subtitle">Lorem ipsum dolor sit amet.</h2>
-                                    <p class="card-text">Sunday, September 17, 2017</p>
-                                    <p class="card-text">Scripture: Romans 8:10-17
-                                        <br>Topics:
-                                        <a href="">Faith</a>
-                                        <a href="">Justification</a>
-                                    </p>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
-                                </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu vertical">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col sm-6 md-6 lg-4 xl-3">
-                        <div class="card medium">
-                            <div class="card-img">
-                                <img src="img/sermon-images/Slide1.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-sermon.html">How to Kill Sin, Part 1</a>
-                                    </h1>
-                                    <h2 class="card-subtitle">Lorem ipsum dolor sit amet.</h2>
-                                    <p class="card-text">Sunday, September 17, 2017</p>
-                                    <p class="card-text">Scripture: Romans 8:10-17
-                                        <br>Topics:
-                                        <a href="">Faith</a>
-                                        <a href="">Justification</a>
-                                    </p>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
-                                </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu vertical">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col sm-6 md-6 lg-4 xl-3">
-                        <div class="card medium">
-                            <div class="card-img">
-                                <img src="img/sermon-images/Slide1.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-sermon.html">How to Kill Sin, Part 1</a>
-                                    </h1>
-                                    <h2 class="card-subtitle">Lorem ipsum dolor sit amet.</h2>
-                                    <p class="card-text">Sunday, September 17, 2017</p>
-                                    <p class="card-text">Scripture: Romans 8:10-17
-                                        <br>Topics:
-                                        <a href="">Faith</a>
-                                        <a href="">Justification</a>
-                                    </p>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
-                                </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu vertical">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col sm-6 md-6 lg-4 xl-3">
-                        <div class="card medium">
-                            <div class="card-img">
-                                <img src="img/sermon-images/Slide1.JPG" alt="card-img">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h1 class="card-title">
-                                        <a href="single-sermon.html">How to Kill Sin, Part 1</a>
-                                    </h1>
-                                    <h2 class="card-subtitle">Lorem ipsum dolor sit amet.</h2>
-                                    <p class="card-text">Sunday, September 17, 2017</p>
-                                    <p class="card-text">Scripture: Romans 8:10-17
-                                        <br>Topics:
-                                        <a href="">Faith</a>
-                                        <a href="">Justification</a>
-                                    </p>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum?</p>
-                                </div>
-                                <div class="card-action">
-                                    <span class="chip">
-                                        <img src="img/billy_300x300.jpg" alt="avatar">Rev. Billy Arcayan</span>
-                                    <span class="spacer"></span>
-                                    <div class="dropup">
-                                        <button class="dropdown-btn btn">
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <ul class="menu vertical">
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">face</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">book</i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="menu-link">
-                                                        <i class="material-icons">mail</i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <div id="sermon-player" class="bottom-sheet open" style="max-width: 850px;">
-        <audio src="audio/08.Bring The Rain.mp3" controls type="audio/mpeg" id="sermon-track"></audio>
+    <!-- sermon notes -->
+    <section id="sermon-notes">
+        <div class="container">
+            <div class="row align-center">
+                <h1 class="section-title">Sermon Notes</h1>
+            </div>
+            <div class="row wrap max-width">
+                <p class="subheading-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam beatae ad aliquid ipsa doloremque dignissimos
+                    asperiores, ipsum maiores sapiente iure, facilis sit labore? Quo nulla velit suscipit veritatis voluptas
+                    accusantium voluptatem labore consectetur rem eaque alias soluta expedita nobis possimus, necessitatibus
+                    magni tempora earum neque ipsa totam placeat sint maiores.
+                    <br>
+                    <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, tempore.
+                    <br>
+                    <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet ratione provident asperiores aliquid
+                    itaque fugiat est iure recusandae, expedita quam accusamus quae ad quis ab deserunt! Doloribus dicta
+                    recusandae in officiis! Dolorem repudiandae possimus quasi cum? Natus ut tempora perspiciatis quae aliquam
+                    enim blanditiis dolores? Beatae minima laudantium ipsam eos.
+                    <br>
+                    <br> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio eos, sapiente aliquam quam tenetur voluptatibus
+                    doloremque vitae assumenda! Voluptates nemo harum adipisci praesentium iusto dolore at quos voluptatem
+                    odio non?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- related sermons -->
+    <section id="related-sermons" class="highlighted-section">
+        <div class="container">
+            <h1 class="section-title">Related Sermons</h1>
+            <section class="row wrap max-width-xs max-width-sm max-width-md max-width-xl">
+                <div class="row col xs-12 sm-12 md-6 lg-6 xl-3">
+                    <div class="card">
+                        <div class="card-media-cover hide-on-lg-below">
+                            <div class="card-media-ratio-4-3">
+                                <img src="img/sermon-images/Slide16.JPG" alt="card-img">
+                            </div>
+                        </div>
+                        <div class="card-header row">
+                            <div class="card-header-text">
+                                <span class="caption">November 26, 2017</span>
+                                <h1 class="card-title title">Who is Jesus Christ?</h1>
+                                <h2 class="card-subtitle">1 John 5:6-8</h2>
+                            </div>
+                            <div class="card-media card-media-medium hide-on-lg-above">
+                                <img src="img/sermon-images/Slide16.JPG" alt="card-img">
+                            </div>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="card-actions">
+                            <div class="chip transparent">
+                                <img src="img/pastors/nicky_300x300.jpg" alt="chip-img"> Pastor Nicky Joya
+                            </div>
+                            <div class="spacer"></div>
+                            <button class="button icon-button">
+                                <i class="material-icons">share</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col xs-12 sm-12 md-6 lg-6 xl-3">
+                    <div class="card">
+                        <div class="card-media-cover hide-on-lg-below">
+                            <div class="card-media-ratio-4-3">
+                                <img src="img/sermon-images/Slide15.JPG" alt="card-img">
+                            </div>
+                        </div>
+                        <div class="card-header row">
+                            <div class="card-header-text">
+                                <span class="caption">November 19, 2017</span>
+                                <h1 class="card-title title">Divine Math and the Child of God</h1>
+                                <h2 class="card-subtitle">1 John 5:1-5</h2>
+                            </div>
+                            <div class="card-media card-media-medium hide-on-lg-above">
+                                <img src="img/sermon-images/Slide15.JPG" alt="card-img">
+                            </div>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="card-actions">
+                            <div class="chip transparent">
+                                <img src="img/pastors/chad_300x300.jpg" alt="chip-img"> Pastor Chad Dexter
+                            </div>
+                            <div class="spacer"></div>
+                            <button class="button icon-button">
+                                <i class="material-icons">share</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col xs-12 sm-12 md-6 lg-6 xl-3">
+                    <div class="card">
+                        <div class="card-media-cover hide-on-lg-below">
+                            <div class="card-media-ratio-4-3">
+                                <img src="img/sermon-images/Slide14.JPG" alt="card-img">
+                            </div>
+                        </div>
+                        <div class="card-header row">
+                            <div class="card-header-text">
+                                <span class="caption">November 12, 2017</span>
+                                <h1 class="card-title title">Perfect Love Drives Out Fear</h1>
+                                <h2 class="card-subtitle">1 John 4:13-21</h2>
+                            </div>
+                            <div class="card-media card-media-medium hide-on-lg-above">
+                                <img src="img/sermon-images/Slide14.JPG" alt="card-img">
+                            </div>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="card-actions">
+                            <div class="chip transparent">
+                                <img src="img/pastors/nicky_300x300.jpg" alt="chip-img"> Pastor Nicky Joya
+                            </div>
+                            <div class="spacer"></div>
+                            <button class="button icon-button">
+                                <i class="material-icons">share</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col xs-12 sm-12 md-6 lg-6 xl-3">
+                    <div class="card">
+                        <div class="card-media-cover hide-on-lg-below">
+                            <div class="card-media-ratio-4-3">
+                                <img src="img/sermon-images/Slide13.JPG" alt="card-img">
+                            </div>
+                        </div>
+                        <div class="card-header row">
+                            <div class="card-header-text">
+                                <span class="caption">November 5, 2017</span>
+                                <h1 class="card-title title">Keeping the Greatest Commandment</h1>
+                                <h2 class="card-subtitle">1 John 4:7-12</h2>
+                            </div>
+                            <div class="card-media card-media-medium hide-on-lg-above">
+                                <img src="img/sermon-images/Slide13.JPG" alt="card-img">
+                            </div>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="card-actions">
+                            <div class="chip transparent">
+                                <img src="img/pastors/chad_300x300.jpg" alt="chip-img"> Pastor Chad Dexter
+                            </div>
+                            <div class="spacer"></div>
+                            <button class="button icon-button">
+                                <i class="material-icons">share</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <div id="sermon-player" class="bottom-sheet">
+        <audio src="audio/08.Bring The Rain.mp3" type="audio/mpeg" id="sermon-track"></audio>
         <div class="progress" id="track-progress">
-            <span class="progress-bar" id="time-buffered"></span>
-            <span class="progress-bar" id="time-current"></span>
-            <span class="progress-float" id="time-float"></span>
+            <span class="progress-bar" id="time-buffered-bar"></span>
+            <span class="progress-bar" id="time-elapsed-bar"></span>
+            <span class="progress-float" id="time-elapsed-float"></span>
             <span class="progress-handle" id="track-handle"></span>
         </div>
         <nav class="menubar">
             <div class="container">
-                <ul class="menu">
-                    <li class="dropup">
-                        <button class="menu-link dropdown-btn btn flat">
+                <ul class="menu dense">
+                    <li class="menu-item dropup">
+                        <button class="dropdown-btn button icon-button">
                             <i class="material-icons">more_horiz</i>
                         </button>
                         <div class="dropdown-content">
                             <ul class="menu vertical">
                                 <li>
-                                    <a href="" class="menu-link" id="hide-player">
+                                    <a href="" class="menu-link" id="hide-player-button">
                                         <i class="material-icons tiny">visibility_off</i> Hide player
                                     </a>
                                 </li>
@@ -530,17 +493,17 @@
                             </ul>
                         </div>
                     </li>
-                    <li>
-                        <button class="menu-link btn flat" id="play-button">
+                    <li class="menu-item">
+                        <button class="button icon-button" id="play-button">
                             <i class="material-icons">play_circle_outline</i>
                         </button>
                     </li>
-                    <li>
-                        <button class="menu-link btn flat" id="volume-button">
+                    <li class="menu-item">
+                        <button class="button icon-button" id="volume-button">
                             <i class="material-icons">volume_up</i>
                         </button>
                     </li>
-                    <li class="menu-item hide-on-xs-below">
+                    <li class="menu-item">
                         <div class="progress" id="volume-progress" style="width:100px;">
                             <span class="progress-bar" id="volume-current"></span>
                             <span class="progress-handle" id="volume-handle"></span>
@@ -556,6 +519,159 @@
             </div>
         </nav>
     </div>
+
+    <footer class="highlighted-section">
+        <div class="container">
+            <div class="row wrap">
+                <div class="col md-4">
+                    <ul class="list dense border-0 transparent">
+                        <li class="subheader inset">Sunday Worship Service</li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">access_time</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>Every Sunday starts at 9:30am</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">place</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>6/F Roofdeck Function Hall Hemady Square E Rodriguez Ave corner Hemady St, QC</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="subheader inset">Adult Bible Class</li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">access_time</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>Every Sunday starts at 8:30am</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">place</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>6/F Roofdeck Function Hall Hemady Square E Rodriguez Ave corner Hemady St, QC</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col md-4">
+                    <!-- <img src="img/map-to-hemady-1-1.png" alt="" style="max-width:100%;"> -->
+                    <ul class="list dense border-0 transparent">
+                        <li class="subheader inset">Midweek In-depth Bible Study</li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">access_time</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>Every Wednesday, dinner starts at 7:00pm</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">place</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>Valencia Hills, N Domingo St, Quezon City, Metro Manila</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="subheader inset">3:16 Fellowship &amp; Prayer Meeting</li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">access_time</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>Every Friday, dinner starts at 7:00pm</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">place</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>16 Tinaduan Street, Barangay Masambong, Q.C. 1115</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col md-4">
+                    <ul class="list dense border-0 transparent">
+                        <!-- with icon and inset -->
+                        <li class="subheader">Contact Info</li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">phone</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>555 555 555</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">email</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>WriteToUCC@gmail.com</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">face</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>https://www.facebook.com/UCC-Church-237812533028498/</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="list-item-icon">
+                                    <i class="material-icons">phone_in_talk</i>
+                                </div>
+                                <div class="list-item-text">
+                                    <span>555 555 555</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row dark">
+            <div class="container">
+                <p class="caption">&copy; 2017 Union with Christ Community Church. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="overlay"></div>
 </body>
 
 </html>
