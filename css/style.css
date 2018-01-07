@@ -394,11 +394,6 @@ img {
     margin: 0 auto;
 }
 
-.max-container {
-    max-width: 320px;
-    margin: 0 auto;
-}
-
 .overlay {
     display: none;
     position: fixed;
@@ -693,6 +688,9 @@ img {
 --------------------------------------------------------------*/
 
 .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     height: 36px;
     border: none;
@@ -704,6 +702,7 @@ img {
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
     outline: none;
 }
 
@@ -800,6 +799,7 @@ img {
 .card {
     flex: 1;
     /* margin: 4px; */
+    position: relative;
     display: flex;
     flex-direction: column;
     border-radius: 2px;
@@ -812,8 +812,22 @@ img {
     flex-direction: row;
 }
 
-.card .card {
-    box-shadow: none;
+.card .card-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+}
+
+.card .card-shadow {
+    color: currentColor;
+    transition: box-shadow 400ms cubic-bezier(.25,.8,.25,1);
+}
+
+.card .card-shadow:hover {
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
 }
 
 
@@ -1420,10 +1434,14 @@ img {
 .horizontal-list .arrow-left,
 .horizontal-list .arrow-right {
     display: block;
-    padding: 2rem 0;
+    width: 64px;
+    height: 64px;
+    padding: 0;
     outline: none;
     border: none;
-    background: #e0e0e0;
+    border-radius: 50%;
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.4);
+    background: #fff;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -1439,15 +1457,15 @@ img {
 
 .horizontal-list .arrow-left:hover,
 .horizontal-list .arrow-right:hover {
-    background: #bdbdbd;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.4);
 }
 
 .horizontal-list .arrow-left {
-    left: 0;
+    left: 20px;
 }
 
 .horizontal-list .arrow-right {
-    right: 0;
+    right: 20px;
 }
 
 
@@ -1471,7 +1489,7 @@ img {
     flex-shrink: 0;
     flex-basis: 100% !important;
     max-width: 400px;
-    padding: 4px;
+    padding: 20px;
     box-sizing: border-box;
 }
 
@@ -2141,13 +2159,17 @@ img {
 .tabs .tabs-bar .arrow-left,
 .tabs .tabs-bar .arrow-right {
     display: block;
+    width: 48px;
     height: 48px;
-    /* padding: 2rem 0; */
+    padding: 0;
     outline: none;
     border: none;
-    background: transparent;
+    border-radius: 50%;
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.4);
+    background: #fff;
     position: absolute;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 3;
     transition: all 200ms ease;
     cursor: pointer;
@@ -2159,11 +2181,11 @@ img {
 }
 
 .tabs .tabs-bar .arrow-left {
-    left: 0;
+    left: 10px;
 }
 
 .tabs .tabs-bar .arrow-right {
-    right: 0;
+    right: 10px;
 }
 
 .tabs .tabs-bar .tabs-nav {
@@ -2540,9 +2562,6 @@ img {
 /* sm 576 - 767px */
 
 @media (min-width: 576px) {
-    .max-container {
-        max-width: 660px;
-    }
     .max-width,
     .max-width-sm {
         max-width: 400px;
@@ -2747,9 +2766,6 @@ img {
     .hide-on-md-above {
         display: none !important;
     }
-    .max-container {
-        max-width: 900px;
-    }
     .max-width,
     .max-width-lg {
         max-width: 990px;
@@ -2763,10 +2779,10 @@ img {
         line-height: 48px;
     }
     .scroll-container {
-        max-width: 960px;
+        max-width: 920px;
     }
     .scroll-container .horizontal-list-item {
-        max-width: 480px;
+        max-width: 460px;
     }
     .menubar,
     .menubar>.container {
@@ -2864,9 +2880,6 @@ img {
     .hide-on-lg-above {
         display: none !important;
     }
-    .max-container {
-        max-width: 1184px;
-    }
     .max-width,
     .max-width-xl {
         max-width: 1200px;
@@ -2886,6 +2899,13 @@ img {
     .card.horizontal .card-img {
         flex-basis: 66.66%;
         max-width: 66.66%;
+    }
+    .carousel {
+        height: 42.8571vw;
+    }
+    .carousel .carousel-item img {
+        object-fit: cover;
+        max-height: 100%;
     }
     .scroll-container {
         max-width: 1200px;
@@ -2941,19 +2961,6 @@ img {
     .xl-recent {
         flex-basis: 27.25% !important;
         max-width: 27.25% !important;
-    }
-}
-
-@media (min-width: 1440px) {
-    .max-container {
-        max-width: none;
-    }
-    .carousel {
-        height: 42.8571vw;
-    }
-    .carousel .carousel-item img {
-        object-fit: cover;
-        max-height: 100%;
     }
 }
 
@@ -3224,6 +3231,27 @@ div.page-id-7.container.active {
     background-color: #303030 !important;
     border-color: rgba(255, 255, 255, 0.12) !important;
     color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark-1, .dark-2, .dark-3, .dark-4 {
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark-1 {
+    background-color: #000;
+}
+
+.dark-2 {
+    background-color: #212121;
+}
+
+.dark-3 {
+    background-color: #303030;
+}
+
+.dark-4 {
+    background: #424242;
 }
 
 .dark .divider {

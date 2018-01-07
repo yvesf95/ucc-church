@@ -179,6 +179,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         });
+
+        var cardButtons = document.querySelectorAll('.card-button');
+        cardButtons.forEach(function (cardButton) {
+            cardButton.addEventListener('click', function (e) {
+                e.preventDefault();
+            });
+        });
     }();
 
     // input-group check if has value
@@ -444,93 +451,135 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }();
 
-    // events
-    var events = function () {
-        var horizontalList = document.querySelector('.horizontal-list');
+    // Horizontal lists
+    var horizontalLists = function () {
+        var horizontalLists = document.querySelectorAll('.horizontal-list');
+        const BREAKPOINT = 959;
 
-        if (!horizontalList) {
+        if (!horizontalLists.length) {
             return;
         }
 
-        var inner = horizontalList.querySelector('.horizontal-list-inner');
-        var item = inner.querySelector('.horizontal-list-item');
-        var arrowLeft = horizontalList.querySelector('.arrow-left');
-        var arrowRight = horizontalList.querySelector('.arrow-right');
-
-        var noOfItems = inner.childElementCount;
-        var itemWidth = item.getBoundingClientRect().width;
-        var translateValue = +inner.style.transform.replace(/[^0-9.\-]/g, '') || 0;
-        var max = -(itemWidth * noOfItems - inner.parentElement.getBoundingClientRect().width);
-
-        var touchstartX = 0;
-        var touchendX = 0;
-
-        horizontalList.addEventListener('click', function (e) {
-            if (isChildOfClassName(e.target, "arrow-left")) {
-                prev();
-            } else if (isChildOfClassName(e.target, "arrow-right")) {
-                next();
-            }
-        });
-
-        horizontalList.addEventListener('touchstart', function (e) {
-            touchstartX = e.changedTouches[0].screenX;
-            // e.preventDefault();
-        }, false);
-
-        horizontalList.addEventListener('touchend', function (e) {
-            touchendX = e.changedTouches[0].screenX;
-            handleGesure();
-            // e.preventDefault();
-        }, false);
-
-        window.addEventListener('resize', recalibrate);
-
-        function handleGesure() {
-            // swipe left
-            if (touchendX + 75 < touchstartX) {
-                next();
-            }
-            // swipe right
-            if (touchendX > touchstartX + 75) {
-                prev();
-            }
+        for (let i = 0; i < horizontalLists.length; i++) {
+            horizontalList(horizontalLists[i]);
         }
 
-        function prev() {
-            if (translateValue + itemWidth >= 0) {
-                translateValue = 0;
-                arrowLeft.style.display = "none";
-            } else {
-                translateValue = translateValue + itemWidth;
-                arrowLeft.style.display = "block";
-                arrowRight.style.display = "block";
+        function horizontalList(horizontalList) {
+            var inner = horizontalList.querySelector('.horizontal-list-inner');
+            var item = inner.querySelector('.horizontal-list-item');
+            var arrowLeft = horizontalList.querySelector('.arrow-left');
+            var arrowRight = horizontalList.querySelector('.arrow-right');
+
+            var noOfItems = inner.childElementCount;
+            var itemWidth = item.getBoundingClientRect().width;
+            var translateValue = +inner.style.transform.replace(/[^0-9.\-]/g, '') || 0;
+            var max = -(itemWidth * noOfItems - inner.parentElement.getBoundingClientRect().width);
+
+            var touchstartX = 0;
+            var touchendX = 0;
+
+            var resizeTimer, didResizeWhileHidden = false;
+
+            (function () {
+                // Check for touch device
+                if ("ontouchstart" in document.documentElement || window.innerWidth < BREAKPOINT) {
+                    arrowLeft.style.display = "none";
+                    arrowRight.style.display = "none";
+                }
+            })();
+
+            horizontalList.addEventListener('click', function (e) {
+                if (isChildOfClassName(e.target, "arrow-left")) {
+                    prev();
+                } else if (isChildOfClassName(e.target, "arrow-right")) {
+                    next();
+                }
+            });
+
+            horizontalList.addEventListener('touchstart', function (e) {
+                touchstartX = e.changedTouches[0].screenX;
+                // e.preventDefault();
+            }, false);
+
+            horizontalList.addEventListener('touchend', function (e) {
+                touchendX = e.changedTouches[0].screenX;
+                handleGesure();
+                // e.preventDefault();
+            }, false);
+
+            window.addEventListener('resize', function (e) {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    recalibrate();
+                    move();
+                }, 250);
+            });
+
+            function handleGesure() {
+                // swipe left
+                if (touchendX + 75 < touchstartX) {
+                    next();
+                }
+                // swipe right
+                if (touchendX > touchstartX + 75) {
+                    prev();
+                }
             }
-            move();
-        }
 
-        function next() {
-            if (translateValue - itemWidth <= max) {
-                translateValue = max;
-                arrowRight.style.display = "none";
-            } else {
-                translateValue = translateValue - itemWidth;
-                arrowLeft.style.display = "block";
-                arrowRight.style.display = "block";
+            function prev() {
+                if (didResizeWhileHidden) {
+                    didResizeWhileHidden = false;
+                    itemWidth = item.getBoundingClientRect().width;
+                    max = -(itemWidth * inner.childElementCount - inner.parentElement.getBoundingClientRect().width);
+                }
+                if (translateValue + itemWidth >= 0) {
+                    translateValue = 0;
+                    arrowLeft.style.display = "none";
+                } else {
+                    translateValue = translateValue + itemWidth;
+                    if (window.innerWidth > BREAKPOINT) {
+                        arrowLeft.style.display = "block";
+                        arrowRight.style.display = "block";
+                    }
+                }
+                move();
             }
-            move();
-        }
 
-        function move() {
-            inner.style.transform = "translateX(" + translateValue + "px)";
-        }
+            function next() {
+                if (didResizeWhileHidden) {
+                    didResizeWhileHidden = false;
+                    itemWidth = item.getBoundingClientRect().width;
+                    max = -(itemWidth * inner.childElementCount - inner.parentElement.getBoundingClientRect().width);
+                }
+                if (translateValue - itemWidth <= max) {
+                    translateValue = max;
+                    arrowRight.style.display = "none";
+                } else {
+                    translateValue = translateValue - itemWidth;
+                    if (window.innerWidth > BREAKPOINT) {
+                        arrowLeft.style.display = "block";
+                        arrowRight.style.display = "block";
+                    }
+                }
+                move();
+            }
 
-        function recalibrate() {
-            var current = translateValue / itemWidth;
-            itemWidth = item.getBoundingClientRect().width;
-            translateValue = itemWidth * current;
-            max = -(itemWidth * inner.childElementCount - inner.parentElement.getBoundingClientRect().width);
-            move();
+            function move() {
+                inner.style.transform = "translateX(" + translateValue + "px)";
+            }
+
+            function recalibrate() {
+                if (isHidden(horizontalList)) {
+                    didResizeWhileHidden = true;
+                    translateValue = 0;
+                    return;
+                }
+                var currentIndex = translateValue / itemWidth;
+                itemWidth = item.getBoundingClientRect().width;
+                translateValue = itemWidth * currentIndex;
+                max = -(itemWidth * inner.childElementCount - inner.parentElement.getBoundingClientRect().width);
+
+            }
         }
 
         function isChildOfClassName(child, className) {
@@ -543,8 +592,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             return false;
         }
+
+        function isHidden(el) {
+            return (el.offsetParent === null);
+        }
     }();
 
+    // Tabs
     var tabs = function () {
         var tabs = document.querySelectorAll('.tabs');
 
@@ -768,11 +822,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             function moveIndicator() {
-                console.log('move indicator');
                 navRect = nav.getBoundingClientRect();
                 activeRect = active.getBoundingClientRect();
-                console.log(activeRect.left);
-                console.log(navRect.left);
                 indicator.style.left = activeRect.left - navRect.left + "px";
                 indicator.style.width = activeRect.width + "px";
             }
@@ -909,8 +960,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Hide volume progress bar on touch screen devices
         if ("ontouchstart" in document.documentElement) {
             volumeProgress.parentElement.style.display = "none";
-        } else {
-            volumeProgress.parentElement.style.display = "block";
         }
 
         // Sermon Track Events
@@ -1014,6 +1063,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Plays or pauses the track
         playButton.addEventListener('click', playOrPause);
+
         function playOrPause() {
             if (!sermonTrack.paused && !sermonTrack.ended) {
                 sermonTrack.pause();
@@ -1123,6 +1173,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // shows the time of where the mouse position
             timeElapsedFloat.textContent = parseTime(targetTime);
         }
+
         function setNewTime(pageX) {
             var newTime = (pageX - trackProgress.getBoundingClientRect().left) * sermonTrack.duration / trackProgress.clientWidth;
             if (newTime >= 0 && newTime <= sermonTrack.duration) {
