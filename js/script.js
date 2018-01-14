@@ -478,14 +478,14 @@ document.addEventListener('DOMContentLoaded', function () {
             var touchstartX = 0;
             var touchendX = 0;
 
-            var resizeTimer, didResizeWhileHidden = false;
+            var resizeTimer,
+                didResizeWhileHidden = false,
+                flexWrap = false;
 
             (function () {
-                // Check for touch device
-                if ("ontouchstart" in document.documentElement || window.innerWidth < BREAKPOINT) {
-                    arrowLeft.style.display = "none";
-                    arrowRight.style.display = "none";
-                }
+                checkForFlexWrap();
+                toggleLeftArrowVisibility();
+                toggleRightArrowVisibility();
             })();
 
             horizontalList.addEventListener('click', function (e) {
@@ -534,14 +534,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 if (translateValue + itemWidth >= 0) {
                     translateValue = 0;
-                    arrowLeft.style.display = "none";
                 } else {
                     translateValue = translateValue + itemWidth;
-                    if (window.innerWidth > BREAKPOINT) {
-                        arrowLeft.style.display = "block";
-                        arrowRight.style.display = "block";
-                    }
                 }
+                toggleLeftArrowVisibility();
+                toggleRightArrowVisibility();
                 move();
             }
 
@@ -553,14 +550,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 if (translateValue - itemWidth <= max) {
                     translateValue = max;
-                    arrowRight.style.display = "none";
                 } else {
                     translateValue = translateValue - itemWidth;
-                    if (window.innerWidth > BREAKPOINT) {
-                        arrowLeft.style.display = "block";
-                        arrowRight.style.display = "block";
-                    }
                 }
+                toggleLeftArrowVisibility();
+                toggleRightArrowVisibility();
                 move();
             }
 
@@ -578,7 +572,41 @@ document.addEventListener('DOMContentLoaded', function () {
                 itemWidth = item.getBoundingClientRect().width;
                 translateValue = itemWidth * currentIndex;
                 max = -(itemWidth * inner.childElementCount - inner.parentElement.getBoundingClientRect().width);
+                checkForFlexWrap();
+                toggleLeftArrowVisibility();
+                toggleRightArrowVisibility();
+            }
 
+            function toggleLeftArrowVisibility() {
+                // Check for touch device and screen below breakpoint, contains flex wrap, or at last item
+                if (("ontouchstart" in document.documentElement && window.innerWidth < BREAKPOINT) ||
+                    flexWrap || translateValue === 0) {
+                    arrowLeft.style.display = "none";
+                } else {
+                    arrowLeft.style.display = "block";
+                }
+            }
+
+            function toggleRightArrowVisibility() {
+                // Check for touch device and screen below breakpoint, contains flex wrap, or at first item
+                if (("ontouchstart" in document.documentElement && window.innerWidth < BREAKPOINT) ||
+                    flexWrap || translateValue === max) {
+                    arrowRight.style.display = "none";
+                } else {
+                    arrowRight.style.display = "block";
+                }
+            }
+
+            function checkForFlexWrap() {
+                var innerStyle = getComputedStyle(inner, null);
+                if (innerStyle.getPropertyValue('flex-wrap') === "wrap") {
+                    flexWrap = true;
+                    translateValue = 0;
+                    max = 0;
+                    move();
+                } else {
+                    flexWrap = false;
+                }
             }
         }
 

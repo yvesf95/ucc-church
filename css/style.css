@@ -148,6 +148,10 @@ img {
     color: #fff !important;
 }
 
+.white {
+    background-color: #fff !important;
+}
+
 .transparent {
     background-color: transparent !important;
 }
@@ -474,7 +478,7 @@ img {
 
 .col {
     flex: 1 auto;
-    padding: 8px;
+    padding: 8px !important;
     box-sizing: border-box;
 }
 
@@ -1454,6 +1458,7 @@ img {
 
 .horizontal-list {
     position: relative;
+    margin: 0 auto;
 }
 
 
@@ -1489,11 +1494,11 @@ img {
 }
 
 .horizontal-list .arrow-left {
-    left: 20px;
+    left: -12px;
 }
 
 .horizontal-list .arrow-right {
-    right: 20px;
+    right: -12px;
 }
 
 
@@ -2559,9 +2564,19 @@ img {
     .back-to-top-container .back-to-top-button {
         right: 16px;
     }
-    .horizontal-list .arrow-left,
+    .card .card-header .card-title {
+        font-size: 18px;
+        line-height: 28px;
+        font-weight: 400;
+    }
+    .horizontal-list {
+        max-width: 400px;
+    }
+    .horizontal-list .arrow-left {
+        left: 0px;
+    }
     .horizontal-list .arrow-right {
-        display: none;
+        right: 0px;
     }
     .xs-3 {
         flex-basis: 25% !important;
@@ -2629,11 +2644,10 @@ img {
         font-size: 20px;
         line-height: 28px;
     }
-    .scroll-container {
-        max-width: 450px;
-    }
+    .horizontal-list,
+    .scroll-container,
     .scroll-container .horizontal-list-item {
-        max-width: 450px;
+        max-width: 400px;
     }
     .sm-3 {
         flex-basis: 25% !important;
@@ -2720,7 +2734,7 @@ img {
     }
     .max-width,
     .max-width-md {
-        max-width: 740px;
+        max-width: 720px;
         margin: 0 auto;
     }
     .horizontal-on-md {
@@ -2742,11 +2756,10 @@ img {
         font-size: 38px;
         line-height: 42px;
     }
-    .scroll-container {
-        max-width: 600px;
-    }
+    .horizontal-list,
+    .scroll-container,
     .scroll-container .horizontal-list-item {
-        max-width: 600px;
+        max-width: 720px;
     }
     .v-on-md-above {
         flex-direction: column;
@@ -2829,6 +2842,7 @@ img {
         font-size: 45px;
         line-height: 48px;
     }
+    .horizontal-list,
     .scroll-container {
         max-width: 960px;
     }
@@ -2918,6 +2932,9 @@ img {
     .v-on-lg-below {
         flex-direction: column !important;
     }
+    .wrap-on-xl-below {
+        flex-wrap: wrap;
+    }
     .carousel .carousel-prev,
     .carousel .carousel-next {
         background: rgba(0, 0, 0, 0.5);
@@ -2964,6 +2981,7 @@ img {
         object-fit: cover;
         max-height: 100%;
     }
+    .horizontal-list,
     .scroll-container {
         max-width: 1200px;
     }
@@ -3009,6 +3027,25 @@ img {
     .xl-12 {
         flex-basis: 100% !important;
         max-width: 100% !important;
+    }
+}
+
+
+/* xl 1440px and above */
+
+@media (min-width: 1440px) {
+    .horizontal-list,
+    .scroll-container {
+        max-width: 1280px;
+    }
+    .scroll-container .horizontal-list-item {
+        max-width: 640px;
+    }
+    .horizontal-list .arrow-left {
+        left: -32px;
+    }
+    .horizontal-list .arrow-right {
+        right: -32px;
     }
 }
 
