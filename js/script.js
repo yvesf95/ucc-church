@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 target.classList.remove('open');
                 setTimeout(function () {
                     overlay.style.display = 'none';
-                }, 500);
+                }, 300);
             });
         });
 
@@ -355,6 +355,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!gallery) {
             return;
         }
+        
         gallery.addEventListener('click', function (e) {
             e.preventDefault();
             if (e.target.tagName == 'IMG') {
