@@ -300,10 +300,10 @@
                                 <i class="material-icons">play_circle_outline</i>
                                 <span>Play</span>
                             </button>
-                            <!-- <button id="show-slides-button" class="button rounded red">
+                            <button id="show-slides-button" class="button rounded red toggler" data-target="#sermon-slides">
                                 <i class="material-icons">collections</i>
                                 <span>Open Slides</span>
-                            </button> -->
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -337,7 +337,312 @@
         </div>
     </section>
 
-    <section id="sermon-slides" class="">
+    <div id="sermon-slides" class="bottom-sheet fullscreen">
+        <nav class="menubar">
+            <div class="container">
+                <!-- logo -->
+                <div class="menu-logo">
+                    <img src="img/ucc-logo.png" alt="ucc-logo">
+                </div>
+                <div class="spacer"></div>
+                <i class="material-icons close" data-target="#sermon-slides">close</i>
+            </div>
+        </nav>
+        <div class="container">
+            <section class="gallery">
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide1.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide1.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide2.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide2.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide3.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide3.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide4.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide4.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide5.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide5.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide6.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide6.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide7.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide7.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide8.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide8.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide9.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide9.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide10.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide10.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide11.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide11.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide12.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide12.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide13.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide13.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide14.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide14.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide15.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide15.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide16.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide16.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide17.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide17.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide18.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide18.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide19.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide19.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide20.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide20.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide21.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide21.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide22.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide22.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide23.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide23.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide24.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide24.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide25.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide25.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide26.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide26.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide27.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide27.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide28.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide28.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide29.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide29.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide30.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide30.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide31.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide31.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a class="placeholder" href="img/single-sermon-images/Slide32.JPG" data-nw="960" data-nh="720">
+                        <img src="img/single-sermon-images/Slide32.JPG">
+                    </a>
+                    <figcaption>
+                        <div class="title">Lorem ipsum dolor sit amet.</div>
+                        <div class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, cum.</div>
+                    </figcaption>
+                </figure>
+            </section>
+        </div>
+    </div>
+
+    <!-- <section id="sermon-slides" class="">
         <div class="horizontal-list">
             <button class="arrow-left">
                 <i class="material-icons">chevron_left</i>
@@ -638,7 +943,7 @@
                 <i class="material-icons">chevron_right</i>
             </button>
         </div>
-    </section>
+    </section> -->
 
     <!-- related sermons -->
     <section id="related-sermons" class="highlighted-section">
@@ -979,6 +1284,56 @@
     </footer>
 
     <div class="overlay"></div>
+
+    <div class="lightbox">
+        <div class="lightbox-bg"></div>
+        <nav class="lightbox-top-bar menubar">
+            <ul class="menu dense">
+                <li class="menu-item white-text-primary">
+                    <button class="arrow-back button icon-button">
+                        <i class="material-icons">arrow_back</i>
+                    </button>
+                </li>
+                <li class="spacer"></li>
+                <li class="menu-item white-text-primary">
+                    <button class="zoom-button button icon-button">
+                        <i class="material-icons">zoom_in</i>
+                    </button>
+                </li>
+                <li class="menu-item white-text-primary">
+                    <button class="fs-button button icon-button">
+                        <i class="material-icons">fullscreen</i>
+                    </button>
+                </li>
+                <li class="menu-item white-text-primary">
+                    <a href="" class="dl-button button icon-button" download="">
+                        <i class="material-icons">file_download</i>
+                    </a>
+                </li>
+                <li class="menu-item white-text-primary">
+                    <button class="share-button button icon-button">
+                        <i class="material-icons">share</i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <div class="scroll-container">
+            <div class="photos-container">
+            </div>
+        </div>
+        <div class="preloader">
+            <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+            </svg>
+        </div>
+        <button class="arrow-left">
+            <i class="material-icons">chevron_left</i>
+        </button>
+        <button class="arrow-right">
+            <i class="material-icons">chevron_right</i>
+        </button>
+        <div class="caption-area"></div>
+    </div>
 
     <script src="js/lazy-loading-image.js"></script>
 </body>

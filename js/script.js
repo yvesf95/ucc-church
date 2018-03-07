@@ -347,148 +347,888 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }();
 
-    // gallery
-    var gallery = function () {
-        var gallery = document.querySelector('.gallery');
+    // lightbox
+    (function() {
+        var lightbox = document.querySelector(".lightbox");
 
-        if (!gallery) {
+        if (!lightbox) {
             return;
         }
 
-        var isZoomedIn = false,
-            isLoading = false;
-        
-        gallery.addEventListener('click', function (e) {
-            e.preventDefault();
+        // Get all galleries
+        var galleries = document.querySelectorAll(".gallery");
 
-            if (isLoading) {
-                return;
-            }
+        // Check if one gallery exists
+        if (!galleries.length) {
+            return;
+        }
 
-            var targetImage = e.target;
-            if (targetImage.tagName == 'IMG') {
-                if (!targetImage.classList.contains('zoomed-in')) {
-                    var src = targetImage.getAttribute('data-src');
-                    if (targetImage.getAttribute('src') !== src) {
-                        isLoading = true;
-                        var newImage = new Image();
-                        newImage.onload = function () {
-                            targetImage.src = src;
-                            zoomImage(targetImage);
-                            isLoading = false;
-                        };
-                        newImage.src = src;
-                    } else {
-                        zoomImage(targetImage);
-                    }
-                } else {
-                    imgZoomOut();
+        const TRANSLATE_VALUE = -100,
+            BLANK_SRC = "img/blank.gif",
+            DISPLACEMENT_LIMIT = 20,
+            ANIMATION_DURATION = 300,
+            DOUBLE_CLICK_TIME_INTERVAL = 300;
+        // Lightbox data
+        var clickedGallery,
+            items = [],
+            index = 0,
+            zoomX = 0,
+            zoomY = 0,
+            containerX = 0,
+            lastTap = 0,
+            evCache = [],
+            prevDiff = -1,
+            isZoomedIn = false,
+            isDragging = false;
+
+        var resizeTimer, fadeOutTimer, doubleClickTimer;
+
+        // Lightbox Elements
+        var topBar = lightbox.querySelector(".lightbox-top-bar"),
+            scroll = lightbox.querySelector(".scroll-container"),
+            container = lightbox.querySelector(".photos-container"),
+            captionArea = lightbox.querySelector(".caption-area"),
+            preloader = lightbox.querySelector(".preloader"),
+            leftArrow = lightbox.querySelector(".arrow-left"),
+            rightArrow = lightbox.querySelector(".arrow-right"),
+            backArrow = lightbox.querySelector(".arrow-back"),
+            zoomButton = lightbox.querySelector(".zoom-button"),
+            fsButton = lightbox.querySelector(".fs-button"),
+            dlButton = lightbox.querySelector(".dl-button");
+
+        galleries.forEach(gallery => {
+            gallery.addEventListener("click", function(e) {
+                // Prevent anchor tag redirect to another page
+                e.preventDefault();
+                // Check if the element clicked is an image
+                if (
+                    e.target.tagName === "IMG" &&
+                    !e.target.classList.contains("fit-screen")
+                ) {
+                    var figure = getParentByTagName(e.target, "figure");
+                    // Get the clicked gallery
+                    clickedGallery = figure.parentElement;
+                    // Get the index of the clicked item
+                    index = Array.prototype.indexOf.call(
+                        gallery.children,
+                        figure
+                    );
+                    // Initialize the lightbox
+                    initLightbox(gallery);
+                    // Zoom thumb then show lightbox
+                    zoomInThumb(e.target);
                 }
-            }
+            });
         });
 
-        function zoomImage (targetImage) {
-            isZoomedIn = true;
-            // get the actual width, height, aspect ratio of the img, and the boundaries of its container
-            var imgWidth = targetImage.naturalWidth,
-                imgHeight = targetImage.naturalHeight,
-                imgRatio = imgHeight / imgWidth,
-                rect = targetImage.parentElement.getBoundingClientRect(),
+        // #region Thumbnail functions
+        function zoomInThumb(thumb) {
+            var nw = thumb.parentElement.dataset.nw,
+                nh = thumb.parentElement.dataset.nh,
+                centerFitStyle = calcCenterFitStyle(thumb, nw, nh),
+                figure = getParentByTagName(thumb, "figure"),
+                rect = figure.getBoundingClientRect();
+
+            // retain the container's width before positioning the thumb absolute
+            figure.style.width = rect.width + "px";
+            figure.style.maxWidth = rect.width + "px";
+
+            // Add overlay
+            var imgOverlay = document.createElement("div");
+            imgOverlay.id = "img-overlay";
+            figure.appendChild(imgOverlay);
+            imgOverlay.classList.add("fade-in");
+
+            // position the thumb absolute
+            thumb.classList.add("fit-screen");
+
+            var diffWidth = centerFitStyle.width - rect.width;
+            var diffHeight = centerFitStyle.height - rect.height;
+
+            animate({
+                duration: ANIMATION_DURATION,
+                timing: makeEaseInOut(circ),
+                draw(progress) {
+                    thumb.style.top = centerFitStyle.top * progress + "px";
+                    thumb.style.left = centerFitStyle.left * progress + "px";
+
+                    thumb.style.width =
+                        diffWidth * progress + rect.width + "px";
+                    thumb.style.minWidth =
+                        diffWidth * progress + rect.width + "px";
+                    thumb.style.maxWidth =
+                        diffWidth * progress + rect.width + "px";
+                    thumb.style.height =
+                        diffHeight * progress + rect.height + "px";
+                    // Remove overlay when finished animating
+                    if (progress === 1) {
+                        figure.removeChild(imgOverlay);
+                        // Reset position
+                        thumb.style.cssText = "";
+                        thumb.classList.remove("fit-screen");
+                        // Show Lightbox
+                        lightbox.classList.add("show");
+                    }
+                }
+            });
+        }
+        function zoomOutThumb(thumb) {
+            var nw = thumb.parentElement.dataset.nw,
+                nh = thumb.parentElement.dataset.nh,
+                centerFitStyle = calcCenterFitStyle(thumb, nw, nh),
+                figure = getParentByTagName(thumb, "figure"),
+                rect = figure.getBoundingClientRect();
+
+            // retain the container's width before positioning the thumb absolute
+            figure.style.width = rect.width + "px";
+            figure.style.maxWidth = rect.width + "px";
+
+            // Add overlay
+            var imgOverlay = document.createElement("div");
+            imgOverlay.id = "img-overlay";
+            figure.appendChild(imgOverlay);
+            imgOverlay.classList.add("fade-out");
+
+            // position the thumb absolute
+            thumb.classList.add("fit-screen");
+            setImageStyles(thumb, centerFitStyle);
+
+            var diffWidth = centerFitStyle.width - rect.width;
+            var diffHeight = centerFitStyle.height - rect.height;
+
+            animate({
+                duration: ANIMATION_DURATION,
+                timing: makeEaseInOut(circ),
+                draw(progress) {
+                    var reverse = 1 - progress;
+                    thumb.style.top = centerFitStyle.top * reverse + "px";
+                    thumb.style.left = centerFitStyle.left * reverse + "px";
+
+                    thumb.style.width = diffWidth * reverse + rect.width + "px";
+                    thumb.style.minWidth =
+                        diffWidth * reverse + rect.width + "px";
+                    thumb.style.maxWidth =
+                        diffWidth * reverse + rect.width + "px";
+                    thumb.style.height =
+                        diffHeight * reverse + rect.height + "px";
+                    // Remove overlay when finished animating
+                    if (progress === 1) {
+                        figure.removeChild(imgOverlay);
+                        thumb.classList.remove("fit-screen");
+                    }
+                }
+            });
+        }
+        function animate({ timing, draw, duration }) {
+            // Get start time
+            let start = performance.now();
+
+            requestAnimationFrame(function animate(time) {
+                // timeFraction goes from 0 to 1
+                let timeFraction = (time - start) / duration;
+                // Check if animation is fininshed
+                if (timeFraction > 1) {
+                    timeFraction = 1;
+                }
+
+                // calculate the current animation state
+                let progress = timing(timeFraction);
+
+                draw(progress); // draw it
+
+                if (timeFraction < 1) {
+                    requestAnimationFrame(animate);
+                }
+            });
+        }
+        function makeEaseInOut(timing) {
+            return function(timeFraction) {
+                if (timeFraction < 0.5) return timing(2 * timeFraction) / 2;
+                else return (2 - timing(2 * (1 - timeFraction))) / 2;
+            };
+        }
+        function circ(timeFraction) {
+            return 1 - Math.sin(Math.acos(timeFraction));
+        }
+        // #endregion
+
+        // #region Image functions
+        function calcCenterFitStyle(img, width, height) {
+            var ratio = height / width,
                 top = 0,
                 left = 0;
 
+            // First, fit image to screen
             // img is larger than either width or height of the window
-            if (imgWidth > window.innerWidth * 0.9 || imgHeight > window.innerHeight * 0.9) {
+            if (width > window.innerWidth || height > window.innerHeight) {
                 // is the img landscape or portrait or square?
-                if (imgWidth > imgHeight) {
+                if (width > height) {
                     // img is landscape, make the width of the img 90% of the window
-                    imgWidth = window.innerWidth * 0.9;
+                    width = window.innerWidth;
                     // new height is computed by aspect ratio from its width
-                    imgHeight = imgWidth * imgRatio;
+                    height = width * ratio;
                     // does the new height fit the screen? if not make it smaller again with respect to its height
-                    if (imgHeight > window.innerHeight * 0.9) {
-                        imgHeight = window.innerHeight * 0.9;
-                        imgWidth = imgHeight / imgRatio;
+                    if (height > window.innerHeight) {
+                        height = window.innerHeight;
+                        width = height / ratio;
                     }
-                } else if (imgWidth < imgHeight) {
+                } else if (width < height) {
                     // img is portrait, make the height of the img 90% of the window
-                    imgHeight = window.innerHeight * 0.9;
+                    height = window.innerHeight;
                     // new width is computed by aspect ratio from its height
-                    imgWidth = imgHeight / imgRatio;
+                    width = height / ratio;
                     // does the new width fit the screen? if not make it smaller again with respect to its width
-                    if (imgWidth > window.innerWidth * 0.9) {
-                        imgWidth = window.innerWidth * 0.9;
-                        imgHeight = imgWidth * imgRatio;
+                    if (width > window.innerWidth) {
+                        width = window.innerWidth;
+                        height = width * ratio;
                     }
                 } else {
                     // img is square
-                    imgWidth = window.innerWidth * 0.9;
-                    imgHeight = window.innerHeight * 0.9;
+                    width = window.innerWidth;
+                    height = window.innerHeight;
                 }
             }
-            // position the img at the center of the screen 
 
-            // (subtract the top offset of its container since it is still positioned relative to it)
-            top = (window.innerHeight - imgHeight) / 2 - rect.top;
-            // (subtract the left offset of its container since it is still positioned relative to it)
-            left = (window.innerWidth - imgWidth) / 2 - rect.left;
+            // Second, center the image
+            var imgRect = img.getBoundingClientRect();
+            var rect = img.parentElement.getBoundingClientRect();
+            // Check if element fills the whole screen
+            if (Math.abs(rect.width - window.innerWidth) < 1) {
+                // Just get the coordinates of the center of the screen
+                left = (window.innerWidth - width) / 2;
+            } else {
+                /**
+                 * Get the coordinates of the center of the screen
+                 * then subtract the top and left offset of its parent
+                 * since it is still positioned relative to it
+                 */
+                left = (window.innerWidth - width) / 2 - rect.left;
+            }
 
-            // retain the container's width before positioning the img absolute
-            targetImage.parentElement.style.width = rect.width + "px";
-            targetImage.parentElement.style.maxWidth = rect.width + "px";
-            // make the img bigger
-            targetImage.classList.add('zoomed-in');
-            targetImage.style.top = top + "px";
-            targetImage.style.left = left + "px";
-            targetImage.style.width = imgWidth + "px";
-            targetImage.style.minWidth = imgWidth + "px";
-            targetImage.style.maxWidth = imgWidth + "px";
-            targetImage.style.height = imgHeight + "px";
-    
-            var imgOverlay = document.createElement('div');
-            imgOverlay.id = 'img-overlay';
-            targetImage.parentElement.appendChild(imgOverlay);
+            if (Math.abs(rect.height - window.innerHeight) < 1) {
+                top = (window.innerHeight - height) / 2;
+            } else {
+                top = (window.innerHeight - height) / 2 - rect.top;
+            }
+            return {
+                top: top,
+                left: left,
+                width: width,
+                height: height
+            };
+        }
+        function setImageStyles(img, { top, left, width, height }) {
+            img.style.top = top + "px";
+            img.style.left = left + "px";
+
+            img.style.width = width + "px";
+            img.style.minWidth = width + "px";
+            img.style.maxWidth = width + "px";
+            img.style.height = height + "px";
+        }
+        function imgLoaded(imgElement) {
+            return imgElement.complete && imgElement.naturalHeight !== 0;
+        }
+        // #endregion
+
+        // #region Lightbox functions
+        function parseThumbnailElements(gallery) {
+            var elements = gallery.children;
+            var items = [];
+
+            Array.from(elements).forEach(el => {
+                var placeholder = el.firstElementChild,
+                    large = placeholder.getAttribute("href"),
+                    thumb = placeholder.firstElementChild,
+                    small = thumb.getAttribute("src"),
+                    naturalWidth = placeholder.dataset.nw,
+                    naturalHeight = placeholder.dataset.nh,
+                    figcaption = el.getElementsByTagName("figcaption")[0],
+                    title = figcaption.querySelector(".title").textContent,
+                    caption = figcaption.querySelector(".caption").textContent;
+
+                var item = {
+                    large: large,
+                    small: small,
+                    naturalWidth: naturalWidth,
+                    naturalHeight: naturalHeight,
+                    title: title,
+                    caption: caption,
+                    isLoading: true
+                };
+
+                items.push(item);
+            });
+            return items;
+        }
+        function initLightbox(gallery) {
+            document.body.style.overflow = "hidden";
+            // Parse data
+            var clicked = parseThumbnailElements(gallery);
+            // Check if the clicked gallery is the same as the previous
+            if (!isEqual(items, clicked)) {
+                // Set new array of items
+                items = clicked;
+                // Creates elements for each item in the array
+                initPhotoItems();
+            }
+
+            // Set containerX to the clicked thumb
+            containerX = TRANSLATE_VALUE * index;
+            container.style.transform = `translateX(${containerX}%)`;
+
+            // Set the src for the current, prev, and next items
+            setLightboxImages();
+        }
+        function initPhotoItems() {
+            // Create document fragment
+            var frag = document.createDocumentFragment();
+
+            // Create a photoItem
+            var photoItem = document.createElement("div");
+            photoItem.classList.add("photo-item");
+            var img = document.createElement("img");
+            img.src = BLANK_SRC;
+            photoItem.appendChild(img);
+            photoItem.appendChild(preloader);
+
+            // Append to document fragment
+            for (let i = 0; i < items.length; i++) {
+                frag.appendChild(photoItem.cloneNode(true));
+            }
+
+            // Remove all photoItems
+            removeChildElements(container);
+            container.appendChild(frag);
+        }
+        function setLightboxImages() {
+            var photoItems = container.children,
+                curImg = photoItems[index].querySelector("img");
+            // Previous and Next image index
+            var prevIndex = index - 1,
+                nextIndex = index + 1;
+
+            // Load the current image
+            loadImage(curImg, index);
+            // Load the previous image if exists
+            if (prevIndex >= 0) {
+                var prevImg = photoItems[prevIndex].querySelector("img");
+                loadImage(prevImg, prevIndex);
+            }
+            // Load the next image if exists
+            if (nextIndex < items.length) {
+                var nextImg = photoItems[nextIndex].querySelector("img");
+                loadImage(nextImg, nextIndex);
+            }
+
+            // Set href of download button
+            dlButton.href = items[index].large;
+
+            // Set the caption
+            initCaptionArea(index);
+        }
+        function loadImage(el, idx) {
+            // natural image size
+            var nw = items[idx].naturalWidth,
+                nh = items[idx].naturalHeight;
+            // Fit image to screen
+            setImageStyles(el, calcCenterFitStyle(el, nw, nh));
+            // Show preloader when fullsize image is not yet loaded
+            if (items[idx].isLoading === true) {
+                el.nextElementSibling.classList.add('show');
+            }
+
+            // 1: load small image and show it
+            var img = new Image(),
+                small = items[idx].small;
+            img.src = small;
+            img.onload = function() {
+                el.src = small;
+            };
+
+            // 2: load large image then replace
+            var imgLarge = new Image(),
+                large = items[idx].large;
+            imgLarge.src = large;
+            imgLarge.onload = function() {
+                el.src = large;
+                items[idx].isLoading = false;
+                el.nextElementSibling.classList.remove('show');
+            };
+        }
+        function initCaptionArea(itemIndex) {
+            // Remove captions
+            removeChildElements(captionArea);
+
+            var frag = document.createDocumentFragment();
+            // Check for title
+            if (items[itemIndex].title) {
+                var title = document.createElement("div");
+                title.classList.add("title");
+                title.textContent = items[itemIndex].title;
+                frag.appendChild(title);
+            }
+            // Check for caption
+            if (items[itemIndex].caption) {
+                var caption = document.createElement("div");
+                caption.classList.add("caption");
+                caption.textContent = items[itemIndex].caption;
+                frag.appendChild(caption);
+            }
+
+            // Append to captionArea
+            captionArea.appendChild(frag);
+        }
+        // #endregion
+
+        // #region Event Listeners
+        // Listener for holding mouse button (ready state for dragging)
+        container.addEventListener("touchstart", dragEvent);
+        container.addEventListener("mousedown", dragEvent);
+        function dragEvent(e) {
+            e.preventDefault();
+            // Check if current image is in a zoomed state
+            if (isZoomedIn && e.target.tagName === "IMG") {
+                // Move image
+                moveEnlargedImage(e);
+            } else {
+                // Move container
+                moveContainer(e);
+            }
+        }
+        function moveEnlargedImage(e) {
+            var img = e.target,
+                startX = e.clientX || e.changedTouches[0].clientX,
+                startY = e.clientY || e.changedTouches[0].clientY,
+                distX = 0,
+                distY = 0;
+
+            // Set dragging state to false (allows click event to trigger)
+            isDragging = false;
+
+            // Remove transition-duration property
+            img.classList.add("move");
+
+            var move = function(e) {
+                // e.preventDefault();
+                // Check if the mouse actually moved
+                var clientX = e.clientX || e.changedTouches[0].clientX,
+                    clientY = e.clientY || e.changedTouches[0].clientY;
+                if (startX !== clientX || startY !== clientY) {
+                    // Set dragging state to true (prevents click event to trigger)
+                    isDragging = true;
+                    // Compute the displacement from the start position
+                    // then subtract it from your original position
+                    distX = zoomX - (startX - clientX);
+                    distY = zoomY - (startY - clientY);
+                    // Apply the style while dragging
+                    img.style.top = distY + "px";
+                    img.style.left = distX + "px";
+                }
+            };
+            // Listens to drag move
+            document.addEventListener('touchmove', move);
+            document.addEventListener('mousemove', move);
+
+            var stop = function(e) {
+                // e.preventDefault();
+                // Return the transition-duration property
+                img.classList.remove("move");
+
+                // Set the new position of image
+                if (distX !== 0 || distY !== 0) {
+                    zoomX = distX;
+                    zoomY = distY;
+                    // Validate new position of image
+                    moveZoomWrap(img, img.naturalWidth, img.naturalHeight);
+                    distX = 0;
+                    distY = 0;
+                }
+
+                // Remove listeners
+                document.removeEventListener('touchmove', move);
+                document.removeEventListener('mousemove', move);
+                document.removeEventListener('touchend', stop);
+                document.removeEventListener('mouseup', stop);
+            };
+            // Listens to drag stop
+            document.addEventListener('touchend', stop);
+            document.addEventListener('mouseup', stop);
+        }
+        function moveContainer(e) {
+            // e.preventDefault();
+            var startX = e.clientX || e.changedTouches[0].clientX,
+                distX = 0;
+
+            // Set dragging state to false (allows click event to trigger)
+            isDragging = false;
+            // Get actual translate value
+            var matrix = getComputedStyle(container).transform,
+                values = matrix.match(/([-+]?[\d\.]+)/g),
+                translate = values[5] ? +values[4] : values[4] ? +values[4] : 0;
+
+            translate = translate / window.innerWidth * 100;
+
+            // Remove transition-duration property
+            container.classList.add("move");
+
+            var move = function(e) {
+                // e.preventDefault();
+                // Check if the mouse actually moved
+                var clientX = e.clientX || e.changedTouches[0].clientX;
+                if (startX !== clientX) {
+                    // Set dragging state to true (prevents click event to trigger)
+                    isDragging = true;
+                    // Compute the displacement from the start position
+                    // then convert it to percent relative to the width of the screen
+                    distX = (clientX - startX) / window.innerWidth * 100;
+                    // Apply the style while dragging (ES6 syntax)
+                    container.style.transform = `translateX(${translate +
+                        distX}%)`;
+                }
+            };
+            document.addEventListener('touchmove', move);
+            document.addEventListener('mousemove', move);
+
+            var stop = function(e) {
+                // e.preventDefault();
+                // Return the transition-duration property
+                container.classList.remove("move");
+
+                // Check if the displacement is large enough to change the current image
+                if (distX > DISPLACEMENT_LIMIT) {
+                    // Move to the previous image
+                    showPreviousImage(e);
+                } else if (distX < -DISPLACEMENT_LIMIT) {
+                    // Move to the next image
+                    showNextImage(e);
+                } else {
+                    // Revert back to original position
+                    container.style.transform = `translateX(${containerX}%)`;
+                }
+                distX = 0;
+
+                // Remove listeners
+                document.removeEventListener('touchmove', move);
+                document.removeEventListener('mousemove', move);
+                document.removeEventListener('touchend', stop);
+                document.removeEventListener('mouseup', stop);
+            };
+            document.addEventListener('touchend', stop);
+            document.addEventListener('mouseup', stop);
+        }
+        function moveZoomWrap(el, nw, nh) {
+            if (zoomX >= 0) {
+                zoomX = 0;
+            }
+            if (zoomX < window.innerWidth - nw) {
+                zoomX = window.innerWidth - nw;
+            }
+            if (zoomY >= 0) {
+                zoomY = 0;
+            }
+            if (zoomY < window.innerHeight - nh) {
+                zoomY = window.innerHeight - nh;
+            }
+            el.style.top = zoomY + "px";
+            el.style.left = zoomX + "px";
         }
 
-        function imgZoomOut() {
-            if (!isZoomedIn) {
-                return;
+        // Listener for double-tap (zoom-in or zoom-out)
+        container.addEventListener("touchend", function(e) {
+            e.preventDefault();
+            // Check if the current image or the container is in a dragging state
+            if (e.target.tagName === "IMG" && !isDragging) {
+                if (isDoubleTapped() === true) {
+                    var img = e.target;
+                    // Check if image is in a zoomed state
+                    if (!isZoomedIn) {
+                        // Enlarge image size to its natural size
+                        enlargeImage(img, e);
+                    } else {
+                        // Reduce image size to fit screen
+                        reduceImage(img);
+                    }
+                }
             }
-            var zoomedIn = document.querySelector('.zoomed-in');
-            // remove style
-            zoomedIn.style = "";
-            setTimeout(function () {
-                zoomedIn.parentElement.style.width = "";
-                zoomedIn.parentElement.style.maxWidth = "";
-                zoomedIn.classList.remove('zoomed-in');
-                document.getElementById('img-overlay').remove();
-            }, 375);
+        });
+        function isDoubleTapped() {
+            var currentTime = new Date().getTime();
+            var tapLength = currentTime - lastTap;
+            clearTimeout(doubleClickTimer);
+            if (tapLength < DOUBLE_CLICK_TIME_INTERVAL && tapLength > 0) {
+                return true;
+            } else {
+                doubleClickTimer = setTimeout(function() {
+                    clearTimeout(doubleClickTimer);
+                    return false;
+                }, DOUBLE_CLICK_TIME_INTERVAL);
+            }
+            lastTap = currentTime;
+        }
+        // Listener for click (zoom-in or zoom-out)
+        container.addEventListener("click", function(e) {
+            e.preventDefault();
+            // Check if the current image or the container is in a dragging state
+            if (e.target.tagName === "IMG" && !isDragging) {
+                var img = e.target;
+                // Check if image is in a zoomed state
+                if (!isZoomedIn) {
+                    // Enlarge image size to its natural size
+                    enlargeImage(img, e);
+                } else {
+                    // Reduce image size to fit screen
+                    reduceImage(img);
+                }
+            }
+        });
+        function enlargeImage(img, e) {
+            if (items[index].isLoading === false) {
+                // Put in zoomed state
+                isZoomedIn = true;
+                // Allow dragging
+                isDragging = true;
+                // Change cursor to zoom-out
+                img.classList.add("enlarged");
+    
+                var naturalWidth = img.naturalWidth,
+                    naturalHeight = img.naturalHeight,
+                    width = img.getBoundingClientRect().width,
+                    height = img.getBoundingClientRect().height,
+                    scaleValue = naturalWidth / width,
+                    clientX = e.clientX || e.changedTouches[0].clientX,
+                    clientY = e.clientY || e.changedTouches[0].clientY;
+    
+                // Center the image to the point where the mouse is clicked
+                zoomX = window.innerWidth / 2 - clientX * scaleValue;
+                zoomY = window.innerHeight / 2 - clientY * scaleValue;
+    
+                // Validate new position of image
+                moveZoomWrap(img, naturalWidth, naturalHeight);
+                // Resize the image to its natural size
+                img.style.width = naturalWidth + "px";
+                img.style.minWidth = naturalWidth + "px";
+                img.style.maxWidth = naturalWidth + "px";
+                img.style.height = naturalHeight + "px";
+            }
+        }
+        function reduceImage(img) {
+            var nw = img.naturalWidth,
+                nh = img.naturalHeight;
+            // Revert cursor to zoom-in
+            img.classList.remove("enlarged");
+            // Fit image to screen size
+            setImageStyles(img, calcCenterFitStyle(img, nw, nh));
+            // Forbid dragging
+            isDragging = false;
+            // Remove from zoom state
             isZoomedIn = false;
         }
 
-        document.addEventListener('click', function (e) {
-            if (e.target.id === 'img-overlay') {
-                imgZoomOut();
+        // #region Lightbox Controls
+        lightbox.addEventListener("touchstart", showControls);
+        lightbox.addEventListener("mouseover", showControls);
+        function showControls() {
+            // Reset fadeout timer
+            clearTimeout(fadeOutTimer);
+            // Show topbar, left and right arrows
+            topBar.classList.add("hover");
+            leftArrow.classList.add("hover");
+            rightArrow.classList.add("hover");
+        }
+        lightbox.addEventListener("touchend", hideControls);
+        lightbox.addEventListener("mouseleave", hideControls);
+        function hideControls() {
+            // Hides topbar, left and right arrows
+            // if mouse doesn't hover on the lightbox for 3 seconds
+            fadeOutTimer = setTimeout(() => {
+                topBar.classList.add("fade-out");
+                leftArrow.classList.add("fade-out");
+                rightArrow.classList.add("fade-out");
+                setTimeout(() => {
+                    topBar.classList.remove("hover");
+                    topBar.classList.remove("fade-out");
+                    leftArrow.classList.remove("hover");
+                    leftArrow.classList.remove("fade-out");
+                    rightArrow.classList.remove("hover");
+                    rightArrow.classList.remove("fade-out");
+                }, 400);
+            }, 3000);
+        }
+
+        // Listener for Left arrow
+        leftArrow.addEventListener("click", showPreviousImage);
+        function showPreviousImage(e) {
+            e.preventDefault();
+            // Checks if image is in a zoomed state
+            if (isZoomedIn) {
+                var img = container.children[index].firstElementChild;
+                reduceImage(img);
+            }
+            index--;
+            if (index <= 0) {
+                index = 0;
+                leftArrow.style.display = "none";
+                containerX = 0;
+            } else {
+                containerX = containerX - TRANSLATE_VALUE;
+            }
+            setLightboxImages();
+            rightArrow.style.display = "block";
+            container.style.transform = `translateX(${containerX}%)`;
+        }
+        // Listener for Right arrow
+        rightArrow.addEventListener("click", showNextImage);
+        function showNextImage(e) {
+            e.preventDefault();
+            // Checks if image is in a zoomed state
+            if (isZoomedIn) {
+                var img = container.children[index].firstElementChild;
+                reduceImage(img);
+            }
+            index++;
+            if (index >= items.length - 1) {
+                index = items.length - 1;
+                rightArrow.style.display = "none";
+                containerX = TRANSLATE_VALUE * (items.length - 1);
+            } else {
+                containerX = containerX + TRANSLATE_VALUE;
+            }
+            setLightboxImages();
+            leftArrow.style.display = "block";
+            container.style.transform = `translateX(${containerX}%)`;
+        }
+
+        // Closes lightbox
+        backArrow.addEventListener("click", function(e) {
+            e.preventDefault();
+            document.body.style = "";
+            var figure = clickedGallery.children[index],
+                thumb = figure.querySelector("img");
+            reduceImage(container.children[index].firstElementChild);
+            lightbox.classList.remove("show");
+            zoomOutThumb(thumb);
+        });
+        // Toggle zoom-in and zoom-out
+        zoomButton.addEventListener("click", function(e) {
+            e.preventDefault();
+            var img = container.children[index].firstElementChild;
+            // Check if image is in a zoomed state
+            if (!isZoomedIn) {
+                // Enlarge image size to its natural size
+                enlargeImage(img, e);
+            } else {
+                // Reduce image size to fit screen
+                reduceImage(img);
             }
         });
-
-        window.onscroll = function () {
-            console.log('scroll');
-            imgZoomOut();
+        // Toggle fullscreen
+        fsButton.addEventListener("click", function(e) {
+            e.preventDefault();
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        });
+        // Listener for screen resize
+        window.addEventListener("resize", function() {
+            // Resets timeout until screen has stopped resizing
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (lightbox.classList.contains("show")) {
+                    var img = container.children[index].querySelector('img');
+                    reduceImage(img);
+                    setLightboxImages();
+                }
+            }, 200);
+        });
+        // #endregion
+        // #endregion
+    
+        // #region Other functions
+        var isEqual = function(value, other) {
+            // Get the value type
+            var type = Object.prototype.toString.call(value);
+        
+            // If the two objects are not the same type, return false
+            if (type !== Object.prototype.toString.call(other)) return false;
+        
+            // If items are not an object or array, return false
+            if (["[object Array]", "[object Object]"].indexOf(type) < 0) return false;
+        
+            // Compare the length of the length of the two items
+            var valueLen =
+                type === "[object Array]" ? value.length : Object.keys(value).length;
+            var otherLen =
+                type === "[object Array]" ? other.length : Object.keys(other).length;
+            if (valueLen !== otherLen) return false;
+        
+            // Compare two items
+            var compare = function(item1, item2) {
+                // Get the object type
+                var itemType = Object.prototype.toString.call(item1);
+        
+                // If an object or array, compare recursively
+                if (["[object Array]", "[object Object]"].indexOf(itemType) >= 0) {
+                    if (!isEqual(item1, item2)) return false;
+                } else {
+                    // Otherwise, do a simple comparison
+                    // If the two items are not the same type, return false
+                    if (itemType !== Object.prototype.toString.call(item2))
+                        return false;
+        
+                    // Else if it's a function, convert to a string and compare
+                    // Otherwise, just compare
+                    if (itemType === "[object Function]") {
+                        if (item1.toString() !== item2.toString()) return false;
+                    } else {
+                        if (item1 !== item2) return false;
+                    }
+                }
+            };
+        
+            // Compare properties
+            if (type === "[object Array]") {
+                for (var i = 0; i < valueLen; i++) {
+                    if (compare(value[i], other[i]) === false) return false;
+                }
+            } else {
+                for (var key in value) {
+                    if (value.hasOwnProperty(key)) {
+                        if (compare(value[key], other[key]) === false) return false;
+                    }
+                }
+            }
+        
+            // If nothing failed, return true
+            return true;
         };
-
-        window.onresize = function () {
-            imgZoomOut();
+        
+        var getParentByTagName = function(node, tagname) {
+            var parent;
+            if (node === null || tagname === "") return;
+            parent = node.parentNode;
+            tagname = tagname.toUpperCase();
+        
+            while (parent.tagName !== "HTML") {
+                if (parent.tagName === tagname) {
+                    return parent;
+                }
+                parent = parent.parentNode;
+            }
+        
+            return parent;
+        };
+        
+        function removeChildElements(el) {
+            while (el.firstChild) {
+                el.removeChild(el.firstChild);
+            }
         }
-    }();
-
-    // lightbox
-    (function () {
-        var lightboxes = document.querySelectorAll('.lightbox');
-
-        if (!lightboxes.length) {
-            return;
-        }
+        // #endregion
     })();
 
     // Horizontal lists
@@ -1026,9 +1766,9 @@ document.addEventListener('DOMContentLoaded', function () {
         var isVolumeControlOnMouseDown = false;
 
         // Hide volume progress bar on touch screen devices
-        if ("ontouchstart" in document.documentElement) {
-            volumeProgress.parentElement.style.display = "none";
-        }
+        // if ("ontouchstart" in document.documentElement) {
+        //     volumeProgress.parentElement.style.display = "none";
+        // }
 
         // Sermon Track Events
 
