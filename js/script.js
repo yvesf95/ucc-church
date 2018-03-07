@@ -163,18 +163,17 @@ document.addEventListener('DOMContentLoaded', function () {
             var trigger = cardExpand.querySelector('.card-expand-trigger');
             trigger.addEventListener('click', function () {
                 var content = cardExpand.querySelector('.card-expand-content');
-                var child = content.firstElementChild;
-                if (content.classList.contains('expand')) {
-                    child.classList.add('fade-out-up');
+                if (cardExpand.classList.contains('expand')) {
+                    content.classList.add('fade-out-up');
                     setTimeout(function () {
-                        content.classList.remove('expand');
-                        child.classList.remove('fade-out-up');
+                        cardExpand.classList.remove('expand');
+                        content.classList.remove('fade-out-up');
                     }, 300);
                 } else {
-                    content.classList.add('expand');
-                    child.classList.add('fade-in-down');
+                    cardExpand.classList.add('expand');
+                    content.classList.add('fade-in-down');
                     setTimeout(function () {
-                        child.classList.remove('fade-in-down');
+                        content.classList.remove('fade-in-down');
                     }, 300);
                 }
             });
@@ -355,77 +354,106 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!gallery) {
             return;
         }
+
+        var isZoomedIn = false,
+            isLoading = false;
         
         gallery.addEventListener('click', function (e) {
             e.preventDefault();
-            if (e.target.tagName == 'IMG') {
-                if (!e.target.classList.contains('zoomed-in')) {
-                    // get the actual width, height, aspect ratio of the img, and the boundaries of its container
-                    var imgWidth = e.target.naturalWidth,
-                        imgHeight = e.target.naturalHeight,
-                        imgRatio = imgHeight / imgWidth,
-                        rect = e.target.parentElement.getBoundingClientRect(),
-                        top = 0,
-                        left = 0;
 
-                    // img is larger than either width or height of the window
-                    if (imgWidth > window.innerWidth * 0.9 || imgHeight > window.innerHeight * 0.9) {
-                        // is the img landscape or portrait or square?
-                        if (imgWidth > imgHeight) {
-                            // img is landscape, make the width of the img 90% of the window
-                            imgWidth = window.innerWidth * 0.9;
-                            // new height is computed by aspect ratio from its width
-                            imgHeight = imgWidth * imgRatio;
-                            // does the new height fit the screen? if not make it smaller again with respect to its height
-                            if (imgHeight > window.innerHeight * 0.9) {
-                                imgHeight = window.innerHeight * 0.9;
-                                imgWidth = imgHeight / imgRatio;
-                            }
-                        } else if (imgWidth < imgHeight) {
-                            // img is portrait, make the height of the img 90% of the window
-                            imgHeight = window.innerHeight * 0.9;
-                            // new width is computed by aspect ratio from its height
-                            imgWidth = imgHeight / imgRatio;
-                            // does the new width fit the screen? if not make it smaller again with respect to its width
-                            if (imgWidth > window.innerWidth * 0.9) {
-                                imgWidth = window.innerWidth * 0.9;
-                                imgHeight = imgWidth * imgRatio;
-                            }
-                        } else {
-                            // img is square
-                            imgWidth = window.innerWidth * 0.9;
-                            imgHeight = window.innerHeight * 0.9;
-                        }
+            if (isLoading) {
+                return;
+            }
+
+            var targetImage = e.target;
+            if (targetImage.tagName == 'IMG') {
+                if (!targetImage.classList.contains('zoomed-in')) {
+                    var src = targetImage.getAttribute('data-src');
+                    if (targetImage.getAttribute('src') !== src) {
+                        isLoading = true;
+                        var newImage = new Image();
+                        newImage.onload = function () {
+                            targetImage.src = src;
+                            zoomImage(targetImage);
+                            isLoading = false;
+                        };
+                        newImage.src = src;
+                    } else {
+                        zoomImage(targetImage);
                     }
-                    // position the img at the center of the screen 
-
-                    // (subtract the top offset of its container since it is still positioned relative to it)
-                    top = (window.innerHeight - imgHeight) / 2 - rect.top;
-                    // (subtract the left offset of its container since it is still positioned relative to it)
-                    left = (window.innerWidth - imgWidth) / 2 - rect.left;
-
-                    // retain the container's width before positioning the img absolute
-                    e.target.parentElement.style.width = rect.width + "px";
-                    e.target.parentElement.style.maxWidth = rect.width + "px";
-                    // make the img bigger
-                    e.target.classList.add('zoomed-in');
-                    e.target.style.top = top + "px";
-                    e.target.style.left = left + "px";
-                    e.target.style.width = imgWidth + "px";
-                    e.target.style.minWidth = imgWidth + "px";
-                    e.target.style.maxWidth = imgWidth + "px";
-                    e.target.style.height = imgHeight + "px";
-
-                    var imgOverlay = document.createElement('div');
-                    imgOverlay.id = 'img-overlay';
-                    e.target.parentElement.appendChild(imgOverlay);
                 } else {
                     imgZoomOut();
                 }
             }
         });
 
+        function zoomImage (targetImage) {
+            isZoomedIn = true;
+            // get the actual width, height, aspect ratio of the img, and the boundaries of its container
+            var imgWidth = targetImage.naturalWidth,
+                imgHeight = targetImage.naturalHeight,
+                imgRatio = imgHeight / imgWidth,
+                rect = targetImage.parentElement.getBoundingClientRect(),
+                top = 0,
+                left = 0;
+
+            // img is larger than either width or height of the window
+            if (imgWidth > window.innerWidth * 0.9 || imgHeight > window.innerHeight * 0.9) {
+                // is the img landscape or portrait or square?
+                if (imgWidth > imgHeight) {
+                    // img is landscape, make the width of the img 90% of the window
+                    imgWidth = window.innerWidth * 0.9;
+                    // new height is computed by aspect ratio from its width
+                    imgHeight = imgWidth * imgRatio;
+                    // does the new height fit the screen? if not make it smaller again with respect to its height
+                    if (imgHeight > window.innerHeight * 0.9) {
+                        imgHeight = window.innerHeight * 0.9;
+                        imgWidth = imgHeight / imgRatio;
+                    }
+                } else if (imgWidth < imgHeight) {
+                    // img is portrait, make the height of the img 90% of the window
+                    imgHeight = window.innerHeight * 0.9;
+                    // new width is computed by aspect ratio from its height
+                    imgWidth = imgHeight / imgRatio;
+                    // does the new width fit the screen? if not make it smaller again with respect to its width
+                    if (imgWidth > window.innerWidth * 0.9) {
+                        imgWidth = window.innerWidth * 0.9;
+                        imgHeight = imgWidth * imgRatio;
+                    }
+                } else {
+                    // img is square
+                    imgWidth = window.innerWidth * 0.9;
+                    imgHeight = window.innerHeight * 0.9;
+                }
+            }
+            // position the img at the center of the screen 
+
+            // (subtract the top offset of its container since it is still positioned relative to it)
+            top = (window.innerHeight - imgHeight) / 2 - rect.top;
+            // (subtract the left offset of its container since it is still positioned relative to it)
+            left = (window.innerWidth - imgWidth) / 2 - rect.left;
+
+            // retain the container's width before positioning the img absolute
+            targetImage.parentElement.style.width = rect.width + "px";
+            targetImage.parentElement.style.maxWidth = rect.width + "px";
+            // make the img bigger
+            targetImage.classList.add('zoomed-in');
+            targetImage.style.top = top + "px";
+            targetImage.style.left = left + "px";
+            targetImage.style.width = imgWidth + "px";
+            targetImage.style.minWidth = imgWidth + "px";
+            targetImage.style.maxWidth = imgWidth + "px";
+            targetImage.style.height = imgHeight + "px";
+    
+            var imgOverlay = document.createElement('div');
+            imgOverlay.id = 'img-overlay';
+            targetImage.parentElement.appendChild(imgOverlay);
+        }
+
         function imgZoomOut() {
+            if (!isZoomedIn) {
+                return;
+            }
             var zoomedIn = document.querySelector('.zoomed-in');
             // remove style
             zoomedIn.style = "";
@@ -435,6 +463,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 zoomedIn.classList.remove('zoomed-in');
                 document.getElementById('img-overlay').remove();
             }, 375);
+            isZoomedIn = false;
         }
 
         document.addEventListener('click', function (e) {
@@ -444,6 +473,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         window.onscroll = function () {
+            console.log('scroll');
             imgZoomOut();
         };
 
@@ -451,6 +481,15 @@ document.addEventListener('DOMContentLoaded', function () {
             imgZoomOut();
         }
     }();
+
+    // lightbox
+    (function () {
+        var lightboxes = document.querySelectorAll('.lightbox');
+
+        if (!lightboxes.length) {
+            return;
+        }
+    })();
 
     // Horizontal lists
     var horizontalLists = function () {
