@@ -150,8 +150,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 circle.classList.add('ripple');
 
-                setTimeout(() => {
-                    this.removeChild(circle);
+                setTimeout(function(){
+                    button.removeChild(circle);
                 }, 400);
             });
         });
@@ -1041,11 +1041,11 @@ document.addEventListener('DOMContentLoaded', function () {
         function hideControls() {
             // Hides topbar, left and right arrows
             // if mouse doesn't hover on the lightbox for 3 seconds
-            fadeOutTimer = setTimeout(() => {
+            fadeOutTimer = setTimeout(function(){
                 topBar.classList.add("fade-out");
                 leftArrow.classList.add("fade-out");
                 rightArrow.classList.add("fade-out");
-                setTimeout(() => {
+                setTimeout(function(){
                     topBar.classList.remove("hover");
                     topBar.classList.remove("fade-out");
                     leftArrow.classList.remove("hover");
@@ -1137,7 +1137,7 @@ document.addEventListener('DOMContentLoaded', function () {
         window.addEventListener("resize", function() {
             // Resets timeout until screen has stopped resizing
             clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
+            resizeTimer = setTimeout(function(){
                 if (lightbox.classList.contains("show")) {
                     var img = container.children[index].querySelector('img');
                     reduceImage(img);
@@ -1289,7 +1289,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             window.addEventListener('resize', function (e) {
                 clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(() => {
+                resizeTimer = setTimeout(function(){
                     recalibrate();
                     move();
                 }, 250);
