@@ -20,10 +20,12 @@ document.addEventListener('DOMContentLoaded', function () {
         function changeBackground() {
             if (window.scrollY >= 100 || window.innerWidth < BREAKPOINT) {
                 navbar.classList.add('dark-transparent');
-                navbar.firstElementChild.classList.remove('flat');
+                navbar.classList.add('raised-2');
+                // navbar.firstElementChild.classList.remove('flat');
                 navbar.firstElementChild.classList.add('menubar--scrolled');
             } else {
-                navbar.firstElementChild.classList.add('flat');
+                navbar.classList.remove('raised-2');
+                // navbar.firstElementChild.classList.add('flat');
                 navbar.firstElementChild.classList.remove('menubar--scrolled');
                 navbar.classList.remove('dark-transparent');
             }
@@ -451,19 +453,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 draw(progress) {
                     thumb.style.top = centerFitStyle.top * progress + "px";
                     thumb.style.left = centerFitStyle.left * progress + "px";
-
-                    thumb.style.width =
-                        diffWidth * progress + rect.width + "px";
-                    thumb.style.minWidth =
-                        diffWidth * progress + rect.width + "px";
-                    thumb.style.maxWidth =
-                        diffWidth * progress + rect.width + "px";
-                    thumb.style.height =
-                        diffHeight * progress + rect.height + "px";
+                    thumb.style.width = diffWidth * progress + rect.width + "px";
+                    thumb.style.minWidth = diffWidth * progress + rect.width + "px";
+                    thumb.style.maxWidth = diffWidth * progress + rect.width + "px";
+                    thumb.style.height = diffHeight * progress + rect.height + "px";
                     // Remove overlay when finished animating
                     if (progress === 1) {
                         figure.removeChild(imgOverlay);
                         // Reset position
+                        figure.style.cssText = "";
                         thumb.style.cssText = "";
                         thumb.classList.remove("fit-screen");
                         // Show Lightbox
@@ -503,18 +501,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     var reverse = 1 - progress;
                     thumb.style.top = centerFitStyle.top * reverse + "px";
                     thumb.style.left = centerFitStyle.left * reverse + "px";
-
                     thumb.style.width = diffWidth * reverse + rect.width + "px";
-                    thumb.style.minWidth =
-                        diffWidth * reverse + rect.width + "px";
-                    thumb.style.maxWidth =
-                        diffWidth * reverse + rect.width + "px";
-                    thumb.style.height =
-                        diffHeight * reverse + rect.height + "px";
+                    thumb.style.minWidth = diffWidth * reverse + rect.width + "px";
+                    thumb.style.maxWidth = diffWidth * reverse + rect.width + "px";
+                    thumb.style.height = diffHeight * reverse + rect.height + "px";
                     // Remove overlay when finished animating
                     if (progress === 1) {
                         figure.removeChild(imgOverlay);
                         thumb.classList.remove("fit-screen");
+                        figure.style.cssText = "";
+                        thumb.style.cssText = "";
                     }
                 }
             });
@@ -920,14 +916,12 @@ document.addEventListener('DOMContentLoaded', function () {
         function moveZoomWrap(el, nw, nh) {
             if (zoomX >= 0) {
                 zoomX = 0;
-            }
-            if (zoomX < window.innerWidth - nw) {
+            } else if (zoomX < window.innerWidth - nw) {
                 zoomX = window.innerWidth - nw;
             }
             if (zoomY >= 0) {
                 zoomY = 0;
-            }
-            if (zoomY < window.innerHeight - nh) {
+            } else if (zoomY < window.innerHeight - nh) {
                 zoomY = window.innerHeight - nh;
             }
             el.style.top = zoomY + "px";
@@ -984,6 +978,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         function enlargeImage(img, e) {
             if (items[index].isLoading === false) {
+                var naturalWidth = img.naturalWidth,
+                    naturalHeight = img.naturalHeight;
+                // Do not zoom 
+                if (naturalWidth <= window.innerWidth && naturalHeight <= window.innerHeight) {
+                    return;
+                }
                 // Put in zoomed state
                 isZoomedIn = true;
                 // Allow dragging
@@ -991,9 +991,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Change cursor to zoom-out
                 img.classList.add("enlarged");
     
-                var naturalWidth = img.naturalWidth,
-                    naturalHeight = img.naturalHeight,
-                    width = img.getBoundingClientRect().width,
+                var width = img.getBoundingClientRect().width,
                     height = img.getBoundingClientRect().height,
                     scaleValue = naturalWidth / width,
                     clientX = e.clientX || e.changedTouches[0].clientX,
@@ -1990,19 +1988,39 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Listens to mouse down on volume progress bar
+        // Touchstart - show time-float
+        volumeProgress.addEventListener('touchstart', function (e) {
+            // Prevents firing other events (mouse events)
+            e.preventDefault();
+            volumeProgress.classList.add('hover');
+            setNewVolume(e.changedTouches[0].pageX);
+        });
+
+        // Touchmove - drag time-elapsed bar and time-float
+        volumeProgress.addEventListener('touchmove', function (e) {
+            // Prevents firing other events (mouse events)
+            e.preventDefault();
+            setNewVolume(e.changedTouches[0].pageX);
+        });
+
+        // Touchend - hide time-float
+        volumeProgress.addEventListener('touchend', function () {
+            volumeProgress.classList.remove('hover');
+        });
+
         volumeProgress.addEventListener('mousedown', function (e) {
             // prevents selecting
             e.preventDefault();
             // enables mousemove while on mouse down (dragging)
             isVolumeControlOnMouseDown = true;
-            setNewVolume(e);
+            setNewVolume(e.pageX);
 
             // Listens to mousemove while on mousedown (dragging)
             document.onmousemove = function (e) {
                 // changes volume progress bar while dragging
                 if (isVolumeControlOnMouseDown) {
                     e.preventDefault();
-                    setNewVolume(e);
+                    setNewVolume(e.pageX);
                 }
             };
 
@@ -2016,8 +2034,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         // Volume functions
-        function setNewVolume(e) {
-            var newVolume = (e.pageX - volumeProgress.getBoundingClientRect().left) / volumeProgress.clientWidth;
+        function setNewVolume(pageX) {
+            var newVolume = (pageX - volumeProgress.getBoundingClientRect().left) / volumeProgress.clientWidth;
             if (newVolume < 0) {
                 newVolume = 0;
             }
