@@ -3137,15 +3137,11 @@ img {
     .horizontal-on-md {
         flex-direction: row;
     }
-    .banner {
-        height: 240px;
-    }
+    .banner,
     .banner.cover img {
-        height: 240px;
+        height: 280px;
     }
-    .banner.large {
-        height: 520px;
-    }
+    .banner.large,
     .banner.large.cover img {
         height: 520px;
     }
@@ -3222,15 +3218,11 @@ img {
     .v-on-lg-above {
         flex-direction: column;
     }
-    .banner {
-        height: 280px;
-    }
+    .banner,
     .banner.cover img {
-        height: 280px;
+        height: 320px;
     }
-    .banner.large {
-        height: 560px;
-    }
+    .banner.large
     .banner.large.cover img {
         height: 560px;
     }
@@ -3360,11 +3352,9 @@ img {
     .v-on-xl-above {
         flex-direction: column;
     }
-    .banner {
-        height: 320px;
-    }
+    .banner,
     .banner.cover img {
-        height: 320px;
+        height: 360px;
     }
     .card.horizontal {
         flex-direction: row;
