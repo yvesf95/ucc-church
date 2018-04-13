@@ -54,8 +54,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 e.preventDefault();
                 document.body.style.overflow = "hidden";
                 var target = document.querySelector(toggler.dataset.target);
-                target.classList.add('open');
                 overlay.style.display = 'block';
+                target.style.display = 'block';
+                setTimeout(function () {
+                    target.classList.add('open');
+                }, 10);
             });
         });
 
@@ -64,23 +67,25 @@ document.addEventListener('DOMContentLoaded', function () {
         closers.forEach(function (closer) {
             closer.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.body.style.overflow = "";
-                var target = document.querySelector(closer.dataset.target);
-                target.classList.remove('open');
-                setTimeout(function () {
-                    overlay.style.display = 'none';
-                }, 300);
+                closeModal(document.querySelector(closer.dataset.target));
             });
         });
 
         // closes dialogs / modals when overlay is clicked
         overlay.addEventListener('click', function () {
-            document.body.style.overflow = "";
-            overlay.style.display = 'none';
-            document.querySelectorAll('.open').forEach(function (open) {
-                open.classList.remove('open');
+            document.querySelectorAll('.open').forEach(function (opened) {
+                closeModal(opened);
             });
         });
+
+        function closeModal(modal) {
+            modal.classList.remove('open');
+            setTimeout(function () {
+                document.body.style.overflow = "";
+                modal.style.display = 'none';
+                overlay.style.display = 'none';
+            }, 400);
+        }
     }();
 
     // dropdown trigger
@@ -437,7 +442,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Add overlay
             var imgOverlay = document.createElement("div");
+            var scrollPos = clickedGallery.parentElement.parentElement.scrollTop;
             imgOverlay.id = "img-overlay";
+            imgOverlay.style.top = scrollPos + 'px';
+            imgOverlay.style.bottom = -scrollPos + 'px';
             figure.appendChild(imgOverlay);
             imgOverlay.classList.add("fade-in");
 
@@ -483,7 +491,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Add overlay
             var imgOverlay = document.createElement("div");
+            var scrollPos = clickedGallery.parentElement.parentElement.scrollTop;
             imgOverlay.id = "img-overlay";
+            imgOverlay.style.top = scrollPos + 'px';
+            imgOverlay.style.bottom = -scrollPos + 'px';
             figure.appendChild(imgOverlay);
             imgOverlay.classList.add("fade-out");
 
@@ -658,7 +669,11 @@ document.addEventListener('DOMContentLoaded', function () {
             return items;
         }
         function initLightbox(gallery) {
-            document.body.style.overflow = "hidden";
+            /** 
+             * Commented out since lightbox is not opened without opening bottom sheet first 
+             * and bottom sheet already sets and removes overflow hidden from body 
+             */
+            // document.body.style.overflow = "hidden";
             // Parse data
             var clicked = parseThumbnailElements(gallery);
             // Check if the clicked gallery is the same as the previous
@@ -1100,7 +1115,11 @@ document.addEventListener('DOMContentLoaded', function () {
         // Closes lightbox
         backArrow.addEventListener("click", function(e) {
             e.preventDefault();
-            document.body.style = "";
+            /** 
+             * Commented out since lightbox is not opened without opening bottom sheet first 
+             * and bottom sheet already sets and removes overflow hidden from body
+             */
+            // document.body.style = "";
             var figure = clickedGallery.children[index],
                 thumb = figure.querySelector("img");
             reduceImage(container.children[index].firstElementChild);
@@ -1232,7 +1251,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Horizontal lists
     var horizontalLists = function () {
         var horizontalLists = document.querySelectorAll('.horizontal-list');
-        const BREAKPOINT = 959;
+        const BREAKPOINT = 991;
 
         if (!horizontalLists.length) {
             return;
@@ -1251,7 +1270,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var noOfItems = inner.childElementCount;
             var itemWidth = item.getBoundingClientRect().width;
             var translateValue = +inner.style.transform.replace(/[^0-9.\-]/g, '') || 0;
-            var max = -(itemWidth * noOfItems - inner.parentElement.getBoundingClientRect().width);
+            var max = getMaxTranslateValue();
 
             var touchstartX = 0;
             var touchendX = 0;
@@ -1308,7 +1327,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (didResizeWhileHidden) {
                     didResizeWhileHidden = false;
                     itemWidth = item.getBoundingClientRect().width;
-                    max = -(itemWidth * inner.childElementCount - inner.parentElement.getBoundingClientRect().width);
+                    max = getMaxTranslateValue();
                 }
                 if (translateValue + itemWidth >= 0) {
                     translateValue = 0;
@@ -1324,7 +1343,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (didResizeWhileHidden) {
                     didResizeWhileHidden = false;
                     itemWidth = item.getBoundingClientRect().width;
-                    max = -(itemWidth * inner.childElementCount - inner.parentElement.getBoundingClientRect().width);
+                    max = getMaxTranslateValue();
                 }
                 if (translateValue - itemWidth <= max) {
                     translateValue = max;
@@ -1341,16 +1360,17 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             function recalibrate() {
+                checkForFlexWrap();
                 if (isHidden(horizontalList)) {
                     didResizeWhileHidden = true;
                     translateValue = 0;
-                    return;
+                    // return;
+                } else {
+                    var currentIndex = translateValue / itemWidth;
+                    itemWidth = item.getBoundingClientRect().width;
+                    translateValue = itemWidth * currentIndex;
+                    max = getMaxTranslateValue();
                 }
-                var currentIndex = translateValue / itemWidth;
-                itemWidth = item.getBoundingClientRect().width;
-                translateValue = itemWidth * currentIndex;
-                max = -(itemWidth * inner.childElementCount - inner.parentElement.getBoundingClientRect().width);
-                checkForFlexWrap();
                 toggleLeftArrowVisibility();
                 toggleRightArrowVisibility();
             }
@@ -1367,7 +1387,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             function toggleRightArrowVisibility() {
                 // Check for touch device and screen below breakpoint, contains flex wrap, or at first item
-                if (("ontouchstart" in document.documentElement && window.innerWidth < BREAKPOINT) ||
+                if (("ontouchstart" in document.documentElement && window.innerWidth < BREAKPOINT) || 
                     flexWrap || translateValue === max) {
                     arrowRight.style.display = "none";
                 } else {
@@ -1385,6 +1405,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else {
                     flexWrap = false;
                 }
+            }
+
+            function getMaxTranslateValue() {
+                return flexWrap ? 0 : -(itemWidth * inner.childElementCount - inner.parentElement.getBoundingClientRect().width);
             }
         }
 
@@ -1454,7 +1478,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 toggleArrowVisibility();
 
                 // Check for touch device
-                if ("ontouchstart" in document.documentElement) {
+                if ("ontouchstart" in document.documentElement && window.innerWidth <= 991) {
                     arrowLeft.style.display = "none";
                     arrowRight.style.display = "none";
                 }
@@ -1537,6 +1561,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 nav.style.transform = "translateX(" + -translateValue + "px)";
                 dist = 0;
+                toggleArrowVisibility();
             });
 
             arrowLeft.addEventListener('click', function () {
@@ -1601,7 +1626,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             function toggleArrowVisibility() {
-                if (!arrowLeft || !arrowRight || "ontouchstart" in document.documentElement) {
+                if (!arrowLeft || !arrowRight) {
                     return;
                 }
 
@@ -1857,7 +1882,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Shows player
         showPlayerButton.addEventListener('click', function () {
-            sermonPlayer.classList.add('open');
+            if (!sermonPlayer.classList.contains('open')) {
+                sermonPlayer.style.display = 'block';
+                setTimeout(function () {
+                    sermonPlayer.classList.add('open');
+                }, 10);
+            }
             playOrPause();
         });
 
@@ -1865,6 +1895,9 @@ document.addEventListener('DOMContentLoaded', function () {
         hidePlayerButton.addEventListener('click', function (e) {
             e.preventDefault();
             sermonPlayer.classList.remove('open');
+            setTimeout(function () {
+                sermonPlayer.style.display = 'none';
+            }, 400);
         });
 
         // Plays or pauses the track
