@@ -19,20 +19,6 @@ function initMap() {
         },
         label: 'H',
         content: 'Hemady Square'
-    }, {
-        coords: {
-            lat: 14.6112,
-            lng: 121.0363
-        },
-        label: 'V',
-        content: 'Valencia Hills'
-    }, {
-        coords: {
-            lat: 14.6447,
-            lng: 121.0077
-        },
-        label: 'T',
-        content: 'Tinaduan'
     }];
 
     // Loop thru markers
