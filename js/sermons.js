@@ -14,12 +14,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function buttonPosition() {
         if (window.scrollY >= container.offsetTop && window.scrollY + window.innerHeight < container.offsetTop + container.offsetHeight) {
+            backToTopButton.style.transform = "scale(1)";
             backToTopButton.style.opacity = 1;
             backToTopButton.style.position = "fixed";
         } else if (window.scrollY + window.innerHeight >= container.offsetTop + container.offsetHeight) {
             backToTopButton.style.position = "absolute";
         } else {
             backToTopButton.style.opacity = 0;
+            backToTopButton.style.transform = "scale(0)";
         }
     }
 });

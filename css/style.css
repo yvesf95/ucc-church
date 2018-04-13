@@ -367,7 +367,7 @@ img {
     padding: 0 16px;
     color: #fff;
     font-size: 14px;
-    font-weight: 300;
+    font-weight: 400;
     background-color: #4c8aff;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
@@ -444,8 +444,9 @@ img {
     bottom: 40px;
     z-index: 10;
     text-align: center;
+    transform: scale(0);
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 4px rgba(0, 0, 0, 0.28);
-    transition: background 0.2s, color 0.2s, opacity 0.5s;
+    transition: background 200ms, color 200ms, opacity 500ms, transform 500ms;
 }
 
 .back-to-top-container .back-to-top-button:hover {
@@ -607,7 +608,7 @@ img {
 
 .banner {
     position: relative;
-    height: 160px;
+    height: 200px;
     overflow: hidden;
 }
 
@@ -623,7 +624,7 @@ img {
 /* Cover */
 
 .banner.cover img {
-    height: 160px;
+    height: 200px;
     object-fit: cover;
 }
 
@@ -662,10 +663,11 @@ img {
 
 .banner .banner-overlay .banner-title {
     margin: 0;
+    padding: 0 20px;
     color: #fff;
-    font-size: 28px;
-    line-height: 32px;
-    font-weight: 400;
+    font-size: 34px;
+    line-height: 40px;
+    font-weight: 900;
     text-align: center;
 }
 
@@ -2737,6 +2739,7 @@ img {
     text-align: center;
     text-transform: uppercase;
     white-space: normal;
+    letter-spacing: 0.35px;
     opacity: 0.7;
     cursor: pointer;
     user-select: none;
@@ -3087,21 +3090,18 @@ img {
     .hide-on-xs-above {
         display: none !important;
     }
-    .banner {
-        height: 200px;
-    }
+    .banner,
     .banner.cover img {
-        height: 200px;
+        height: 240px;
     }
-    .banner.large {
-        height: 480px;
-    }
+    .banner.large,
     .banner.large.cover img {
         height: 480px;
     }
     .banner .banner-overlay .banner-title {
-        font-size: 34px;
-        line-height: 40px;
+        font-size: 45px;
+        line-height: 48px;
+        padding: 0 32px;
     }
     .banner .banner-overlay .banner-text {
         font-size: 20px;
@@ -3208,15 +3208,16 @@ img {
     }
     .banner,
     .banner.cover img {
-        height: 280px;
+        height: 320px;
     }
     .banner.large,
     .banner.large.cover img {
         height: 520px;
     }
     .banner .banner-overlay .banner-title {
-        font-size: 38px;
-        line-height: 42px;
+        padding: 0 48px;
+        font-size: 56px;
+        line-height: 84px;
     }
     .horizontal-list,
     .horizontal-list .scroll-container,
@@ -3299,15 +3300,15 @@ img {
     }
     .banner,
     .banner.cover img {
-        height: 320px;
+        height: 420px;
     }
     .banner.large,
     .banner.large.cover img {
         height: 560px;
     }
     .banner .banner-overlay .banner-title {
-        font-size: 45px;
-        line-height: 48px;
+        font-size: 72px;
+        line-height: 96px;
     }
     .horizontal-list,
     .horizontal-list .scroll-container {
@@ -3437,7 +3438,11 @@ img {
     }
     .banner,
     .banner.cover img {
-        height: 360px;
+        height: 500px;
+    }
+    .banner .banner-overlay .banner-title {
+        font-size: 96px;
+        line-height: 114px;
     }
     .card.horizontal {
         flex-direction: row;
@@ -3552,7 +3557,8 @@ img {
     padding: 0.8rem 1rem;
 }
 
-#welcome, #join-us {
+#welcome,
+#join-us {
     min-height: 55vh;
     display: flex;
     align-items: center;
