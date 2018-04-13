@@ -28,10 +28,8 @@ section.background-img-section {
 
 section .section-title {
     padding: 4px;
-    /* border-bottom: 1px solid rgba(0, 0, 0, 0.54); */
     text-transform: uppercase;
     letter-spacing: 0.4em;
-    text-indent: 0.4em;
 }
 
 a {
@@ -2229,7 +2227,6 @@ img {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    margin-top: 4px;
     height: calc(100% - 4px);
 }
 
@@ -2262,7 +2259,8 @@ img {
     padding: 0 16px;
     box-sizing: border-box;
     height: 100%;
-    font-size: 15px;
+    font-size: 14px;
+    letter-spacing: 0.35px;
     color: rgba(0, 0, 0, 0.87);
     white-space: nowrap;
 }
@@ -2306,7 +2304,7 @@ img {
         0px 4px 5px 0px rgba(0, 0, 0, 0.14),
         0px 1px 10px 0px rgba(0, 0, 0, 0.12);
     display: flex;
-    transition: height 250ms ease;
+    transition: height 250ms linear, background-color 250ms linear;
 }
 
 .menubar > .container {
@@ -2322,7 +2320,7 @@ img {
 }
 
 .menubar .menu-logo {
-    height: 56px;
+    height: 52px;
     transition: height 250ms ease;
     margin-right: 10px;
 }
@@ -2401,7 +2399,11 @@ img {
     top: 0;
     z-index: 1001;
     width: 100%;
-    transition: all 250ms linear;
+}
+
+#navbar .menu-link {
+    text-transform: uppercase;
+    font-size: 13px;
 }
 
 /* #endregion */
@@ -2621,11 +2623,6 @@ img {
 }
 
 /* #endregion */
-
-#second-navbar {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
 
 /* #region Sidenav */
 
@@ -3332,14 +3329,14 @@ img {
         height: 48px;
     }
     .menubar .menu-logo {
-        height: 64px;
+        height: 60px;
     }
-    .menubar.menubar--scrolled,
-    .menubar.menubar--scrolled > .container {
+    #navbar.menubar--scrolled,
+    #navbar.menubar--scrolled > .container {
         height: 56px;
     }
-    .menubar.menubar--scrolled .menu-logo {
-        height: 56px;
+    #navbar.menubar--scrolled .menu-logo {
+        height: 52px;
     }
     .card.horizontal {
         flex-direction: row;

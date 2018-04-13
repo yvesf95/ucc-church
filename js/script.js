@@ -21,21 +21,21 @@ document.addEventListener('DOMContentLoaded', function () {
             if (window.scrollY >= 100 || window.innerWidth < BREAKPOINT) {
                 navbar.classList.add('dark-transparent');
                 navbar.classList.add('raised-2');
-                // navbar.firstElementChild.classList.remove('flat');
-                navbar.firstElementChild.classList.add('menubar--scrolled');
+                navbar.classList.remove('flat');
+                navbar.classList.add('menubar--scrolled');
             } else {
-                navbar.classList.remove('raised-2');
-                // navbar.firstElementChild.classList.add('flat');
-                navbar.firstElementChild.classList.remove('menubar--scrolled');
                 navbar.classList.remove('dark-transparent');
+                navbar.classList.remove('raised-2');
+                navbar.classList.add('flat');
+                navbar.classList.remove('menubar--scrolled');
             }
         }
 
         function addPaddingTopToNextElement() {
             if (window.innerWidth < BREAKPOINT) {
-                navbar.nextElementSibling.style.marginTop = '56px';
+                navbar.parentElement.nextElementSibling.style.marginTop = '56px';
             } else {
-                navbar.nextElementSibling.style = "";
+                navbar.parentElement.nextElementSibling.style = "";
             }
         }
     }();
