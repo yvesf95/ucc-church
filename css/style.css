@@ -1018,17 +1018,17 @@ img {
 
 .card .card-header .card-media-small {
     width: 80px;
-    height: 80px;
+    /* height: 80px; */
 }
 
 .card .card-header .card-media-medium {
     width: 120px;
-    height: 120px;
+    /* height: 120px; */
 }
 
 .card .card-header .card-media-large {
     width: 160px;
-    height: 160px;
+    /* height: 160px; */
 }
 
 .card .card-header .card-title {

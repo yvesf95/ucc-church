@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(() => {
+        start();
+    }, 500);
+});
 
+function start() {
     var navbar = function () {
         const BREAKPOINT = 768;
         var navbar = document.getElementById('navbar');
@@ -102,27 +107,33 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (btn.parentElement.classList.contains('show')) {
                     btn.parentElement.classList.remove('show');
                 } else {
+                    closeDropdowns(e);
                     btn.parentElement.classList.add('show');
                 }
             });
         });
 
-        document.onclick = function (event) {
+        var dropdowns = document.getElementsByClassName("dropdown");
+        var dropups = document.getElementsByClassName('dropup');
+        document.onclick = function (e) {
             if (!parentIsSubmenu(event.target)) {
-                var dropdowns = document.getElementsByClassName("dropdown");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    if (dropdowns[i].classList.contains('show')) {
-                        dropdowns[i].classList.remove('show');
-                    }
-                }
-                var dropups = document.getElementsByClassName('dropup');
-                for (var j = 0; j < dropups.length; j++) {
-                    if (dropups[j].classList.contains('show')) {
-                        dropups[j].classList.remove('show');
-                    }
+                closeDropdowns();
+                // e.preventDefault();
+            }
+        }
+
+        function closeDropdowns() {
+            for (var i = 0; i < dropdowns.length; i++) {
+                if (dropdowns[i].classList.contains('show')) {
+                    dropdowns[i].classList.remove('show');
                 }
             }
-        };
+            for (var j = 0; j < dropups.length; j++) {
+                if (dropups[j].classList.contains('show')) {
+                    dropups[j].classList.remove('show');
+                }
+            }
+        }
 
         function parentIsSubmenu(child) {
             var node = child;
@@ -1267,17 +1278,21 @@ document.addEventListener('DOMContentLoaded', function () {
             var arrowLeft = horizontalList.querySelector('.arrow-left');
             var arrowRight = horizontalList.querySelector('.arrow-right');
 
-            var noOfItems = inner.childElementCount;
-            var itemWidth = item.getBoundingClientRect().width;
-            var translateValue = +inner.style.transform.replace(/[^0-9.\-]/g, '') || 0;
-            var max = getMaxTranslateValue();
-
-            var touchstartX = 0;
-            var touchendX = 0;
+            if (!inner || !item || !arrowLeft || !arrowRight) {
+                return;
+            }
 
             var resizeTimer,
                 didResizeWhileHidden = false,
                 flexWrap = false;
+
+            var touchstartX = 0;
+            var touchendX = 0;
+
+            var noOfItems = inner.childElementCount;
+            var itemWidth = item.getBoundingClientRect().width;
+            var translateValue = +inner.style.transform.replace(/[^0-9.\-]/g, '') || 0;
+            var max = getMaxTranslateValue();
 
             (function () {
                 checkForFlexWrap();
@@ -1408,7 +1423,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             function getMaxTranslateValue() {
-                return flexWrap ? 0 : -(itemWidth * inner.childElementCount - inner.parentElement.getBoundingClientRect().width);
+                var n = inner.childElementCount,
+                    scrollContainer = inner.parentElement.getBoundingClientRect();
+                if (flexWrap || itemWidth * n < scrollContainer.width) {
+                    return 0;
+                } else {
+                    return -(itemWidth * n - scrollContainer.width);
+                }
             }
         }
 
@@ -2087,5 +2108,4 @@ document.addEventListener('DOMContentLoaded', function () {
             return ("0" + parseInt(time / 60)).slice(-2) + ":" + ("0" + parseInt(time % 60)).slice(-2);
         }
     }();
-
-});
+}
