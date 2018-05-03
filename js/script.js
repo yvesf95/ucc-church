@@ -197,12 +197,42 @@ function start() {
             });
         });
 
+        var revealers = document.querySelectorAll('.revealer');
+        revealers.forEach(function (revealer) {
+            revealer.addEventListener('click', function () {
+                var card = findAncestor(revealer, "card");
+                var cardReveal = card.querySelector('.card-reveal');
+                if (cardReveal.classList.contains('reveal')) {
+                    card.style.overflow = "hidden";
+                    cardReveal.classList.add('slide-out-down');
+                    setTimeout(function () {
+                        cardReveal.classList.remove('reveal');
+                        cardReveal.classList.remove('slide-out-down');
+                        card.style.overflow = "";
+                    }, 250);
+                } else {
+                    card.style.overflow = "hidden";
+                    cardReveal.classList.add('reveal');
+                    cardReveal.classList.add('slide-in-up');
+                    setTimeout(function () {
+                        cardReveal.classList.remove('slide-in-up');
+                        card.style.overflow = "";
+                    }, 250);
+                }
+            });
+        });
+
         var cardButtons = document.querySelectorAll('.card-button');
         cardButtons.forEach(function (cardButton) {
             cardButton.addEventListener('click', function (e) {
                 e.preventDefault();
             });
         });
+        
+        function findAncestor (el, cls) {
+            while ((el = el.parentElement) && !el.classList.contains(cls));
+            return el;
+        }
     }();
 
     // input-group check if has value
