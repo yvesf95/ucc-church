@@ -569,12 +569,28 @@ img {
     margin: auto !important;
 }
 
+.mt-0 {
+    margin-top: 0 !important;
+}
+
 .mt-1 {
     margin-top: 10px !important;
 }
 
+.pb-0 {
+    padding-bottom: 0 !important;
+}
+
+.pb-1 {
+    padding-bottom: 10px !important;
+}
+
 .border-0 {
     border: none !important;
+}
+
+.border-1 {
+    border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 /* #endregion */
@@ -1120,7 +1136,7 @@ img {
 
 .card .card-content p {
     margin: 0;
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 .card .card-header + .card-content {
@@ -1427,6 +1443,7 @@ img {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    max-width: calc(100% - 24px);
 }
 
 .chip img {
@@ -1439,6 +1456,11 @@ img {
 
 .chip .material-icons {
     opacity: 0.54;
+    vertical-align: middle;
+}
+
+.chip span {
+    vertical-align: middle;
 }
 
 /* #endregion */
@@ -2455,16 +2477,6 @@ img {
 
 /* #endregion */
 
-/* #region Ministries */
-
-#ministries {
-    position: relative;
-    top: -48px;
-    z-index: 3;
-}
-
-/* #endregion */
-
 /* #region Modal */
 
 .modal {
@@ -3328,7 +3340,7 @@ img {
     }
     .max-width,
     .max-width-md {
-        max-width: 720px;
+        max-width: 740px;
         margin: 0 auto;
     }
     .horizontal-on-md {
@@ -3350,7 +3362,7 @@ img {
     .horizontal-list,
     .horizontal-list .scroll-container,
     .horizontal-list .scroll-container .horizontal-list-item {
-        max-width: 720px;
+        max-width: 740px;
     }
     .list .list-item .list-item-container .list-item-media {
         width: 150px;
@@ -3592,7 +3604,7 @@ img {
     }
     .horizontal-list,
     .horizontal-list .scroll-container {
-        max-width: 1200px;
+        max-width: 1240px;
     }
     .horizontal-list .scroll-container .horizontal-list-item {
         max-width: 600px;
@@ -3720,14 +3732,14 @@ img {
 }
 
 .event-date.large {
-    width: 72px;
-    height: 72px;
+    width: 64px;
+    height: 64px;
 }
 
 .event-date.large .month {
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .event-date.large .day {
-    font-size: 28px;
+    font-size: 24px;
 }
