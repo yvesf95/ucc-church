@@ -730,8 +730,8 @@ img {
     margin-top: 1.25rem;
     margin-bottom: 1.75rem;
     color: #fff;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 15px;
+    line-height: 20px;
     text-align: center;
 }
 
@@ -3236,7 +3236,7 @@ img {
     }
     .banner.large,
     .banner.large.cover img {
-        height: 480px;
+        height: 460px;
     }
     .banner .banner-overlay .banner-title {
         font-size: 45px;
@@ -3244,7 +3244,7 @@ img {
         padding: 0 32px;
     }
     .banner .banner-overlay .banner-text {
-        font-size: 20px;
+        font-size: 18px;
         line-height: 28px;
     }
     .horizontal-list,
@@ -3352,7 +3352,7 @@ img {
     }
     .banner.large,
     .banner.large.cover img {
-        height: 520px;
+        height: 480px;
     }
     .banner .banner-overlay .banner-title {
         padding: 0 48px;
@@ -3444,7 +3444,7 @@ img {
     }
     .banner.large,
     .banner.large.cover img {
-        height: 560px;
+        height: 500px;
     }
     .banner .banner-overlay .banner-title {
         font-size: 72px;
@@ -3702,7 +3702,9 @@ img {
 }
 
 #welcome,
-#join-us {
+#join-us,
+#mission,
+#vision {
     min-height: 55vh;
     display: flex;
     align-items: center;
