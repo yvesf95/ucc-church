@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var backTop = function() {
+    var backTop = (function() {
         var container = document.getElementsByClassName("back-to-top-container")[0];
         var backToTopButton = document.getElementById("back-to-top-button");
 
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 backToTopButton.style.transform = "scale(0)";
             }
         }
-    };
+    })();
 
     var dev = (function() {
         var devotional = document.getElementById("morning-evening-devotional");
