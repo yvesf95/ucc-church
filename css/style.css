@@ -2409,9 +2409,9 @@ img {
     white-space: nowrap;
 }
 
-.menu .menu-item .material-icons,
-.menu .menu-link .material-icons {
-    margin-right: 10px;
+.menu .menu-item .material-icons + span,
+.menu .menu-link .material-icons + span {
+    margin-left: 10px;
 }
 
 .menu.vertical .menu-item,
