@@ -790,6 +790,9 @@ img {
     align-items: center;
     position: relative;
     height: 36px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
     border: none;
     border-radius: 2px;
     background-color: transparent;
