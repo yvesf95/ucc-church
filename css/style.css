@@ -187,6 +187,10 @@ img {
     color: rgba(0, 0, 0, 0.87) !important;
 }
 
+.black-text-secondary {
+    color: rgba(0, 0, 0, 0.54) !important;
+}
+
 .white-text-primary {
     color: rgba(255, 255, 255, 0.87) !important;
 }
@@ -480,7 +484,7 @@ img {
     text-align: center;
     transform: scale(0);
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 4px rgba(0, 0, 0, 0.28);
-    transition: background 200ms, color 200ms, opacity 500ms, transform 500ms;
+    transition: background 200ms, color 200ms, opacity 500ms, transform 500ms, bottom 400ms;
 }
 
 .back-to-top-container .back-to-top-button:hover {
@@ -518,6 +522,10 @@ img {
 
 .align-center {
     align-items: center;
+}
+
+.flex-v {
+    flex-direction: column;
 }
 
 .wrap {
@@ -1558,6 +1566,7 @@ img {
 .gallery {
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 72px;
 }
 
 .gallery::after {

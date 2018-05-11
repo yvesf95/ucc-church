@@ -1804,7 +1804,7 @@ function start() {
             return false;
         }
     }();
-
+    
     // sermon player
     var sermonPlayer = function () {
         // the sermon player (bottom sheet)
@@ -1838,11 +1838,6 @@ function start() {
         var volumeCurrent = document.getElementById('volume-current');
         var volumeHandle = document.getElementById('volume-handle');
         var isVolumeControlOnMouseDown = false;
-
-        // Hide volume progress bar on touch screen devices
-        // if ("ontouchstart" in document.documentElement) {
-        //     volumeProgress.parentElement.style.display = "none";
-        // }
 
         // Sermon Track Events
 
@@ -1932,8 +1927,13 @@ function start() {
         // Click Events
 
         // Shows player
-        showPlayerButton.addEventListener('click', function () {
+        showPlayerButton.addEventListener('click', function (e) {
+            e.preventDefault();
             if (!sermonPlayer.classList.contains('open')) {
+                var backTopButton = document.querySelector('.back-to-top-button');
+                if (backTopButton) {
+                    backTopButton.style.bottom = "72px";
+                }
                 sermonPlayer.style.display = 'block';
                 setTimeout(function () {
                     sermonPlayer.classList.add('open');
@@ -1946,6 +1946,10 @@ function start() {
         hidePlayerButton.addEventListener('click', function (e) {
             e.preventDefault();
             sermonPlayer.classList.remove('open');
+            var backTopButton = document.querySelector('.back-to-top-button');
+            if (backTopButton) {
+                backTopButton.style.bottom = "";
+            }
             setTimeout(function () {
                 sermonPlayer.style.display = 'none';
             }, 400);
@@ -1976,17 +1980,17 @@ function start() {
 
         // Hover and Drag Events
 
-        // Order of events
-        // touchstart
-        // touchmove
-        // touchend
-        // mouseover
-        // mousemove
-        // mousedown
-        // mouseup
-        // click
+        /** Order of events
+         *  touchstart
+         *  touchmove
+         *  touchend
+         *  mouseover
+         *  mousemove
+         *  mousedown
+         *  mouseup
+         *  click */
 
-        // Touch Events
+        // #region Touch Events
 
         // Touchstart - show time-float
         trackProgress.addEventListener('touchstart', function (e) {
@@ -2011,8 +2015,9 @@ function start() {
         trackProgress.addEventListener('touchend', function () {
             trackProgress.classList.remove('hover');
         });
+        // #endregion
 
-        // Mouse Events
+        // #region Mouse Events
         // Mouseover - show time-float
         trackProgress.addEventListener('mouseover', function () {
             trackProgress.classList.add('hover');
@@ -2055,6 +2060,7 @@ function start() {
         trackProgress.addEventListener('mouseleave', function () {
             trackProgress.classList.remove('hover');
         });
+        // #endregion
 
         // Track Progress functions
         function setTimeFloatPosition(pageX) {
