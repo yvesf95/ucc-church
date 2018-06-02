@@ -439,6 +439,16 @@
         </div>
     </section> -->
 
+    <section class="row">
+        <a href="audio/08.Bring The Rain.mp3" class="button blue play-link">Bring the Rain</a>
+        <a href="audio/01. SHINY DAYS.mp3" class="button green play-link">Shiny DAYS</a>
+        <a href="audio/10. disco.mp3" class="button red play-link">Disco</a>
+        <button id="show-player-button" class="button blue">
+            <i class="material-icons tiny">play_circle_outline</i>
+            <span>Play Sermon</span>
+        </button>
+    </section>
+
     <!-- categories -->
     <main id="categories">
         <div class="tabs">
@@ -1513,8 +1523,8 @@
         </div>
     </div>
 
-    <div id="sermon-player" class="bottom-sheet">
-        <audio src="audio/08.Bring The Rain.mp3" type="audio/mpeg" preload="none" id="sermon-track"></audio>
+    <div id="sermon-player" class="bottom-sheet open">
+        <audio src="" type="audio/mpeg" preload="none" id="sermon-track"></audio>
         <div class="progress" id="track-progress">
             <span class="progress-bar" id="time-buffered-bar"></span>
             <span class="progress-bar" id="time-elapsed-bar"></span>
@@ -1569,8 +1579,8 @@
                     </li>
                     <li class="spacer"></li>
                     <li class="menu-item flex-v justify-center">
-                        <span id="sermon-title" style="white-space: normal;">Three Reasons for Joy in the New Year</span>
-                        <span id="sermon-verse" style="white-space: normal;" class="black-text-secondary">Philippians 1:12-20</span>
+                        <span id="sermon-title" style="white-space: normal;"></span>
+                        <span id="sermon-verse" style="white-space: normal;" class="black-text-secondary"></span>
                     </li>
                     <li class="spacer"></li>
                     <li class="menu-item flex-v justify-center">

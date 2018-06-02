@@ -211,9 +211,8 @@ document.addEventListener("DOMContentLoaded", function() {
         xhttp.open("GET", path, true);
         xhttp.send();
     }
-
     // sermon player
-    var sermonPlayer = (function() {
+    var sermonPlayer = function() {
         // the sermon player (bottom sheet)
         var sermonPlayer = document.getElementById("sermon-player");
 
@@ -224,7 +223,8 @@ document.addEventListener("DOMContentLoaded", function() {
         // the sermon track (mp3 file)
         var sermonTrack = document.getElementById("sermon-track");
         // get current time element
-        var currentTime = document.getElementById("current-time");
+        var currentTime = document.getElementById("current-time"),
+            fullDuration = document.getElementById("full-duration");
 
         // Play Button
         var playButton = document.getElementById("play-button");
@@ -246,10 +246,21 @@ document.addEventListener("DOMContentLoaded", function() {
         var volumeHandle = document.getElementById("volume-handle");
         var isVolumeControlOnMouseDown = false;
 
-        // Sermon Track Events
+        // #region Sermon Track Events
+
+        /** Order of loading process
+         * loadstart
+         * durationchange
+         * loadedmetadata
+         * loadeddata
+         * progress
+         * canplay
+         * canplaythrough
+         */
 
         // Fires when the audio is playing after having been paused or stopped for buffering
         sermonTrack.addEventListener("playing", function() {
+            console.log("playing");
             playButton.firstElementChild.textContent = "pause_circle_outline";
             showPlayerButton.firstElementChild.textContent = "pause_circle_outline";
             showPlayerButton.querySelector("span").textContent = "Pause";
@@ -257,6 +268,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Fires when the audio has been paused
         sermonTrack.addEventListener("pause", function() {
+            console.log("paused");
             playButton.firstElementChild.textContent = "play_circle_outline";
             showPlayerButton.firstElementChild.textContent = "play_circle_outline";
             showPlayerButton.querySelector("span").textContent = "Play";
@@ -265,12 +277,12 @@ document.addEventListener("DOMContentLoaded", function() {
         // Fires when the duration of the audio is changed
         sermonTrack.addEventListener("durationchange", function() {
             // Sets the full duration
-            var fullDuration = document.getElementById("full-duration");
             fullDuration.textContent = parseTime(sermonTrack.duration);
         });
 
         // Fires when the current playback position has changed
         sermonTrack.addEventListener("timeupdate", function() {
+            console.log("timeupdate");
             // Convert to minutes and seconds ex. 00:01
             currentTime.textContent = parseTime(sermonTrack.currentTime);
             // Computes size of time elapsed progress bar
@@ -294,14 +306,22 @@ document.addEventListener("DOMContentLoaded", function() {
             volumeCurrent.style.width = sermonTrack.volume * 100 + "%";
             volumeHandle.style.left = sermonTrack.volume * 100 + "%";
         });
-        // Set initial volume
-        sermonTrack.volume = 0;
-        sermonTrack.volume = 1;
+
+        sermonTrack.addEventListener("loadstart", function() {
+            timeElapsedBar.style.width = 0;
+            trackHandle.style.left = 0;
+            timeBufferedBar.style.width = 0;
+            currentTime.textContent = "00:00";
+            fullDuration.textContent = "00:00";
+            playButton.firstElementChild.textContent = "play_circle_outline";
+            showPlayerButton.firstElementChild.textContent = "play_circle_outline";
+        });
 
         // Fires when the browser can start playing the audio
         sermonTrack.addEventListener("canplay", function() {
             // Add listener for when downloading track
-            addProgressListener();
+            sermonTrack.play();
+            updateTimeBuffered();
         });
 
         // Fires when the browser can play through the audio without stopping for buffering
@@ -310,19 +330,18 @@ document.addEventListener("DOMContentLoaded", function() {
             updateTimeBuffered();
         });
 
-        function addProgressListener() {
-            // Fires when the browser is downloading the audio
-            sermonTrack.addEventListener("progress", function() {
-                // Updates time buffered bar on download
-                updateTimeBuffered();
-            });
-        }
+        // Fires when the browser is downloading the audio
+        sermonTrack.addEventListener("progress", function() {
+            // Updates time buffered bar on download
+            updateTimeBuffered();
+        });
 
         function updateTimeBuffered() {
+            var length = sermonTrack.buffered.length;
             // Checks if has buffered parts of the audio
-            if (sermonTrack.buffered.length > 0) {
+            if (length > 0) {
                 // Get the end position of the buffered range
-                var bufferedEnd = sermonTrack.buffered.end(0);
+                var bufferedEnd = sermonTrack.buffered.end(length - 1);
                 var duration = sermonTrack.duration;
                 if (duration > 0) {
                     // Computes and sets the size of time buffered bar
@@ -330,9 +349,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
         }
+        // #endregion
+
+        // Set initial volume
+        sermonTrack.volume = 0;
+        sermonTrack.volume = 0.1;
 
         // Click Events
 
+        sermonPlayer.style.display = "block";
         // Shows player
         showPlayerButton.addEventListener("click", function(e) {
             e.preventDefault();
@@ -558,5 +583,21 @@ document.addEventListener("DOMContentLoaded", function() {
                 ("0" + parseInt(time / 60)).slice(-2) + ":" + ("0" + parseInt(time % 60)).slice(-2)
             );
         }
-    })();
+    };
+    sermonPlayer();
+
+    var audioSelectors = document.querySelectorAll(".play-link"),
+        audio = document.getElementsByTagName("audio")[0],
+        sermonTitle = document.getElementById("sermon-title"),
+        sermonVerse = document.getElementById("sermon-verse");
+
+    audioSelectors.forEach(as => {
+        as.addEventListener("click", function(e) {
+            e.preventDefault();
+            sermonTitle.textContent = as.textContent;
+            sermonVerse.textContent = as.textContent;
+            audio.src = as.href;
+            audio.load();
+        });
+    });
 });
