@@ -3197,6 +3197,10 @@ img {
     .horizontal-list .arrow-right {
         right: 0px;
     }
+    .promo .promo-img > img {
+        width: 84px !important;
+        height: 84px !important;
+    }
     .xs-3 {
         flex-basis: 25% !important;
         max-width: 25% !important;
@@ -3334,9 +3338,12 @@ img {
         height: 8px;
         margin: 16px 4px;
     }
+    .promo .promo-img {
+        margin-right: 20px;
+    }
     .promo .promo-img > img {
-        width: 84px;
-        height: 84px;
+        width: 112px;
+        height: 112px;
     }
     .dropdown .dropdown-content.static-on-sm-below {
         position: static;
@@ -3385,6 +3392,9 @@ img {
     }
     .modal .modal-content .modal-body {
         max-height: 80vh;
+    }
+    .promo {
+        flex-direction: column;
     }
     .v-on-md-above {
         flex-direction: column;
