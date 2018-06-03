@@ -439,16 +439,6 @@
         </div>
     </section> -->
 
-    <section class="row">
-        <a href="audio/08.Bring The Rain.mp3" class="button blue play-link">Bring the Rain</a>
-        <a href="audio/01. SHINY DAYS.mp3" class="button green play-link">Shiny DAYS</a>
-        <a href="audio/10. disco.mp3" class="button red play-link">Disco</a>
-        <button id="show-player-button" class="button blue">
-            <i class="material-icons tiny">play_circle_outline</i>
-            <span>Play Sermon</span>
-        </button>
-    </section>
-
     <!-- categories -->
     <main id="categories">
         <div class="tabs">
@@ -527,13 +517,13 @@
                                             <div class="dropdown-content right">
                                                 <ul class="menu dense vertical">
                                                     <li>
-                                                        <a href="" class="menu-link" id="show-player-button">
+                                                        <a href="" class="menu-link play-link">
                                                             <i class="material-icons tiny">play_circle_outline</i>
                                                             <span>Play Sermon</span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="" class="menu-link" download="">
+                                                        <a href="" class="menu-link download-link" download>
                                                             <i class="material-icons tiny">file_download</i>
                                                             <span>Download</span>
                                                         </a>
@@ -1523,7 +1513,7 @@
         </div>
     </div>
 
-    <div id="sermon-player" class="bottom-sheet open">
+    <div id="sermon-player" class="bottom-sheet">
         <audio src="" type="audio/mpeg" preload="none" id="sermon-track"></audio>
         <div class="progress" id="track-progress">
             <span class="progress-bar" id="time-buffered-bar"></span>
@@ -1540,14 +1530,14 @@
                         </button>
                         <div class="dropdown-content">
                             <ul class="menu vertical">
-                                <li>
+                                <!-- <li>
                                     <a href="" class="menu-link" id="hide-player-button">
                                         <i class="material-icons tiny">visibility_off</i>
                                         <span>Hide player</span>
                                     </a>
-                                </li>
+                                </li> -->
                                 <li>
-                                    <a href="" class="menu-link">
+                                    <a href="" class="menu-link download-link" download>
                                         <i class="material-icons tiny">file_download</i>
                                         <span>Download</span>
                                     </a>
@@ -1579,8 +1569,8 @@
                     </li>
                     <li class="spacer"></li>
                     <li class="menu-item flex-v justify-center">
-                        <span id="sermon-title" style="white-space: normal;"></span>
-                        <span id="sermon-verse" style="white-space: normal;" class="black-text-secondary"></span>
+                        <span id="title" style="white-space: normal;"></span>
+                        <span id="subtitle" style="white-space: normal;" class="black-text-secondary"></span>
                     </li>
                     <li class="spacer"></li>
                     <li class="menu-item flex-v justify-center">
