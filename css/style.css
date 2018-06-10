@@ -3728,9 +3728,9 @@ img {
 
 #welcome,
 #join-us,
-#mission,
-#vision {
-    min-height: 55vh;
+#who-we-are, 
+#mission-and-vision {
+    min-height: 60vh;
     display: flex;
     align-items: center;
 }
