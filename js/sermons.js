@@ -196,9 +196,6 @@ document.addEventListener("DOMContentLoaded", function() {
             case "Pastor Nicky Joya":
                 src = "nicky_300x300.jpg";
                 break;
-            case "Pastor Romy Alag":
-                src = "romy_300x300.jpg";
-                break;
             default:
                 src = "blank-profile-picture.png";
                 break;
@@ -473,7 +470,8 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     // the sermon player (bottom sheet)
-    var player = document.getElementById("sermon-player");
+    var player = document.getElementById("sermon-player"),
+        btButton = document.getElementById("back-to-top-button");
     SermonPlayer(player);
 
     var audio = document.getElementsByTagName("audio")[0],
@@ -499,9 +497,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     player.style.display = "block";
                     player.classList.add("open");
+                    btButton.style.bottom = "72px";
                 });
             });
             clearInterval(a);
         }
-    }, 500);
+    }, 250);
 });
